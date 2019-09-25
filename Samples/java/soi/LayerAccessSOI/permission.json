@@ -1,0 +1,38 @@
+{
+    "permissions": [       
+		{
+            "fqsn": "California_11.MapServer",
+            "permission": [
+                {
+                    "role": "silver123",
+                    "authorizedLayers": "0,1,2"
+                },
+                {
+                    "role": "gold123",
+                    "authorizedLayers": "3,4,5,6"
+                },
+                {
+                    "role": "platinum123",
+                    "authorizedLayers": "7,8,9,10,11"
+                }
+            ]
+        },
+		{
+            "fqsn": "usa_11.MapServer",
+            "permission": [
+                {
+                    "role": "silver123",
+                    "authorizedLayers": "1"
+                },
+                {
+                    "role": "gold123",
+                    "authorizedLayers": "2,3"
+                },
+                {
+                    "role": "platinum123",
+                    "authorizedLayers": "0,1,2,3"
+                }
+            ]
+        }
+    ]
+}

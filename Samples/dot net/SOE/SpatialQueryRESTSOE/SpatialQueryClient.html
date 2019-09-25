@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+    <meta charset="utf-8" />
+    <!--The viewport meta tag is used to improve the presentation and behavior
+  of the samples on iOS devices-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+    <title>
+        Spatial Query SOE JavaScript Client Application
+    </title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/dark/main.css" />
+    <link rel="stylesheet" href="https://js.arcgis.com/4.12/dijit/themes/claro/claro.css" />
+
+    <script src="https://js.arcgis.com/4.12/"></script>
+
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        
+        #bufferDistance {
+            padding: 1em;
+        }
+        
+        #bufferDistance>div {
+            padding: 0.3em;
+        }
+    </style>
+
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/layers/MapImageLayer",
+            "esri/layers/GraphicsLayer",
+            "esri/Graphic",
+            "esri/request",
+            "esri/geometry/SpatialReference",
+            "esri/geometry/Point",
+            "esri/geometry/projection",
+            "esri/geometry/Polygon"
+        ], function(Map, MapView, MapImageLayer, GraphicsLayer, Graphic, esriRequest, SpatialReference, Point, projection, Polygon) {
+            
+            var soeURL = "https://<serverdomain>/<webadaptorname>/rest/services/Veg/MapServer/exts/SpatialQueryREST/SpatialQuery";
+            var serviceURL = "https://<serverdomain>/<webadaptorname>/rest/services/Veg/MapServer";
+            
+            var vegLayer = new MapImageLayer({
+                url: serviceURL
+            });
+            var map = new Map({
+                basemap: "dark-gray",
+                layers: [vegLayer]
+            });
+
+            var graphicsLayer = new GraphicsLayer();
+            map.add(graphicsLayer);
+
+            var view = new MapView({
+                container: "viewDiv",
+                map: map,
+                extent: {
+                    // autocasts as new Extent()
+                    xmin: -12312000,
+                    ymin: 5504259,
+                    xmax: -12251000,
+                    ymax: 5532103,
+                    spatialReference: 102100
+                }
+            });
+            view.ui.add("bufferDistance", "top-right");
+            view.ui.add("tbDiv", "bottom-left");
+            const tableHTML = document.getElementById('ttt').innerHTML;
+            projection.load().then(function() {
+                view.on("click", function(event) {
+                    graphicsLayer.removeAll();
+
+                    var outSpatialReference = vegLayer.spatialReference;
+
+                    var centerPt = projection.project(event.mapPoint, outSpatialReference);
+
+                    markerSymbol = {
+                        type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+                        color: [226, 119, 40],
+                        outline: {
+                            // autocasts as new SimpleLineSymbol()
+                            color: [255, 255, 255],
+                            width: 2
+                        }
+                    };
+
+                    var pointGraphic = new Graphic({
+                        geometry: centerPt,
+                        symbol: markerSymbol
+                    });
+
+                    var bufferDist = document.getElementById("inputParam").value;
+
+                    var options = {
+                        query: {
+                            'location': "{x:" + centerPt.x + ", y:" + centerPt.y + ", spatialReference:" + centerPt.spatialReference.wkid + "}",
+                            'distance': bufferDist,
+                            f: "json"
+                        },
+                        responseType: "json"
+                    };
+
+                    console.log("input: ", options);
+
+                    esriRequest(soeURL, options).then(function(response) {
+                        // The requested data
+                        var responseContent = response.data;
+                        console.log("response", responseContent);
+                        return responseContent;
+                    }).then(renderResult);
+
+                    function renderResult(responseContent) {
+
+                        var records = responseContent.records;
+
+                        document.getElementById('ttt').innerHTML = tableHTML;
+                        var innerhtml = tableHTML;
+                        for (let i = 0; i < records.length; i++) {
+                            innerhtml += "<tr><td>" + records[i].veg + "</td><td>" + records[i].value + "</td></tr>";
+                        }
+                        document.getElementById('ttt').innerHTML = innerhtml;
+
+                        var geometryArr = responseContent.geometries;
+                        var graphics = [];
+                        for (let i = 0; i < geometryArr.length; i++) {
+                            var polygon = Polygon.fromJSON(geometryArr[i]);
+                            polygonSymbol = {
+                                type: "simple-fill", // autocasts as new SimpleMarkerSymbol()
+                                color: [226, 119, 40],
+                                style: "none",
+                                outline: {
+                                    // autocasts as new SimpleLineSymbol()
+                                    color: [226, 119, 40],
+                                    width: 1.5
+                                }
+                            };
+
+                            var polygonGraphic = new Graphic({
+                                geometry: polygon,
+                                symbol: polygonSymbol
+                            });
+                            graphics.push(polygonGraphic);
+                        }
+                        document.getElementById('vegCount').innerHTML = graphics.length;
+                        graphicsLayer.addMany(graphics);
+                        graphicsLayer.add(pointGraphic);
+                    }
+                });
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="viewDiv" style="border:1px solid #000;"></div>
+    <div id="bufferDistance" class="esri-widget">
+        <label>Buffer distance (in meters):&nbsp;&nbsp;&nbsp;</label>
+        <input type="text" id="inputParam" value="5000" size="5" style='font-size: 14px;' align="right" />
+    </div>
+
+    <div id="tbDiv" class="esri-widget">
+        <p><label>&nbsp;Number of clipped veg areas:&nbsp;&nbsp;&nbsp;</label>
+            <label id="vegCount" size="5" style='font-size: 14px;' align="right"></label></p>
+        <table id="ttt">
+            <tr>
+                <th field="veg" width="200px;" align="left">Vegetation Type</th>
+                <th field="value" width="200px;" align="left">Total Area (sq m2)
+                </th>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ESRI.Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.esri.com/Desktop/AddIns">
+  <Name>NetFindNearFeaturesSoapSOE</Name>
+  <AddInID>cc34b931-e685-4b37-9a67-b7c0e34e65a1</AddInID>
+  <Description />
+  <Version>1.0</Version>
+  <Author>cont_chau</Author>
+  <Provider>ArcObjects11</Provider>
+  <Company />
+  <Date>2018-05-22T17:41:42</Date>
+  <Targets>
+    <Target name="Server" version="10.8" />
+  </Targets>
+  <AddIn language="CLR" library="NetFindNearFeaturesSoapSOE.dll" namespace="NetFindNearFeaturesSoapSOE">
+    <CoClass id="NetFindNearFeatures.CustomLayerInfo" class="CustomLayerInfo" guid="{EE82B345-23E7-43A2-94EE-867ABAF0A8AC}" />
+    <CoClass id="NetFindNearFeatures.CustomLayerInfos" class="CustomLayerInfos" guid="{8D7CF4B1-D915-4B31-B6BF-FB06FB9A3580}" />
+    <ServerObjectType>
+      <Name>MapServer</Name>
+      <ExtensionTypes>
+        <ExtensionType id="NetFindNearFeaturesSoapSOE.NetFindNearFeaturesSoapSOE" library="NetFindNearFeaturesSoapSOE.dll" class="NetFindNearFeaturesSoapSOE.NetFindNearFeaturesSoapSOE">
+          <Name>NetFindNearFeaturesSoapSOE</Name>
+          <DisplayName>.NET Find Near Features Soap SOE</DisplayName>
+          <Description>.NET Find Near Features SOAP SOE Sample</Description>
+          <Properties />
+          <Resources>
+            <WSDL>NetFindNearFeaturesSoapSOE.wsdl</WSDL>
+          </Resources>
+          <Info>
+            <DefaultWebCapabilities>GetInfo,FindFeatures,DemoCustomObject,DemoArrayOfCustomObjects</DefaultWebCapabilities>
+            <AllWebCapabilities>GetInfo,FindFeatures,DemoCustomObject,DemoArrayOfCustomObjects</AllWebCapabilities>
+            <SupportsREST>false</SupportsREST>
+            <SupportsSOAP>true</SupportsSOAP>
+            <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
+            <SupportsInterceptor>false</SupportsInterceptor>
+          </Info>
+        </ExtensionType>
+      </ExtensionTypes>
+    </ServerObjectType>
+  </AddIn>
+</ESRI.Configuration>

@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!DOCTYPE project[
+	<!ENTITY properties SYSTEM "properties.xml">
+]>
+<!-- :mode=ant -->
+
+<project name="Samples; ArcObjects SDK for the Java(tm) Platform" default="all" basedir=".">
+ 	<!-- import external XML fragments -->
+ 	&properties;
+ 	<!-- import sample properties -->
+ 	<!-- TODO: edit sample.properties file before importing -->
+ 	<property file="sample.properties"/>
+
+  	<path id="compile.classpath">
+    	<pathelement location="${arcobjects.jar}"/>
+  	</path>
+  
+  	<path id="run.classpath">
+  		<path refid="compile.classpath"/>
+  		<pathelement location="${class.dir}"/>
+  	</path>
+	
+	<!-- ========================================= -->
+	<!-- private targets -->
+	<!-- ========================================= -->
+	<target name="init">
+		<!-- create the time stamp -->
+		<tstamp/>
+		<!-- create the build directory structure used by compile -->
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${class.dir}"/>	
+	</target>
+	
+	<target name="validate-runtime" depends="init">
+		<condition property="runtimeAvailable">
+			<isset property="runtime.home"/>
+		</condition>
+					
+		<fail message="No runtime installed. You need to install ArcGIS Server to run this sample." unless="runtimeAvailable"/>
+	</target>
+	
+ 	<target name="compile" depends="validate-runtime">
+		<!-- javac resolver needed to run inside of Websphere Studio -->
+		<available classname="org.eclipse.core.launcher.Main" property="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter" classpath="${java.class.path}" />
+		<!-- compile the java code from ${src.dir} into ${class.dir} -->
+        	<javac srcdir="${src.dir}" destdir="${class.dir}">
+				<classpath refid="compile.classpath"/>
+        	</javac>
+    </target>
+						
+	<target name="extensionJar" depends="compile">
+		<mkdir dir="${extension.dir}" />
+		<jar jarfile="${extension.dir}/${sample.dir}Ext.jar" compress="true" basedir="${class.dir}"></jar>
+	</target>	
+		
+	<target name="usage">
+		<echo message="Execute 'ant -projecthelp' for the build file help"/>
+		<echo message="Execute 'ant -help' for Ant help"/>
+	</target>
+	
+	<target name="execute" depends="compile">
+		<echo message="Server Object Extension samples are not designed to execute using ANT." />
+		<echo message="Please review the ReadMe.htm for this sample for execution specific instructions." />
+		<!--<java classname="${main.class}" failonerror="true" fork="true">
+			<jvmarg value="-Xss2m"/>
+			<classpath refid="run.classpath"/>
+			<arg value="${input.data.path}"/>
+			<arg value="${input.data.name}"/>
+		</java>-->
+	</target>
+	
+	<!-- ========================================= -->
+	<!-- public targets -->
+	<!-- ========================================= -->
+	
+	<target name="all" depends="compile" description="build everything">
+		<echo message="application built"/>
+	</target>
+	
+	<target name="clean" description="clean all build products">
+		<!-- delete the ${build} directory trees -->
+		<delete dir="${build.dir}"/>
+		<echo message="build directory gone!"/>
+	</target>
+	
+	<target name="help" depends="usage" description="usage" />
+	<target name="dist" depends="extensionJar" description="create distributable products" />
+	<target name="run-sample" depends="execute" description="execute the sample with args set in sample.properties"/>
+
+</project>
