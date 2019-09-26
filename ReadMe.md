@@ -14,7 +14,7 @@ An SOE is capable of extending the functions of a map service in the following w
 
 ## Features
 - [Samples](Samples)
-- [Code snippets](Code%20snippets)
+- Code snippets (Coming soon!)
 
 ## Instructions
 1. Fork and then clone the repo. 
