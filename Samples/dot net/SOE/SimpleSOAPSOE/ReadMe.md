@@ -2,7 +2,7 @@
 order: 8
 ---
 
-# .Net simple SOAP SOE
+# .NET simple SOAP SOE
 This sample illustrates how to develop a SOAP server object extension (SOE) with a new service method. This new method takes the input text to echo as a SOAP response.
 
 <!--![NetSimpleRESTSOE Sample](../../../../images/netsp/NetSimpleRESTSOE1.png)-->
@@ -19,7 +19,7 @@ Deploying the SOE from the .soe file (`..\SimpleSoapSOE\bin\Release\NetSimpleSoa
   * IMessage
   * IXMLSerializeData
   * Create SOAP SOE methods
-  * Build a .Net SOAP client application
+  * Build a .NET SOAP client application
 
 
 ## Sample data

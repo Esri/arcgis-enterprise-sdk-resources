@@ -2,7 +2,7 @@
 order: 11
 ---
 
-# .Net apply watermark SOI
+# .NET apply watermark SOI
 
 This sample illustrates how to apply a watermark to every image returned from the [Export Map](https://developers.arcgis.com/rest/services-reference/export-map.htm) operation on a map service.
 

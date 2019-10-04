@@ -2,7 +2,7 @@
 order: 5
 ---
 
-# .Net find nearby features REST SOE
+# .NET find nearby features REST SOE
 This sample illustrates how to develop a REST server object extension (SOE) with a new spatial query operation. The spatial query operation returns all the features of a map service layer that fall within the user-defined search distance of a location point.
 
 Deploying the SOE from the .soe file (`..\FindNearFeaturesRESTSOE\bin\Release\NetFindNearFeaturesRESTSOE_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\FindNearFeaturesRESTSOE\NetFindNearFeaturesRESTSOE.csproj`) in Visual Studio to debug, modify, and recompile the SOE code.

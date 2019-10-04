@@ -2,7 +2,7 @@
 order: 13
 ---
 
-# .Net operation access SOI
+# .NET operation access SOI
 
 This sample illustrates how to add an extra layer of security control for individual operations that users are allowed to access. This SOI only allows three operations - [***Find***](https://developers.arcgis.com/rest/services-reference/find.htm), [***Identify***](https://developers.arcgis.com/rest/services-reference/identify-map-service-.htm), and [***Export Map***](https://developers.arcgis.com/rest/services-reference/export-map.htm) to be accessible to certain groups of users that are defined in the code, and blocks unauthorized users to access those operations. It also blocks all other service operations.
 

@@ -2,7 +2,7 @@
 order: 4
 ---
 
-# .Net spatial query REST SOE
+# .NET spatial query REST SOE
 
 This sample illustrates how to develop a REST server object extension (SOE) with a spatial query operation. The spatial query operation returns all the features of a map service layer that fall within the user-defined search distance of a location point. The location point and the search distance are the input parameters of the REST operation, which generate a search buffered area. This SOE will return the features that are within the buffered area and also a summary of the total areas by those features' vegetation types. At last, a JavaScript client application is provided with this sample to demonstrate how to consume this SOE's spatial query operation.
 

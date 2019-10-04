@@ -2,7 +2,7 @@
 order: 12
 ---
 
-# .Net layer access SOI
+# .NET layer access SOI
 
 This sample illustrates the following areas:
 * **How to handle REST, SOAP binary, and SOAP string requests.**

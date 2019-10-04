@@ -2,7 +2,7 @@
 order: 10
 ---
 
-# .Net simple logger SOI
+# .NET simple logger SOI
 
 This sample illustrates the basic framework for creating a server object interceptor (SOI). The SOI adds a message to the ArcGIS Server logs whenever a REST request is received before forwarding the request to the underlying default implementation.
 

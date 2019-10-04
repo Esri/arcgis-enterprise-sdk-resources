@@ -2,7 +2,7 @@
 order: 2
 ---
 
-# .Net simple REST SOE with capabilities
+# .NET simple REST SOE with capabilities
 
 This sample illustrates how to develop a REST server object extension (SOE) with capabilities. The SOE capabilities group its child resources and operations so that the server administrator can control access to those SOE resources and operations via Capabilities.
 

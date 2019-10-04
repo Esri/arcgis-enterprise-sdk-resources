@@ -2,7 +2,7 @@
 order: 6
 ---
 
-# .Net edit features REST SOE
+# .NET edit features REST SOE
 This sample demonstrate how to edit features in layers exposed by a map service via an SOE. The EditFeatures SOE has one property called ***layerId***, which indicates the layer chosen for editing. This sample SOE also has one subresource called ***layers*** and two operations called ***editFeature*** and ***addNewFeatures***. The administrator that deploys this SOE and enables it on a map service can choose which layer to open for editing using the layerId property. Editing will be restricted to this specific layer only.
 
 > **Note:** ***Even though the editing function is exposed via the SOE which is enabled with a map service, the editing function still requires the data source to be editable. In other words, the data used to publish the map service must be from an Enterprise Geodatabase that is registered with ArcGIS Enterprise. The map service doesn't need to have Feature Access capability enabled, but its data source must be editable and registered with ArcGIS Enterprise.***

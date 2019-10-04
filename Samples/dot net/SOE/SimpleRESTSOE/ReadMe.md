@@ -2,7 +2,7 @@
 order: 1
 ---
 
-# .Net simple REST SOE
+# .NET simple REST SOE
 
 This sample illustrates how to develop a REST server object extension (SOE) with new service operation and service resources. The SOE is capable of taking custom input parameters and returning certain information of the service, such as service configuration properties, layer count, layer types, etc.
 

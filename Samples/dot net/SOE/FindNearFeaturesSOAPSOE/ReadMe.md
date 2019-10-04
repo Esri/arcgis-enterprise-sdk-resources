@@ -2,7 +2,7 @@
 order: 9
 ---
 
-# .Net find near features SOAP SOE
+# .NET find near features SOAP SOE
 This sample illustrates how to develop a SOAP server object extension (SOE) with new methods that can return service layer information and perform a spatial query to find features near a location. The FindNearFeatures method returns the features of a user-defined layer that fall within the search distance of a location point.
 
 This sample is divided into the following parts:

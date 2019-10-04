@@ -2,7 +2,7 @@
 order: 7
 ---
 
-# .Net download file REST SOE
+# .NET download file REST SOE
 
 This sample illustrates how to develop a REST server object extension (SOE) with the capability of downloading server resources. The SOE generates a text file on the Server and allows clients to download the file from the Server. It also provides REST endpoints to manage those files such as obtaining file names and deleting the files.
 
