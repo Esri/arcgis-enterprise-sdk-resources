@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ESRI.Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.esri.com/Desktop/AddIns">
+  <Name>ClipAndSpatialFilterSOI</Name>
+  <AddInID>cf479c85-ca82-4ff5-b546-809549c82a93</AddInID>
+  <Description />
+  <Version>1.0</Version>
+  <Author>moha5225</Author>
+  <Provider>ArcObjects11</Provider>
+  <Company />
+  <Date>2019-10-05T13:38:08</Date>
+  <Targets>
+    <Target name="Server" version="10.8" />
+  </Targets>
+  <AddIn language="CLR" library="SpatialRestrictionSOI.dll" namespace="ClipSOI">
+    <ServerObjectType>
+      <Name>MapServer</Name>
+      <ExtensionTypes>
+        <ExtensionType id="SpatialFilterSOI.SpatialFilterSOI" library="SpatialRestrictionSOI.dll" class="SpatialFilterSOI.SpatialFilterSOI">
+          <Name>SpatialFilterSOI</Name>
+          <DisplayName>SpatialFilter SOI</DisplayName>
+          <Description />
+          <Properties />
+          <Resources />
+          <Info>
+            <DefaultWebCapabilities />
+            <AllWebCapabilities />
+            <SupportsREST>false</SupportsREST>
+            <SupportsSOAP>false</SupportsSOAP>
+            <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
+            <SupportsInterceptor>true</SupportsInterceptor>
+          </Info>
+        </ExtensionType>
+        <ExtensionType id="ClipSOI.ClippingSOI" library="SpatialRestrictionSOI.dll" class="ClipSOI.ClippingSOI">
+          <Name>ClippingSOI</Name>
+          <DisplayName>Clipping SOI</DisplayName>
+          <Description />
+          <Properties />
+          <Resources />
+          <Info>
+            <DefaultWebCapabilities />
+            <AllWebCapabilities />
+            <SupportsREST>false</SupportsREST>
+            <SupportsSOAP>false</SupportsSOAP>
+            <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
+            <SupportsInterceptor>true</SupportsInterceptor>
+          </Info>
+        </ExtensionType>
+      </ExtensionTypes>
+    </ServerObjectType>
+  </AddIn>
+</ESRI.Configuration>
