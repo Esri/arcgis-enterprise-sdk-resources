@@ -28,6 +28,7 @@ This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as
 3. Click ***Add Extension***.
 4. Click ***Choose File*** and choose the ***SpatialRestrictionSOI_ent*** file (`..\bin\Release\SpatialRestrictionSOI_ent.soe` or `..\bin\Debug\SpatialRestrictionSOI_ent.soe`).
 5. Click ***Add***.
+
    ![](../../../../images/netsp/NetSpatialRestrictSOI1.png "Spatial Restriction SOI")
 
 ### Enable the Clipping SOI on a map service
