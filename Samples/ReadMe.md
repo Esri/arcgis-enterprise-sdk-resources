@@ -36,6 +36,7 @@ The following two services are used in the samples:
   * [Apply Watermark SOI](dot%20net/SOI/NetApplyWatermarkSOI)
   * [Layer Access SOI](dot%20net/SOI/NetLayerAccessSOI)
   * [Operation Access SOI](dot%20net/SOI/NetOperationAccessSOI)
+  * [Spatial Restriction SOI](dot%20net/SOI/NetSpatialRestrictionSOI)
 
 ### For Java
 * **Java SOE Samples**
