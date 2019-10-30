@@ -1,14 +1,14 @@
 ---
-order: 14
+order: 12
 ---
 
-# .NET spatial restriction SOI
+# Java spatial restriction SOI
 
 This sample illustrates how to develop an SOI to apply certain spatial restrictions on the [Export Map](https://developers.arcgis.com/rest/services-reference/export-map.htm), [Identify](https://developers.arcgis.com/rest/services-reference/identify-map-service-.htm), and [Find](https://developers.arcgis.com/rest/services-reference/find.htm) REST operations of a map service. It contains two sample SOIs, Clipping SOI and SpatialFilter SOI. Clipping SOI masks out layers outside of a clip polygon to draw or query, whereas SpatialFilter SOI draws or queries only features that meet the spatial filter criteria defined from the SOI. The spatial restriction logic provides a fine-grained resource access control with the support of spatial factors. 
 
 >*Note* : This sample SOI is only applicable to map services published from ArcGIS Pro to a 10.8 or later versions of ArcGIS Server. See [what's new in the ArcGIS REST API at 10.8](https://developers.arcgis.com/rest/services-reference/what-s-new.htm).
 
-Deploying the SOI from the .soe file (`..\bin\Release\SpatialRestrictionSOI_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\SpatialRestrictionSOI.csproj`) in Visual Studio to debug, modify, and recompile the SOI code.
+Deploying the SOI from the .soe file (`../SpatialRestrictionSOI/lib/SpatialRestrictionSOI_ent.soe`) does not require you to open the IDE. However, you can load the project (`../SpatialRestrictionSOI`) in the IDE to debug, modify, and rebuild the SOI project.
 
 ## Features
 
@@ -26,16 +26,16 @@ This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as
 1. Log in to ArcGIS Server Manager and click the ***Site*** tab.
 2. Click ***Extensions***.
 3. Click ***Add Extension***.
-4. Click ***Choose File*** and choose the ***SpatialRestrictionSOI_ent*** file (`..\bin\Release\SpatialRestrictionSOI_ent.soe` or `..\bin\Debug\SpatialRestrictionSOI_ent.soe`).
+4. Click ***Choose File*** and choose the ***SpatialRestrictionSOI_ent*** file (`../SpatialRestrictionSOI/lib/SpatialRestrictionSOI_ent.soe` or the SOI's export path).
 5. Click ***Add***.
 
-   ![](../../../../images/netsp/NetSpatialRestrictSOI1.png "Spatial Restriction SOI")
+   ![](../../../../images/javasp/JavaSpatialRestrictSOI1.png "Spatial Restriction SOI")
 
 ### Enable the Clipping SOI on a map service
 
 1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](../../../ReadMe.md#1-usa-service)
 2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select USA map service and select ***Capabilities***.
-3. In the ***Interceptors*** section, select ***Clipping SOI*** in the ***Available Interceptors*** box and click the right arrow button to move it to ***Enabled Interceptors***.
+3. In the ***Interceptors*** section, select ***Java Clipping SOI*** in the ***Available Interceptors*** box and click the right arrow button to move it to ***Enabled Interceptors***.
 4. Click the ***Save and Restart*** button to restart the service.
 
 ### Test the Clipping SOI
@@ -58,8 +58,8 @@ This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as
 ### Enable the SpatialFilter SOI on a map service
 
 1. Navigate back to the USA map service in ArcGIS Server Manager.
-2. In the ***Interceptors*** section, select ***Clipping SOI*** in the ***Enabled Interceptors*** box and click the left arrow button to disable this SOI.
-3. Select ***SpatialFilter SOI*** in the ***Available Interceptors*** box and click the right arrow button to move it to ***Enabled Interceptors***.
+2. In the ***Interceptors*** section, select ***Java Clipping SOI*** in the ***Enabled Interceptors*** box and click the left arrow button to disable this SOI.
+3. Select ***Java SpatialFilter SOI*** in the ***Available Interceptors*** box and click the right arrow button to move it to ***Enabled Interceptors***.
 4. Click the ***Save and Restart*** button to restart the service.
 
 ### Test the SpatialFilter SOI
