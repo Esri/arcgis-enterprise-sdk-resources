@@ -17,7 +17,7 @@ Deploying the SOI from the .soe file (`..\bin\Release\NetLayerAccessSOI_ent.soe`
 
 ## Features
 
-* [Handle REST requests and responses in SOIs](https://enterprise.arcgis.com/en/sdk/latest/windows/webframe.html#7281af24-01c7-42c5-bb7b-8d6135559cf9.html#HandleRESTSOIs)
+* Handle REST requests and responses in SOIs
 * Get logged-in user information
 * [disableCaching](#set-up-testing-environment)
 

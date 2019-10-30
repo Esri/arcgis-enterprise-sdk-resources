@@ -10,7 +10,7 @@ Deploying the SOI from the .soe file (`../ApplyWatermarkSOI/lib/ApplyWatermarkSO
 
 ## Features
 
-* [Postprocess REST response](https://enterprise.arcgis.com/en/sdk/latest/windows/webframe.html#67e3565d-2a00-4e0a-9534-59b9ce415d40.html#Postprocess)
+* Postprocess REST response
 * OutputFormat
 
 ## Sample data

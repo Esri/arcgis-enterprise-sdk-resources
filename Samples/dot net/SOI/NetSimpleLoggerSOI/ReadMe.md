@@ -12,8 +12,8 @@ Deploying the SOI from the .soe file (`..\bin\Release\NetSimpleLoggerSOI_ent.soe
 ## Features
 
 * `ServerLogger.LogMessage`
-* [`IRESTRequestHandler.HandleRESTRequest`](https://enterprise.arcgis.com/en/sdk/latest/windows/webframe.html#IRESTRequestHandler_HandleRESTRequest.html)
-* [How to audit requests in SOIs](https://enterprise.arcgis.com/en/sdk/latest/windows/webframe.html#137664ec-ece2-4f75-b1ca-93715253ac4c.html)
+* `IRESTRequestHandler.HandleRESTRequest`
+* How to audit requests in SOIs
 
 ## Sample data
 

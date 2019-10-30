@@ -10,10 +10,10 @@ Deploying the SOE from the .soe file (`../downloadfilerestsoe/lib/JavaDownloadFi
 
 ## Features
 
-* [outputFormat (IRequestHandler.handleRESTRequest)](https://enterprise.arcgis.com/en/sdk/latest/windows/webframe.html#API%20Reference.html)
-* [Returning formats other than JSON](https://enterprise.arcgis.com/en/sdk/latest/windows/webframe.html#33a68497-6c21-430f-a783-4d3333e46cb4.html#Returning)
-* [Content-Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)
-* [ArcGIS Server output directory](https://enterprise.arcgis.com/en/server/latest/administer/linux/about-server-directories.htm)
+* outputFormat (IRequestHandler.handleRESTRequest)
+* Returning formats other than JSON
+* Content-Type
+* ArcGIS Server output directory
 
 ## Sample data
 

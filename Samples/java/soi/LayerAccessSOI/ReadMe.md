@@ -17,7 +17,7 @@ Deploying the SOI from the .soe file (`../LayerAccessSOI/lib/LayerAccessSOI_ent.
 
 ## Features
 
-* [Handle REST requests and responses in SOIs](https://enterprise.arcgis.com/en/sdk/latest/windows/webframe.html#67e3565d-2a00-4e0a-9534-59b9ce415d40.html#HandleRESTSOIs)
+* Handle REST requests and responses in SOIs
 * Get logged-in user information
 * [disableCaching](#set-up-testing-environment)
 

@@ -12,7 +12,7 @@ Deploying the SOI from the .soe file (`../SimpleSOI/lib/SimpleSOI_ent.soe`) does
 
 * `ILog.addMessage`
 * `IRESTRequestHandler.handleRESTRequest`
-* [How to audit requests in SOIs](https://enterprise.arcgis.com/en/sdk/latest/windows/webframe.html#2cd96e53-5dee-4d6c-b37f-c39f66f4b53e.html)
+* How to audit requests in SOIs
 
 ## Sample data
 
