@@ -53,3 +53,4 @@ The following two services are used in the samples:
   * [Apply Watermark SOI](java/soi/ApplyWatermarkSOI)
   * [Layer Access SOI](java/soi/LayerAccessSOI)
   * [Operation Access SOI](java/soi/OperationAccessSOI)  
+  * [Spatial Restriction SOI](java/soi/SpatialRestrictionSOI)
