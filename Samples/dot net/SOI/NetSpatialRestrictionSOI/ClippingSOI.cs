@@ -35,8 +35,8 @@ namespace ClippingSOI
       Description = "",
       DisplayName = ".NET Clipping SOI",
       Properties = "")]
-  public class ClippingSOI : IServerObjectExtension, IRESTRequestHandler
-  {
+  public class ClippingSOI : IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2
+    {
     private string _soiName;
     private IServerObjectHelper _soHelper;
     private RestSOIHelper _restSOIHelper;
@@ -111,13 +111,64 @@ namespace ClippingSOI
       ((IPolycurve)poly).Densify(0.1, 0.1); //Densifying as ToJsonObject() can't jsonify any curves
       return ESRI.Server.SOESupport.Conversion.ToJsonObject(poly, true);
     }
+        #endregion
 
-    #endregion
+        #region SOAP interceptors
+        // SpatialFilters and Clipping are supported in SOAP API.
+        // If you want to achieve similar functions for SOAP endpoint, you can implement the logic in the following methods.
+        public byte[] HandleBinaryRequest(ref byte[] request)
+        {
+            IRequestHandler requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler>();
+            if (requestHandler != null)
+            {
+                return requestHandler.HandleBinaryRequest(request);
+            }
 
-    #region SOAP interceptors
-    // Spatial Filters and Clipping are supported in SOAP API.
-    // If you want to use this security reason, you want to block accessing via SOAP API
-    #endregion
+            //Insert error response here.
+            return null;
+        }
 
-  }
+        public string HandleStringRequest(string Capabilities, string request)
+        {
+            IRequestHandler requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler>();
+            if (requestHandler != null)
+            {
+                return requestHandler.HandleStringRequest(Capabilities, request);
+            }
+
+            //Insert error response here.
+            return null;
+        }
+
+        public byte[] HandleBinaryRequest2(string Capabilities, ref byte[] request)
+        {
+            IRequestHandler2 requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler2>();
+            if (requestHandler != null)
+            {
+                return requestHandler.HandleBinaryRequest2(Capabilities, request);
+            }
+
+            //Insert error response here.
+            return null;
+        }
+        #endregion
+
+        #region OGC interceptors
+        public byte[] HandleStringWebRequest(esriHttpMethod httpMethod, string requestURL, string queryString, string Capabilities, string requestData, out string responseContentType, out esriWebResponseDataType respDataType)
+        {
+            IWebRequestHandler webRequestHandler = _restSOIHelper.FindRequestHandlerDelegate<IWebRequestHandler>();
+            if (webRequestHandler != null)
+            {
+                return webRequestHandler.HandleStringWebRequest(
+                        httpMethod, requestURL, queryString, Capabilities, requestData, out responseContentType, out respDataType);
+            }
+
+            responseContentType = null;
+            respDataType = esriWebResponseDataType.esriWRDTPayload;
+            //Insert error response here.
+            return null;
+        }
+        #endregion
+
+    }
 }
