@@ -33,7 +33,7 @@ namespace SpatialFilterSOI
   [ClassInterface(ClassInterfaceType.None)]
   [ServerObjectInterceptor("MapServer",
       Description = "",
-      DisplayName = "SpatialFilter SOI",
+      DisplayName = ".NET SpatialFilter SOI",
       Properties = "")]
   public class SpatialFilterSOI : IServerObjectExtension, IRESTRequestHandler
   {

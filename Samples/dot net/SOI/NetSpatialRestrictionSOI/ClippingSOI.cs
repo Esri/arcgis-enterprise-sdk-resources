@@ -26,14 +26,14 @@ using ESRI.Server.SOESupport.SOI;
 
 //This is SOI template of Enterprise SDK
 
-namespace ClipSOI
+namespace ClippingSOI
 {
   [ComVisible(true)]
   [Guid("59f7eadf-1e00-4f0f-841b-c5815e1c0391")]
   [ClassInterface(ClassInterfaceType.None)]
   [ServerObjectInterceptor("MapServer",
       Description = "",
-      DisplayName = "Clipping SOI",
+      DisplayName = ".NET Clipping SOI",
       Properties = "")]
   public class ClippingSOI : IServerObjectExtension, IRESTRequestHandler
   {

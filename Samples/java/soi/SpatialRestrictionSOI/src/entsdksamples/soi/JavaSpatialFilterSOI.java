@@ -18,10 +18,9 @@ email: contracts@esri.com
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Map;
 
+import com.esri.arcgis.geometry.IPolygon;
 import com.esri.arcgis.interop.AutomationException;
 import com.esri.arcgis.interop.extn.ArcGISExtension;
 import com.esri.arcgis.interop.extn.ServerObjectExtProperties;
@@ -29,6 +28,7 @@ import com.esri.arcgis.server.IServerObject;
 import com.esri.arcgis.server.IServerObjectExtension;
 import com.esri.arcgis.server.IServerObjectHelper;
 import com.esri.arcgis.server.SOIHelper;
+import com.esri.arcgis.server.json.JSONException;
 import com.esri.arcgis.server.json.JSONObject;
 import com.esri.arcgis.system.ILog;
 import com.esri.arcgis.system.IRESTRequestHandler;
@@ -53,12 +53,12 @@ import com.esri.arcgis.system.ServerUtilities;
  * 2. servicetype = MapService | ImageService, can be used to assign an interceptor to an Image or Map Service.
  */
 @ArcGISExtension
-@ServerObjectExtProperties(displayName = "Java Clipping SOI", 
-description = "This SOI masks out layers outside of a clip polygon to draw or query.", 
+@ServerObjectExtProperties(displayName = "Java SpatialFilter SOI", 
+description = "This SOI draws or queries only features that meet the spatial filter criteria defined from the SOI.", 
 interceptor = true, 
 servicetype = "MapService")
 
-public class ClippingSOI
+public class JavaSpatialFilterSOI
 		implements IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler {
 	private static final long serialVersionUID = 1L;
 	private static final String ARCGISHOME_ENV = "AGSSERVER";
@@ -66,11 +66,22 @@ public class ClippingSOI
 	private IServerObject so;
 	private SOIHelper soiHelper;
 
-	public ClippingSOI() throws Exception {
+	/**
+	 * Default constructor.
+	 *
+	 * @throws Exception
+	 */
+	public JavaSpatialFilterSOI() throws Exception {
 		super();
 	}
 
-
+	/**
+	 * init() is called once, when the instance of the SOE/SOI is created.
+	 *
+	 * @param soh the IServerObjectHelper
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws AutomationException the automation exception
+	 */
 	public void init(IServerObjectHelper soh) throws IOException, AutomationException {
 		/*
 		 * An SOE should retrieve a weak reference to the Server Object from the Server Object Helper in
@@ -96,24 +107,39 @@ public class ClippingSOI
 		this.soiHelper = new SOIHelper(arcgisHome + "XmlSchema" + File.separator + "MapServer.wsdl");
 	}
 
-
+	/**
+	 * This method is called to handle REST requests.
+	 *
+	 * @param capabilities the capabilities
+	 * @param resourceName the resource name
+	 * @param operationName the operation name
+	 * @param operationInput the operation input
+	 * @param outputFormat the output format
+	 * @param requestProperties the request properties
+	 * @param responseProperties the response properties
+	 * @return the response as byte[]
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws AutomationException the automation exception
+	 */
 	@Override
 	public byte[] handleRESTRequest(String capabilities, String resourceName, String operationName,
 			String operationInput, String outputFormat, String requestProperties, String[] responseProperties)
 			throws IOException, AutomationException {
 		
+		serverLog.addMessage(3, 200, "Request logged in SampleSOI. User: " + getLoggedInUserName() + ", Operation: "
+				+ operationName + ", Operation Input: " + processOperationInput(operationInput));
+
 		if (operationName.equals("export") || operationName.equals("identify")|| operationName.equals("find")) {
 			JSONObject inputParams = new JSONObject(operationInput);
-			if (inputParams.has("clipping"))
-				inputParams.remove("clipping");
+			if (inputParams.has("spatialFilter"))
+				inputParams.remove("spatialFilter");
 			
-			String circleJs = "{\"spatialReference\":{\"wkid\":4269}, "
-					+ "\"curveRings\": [[[-102, 41],{\"a\":[[-102, 41], [-104, 39], 0, 1]}]]}";
+			String circleJs = "{\"spatialReference\":{\"wkid\":4269}, \"curveRings\": [[[-102, 41],{\"a\":[[-102, 41], [-104, 39], 0, 1]}]]}";
 			JSONObject spatialFilterJson = new JSONObject();
-			spatialFilterJson.put("excludedLayers", Arrays.asList(new Integer[]{})); //layerID can be added
+			spatialFilterJson.put("spatialRel", "esriSpatialRelIntersects"); 
 			spatialFilterJson.put("geometryType", "esriGeometryPolygon");	
 			spatialFilterJson.put("geometry", new JSONObject(circleJs));
-			inputParams.put("clipping", spatialFilterJson);
+			inputParams.put("spatialFilter", spatialFilterJson);
 			operationInput = inputParams.toString();
 		}
 
@@ -127,7 +153,7 @@ public class ClippingSOI
 
 		return null;
 	}
-
+	
 	/**
 	 * This method is called to handle SOAP requests.
 	 *
@@ -214,7 +240,41 @@ public class ClippingSOI
 		return null;
 	}
 
-	
+	/**
+	 * Return the logged in user's user name.
+	 * 
+	 * @return
+	 */
+	private String getLoggedInUserName() {
+		try {
+			/*
+			 * Get the user information.
+			 */
+			String userName = ServerUtilities.getServerUserInfo().getName();
+
+			if (userName.isEmpty()) {
+				return new String("Anonymous User");
+			}
+			return userName;
+		} catch (Exception ignore) {
+		}
+
+		return new String("Anonymous User");
+	}
+
+	/**
+	 * Get bbox from operationInput
+	 * 
+	 * @param operationInput
+	 * @return
+	 */
+	private String processOperationInput(String operationInput) {
+		try {
+			return "bbox = " + new JSONObject(operationInput).getString("bbox");
+		} catch (Exception ignore) {
+		}
+		return new String("No input parameters");
+	}
 
 	/**
 	 * This method is called to handle schema requests for custom SOE's.
