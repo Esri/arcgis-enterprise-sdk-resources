@@ -8,8 +8,8 @@
     <ProjectGuid>{B71A4FD2-5B82-4A19-8B3B-1D11389C151B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SpatialRestrictionSOI</RootNamespace>
-    <AssemblyName>SpatialRestrictionSOI</AssemblyName>
+    <RootNamespace>NetSpatialRestrictionSOI</RootNamespace>
+    <AssemblyName>NetSpatialRestrictionSOI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>

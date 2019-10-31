@@ -8,7 +8,7 @@ This sample illustrates how to develop an SOI to apply certain spatial restricti
 
 >*Note* : This sample SOI is only applicable to map services published from ArcGIS Pro to a 10.8 or later versions of ArcGIS Server. See [what's new in the ArcGIS REST API at 10.8](https://developers.arcgis.com/rest/services-reference/what-s-new.htm).
 
-Deploying the SOI from the .soe file (`..\bin\Release\SpatialRestrictionSOI_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\SpatialRestrictionSOI.csproj`) in Visual Studio to debug, modify, and recompile the SOI code.
+Deploying the SOI from the .soe file (`..\bin\Release\NetSpatialRestrictionSOI_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\NetSpatialRestrictionSOI.csproj`) in Visual Studio to debug, modify, and recompile the SOI code.
 
 ## Features
 
@@ -26,7 +26,7 @@ This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as
 1. Log in to ArcGIS Server Manager and click the ***Site*** tab.
 2. Click ***Extensions***.
 3. Click ***Add Extension***.
-4. Click ***Choose File*** and choose the ***SpatialRestrictionSOI_ent*** file (`..\bin\Release\SpatialRestrictionSOI_ent.soe` or `..\bin\Debug\SpatialRestrictionSOI_ent.soe`).
+4. Click ***Choose File*** and choose the ***NetSpatialRestrictionSOI_ent.soe*** file (`..\bin\Release\NetSpatialRestrictionSOI_ent.soe` or `..\bin\Debug\NetSpatialRestrictionSOI_ent.soe`).
 5. Click ***Add***.
 
    ![](../../../../images/netsp/NetSpatialRestrictSOI1.png "Spatial Restriction SOI")

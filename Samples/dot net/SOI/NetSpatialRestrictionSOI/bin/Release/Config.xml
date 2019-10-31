@@ -11,11 +11,11 @@
   <Targets>
     <Target name="Server" version="10.8" />
   </Targets>
-  <AddIn language="CLR" library="SpatialRestrictionSOI.dll" namespace="ClipSOI">
+  <AddIn language="CLR" library="NetSpatialRestrictionSOI.dll" namespace="ClipSOI">
     <ServerObjectType>
       <Name>MapServer</Name>
       <ExtensionTypes>
-        <ExtensionType id="SpatialFilterSOI.SpatialFilterSOI" library="SpatialRestrictionSOI.dll" class="SpatialFilterSOI.SpatialFilterSOI">
+        <ExtensionType id="SpatialFilterSOI.SpatialFilterSOI" library="NetSpatialRestrictionSOI.dll" class="SpatialFilterSOI.SpatialFilterSOI">
           <Name>SpatialFilterSOI</Name>
           <DisplayName>SpatialFilter SOI</DisplayName>
           <Description />
@@ -30,7 +30,7 @@
             <SupportsInterceptor>true</SupportsInterceptor>
           </Info>
         </ExtensionType>
-        <ExtensionType id="ClipSOI.ClippingSOI" library="SpatialRestrictionSOI.dll" class="ClipSOI.ClippingSOI">
+        <ExtensionType id="ClipSOI.ClippingSOI" library="NetSpatialRestrictionSOI.dll" class="ClipSOI.ClippingSOI">
           <Name>ClippingSOI</Name>
           <DisplayName>Clipping SOI</DisplayName>
           <Description />
