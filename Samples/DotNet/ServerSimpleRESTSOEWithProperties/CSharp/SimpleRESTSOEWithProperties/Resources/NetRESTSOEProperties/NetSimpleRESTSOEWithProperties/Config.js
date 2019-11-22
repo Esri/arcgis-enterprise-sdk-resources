@@ -1,4 +1,4 @@
-dojo.provide("arcgis.soe.NetSimpleRESTSOEWithProperties11x.NetSimpleRESTSOEWithProperties11x.Config");
+dojo.provide("arcgis.soe.NetRESTSOEProperties.NetSimpleRESTSOEWithProperties11x.Config");
 
 dojo.require("dijit.form.ValidationTextBox");
 dojo.require("dijit.form.CheckBox");
@@ -8,9 +8,9 @@ dojo.require("dijit._Templated");
 
 dojo.require("esri.discovery.dijit.services._CustomSoeConfigurationPane");
 
-dojo.declare("arcgis.soe.NetSimpleRESTSOEWithProperties11x.NetSimpleRESTSOEWithProperties11x.Config", [esri.discovery.dijit.services._CustomSoeConfigurationPane, dijit._Templated], {
+dojo.declare("arcgis.soe.NetRESTSOEProperties.NetSimpleRESTSOEWithProperties11x.Config", [esri.discovery.dijit.services._CustomSoeConfigurationPane, dijit._Templated], {
 
-    templatePath: dojo.moduleUrl("arcgis.soe.NetSimpleRESTSOEWithProperties11x.NetSimpleRESTSOEWithProperties11x", "templates/NetSimpleRESTSOEWithProperties.html"),
+    templatePath: dojo.moduleUrl("arcgis.soe.NetRESTSOEProperties.NetSimpleRESTSOEWithProperties11x", "templates/NetSimpleRESTSOEWithProperties11x.html"),
   widgetsInTemplate: true,
   typeName: "NetSimpleRESTSOEWithProperties",  
   _capabilities: null,

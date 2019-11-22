@@ -61,8 +61,21 @@ namespace NetApplyWatermarkSOI
 
                 try
                 {
-                    IPropertySet configProps = ServerUtilities.QueryConfigurationProperties(pSOH.ServerObject.ConfigurationName, pSOH.ServerObject.TypeName);
-                    _outputDirectory = configProps.GetProperty("outputDir") as string;
+                    //interop problem?
+                    var se4 = _restSOIHelper.ServerEnvironment as IServerEnvironmentEx;
+                    var dirInfos = se4.GetServerDirectoryInfos();
+                    dirInfos.Reset();
+                    object dirInfo = dirInfos.Next();
+                    while (dirInfo != null)
+                    {
+                        var dinfo2 = dirInfo as IServerDirectoryInfo2;
+                        if (null != dinfo2 && dinfo2.Type == esriServerDirectoryType.esriSDTypeOutput)
+                        {
+                            _outputDirectory = dinfo2.Path;
+                            break;
+                        }
+                        dirInfo = dirInfos.Next();
+                    }
                 }
                 catch (Exception ignore)
                 {

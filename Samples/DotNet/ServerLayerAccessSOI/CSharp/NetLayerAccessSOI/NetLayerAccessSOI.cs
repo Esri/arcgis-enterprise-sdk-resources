@@ -143,6 +143,7 @@ namespace NetLayerAccessSOI
         {
             try
             {
+                //System.Diagnostics.Debugger.Launch();
                 _soHelper = pSOH;
                 _serverLog = new ServerLogger();
                 _serverObject = pSOH.ServerObject;

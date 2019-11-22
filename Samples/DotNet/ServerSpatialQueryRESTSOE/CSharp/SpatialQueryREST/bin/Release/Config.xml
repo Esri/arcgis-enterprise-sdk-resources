@@ -9,7 +9,7 @@
   <Company />
   <Date>2018-04-05T16:16:07</Date>
   <Targets>
-    <Target name="Server" version="10.7" />
+    <Target name="Server" version="10.6" />
   </Targets>
   <AddIn language="CLR" library="SpatialQueryREST.dll" namespace="SpatialQueryREST">
     <ServerObjectType>

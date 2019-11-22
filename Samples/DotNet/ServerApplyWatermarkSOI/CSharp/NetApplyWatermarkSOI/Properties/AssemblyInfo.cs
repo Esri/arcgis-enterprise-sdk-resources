@@ -41,5 +41,5 @@ using System.Runtime.InteropServices;
     Date = "4/5/2018 5:00:33 PM",
     Description = "",
     TargetProduct = "Server",
-    TargetVersion = "10.7",
+    TargetVersion = "10.6",
     Version = "1.0")]
