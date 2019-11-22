@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HTML>
+  <HEAD>
+    <TITLE>Simple REST SOE With properties sample</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="http://help.arcgis.com/en/sdk/10.0/common/style/esri_sdk_web.css" />
+  </HEAD>
+  <BODY topmargin="0" id="bodyID" class="dtBODY">
+    <div class="sdk_topic">
+      <div id="nsbanner" esri_sdk_guid="80d42e30-3324-4758-99ce-b47cdf8e76b1">
+        <div id="TitleRow" class="bannertitle">
+          <table class="titleWithBackground">
+            <td>
+              <H1>Simple REST SOE With properties sample<a name="ICallout" /></H1>
+            </td>
+          </table>
+        </div>
+      </div>
+      <br />
+      <div class="main">
+        <fieldset class="Property" style="width: auto">
+          <legend class="PropertyName">Purpose</legend>
+          <span class="PropertyValue">
+            <purpose>
+    <div xmlns="http://www.w3.org/1999/xhtml">The purpose of this sample is to show use of a REST Server Object Extension that has one sub-resource and several properties. This sample also includes custom property pages for ArcMap and ArcGIS Manager. </div>
+    <div xmlns="http://www.w3.org/1999/xhtml">The sub-resource, called "layers" is a list of all layers accessible through the associated map service. The SOE has several properties that affect its behavior at runtime, such as "layerType", which dictates the types of layers the "layers" subresource will return. Other properties exist to showcase use of a property page inside ArcMap and ArcGIS Manager.</div>
+  </purpose>
+          </span>
+        </fieldset>
+        <br />
+        <h4>How to use</h4>
+        <p>See 
+        <a href="http://help.arcgis.com/en/sdk/10.6/java_ao_adf/conceptualhelp/engine/index.html#/samples/00010000042n000000/">How to use ArcGIS samples</a>
+        for help running the sample.</p>
+        <div class="howToUseTitle">How to use this sample?</div>
+        <ol>
+          <li>Deploy the lib/JavaSimpleRESTSOEWithProperties.soe file to Server. For instructions on how to deploy an SOE to ArcGIS 10.1 Server, please see the "Developing Extensions" -&gt; "Server Object Extensions" -&gt; "Deploying and Un-deploying SOEs" topic in the ArcGIS Java Developer Help.</li>
+          <li>Enable the SOE on map service of your choice. For instructions on how to enable SOE on a map service, please see the "Developing Extensions" -&gt; "Server Object Extensions" -&gt; "Enabling and Disabling SOEs" topic in the ArcGIS Java Developer Help. Please ensure that the map service has at least 1 feature layer and 1 raster layer.</li>
+          <li>After the map service has started with SOE enabled on it, open up Services Directory and access the http://&lt;server name&gt;:6080/arcgis/rest/services page</li>
+          <li>Click the map service you enabled your SOE on.</li>
+          <li>Scroll down and click JavaSimpleRESTSOEWithProperties listed in "Supported Extensions" section</li>
+          <li>The JavaSimpleRESTSOEWithProperties web page displays the root resource details such as name and description, along with the "Child Resources" and "Supported Operations" sections.</li>
+          <li>Click “layers” subresource. It displays information about all features layers in JSON format. </li>
+          <li>Click "properties" subresource. It displays all properties and their values.</li>
+          <br />
+        </ol>
+        <div class="howToUseTitle">Modify property values in custom property page for ArcGIS Manager</div>
+        <ol>
+          <li>Modify value of the layerType property so that the "layers" subresource returns only raster layers. Log in to ArcGIS Manager and edit the map service you enabled the SOE on. On the map service's editing page, click Capabilities and then click "Java Simple REST SOE With Properties". A section called "Properties" will appear below the SOE.</li>
+          <li>Ensure that this section includes user interface similar to the screen shot below. This is a custom property page created for ArcGIS Manager.</li>
+          <li>Modify other property values and click Save and Restart.</li>
+          <li>Access the "layers" subresource and verify that only raster layers are being returned.</li>
+          <li>Access the "properties" subresource and verify the recently modified properties are displayed.</li>
+          <br />
+          <br />
+          <img src="./bitmaps/80d42e30-3324-4758-99ce-b47cdf8e76b11.png" alt="Custom property page for ArcGIS Manager" />
+          <br />
+          <br />
+        </ol>
+        <div class="howToUseTitle">Modify property values in custom property page for ArcMap</div>
+        <ol>
+          <li>Deploy the Java Swing Property Page to ArcGIS Desktop. Copy the lib/JavaSimpleRESTSOEPropertyPage.jar to &lt;ArcGIS Desktop Home&gt;/java/lib/ext folder and start ArcMap.</li>
+          <li>Connect to your ArcGIS Server in the ArcCatalog window of ArcMap. Open service properties of this map service you enabled SOE on.</li>
+          <li>Click on the JavaSimpleRESTSOEWithProperties extension. The "layerType" and other properties will be displayed in a Java Swing dialog in the Map Service Editor.</li>
+          <li>Modify this property value by choosing one of the layer types. Click OK.</li>
+          <li>After the service has restarted, check the layers subresource. It will display layers on the type you chose in ArcMap's Map Service Editor dialog.</li>
+          <br />
+          <br />
+          <img src="./bitmaps/80d42e30-3324-4758-99ce-b47cdf8e76b12.png" alt="Custom property page for ArcMap" />
+          <br />
+          <br />
+        </ol>
+        <br />
+        <br />
+        <hr tabIndex="-1" />
+        <br />
+        <table class="dtTable" cellspacing="0">
+          <tr>
+            <th>Development licensing</th>
+            <th>Deployment licensing</th>
+          </tr>
+          <tr style="empty-cells:show">
+            <td>Server</td>
+            <td>Server</td>
+          </tr>
+        </table>
+        <br />
+        <br />
+        <br />
+      </div>
+    </div>
+  </BODY>
+</HTML>

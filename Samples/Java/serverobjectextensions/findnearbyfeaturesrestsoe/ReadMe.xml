@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><?mso-infoPathSolution PIVersion="1.0.0.0" href="http://devinfo/sites/sdk/java/JavaSample/Forms/template.xsn" name="urn:schemas-microsoft-com:office:infopath:JavaSample:" language="en-us" productVersion="14.0.0" solutionVersion="9.4.0.925" ?><?mso-application progid="InfoPath.Document"?><esri_sdk_sample xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2008-08-20T22:42:53" xmlns:xd="http://schemas.microsoft.com/office/infopath/2003">
+	<title>Find Nearby Features REST Server Object Extension</title>
+	<purpose><div xmlns="http://www.w3.org/1999/xhtml">The purpose of this sample is to demonstrate use of a REST Server Object Extension that has 1 sub-resource and 1 operation. </div>
+<div xmlns="http://www.w3.org/1999/xhtml"> </div>
+<div xmlns="http://www.w3.org/1999/xhtml">The sub-resource is called "featureLayers" and displays all feature layers in associated map service. This subresource does not display layers of other types such as raster. The operation called "<span class="Apple-style-span"><span class="Apple-style-span"><a href="http://navajo:6080/arcgis/rest/services/usa/MapServer/exts/FindNearbyFeaturesRESTSOE/findNearbyFeatures"><font color="#000000">findNearbyFeatures</font></a>" finds features near user-specified location and takes in a layer Id (picked from the feature layer list shown by featureLayers sub-resource), a location (x, y coordinates and spatial reference) and the distance to indicate how wide a net should be cast. </span></span></div>
+<div xmlns="http://www.w3.org/1999/xhtml"><span class="Apple-style-span"><span class="Apple-style-span"></span></span> </div>
+<div xmlns="http://www.w3.org/1999/xhtml"><span class="Apple-style-span"><span class="Apple-style-span">The sub-resource and operation return information in JSON format, and thus could be easily consumed in a Web API app</span></span>. </div>
+<div xmlns="http://www.w3.org/1999/xhtml"> </div></purpose>
+	<development_license>
+		<license>
+			<name>Server</name>
+			<extension></extension>
+		</license>
+	</development_license>
+	<deployment_license>
+		<license>
+			<name>Server</name>
+			<extension></extension>
+		</license>
+	</deployment_license>
+	<apis>
+		<api></api>
+	</apis>
+	<capabilities>
+		<capability></capability>
+	</capabilities>
+	<min_version>10.1</min_version>
+	<min_sp></min_sp>
+	<max_version></max_version>
+	<max_sp></max_sp>
+	<data_paths>
+		<data_path></data_path>
+	</data_paths>
+	<requirements>
+		<requires></requires>
+	</requirements>
+	<file_section>
+		<files lang="Java">
+			<file>
+				<filename>soe/JavaFindNearbyFeaturesSOE.java</filename>
+				<description>The FindNearbyFeatures Java Server Object Extension class.</description>
+				<viewable_code>true</viewable_code>
+			</file>
+		<file>
+									<filename>lib/JavaFindNearbyFeaturesRESTSOE.soe</filename>
+									<description>The .soe file that contains this Server Object Extension</description>
+									<viewable_code>false</viewable_code>
+								</file></files>
+	</file_section>
+	<how_to_use_section>
+		<how_to_use>
+			<title>How to use this sample?</title>
+			<how_to_use_steps>
+				<step>Deploy the lib/JavaFindNearbyFeaturesRESTSOE.soe file to Server. For instructions on how to deploy an SOE to ArcGIS 10.1 Server, please see the "Developing Extensions" -&gt; "Server Object Extensions" -&gt; "Deploying and Un-deploying SOEs" topic in the ArcGIS Java Developer Help.</step><step>Enable the SOE on map service of your choice. For instructions on how to enable SOE on a map service, please see the "Developing Extensions" -&gt; "Server Object Extensions" -&gt; "Enabling and Disabling SOEs" topic in the ArcGIS Java Developer Help. Please ensure that the map service has at least 1 feature layer.</step><step>After the map service has started with SOE enabled on it, open up Services Directory web app and access the http://&lt;server name&gt;:6080/arcgis/rest/services page</step><step>Click on the map service you enabled your SOE on.</step><step>Scroll down and click on the JavaFindNearbyFeaturesRESTSOE listed in "Supported Extensions" section. If you don't find your REST SOE listed here, please log in as admin into the Services Directory web app and clear the REST cache. Repeat steps 3,4, and 5.</step><step>The JavaFindNearbyFeaturesRESTSOE web page displays root resource details such as name and description, along with the "Child Resources" and "Supported Operations" sections.</step><step>Click the "featureLayers" sub-resource. All feature layers in associated map service will be displayed. Record id of one of the layers for use in the operation below.</step><step>Navigate back to the SOE web page and click on the "findNearbyFeatures" operation. </step><step>Provide the following information to this operation: the layer id you recorded earlier in step 7, the location in JSON format, such as {"x": &lt;x-value&gt;, "y": &lt;y-value&gt;, "spatialReference": {"wkid": &lt;sp ref id of map&gt;}}, and distance in feet, such as 500. Click the "findNearbyFeatures(GET)" or "findNearbyFeatures(POST)" button. All features within 500 feet of your location will be returned. </step>
+			</how_to_use_steps>
+		</how_to_use>
+	</how_to_use_section>
+	<related_topics>
+		<topic>
+			<topic_display>How to Deploy and Un-deploy SOEs</topic_display>
+			<topic_link></topic_link>
+		</topic>
+	<topic>
+									<topic_display>How to enable and disable SOEs on map service</topic_display>
+									<topic_link></topic_link>
+								</topic></related_topics>
+	<content_area_tags>
+		<tag></tag>
+	</content_area_tags>
+	<indexing_tags>
+		<new_tag>java server object extension</new_tag>
+	<new_tag>Find Nearby Features </new_tag><new_tag>REST SOE</new_tag></indexing_tags>
+	<guid>99117755-bdf3-4b99-8af4-2b6c0ade5926</guid>
+	<content_management>
+		<owner>ajit4082</owner>
+		<tech_reviewer></tech_reviewer>
+		<status>authoring in progress</status>
+		<sdk_inclusion_complete>
+			<NET>false</NET>
+			<JAVA>false</JAVA>
+			<CPP>false</CPP>
+			<XO>false</XO>
+		</sdk_inclusion_complete>
+		<requested_tocs>
+			<desktop>false</desktop>
+			<engine>false</engine>
+			<server>false</server>
+			<net_ide_integration>false</net_ide_integration>
+			<xo>false</xo>
+		</requested_tocs>
+		<applied_tocs>
+			<desktop>false</desktop>
+			<engine>false</engine>
+			<server>false</server>
+			<net_ide_integration>false</net_ide_integration>
+			<xo>false</xo>
+		</applied_tocs>
+		<langrev_last_updated_date>2011-05-03</langrev_last_updated_date>
+		<langrev_last_updated_time>10:20:59</langrev_last_updated_time>
+		<last_updated_date>2012-02-15</last_updated_date>
+		<last_updated_time>16:25:16</last_updated_time>
+	</content_management>
+	<current_user>ajit4082</current_user>
+	<sdk>JAVA</sdk>
+	<doc_type>Sample</doc_type>
+</esri_sdk_sample>

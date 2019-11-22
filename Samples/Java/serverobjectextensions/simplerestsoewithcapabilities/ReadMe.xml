@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><?mso-infoPathSolution PIVersion="1.0.0.0" href="http://devinfo/sites/sdk/java/JavaSample/Forms/template.xsn" name="urn:schemas-microsoft-com:office:infopath:JavaSample:" language="en-us" productVersion="14.0.0" solutionVersion="9.4.0.925" ?><?mso-application progid="InfoPath.Document"?><esri_sdk_sample xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2008-08-20T22:42:53" xmlns:xd="http://schemas.microsoft.com/office/infopath/2003">
+	<title>Simple REST SOE With capabilities sample</title>
+	<purpose><div xmlns="http://www.w3.org/1999/xhtml">The purpose of this sample is to show use of capabilities in a Server Object Extension. </div>
+<div xmlns="http://www.w3.org/1999/xhtml"> </div>
+<div xmlns="http://www.w3.org/1999/xhtml">This sample SOE has 2 sub-resources, busstations and trainstations, and 2 operations, findBusStationId and findTrainStationId. It also has 2 capabilities: "Bus Services" and "Train Services". The "Bus Services" capability controls access to the busstations subresource and the <font size="2"></font></div>
+<div xmlns="http://www.w3.org/1999/xhtml">findBusStationById operation, while the "TrainServices" capability controls access to the trainstations subresource and<font size="2"> findTrainStationById operation.</font></div>
+<div xmlns="http://www.w3.org/1999/xhtml"> </div></purpose>
+	<development_license>
+		<license>
+			<name>Server</name>
+			<extension></extension>
+		</license>
+	</development_license>
+	<deployment_license>
+		<license>
+			<name>Server</name>
+			<extension></extension>
+		</license>
+	</deployment_license>
+	<apis>
+		<api></api>
+	</apis>
+	<capabilities>
+		<capability></capability>
+	</capabilities>
+	<min_version>10.1</min_version>
+	<min_sp></min_sp>
+	<max_version></max_version>
+	<max_sp></max_sp>
+	<data_paths>
+		<data_path></data_path>
+	</data_paths>
+	<requirements>
+		<requires></requires>
+	</requirements>
+	<file_section>
+		<files lang="Java">
+			<file>
+				<filename>soe/JavaSimpleRESTSOEWithCapabilities.java</filename>
+				<description>The REST SOE Java Server Object Extension class.</description>
+				<viewable_code>true</viewable_code>
+			</file>
+		<file>
+									<filename>lib/JavaSimpleRESTSOEWithCapabilities.soe</filename>
+									<description>The .soe file that contains this Server Object Extension</description>
+									<viewable_code>false</viewable_code>
+								</file></files>
+	</file_section>
+	<how_to_use_section>
+		<how_to_use>
+			<title>How to use this sample?</title>
+			<how_to_use_steps>
+				<step>Deploy the lib/JavaSimpleRESTSOEWithCapabilities.soe file to Server. For instructions on how to deploy an SOE to ArcGIS 10.1 Server, please see the "Developing Extensions" -&gt; "Server Object Extensions" -&gt; "Deploying and Un-deploying SOEs" topic in the ArcGIS Java Developer Help.</step><step>Enable the SOE on map service of your choice. For instructions on how to enable SOE on a map service, please see the "Developing Extensions" -&gt; "Server Object Extensions" -&gt; "Enabling and Disabling SOEs" topic in the ArcGIS Java Developer Help. Please ensure that the map service has at least 1 feature layer and 1 raster layer.</step><step>After the map service has started with SOE enabled on it, open up Services Directory and access the http://&lt;server name&gt;:6080/arcgis/rest/services page</step><step>Click the map service you enabled your SOE on.</step><step>Scroll down and click the JavaSimpleRESTSOEWithCapabilities listed in "Supported Extensions" section. If you don't find your REST SOE listed here, please log in as admin into Services Directory and clear the cache. Repeat steps 3,4, and 5.</step><step>The JavaSimpleRESTSOEWithCapabilities web page displays the root resource details such as name and description, along with the "Child Resources" and "Supported Operations" sections.</step><step>Click “layers” subresource. It displays information about all features layers in JSON format. </step><step>Log in to ArcGIS Manager and edit the map service you enabled the SOE on. On the map service's editing page, click Capabilities and then click "Java Simple REST SOE With Capabilities". A section called "Operations Allowed" will appear below the SOE. Check the BusServices check box. Click "Save and Restart" button.</step><step>Open the SOE page in Services Directory again and click on "NumberOfBusStations" subresource. This subresource will display some number of bus stations, thereby proving that this subresource is accessible.</step><step>Navigate back to the SOE page and click "findBusStationById". Provide text input to the "busStationId" text box and click the "findBusStationById" button. The text you entered in the text box will be displayed, thereby proving that this operation is accessible.</step><step>Access the "NumberOfTrainStations" subresource and "findTrainStationById" operation. In each case, the SOE will return an error message indicating that these are inaccessible. This is because the "TrainServices" capability is not enabled on this SOE.</step><step>Log into to ArcGIS Manager, edit the map service, select the JavaSimpleRESTSOEWithCapabilities capability and enable its "TrainServices" capability. Test access to the "NumberOfTrainStations" subresource and "findTrainStationById" operation. You'll find that these are now accessible. </step>
+			</how_to_use_steps>
+		</how_to_use>
+	</how_to_use_section>
+	<related_topics>
+		<topic>
+			<topic_display></topic_display>
+			<topic_link></topic_link>
+		</topic>
+	</related_topics>
+	<content_area_tags>
+		<tag></tag>
+	</content_area_tags>
+	<indexing_tags>
+		<new_tag>SOE Capabilities</new_tag>
+	<new_tag>capabilities, operations, rest</new_tag></indexing_tags>
+	<guid>959c3c8f-41b9-416b-aafa-605af8328914</guid>
+	<content_management>
+		<owner>ajit4082</owner>
+		<tech_reviewer></tech_reviewer>
+		<status>authoring in progress</status>
+		<sdk_inclusion_complete>
+			<NET>false</NET>
+			<JAVA>false</JAVA>
+			<CPP>false</CPP>
+			<XO>false</XO>
+		</sdk_inclusion_complete>
+		<requested_tocs>
+			<desktop>false</desktop>
+			<engine>false</engine>
+			<server>false</server>
+			<net_ide_integration>false</net_ide_integration>
+			<xo>false</xo>
+		</requested_tocs>
+		<applied_tocs>
+			<desktop>false</desktop>
+			<engine>false</engine>
+			<server>false</server>
+			<net_ide_integration>false</net_ide_integration>
+			<xo>false</xo>
+		</applied_tocs>
+		<langrev_last_updated_date>2011-09-09</langrev_last_updated_date>
+		<langrev_last_updated_time>10:44:36</langrev_last_updated_time>
+		<last_updated_date>2012-02-15</last_updated_date>
+		<last_updated_time>16:34:55</last_updated_time>
+	</content_management>
+	<current_user>ajit4082</current_user>
+	<sdk>JAVA</sdk>
+	<doc_type>Sample</doc_type>
+</esri_sdk_sample>

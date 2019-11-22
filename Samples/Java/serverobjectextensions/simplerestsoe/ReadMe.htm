@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HTML>
+  <HEAD>
+    <TITLE>Simple REST SOE Sample</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="http://help.arcgis.com/en/sdk/10.0/common/style/esri_sdk_web.css" />
+  </HEAD>
+  <BODY topmargin="0" id="bodyID" class="dtBODY">
+    <div class="sdk_topic">
+      <div id="nsbanner" esri_sdk_guid="ed8936e3-55d1-460b-acd4-ef603a0932f8">
+        <div id="TitleRow" class="bannertitle">
+          <table class="titleWithBackground">
+            <td>
+              <H1>Simple REST SOE Sample<a name="ICallout" /></H1>
+            </td>
+          </table>
+        </div>
+      </div>
+      <br />
+      <div class="main">
+        <fieldset class="Property" style="width: auto">
+          <legend class="PropertyName">Purpose</legend>
+          <span class="PropertyValue">
+            <purpose>
+    <div xmlns="http://www.w3.org/1999/xhtml">The purpose of this sample is show use of a Java REST Server Object Extension that has 1 sub-resource and 1 operation. </div>
+    <div xmlns="http://www.w3.org/1999/xhtml">The sub-resource, called "layers" is a list of layers of all types accessible through the associated map service. The operation, called "getLayerCountByType" that takes in a string "type" and returns a count of all layers of specified type. Acceptable values for type are "feature", "raster", "dataset", or "all". </div>
+  </purpose>
+          </span>
+        </fieldset>
+        <br />
+        <h4>How to use</h4>
+        <p>See 
+        <a href="http://help.arcgis.com/en/sdk/10.6/java_ao_adf/conceptualhelp/engine/index.html#/samples/00010000042n000000/">How to use ArcGIS samples</a>
+        for help running the sample.</p>
+        <div class="howToUseTitle">How to use this sample?</div>
+        <ol>
+          <li>Deploy the lib/JavaSimpleRESTSOE.soe file to Server. For instructions on how to deploy an SOE to ArcGIS 10.1 Server, please see the "Developing Extensions" -&gt; "Server Object Extensions" -&gt; "Deploying and Un-deploying SOEs" topic in the ArcGIS Java Developer Help.</li>
+          <li>Enable the SOE on map service of your choice. For instructions on how to enable SOE on a map service, please see the "Developing Extensions" -&gt; "Server Object Extensions" -&gt; "Enabling and Disabling SOEs" topic in the ArcGIS Java Developer Help. Please ensure that the map service has at least 1 feature layer.</li>
+          <li>After the map service has started with SOE enabled on it, open up Services Directory and access the http://&lt;server name&gt;:6080/arcgis/rest/services page</li>
+          <li>Click on the map service you enabled your SOE on.</li>
+          <li>Scroll down and click on the JavaSimpleRESTSOE listed in "Supported Extensions" section. If you don't find your REST SOE listed here, please log in as admin into the Services Directory and clear the cache. Repeat steps 3,4, and 5.</li>
+          <li>The JavaSimpleRESTSOE web page displays the root resource details such as name and description, along with the "Child Resources" and "Supported Operations" sections.</li>
+          <li>Click on the “layers” subresource. It displays information about all layers in JSON format. </li>
+          <li>Navigate back to the root resource page and click on the “getLayerCountByType” operation. </li>
+          <li>Enter “feature” in the layerType field and click the "getLayerCountByType(GET)" or "getLayerCountByType(POST)" button. A JSON response will include the number of feature layers. Test this operations with other types such as “raster”, “dataset”, or “all”.</li>
+          <br />
+        </ol>
+        <br />
+        <br />
+        <hr tabIndex="-1" />
+        <br />
+        <table class="dtTable" cellspacing="0">
+          <tr>
+            <th>Development licensing</th>
+            <th>Deployment licensing</th>
+          </tr>
+          <tr style="empty-cells:show">
+            <td>Server</td>
+            <td>Server</td>
+          </tr>
+        </table>
+        <br />
+        <br />
+        <br />
+      </div>
+    </div>
+  </BODY>
+</HTML>

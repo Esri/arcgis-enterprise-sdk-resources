@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ESRI.Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.esri.com/Desktop/AddIns">
+  <Name>SpatialQueryREST</Name>
+  <AddInID>98ee86a5-2495-415d-98a4-6e1c96cdde78</AddInID>
+  <Description />
+  <Version>1.0</Version>
+  <Author>cont_chau</Author>
+  <Provider>ArcObjects11</Provider>
+  <Company />
+  <Date>2018-04-05T16:16:07</Date>
+  <Targets>
+    <Target name="Server" version="10.7" />
+  </Targets>
+  <AddIn language="CLR" library="SpatialQueryREST.dll" namespace="SpatialQueryREST">
+    <ServerObjectType>
+      <Name>MapServer</Name>
+      <ExtensionTypes>
+        <ExtensionType id="SpatialQueryREST.SpatialQueryREST" library="SpatialQueryREST.dll" class="SpatialQueryREST.SpatialQueryREST">
+          <Name>SpatialQueryREST</Name>
+          <DisplayName>.NET Spatial Query REST SOE</DisplayName>
+          <Description>.NET Spatial Query REST SOE Sample</Description>
+          <Properties>
+            <FieldName>PRIMARY_</FieldName>
+            <LayerName>veg</LayerName>
+            <FilePath>NotSet</FilePath>
+          </Properties>
+          <Resources />
+          <Info>
+            <DefaultWebCapabilities />
+            <AllWebCapabilities />
+            <SupportsREST>true</SupportsREST>
+            <SupportsSOAP>false</SupportsSOAP>
+            <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
+            <SupportsInterceptor>false</SupportsInterceptor>
+          </Info>
+        </ExtensionType>
+      </ExtensionTypes>
+    </ServerObjectType>
+  </AddIn>
+</ESRI.Configuration>

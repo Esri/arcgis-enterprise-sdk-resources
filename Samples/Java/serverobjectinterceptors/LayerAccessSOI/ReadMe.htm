@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HTML>
+  <HEAD>
+    <TITLE>Sample: Layer access</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="http://help.arcgis.com/en/sdk/10.0/common/style/esri_sdk_web.css" />
+  </HEAD>
+  <BODY topmargin="0" id="bodyID" class="dtBODY">
+    <div class="sdk_topic">
+      <div id="nsbanner" esri_sdk_guid="eaf96ee1-866b-43f5-b8b4-9683acf73dc3">
+        <div id="TitleRow" class="bannertitle">
+          <table class="titleWithBackground">
+            <td>
+              <H1>Sample: Layer access<a name="ICallout" /></H1>
+            </td>
+          </table>
+        </div>
+      </div>
+      <br />
+      <div class="main">
+        <fieldset class="Property" style="width: auto">
+          <legend class="PropertyName">Purpose</legend>
+          <span class="PropertyValue">
+            <purpose>
+    <div xmlns="http://www.w3.org/1999/xhtml">This sample demonstrates two things:</div>
+    <ul style="" type="disc" xmlns="http://www.w3.org/1999/xhtml">
+      <li>How to handle REST, SOAP, and binary requests.</li>
+      <li>How to implement layer level controls and conditionally give access to certain layers based on an external permissions file.</li>
+    </ul>
+    <div xmlns="http://www.w3.org/1999/xhtml">As part of the handling of SOAP and binary requests, this samples makes use of the SOIHelper class to show how to call into the ArcGIS Server default operation handlers.</div>
+    <div xmlns="http://www.w3.org/1999/xhtml">Note that this sample is not comprehensive in what operations are intercepted. Developers should use this as the basis for learning how to implement security related functionality, but all production code should be carefully vetted to ensure that all appropriate operations are handled and no information is inadvertently leaked or made accessible.</div>
+    <div xmlns="http://www.w3.org/1999/xhtml">This sample is dependent on a file named permission.json to be present in the directory containing the arcgisoutput server directory. For example, in a default Windows installation this is C:\arcgisserver.</div>
+    <div xmlns="http://www.w3.org/1999/xhtml">See <a href="./e53d817b-c358-4570-ba77-609198ed9768.htm">Deploying extensions</a> to learn how to deploy the extension to your server.</div>
+  </purpose>
+          </span>
+        </fieldset>
+        <br />
+        <h4>How to use</h4>
+        <p>See 
+        <a href="http://help.arcgis.com/en/sdk/10.6/java_ao_adf/conceptualhelp/engine/index.html#/samples/00010000042n000000/">How to use ArcGIS samples</a>
+        for help running the sample.</p>
+        <ol>
+          <li>Deploy LayerAccessSOI.soe to your server (or your own modified version if you have changed the path for the permission.json file).</li>
+          <li>Enable the SOI on a map service.</li>
+          <li>Disable caching of layer resources in the ArcGIS Server REST handler.</li>
+          <li>Consume the service using different users.</li>
+          <li>Note how certain layers are only visible when the request is authenticated and matches the permissions defined in permission.json.</li>
+          <br />
+        </ol>
+        <br />
+        <br />
+        <br />
+        <br />
+      </div>
+    </div>
+  </BODY>
+</HTML>

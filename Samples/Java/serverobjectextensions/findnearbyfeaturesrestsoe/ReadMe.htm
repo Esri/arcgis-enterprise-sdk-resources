@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HTML>
+  <HEAD>
+    <TITLE>Find Nearby Features REST Server Object Extension</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="http://help.arcgis.com/en/sdk/10.0/common/style/esri_sdk_web.css" />
+  </HEAD>
+  <BODY topmargin="0" id="bodyID" class="dtBODY">
+    <div class="sdk_topic">
+      <div id="nsbanner" esri_sdk_guid="99117755-bdf3-4b99-8af4-2b6c0ade5926">
+        <div id="TitleRow" class="bannertitle">
+          <table class="titleWithBackground">
+            <td>
+              <H1>Find Nearby Features REST Server Object Extension<a name="ICallout" /></H1>
+            </td>
+          </table>
+        </div>
+      </div>
+      <br />
+      <div class="main">
+        <fieldset class="Property" style="width: auto">
+          <legend class="PropertyName">Purpose</legend>
+          <span class="PropertyValue">
+            <purpose>
+    <div xmlns="http://www.w3.org/1999/xhtml">The purpose of this sample is to demonstrate use of a REST Server Object Extension that has 1 sub-resource and 1 operation. </div>
+    <div xmlns="http://www.w3.org/1999/xhtml">The sub-resource is called "featureLayers" and displays all feature layers in associated map service. This subresource does not display layers of other types such as raster. The operation called "<span class="Apple-style-span"><span class="Apple-style-span"><a href="http://navajo:6080/arcgis/rest/services/usa/MapServer/exts/FindNearbyFeaturesRESTSOE/findNearbyFeatures">findNearbyFeatures</a>" finds features near user-specified location and takes in a layer Id (picked from the feature layer list shown by featureLayers sub-resource), a location (x, y coordinates and spatial reference) and the distance to indicate how wide a net should be cast. </span></span></div>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <span class="Apple-style-span">
+        <span class="Apple-style-span">
+        </span>
+      </span> </div>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <span class="Apple-style-span">
+        <span class="Apple-style-span">The sub-resource and operation return information in JSON format, and thus could be easily consumed in a Web API app</span>
+      </span>. </div>
+  </purpose>
+          </span>
+        </fieldset>
+        <br />
+        <h4>How to use</h4>
+        <p>See 
+        <a href="http://help.arcgis.com/en/sdk/10.6/java_ao_adf/conceptualhelp/engine/index.html#/samples/00010000042n000000/">How to use ArcGIS samples</a>
+        for help running the sample.</p>
+        <div class="howToUseTitle">How to use this sample?</div>
+        <ol>
+          <li>Deploy the lib/JavaFindNearbyFeaturesRESTSOE.soe file to Server. For instructions on how to deploy an SOE to ArcGIS 10.1 Server, please see the "Developing Extensions" -&gt; "Server Object Extensions" -&gt; "Deploying and Un-deploying SOEs" topic in the ArcGIS Java Developer Help.</li>
+          <li>Enable the SOE on map service of your choice. For instructions on how to enable SOE on a map service, please see the "Developing Extensions" -&gt; "Server Object Extensions" -&gt; "Enabling and Disabling SOEs" topic in the ArcGIS Java Developer Help. Please ensure that the map service has at least 1 feature layer.</li>
+          <li>After the map service has started with SOE enabled on it, open up Services Directory web app and access the http://&lt;server name&gt;:6080/arcgis/rest/services page</li>
+          <li>Click on the map service you enabled your SOE on.</li>
+          <li>Scroll down and click on the JavaFindNearbyFeaturesRESTSOE listed in "Supported Extensions" section. If you don't find your REST SOE listed here, please log in as admin into the Services Directory web app and clear the REST cache. Repeat steps 3,4, and 5.</li>
+          <li>The JavaFindNearbyFeaturesRESTSOE web page displays root resource details such as name and description, along with the "Child Resources" and "Supported Operations" sections.</li>
+          <li>Click the "featureLayers" sub-resource. All feature layers in associated map service will be displayed. Record id of one of the layers for use in the operation below.</li>
+          <li>Navigate back to the SOE web page and click on the "findNearbyFeatures" operation. </li>
+          <li>Provide the following information to this operation: the layer id you recorded earlier in step 7, the location in JSON format, such as {"x": &lt;x-value&gt;, "y": &lt;y-value&gt;, "spatialReference": {"wkid": &lt;sp ref id of map&gt;}}, and distance in feet, such as 500. Click the "findNearbyFeatures(GET)" or "findNearbyFeatures(POST)" button. All features within 500 feet of your location will be returned. </li>
+          <br />
+        </ol>
+        <br />
+        <br />
+        <hr tabIndex="-1" />
+        <br />
+        <table class="dtTable" cellspacing="0">
+          <tr>
+            <th>Development licensing</th>
+            <th>Deployment licensing</th>
+          </tr>
+          <tr style="empty-cells:show">
+            <td>Server</td>
+            <td>Server</td>
+          </tr>
+        </table>
+        <br />
+        <br />
+        <br />
+      </div>
+    </div>
+  </BODY>
+</HTML>
