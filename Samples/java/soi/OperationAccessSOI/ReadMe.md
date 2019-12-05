@@ -4,7 +4,7 @@ order: 11
 
 # Java operation access SOI
 
-This sample illustrates how to add an extra layer of security control for individual operations that users are allowed to access. This SOI only allows three operations - [**Find**](https://developers.arcgis.com/rest/services-reference/find.htm), [**Identify**](https://developers.arcgis.com/rest/services-reference/identify-map-service-.htm), and [**Export Map**](https://developers.arcgis.com/rest/services-reference/export-map.htm) to certain groups of users that are defined in the code, and blocks unauthorized users to access those operations. It also blocks all other service operations.
+This sample illustrates how to add an extra layer of security control for individual operations that users are allowed to access. This SOI only allows three operations - [**Find**](https://developers.arcgis.com/rest/services-reference/find.htm), [**Identify**](https://developers.arcgis.com/rest/services-reference/identify-map-service-.htm), and [**Export Map**](https://developers.arcgis.com/rest/services-reference/export-map.htm) to certain users that are defined in the code, and blocks unauthorized users to access those operations. It also blocks all other service operations.
 
 Deploying the SOI from the .soe file (`../OperationAccessSOI/lib/OperationAccessSOI_ent.soe`) does not require you to open the IDE. However, you can load the project (`../OperationAccessSOI`) in the IDE to debug, modify, and rebuild the SOI project.
 
