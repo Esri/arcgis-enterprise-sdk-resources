@@ -7,7 +7,7 @@ order: 10
 This sample illustrates the following areas:
 * **How to handle REST, SOAP binary, and SOAP string requests.**
    Typically, ArcObjects-based clients, such as ArcMap, send SOAP binary requests and the `HandleBinaryRequest()` method has to be implemented, whereas non-ArcObjects-based clients send SOAP XML requests, which requires the `HandleStringRequest()` method to be implemented.
-* **How to implement fine-grained layer level controls based on the groups that the logged-in user belongs to.**
+* **How to implement fine-grained layer level controls based on the logged-in user.**
    This SOI is able to grant different users the access to certain layers of a map service based on the rules defined in an external permission file ([permission.json](permission.json)).
 
 
