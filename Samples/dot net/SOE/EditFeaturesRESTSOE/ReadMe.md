@@ -83,6 +83,7 @@ This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as
    ```
    https://<serverdomain>/<webadaptorname>/rest/services/USA_Edit/MapServer/0/query?where=&text=&objectIds=3961&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&having=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=html
    ```
+   
    The `objectIds` input parameter is set to the new feature ID returned in the previous step. The ***Query*** operation should return the newly-added feature successfully.
 
 5. Click ***editFeature*** in ***Supported Operations*** on the SOE's root page. 
