@@ -57,7 +57,7 @@ This sample uses the [Veg map service](../../../ReadMe.md#2-veg-service) as the 
    ![](../../../../images/netsp/NetSpatialQuery2.png "Net Spatial Query Sample")
    
 ### Test the SOE in a JavaScript REST application
-1. Open the [SpatialQueryRESTClient_js4.html](SpatialQueryRESTClient_js4.html) file in an editor.
+1. Open the [SpatialQueryClient.html](SpatialQueryClient.html) file in an editor.
 2. Modify ***soeURL*** at Ln 51 and ***serviceURL*** at Ln 52 to reflect your own service. 
 3. Save the code and deploy this JavaScript application.
 4. Open this application on a browser and click on the map.
