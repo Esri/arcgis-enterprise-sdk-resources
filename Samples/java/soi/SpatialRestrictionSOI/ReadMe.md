@@ -1,5 +1,5 @@
 ---
-order: 12
+order: 13
 ---
 
 # Java spatial restriction SOI
@@ -8,7 +8,7 @@ This sample illustrates how to develop an SOI to apply certain spatial restricti
 
 >*Note* : This sample SOI is only applicable to map services published from ArcGIS Pro to a 10.8 or later versions of ArcGIS Server. See [what's new in the ArcGIS REST API at 10.8](https://developers.arcgis.com/rest/services-reference/what-s-new.htm).
 
-Deploying the SOI from the .soe file (`../SpatialRestrictionSOI/lib/SpatialRestrictionSOI_ent.soe`) does not require you to open the IDE. However, you can load the project (`../SpatialRestrictionSOI`) in the IDE to debug, modify, and rebuild the SOI project.
+Deploying the SOI from the .soe file (`../SpatialRestrictionSOI/target/SpatialRestrictionSOI.soe`) does not require you to open a Java IDE. However, you can open the project (`../SpatialRestrictionSOI`) in a Java IDE, such as Eclipse or IntelliJ, to debug, modify, and recompile the SOI project.
 
 ## Features
 
@@ -26,7 +26,7 @@ This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as
 1. Log in to ArcGIS Server Manager and click the ***Site*** tab.
 2. Click ***Extensions***.
 3. Click ***Add Extension***.
-4. Click ***Choose File*** and choose the ***SpatialRestrictionSOI_ent*** file (`../SpatialRestrictionSOI/lib/SpatialRestrictionSOI_ent.soe` or the SOI's export path).
+4. Click ***Choose File*** and choose the ***SpatialRestrictionSOI*** file (`../SpatialRestrictionSOI/target/SpatialRestrictionSOI.soe`).
 5. Click ***Add***.
 
    ![](../../../../images/javasp/JavaSpatialRestrictSOI1.png "Spatial Restriction SOI")

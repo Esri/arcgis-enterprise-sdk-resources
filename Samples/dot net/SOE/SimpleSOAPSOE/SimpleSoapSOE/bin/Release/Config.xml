@@ -30,6 +30,7 @@
             <SupportsSOAP>true</SupportsSOAP>
             <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
             <SupportsInterceptor>false</SupportsInterceptor>
+            <SupportsSharedInstances>true</SupportsSharedInstances>
           </Info>
         </ExtensionType>
       </ExtensionTypes>

@@ -7,7 +7,7 @@ order: 1
 This sample illustrates how to develop a REST server object extension (SOE) with new service operation and service resources. The SOE is capable of taking custom input parameters and returning certain information of the service, such as service configuration properties, layer count, layer types, etc.
 
 ![ ](../../../../images/javasp/JavaSimpleRESTSOE0.png "Java SimpleRESTSOE Sample")
-Deploying the SOE from the .soe file (`../simplerestsoe/lib/JavaSimpleRESTSOE_ent.soe`) does not require you to open the IDE. However, you can load the project (`../simplerestsoe`) in Eclipse to debug, modify, and rebuild the SOE code.
+Deploying the SOE from the .soe file (`../simplerestsoe/target/simplerestsoe.soe`) does not require you to open a Java IDE. However, you can open the project (`../simplerestsoe`) in a Java IDE, such as Eclipse or IntelliJ, to debug, modify, and recompile the SOE code.
 
 
 ## Features
@@ -31,7 +31,7 @@ Any dynamic map service published from ArcGIS Pro. This instruction uses the [US
 1. Log in to ArcGIS Server Manager and click the ***Site*** tab.
 2. Click ***Extensions***.
 3. Click ***Add Extension***.
-4. Click ***Choose File*** and choose the ***JavaSimpleRESTSOE_ent.soe*** file (`../simplerestsoe/lib/JavaSimpleRESTSOE_ent.soe` or the SOE export path).
+4. Click ***Choose File*** and choose the ***simplerestsoe.soe*** file (`../simplerestsoe/target/simplerestsoe.soe`).
 5. Click ***Add***.
 
    ![](../../../../images/javasp/JavaSimpleRESTSOE1.png "Java SimpleRESTSOE Sample")

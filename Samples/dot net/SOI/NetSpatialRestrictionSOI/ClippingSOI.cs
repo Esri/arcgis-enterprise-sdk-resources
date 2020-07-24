@@ -34,7 +34,8 @@ namespace ClippingSOI
   [ServerObjectInterceptor("MapServer",
       Description = "",
       DisplayName = ".NET Clipping SOI",
-      Properties = "")]
+      Properties = "",
+      SupportsSharedInstances = true)]
   public class ClippingSOI : IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2
     {
     private string _soiName;

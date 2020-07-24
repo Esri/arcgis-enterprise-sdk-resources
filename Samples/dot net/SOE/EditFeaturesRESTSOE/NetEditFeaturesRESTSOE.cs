@@ -42,7 +42,8 @@ namespace NetEditFeaturesRESTSOE
         DisplayName = ".Net Edit Features REST SOE",
         Properties = "layerId=0",
         SupportsREST = true,
-        SupportsSOAP = false)]
+        SupportsSOAP = false,
+        SupportsSharedInstances = true)]
     public class NetEditFeaturesRESTSOE : IServerObjectExtension, IObjectConstruct, IRESTRequestHandler
     {
         private string soe_name;

@@ -43,7 +43,8 @@ namespace DownloadFileRESTSOE
         DisplayName = ".NET Download File REST SOE",
         Properties = "",
         SupportsREST = true,
-        SupportsSOAP = false)]
+        SupportsSOAP = false,
+        SupportsSharedInstances = true)]
     public class DownloadFileRESTSOE : IServerObjectExtension, IObjectConstruct, IRESTRequestHandler
     {
         private string soe_name;
@@ -67,25 +68,24 @@ namespace DownloadFileRESTSOE
         public void Init(IServerObjectHelper pSOH)
         {
             serverObjectHelper = pSOH;
-            string _outputDirectory = null;
-            try
-            {
-                IPropertySet configProps = ServerUtilities.QueryConfigurationProperties(pSOH.ServerObject.ConfigurationName, pSOH.ServerObject.TypeName);
-                _outputDirectory = configProps.GetProperty("outputDir") as string;
-            }
-            catch (Exception ignore)
-            {
-                _outputDirectory = string.Empty;
-            }
 
-            _outputDirectory = _outputDirectory.Trim();
-            if (string.IsNullOrEmpty(_outputDirectory))
+            IMapServer ms = (IMapServer)pSOH.ServerObject;
+            String outputDir = outputDir = ms.PhysicalOutputDirectory;
+            int len = 0;
+            if (outputDir != null)
+                len = outputDir.Length;
+            if (len > 0)
+            {
+                String mapservicePath = outputDir.Substring(0, len - 1);
+                int mapServiceIndex = mapservicePath.LastIndexOf("\\");
+                virtualFilePath = mapservicePath.Substring(mapServiceIndex + 1);
+                localFilePath = mapservicePath;
+            }
+            if (string.IsNullOrEmpty(localFilePath))
             {
                 logger.LogMessage(ServerLogger.msgType.error, soe_name + ".init()", 500, "OutputDirectory is empty or missing. Reset to default.");
-                _outputDirectory = "C:\\arcgisserver\\directories\\arcgisoutput";
             }
-            localFilePath = _outputDirectory + "\\" + pSOH.ServerObject.ConfigurationName.Replace('/', '\\') + "_" + pSOH.ServerObject.TypeName;
-            virtualFilePath = pSOH.ServerObject.ConfigurationName + "_" + pSOH.ServerObject.TypeName;
+            logger.LogMessage(ServerLogger.msgType.infoStandard, soe_name + ".init()", 200, "Initialized " + soe_name + " SOE.");
         }
 
         public void Shutdown()

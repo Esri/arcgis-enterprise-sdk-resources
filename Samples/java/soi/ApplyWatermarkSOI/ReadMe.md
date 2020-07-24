@@ -1,12 +1,13 @@
 ---
-order: 9
+order: 10
 ---
 
 # Java apply watermark SOI
 
 This sample illustrates how to apply a watermark to every image returned from the [Export Map](https://developers.arcgis.com/rest/services-reference/export-map.htm) operation on a map service.
 
-Deploying the SOI from the .soe file (`../ApplyWatermarkSOI/lib/ApplyWatermarkSOI_ent.soe`) does not require you to open the IDE. However, you can load the project (`../ApplyWatermarkSOI`) in the IDE to debug, modify, and rebuild the SOI project.
+Deploying the SOI from the .soe file (`../ApplyWatermarkSOI/target/ApplyWatermarkSOI.soe`) does not require you to open a Java IDE. However, you can open the project (`../ApplyWatermarkSOI`) in a Java IDE, such as Eclipse or IntelliJ, to debug, modify, and recompile the SOI project.
+
 
 ## Features
 
@@ -24,7 +25,7 @@ Any dynamic map service published from ArcGIS Pro. This instruction uses the [US
 1. Log in to ArcGIS Server Manager and click the ***Site*** tab.
 2. Click ***Extensions***.
 3. Click ***Add Extension***.
-4. Click ***Choose File*** and choose the ***ApplyWatermarkSOI_ent.soe*** file (`../ApplyWatermarkSOI/lib/ApplyWatermarkSOI_ent.soe` or the SOI's export path).
+4. Click ***Choose File*** and choose the ***ApplyWatermarkSOI.soe*** file (`../ApplyWatermarkSOI/target/ApplyWatermarkSOI.soe`).
 5. Click ***Add***.
 
 ### Enable the SOI on a map service

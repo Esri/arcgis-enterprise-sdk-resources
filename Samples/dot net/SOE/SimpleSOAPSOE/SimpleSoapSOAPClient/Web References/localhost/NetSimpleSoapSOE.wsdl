@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <definitions xmlns:e="http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
-    <xs:schema xmlns="http://www.esri.com/schemas/ArcGIS/2.5.0" targetNamespace="http://www.esri.com/schemas/ArcGIS/2.5.0">
+    <xs:schema xmlns="http://www.esri.com/schemas/ArcGIS/2.6.0" targetNamespace="http://www.esri.com/schemas/ArcGIS/2.6.0">
       <xs:complexType name="ArrayOfGeometry">
         <xs:annotation>
           <xs:documentation />
@@ -12116,8 +12116,8 @@
         </xs:restriction>
       </xs:simpleType>
     </xs:schema>
-    <xs:schema xmlns="http://www.esri.com/schemas/ArcGIS/2.5.0" xmlns:tns="http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0" targetNamespace="http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0">
-      <xs:import namespace="http://www.esri.com/schemas/ArcGIS/2.5.0" />
+    <xs:schema xmlns="http://www.esri.com/schemas/ArcGIS/2.6.0" xmlns:tns="http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0" targetNamespace="http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0">
+      <xs:import namespace="http://www.esri.com/schemas/ArcGIS/2.6.0" />
       <xs:element name="EchoInput">
         <xs:complexType>
           <xs:sequence>

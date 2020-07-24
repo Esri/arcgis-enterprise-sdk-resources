@@ -21,7 +21,7 @@ In this sample, two capabilities are defined in the SOE as follows:
         └── NumberOfTrainStations
 ```
 
-Deploying the SOE from the .soe file (`../simplerestsoewithcapabilities/lib/JavaSimpleRESTSOEWithCapabilities_ent.soe`) does not require you to open the IDE. However, you can load the project (`../simplerestsoewithcapabilities`) in Eclipse to debug, modify, and rebuild the SOE code.
+Deploying the SOE from the .soe file (`../simplerestsoewithcapabilities/target/simplerestsoewithcapabilities.soe`) does not require you to open a Java IDE. However, you can open the project (`../simplerestsoewithcapabilities`) in a Java IDE, such as Eclipse or IntelliJ, to debug, modify, and recompile the SOE code.
 
 ## Features
 
@@ -41,7 +41,7 @@ Any dynamic map service published from ArcGIS Pro. This instruction uses the [US
 1. Log in to ArcGIS Server Manager and click the ***Site*** tab.
 2. Click ***Extensions***.
 3. Click ***Add Extension***.
-4. Click ***Choose File*** and choose the ***JavaSimpleRESTSOEWithCapabilities_ent.soe*** file (`../simplerestsoewithcapabilities/lib/JavaSimpleRESTSOEWithCapabilities_ent.soe` or the SOE export path).
+4. Click ***Choose File*** and choose the ***simplerestsoewithcapabilities.soe*** file (`../simplerestsoewithcapabilities/target/simplerestsoewithcapabilities.soe`).
 5. Click ***Add***.
 
 ### Enable the SOE on a map service

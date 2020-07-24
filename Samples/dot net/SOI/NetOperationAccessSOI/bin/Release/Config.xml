@@ -28,6 +28,7 @@
             <SupportsSOAP>false</SupportsSOAP>
             <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
             <SupportsInterceptor>true</SupportsInterceptor>
+            <SupportsSharedInstances>true</SupportsSharedInstances>
           </Info>
         </ExtensionType>
       </ExtensionTypes>

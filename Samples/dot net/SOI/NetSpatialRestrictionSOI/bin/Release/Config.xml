@@ -28,6 +28,7 @@
             <SupportsSOAP>false</SupportsSOAP>
             <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
             <SupportsInterceptor>true</SupportsInterceptor>
+            <SupportsSharedInstances>true</SupportsSharedInstances>
           </Info>
         </ExtensionType>
         <ExtensionType id="ClippingSOI.ClippingSOI" library="NetSpatialRestrictionSOI.dll" class="ClippingSOI.ClippingSOI">
@@ -43,6 +44,7 @@
             <SupportsSOAP>false</SupportsSOAP>
             <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
             <SupportsInterceptor>true</SupportsInterceptor>
+            <SupportsSharedInstances>true</SupportsSharedInstances>
           </Info>
         </ExtensionType>
       </ExtensionTypes>

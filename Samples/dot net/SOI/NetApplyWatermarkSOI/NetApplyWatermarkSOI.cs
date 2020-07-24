@@ -37,7 +37,8 @@ namespace NetApplyWatermarkSOI
     [ServerObjectInterceptor("MapServer",
         Description = "SOI example that applies watermark to exported images",
         DisplayName = "DotNet Apply Watermark Sample SOI",
-        Properties = "")]
+        Properties = "",
+        SupportsSharedInstances = true)]
     public class NetApplyWatermarkSOI : IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler
     {
         private string _soiName;

@@ -42,7 +42,8 @@ namespace NetFindNearFeaturesRESTSOE
         DisplayName = ".NET Find Near Features REST SOE",
         Properties = "",
         SupportsREST = true,
-        SupportsSOAP = false)]
+        SupportsSOAP = false,
+        SupportsSharedInstances = true)]
     public class NetFindNearFeaturesRESTSOE : IServerObjectExtension, IObjectConstruct, IRESTRequestHandler
     {
         private const string c_CapabilityGetInfo = "GetInfo";

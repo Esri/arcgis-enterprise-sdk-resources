@@ -1,5 +1,5 @@
 ---
-order: 13
+order: 14
 ---
 
 # .NET operation access SOI
@@ -73,15 +73,19 @@ Sign in to the Portal for ArcGIS website. On the ***Groups*** page, create a new
 
 ### Test the SOI
 
-1. Open a browser and navigate to the REST services endpoint of the USA map service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/USA/MapServer`).
-2. Scroll to the bottom of the above page and click ***Export Map*** in ***Supported Extensions***.
+1. Open a browser and navigate to the REST services page (URL: `http://<serverdomain>/<webadaptorname>/rest/services`).
+2. Click ***Login*** at the upper right corner to log in with a valid user account that belongs to the group ***gold123***.
+3. Click the ***USA*** map service and ***Export Map*** in ***Supported Extensions***.
 
-   This leads you to the following URL:
+   This leads you to the following URL. You can see the ***Export Map*** operation generates a valid result:
 
    ```
    http://<serverdomain>/<webadaptorname>/rest/services/USA/MapServer/export?bbox=-178.85719640187426,13.522152002873426,-56.484036397641795,81.72479317856566
    ```
-3. Since you haven't logged in yet, this operation doesn't generate any valid export image.
-4. Click the upper right corner to log in with a valid user account that belongs to the group ***gold123***.
-5. Repeat step 2 and you will see the ***Export Map*** operation generates a valid response now.
-5. Test with other service operations with different user account, and see how this SOI blocks requests and grants access.
+4. Click ***Logout*** at the upper right corner and clear the browser cache/history. 
+
+   > Note: You must clear the browser cache, otherwise the following steps will still show the same results because the browser caches the previous requests.
+
+5. Log in as another user who does not belong to the group ***gold123*** or ***platinum123***.
+6. Try with the **Export Map** operation again. Now no image is exported and the operation returns a "404 Not Found" error, because the group that this logged-in user belongs to does not have permission to the **Export Map** operation. 
+7. Test with other service operations under different user accounts, and see how this SOI blocks requests and grants access. This Operation Access SOI lets through the requests for **Export Map**, **Find**, and **Identify** operations and blocks all other requests if the logged-in user belongs to the **gold123** or ***platinum123*** group. The SOI blocks all the requests if the service is accessed without being logged in, or with a logged-in user that does not belong to either **gold123** or ***platinum123***.

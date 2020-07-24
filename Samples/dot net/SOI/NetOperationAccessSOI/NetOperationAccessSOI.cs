@@ -37,7 +37,8 @@ namespace NetOperationAccessSOI
     [ServerObjectInterceptor("MapServer",
          Description = "DotNet SOI Example to control access to different operations of a sevice",
         DisplayName = "DotNet Operation Access SOI Example",
-        Properties = "")]
+        Properties = "",
+        SupportsSharedInstances = true)]
     public class NetOperationAccessSOI : IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler
     {
         private string _soiName;

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions 
+  xmlns="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:arcgis="http://www.esri.com/schemas/ArcGIS/2.6.0"
+  xmlns:soe="http://www.soe.entsdksamples"
+  targetNamespace="http://www.soe.entsdksamples">
+  <documentation>Esri Server Object Extension</documentation>
+  <types>
+    <xs:schema targetNamespace="http://www.soe.entsdksamples" xmlns="http://www.soe.entsdksamples"
+      xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="1.0">
+    <xs:annotation>
+      <xs:appinfo>
+        <jxb:schemaBindings>
+          <jxb:package name="entsdksamples.soe"/>
+        </jxb:schemaBindings>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:import namespace="http://www.esri.com/schemas/ArcGIS/2.6.0"/>
+      <xs:element name="getLayerCountByType">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getLayerCountByTypeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="arg" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+
+    </xs:schema>
+
+    <xs:schema targetNamespace="http://www.esri.com/schemas/ArcGIS/2.6.0" xmlns="http://www.esri.com/schemas/ArcGIS/2.6.0"
+      xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="1.0">
+    <xs:annotation>
+      <xs:appinfo>
+        <jxb:schemaBindings>
+          <jxb:package name="com.esri.arcgisws"/>
+        </jxb:schemaBindings>
+      </xs:appinfo>
+    </xs:annotation>
+
+    </xs:schema>
+  </types>
+
+  <message name="getLayerCountByTypeIn">
+    <part name="parameters" element="soe:getLayerCountByType" />
+  </message>
+  <message name="getLayerCountByTypeOut">
+    <part name="parameters" element="soe:getLayerCountByTypeResponse" />
+  </message>
+
+  <portType name="IJavaSimpleSOAPSOE">
+    <operation name="getLayerCountByType">
+      <input message="soe:getLayerCountByTypeIn" />
+      <output message="soe:getLayerCountByTypeOut" />
+    </operation>
+  </portType>
+
+  <binding name="IJavaSimpleSOAPSOEBinding" type="soe:IJavaSimpleSOAPSOE">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getLayerCountByType">
+      <soap:operation soapAction="" style="document" />
+        <input>
+          <soap:body use="literal" />
+        </input>
+        <output>
+          <soap:body use="literal" />
+        </output>
+    </operation>
+  </binding>
+
+  <service name="JavaSimpleSOAPSOEService">
+    <port name="IJavaSimpleSOAPSOE" binding="soe:IJavaSimpleSOAPSOEBinding">
+      <soap:address location="#URL#"/>
+    </port>
+  </service>
+</definitions>
