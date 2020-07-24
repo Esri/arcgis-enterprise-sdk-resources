@@ -34,7 +34,8 @@ namespace SpatialFilterSOI
   [ServerObjectInterceptor("MapServer",
       Description = "",
       DisplayName = ".NET SpatialFilter SOI",
-      Properties = "")]
+      Properties = "",
+      SupportsSharedInstances = true)]
   public class SpatialFilterSOI : IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2
   {
     private string _soiName;

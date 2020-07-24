@@ -36,7 +36,8 @@ namespace NetSimpleLoggerSOI
     [ServerObjectInterceptor("MapServer",
         Description = "DotNet Simple Logger REST SOI Example",
         DisplayName = "DotNet Simple Logger REST SOI Example",
-        Properties = "")]
+        Properties = "",
+        SupportsSharedInstances = true)]
     public class NetSimpleLoggerSOI : IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler
     {
         private string _soiName;

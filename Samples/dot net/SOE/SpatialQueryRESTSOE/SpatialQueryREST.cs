@@ -42,7 +42,8 @@ namespace SpatialQueryREST
         DisplayName = ".NET Spatial Query REST SOE",
         Properties = "FieldName=PRIMARY_;LayerName=veg;FilePath=NotSet",
         SupportsREST = true,
-        SupportsSOAP = false)]
+        SupportsSOAP = false,
+        SupportsSharedInstances = true)]
     public class SpatialQueryREST : IServerObjectExtension, IObjectConstruct, IRESTRequestHandler
     {
         private string soe_name;

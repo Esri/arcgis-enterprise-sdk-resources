@@ -38,7 +38,8 @@ namespace NetSimpleSoapSOE
         Properties = "",
         SupportsREST = false,
         SupportsSOAP = true,
-        SOAPNamespaceURI = "http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0")]
+        SOAPNamespaceURI = "http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0",
+        SupportsSharedInstances = true)]
     public class NetSimpleSoapSOE : IRequestHandler2, IServerObjectExtension, IObjectConstruct
     {
         private const string c_SOEName = "SimpleSoapSOE";

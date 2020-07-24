@@ -6,7 +6,7 @@ order: 5
 
 This sample illustrates how to develop a REST server object extension (SOE) with the capability of downloading server resources. The SOE generates a text file on the Server and allows clients to download the file from the Server. It also provides REST endpoints to manage those files such as obtaining file names and deleting the files.
 
-Deploying the SOE from the .soe file (`../downloadfilerestsoe/lib/JavaDownloadFileRESTSOE_ent.soe`) does not require you to open the IDE. However, you can load the project (`../downloadfilerestsoe`) in Eclipse to debug, modify, and rebuild the SOE code.
+Deploying the SOE from the .soe file (`../downloadfilerestsoe/target/downloadfilerestsoe.soe`) does not require you to open a Java IDE. However, you can open the project (`../downloadfilerestsoe`) in a Java IDE, such as Eclipse or IntelliJ, to debug, modify, and recompile the SOE code.
 
 ## Features
 
@@ -27,7 +27,7 @@ Any dynamic map service published from ArcGIS Pro. This instruction uses the [US
 1. Log in to ArcGIS Server Manager and click the ***Site*** tab.
 2. Click ***Extensions***.
 3. Click ***Add Extension***.
-4. Click ***Choose File*** and choose the ***DownloadFileRESTSOE_ent.soe*** file (`../downloadfilerestsoe/lib/JavaDownloadFileRESTSOE_ent.soe` or the SOE export path).
+4. Click ***Choose File*** and choose the ***downloadfilerestsoe.soe*** file (`../downloadfilerestsoe/target/downloadfilerestsoe.soe`).
 5. Click ***Add***.
 
 ### Enable the SOE on a map service

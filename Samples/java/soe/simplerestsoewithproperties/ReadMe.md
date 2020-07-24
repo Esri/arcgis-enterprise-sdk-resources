@@ -10,7 +10,7 @@ This sample illustrates how to develop a REST server object extension (SOE) with
 
 <!--Creating a custom property page requires the knowledge of JavaScript and web forms development using HTML. If you are not familiar with JavaScript, you can start from the default properties (`HasManagerPropertiesConfigurationPane = false`) and explore whether the default properties will meet your needs. They appear as textboxes in server manager, whereas the custom property page allows more widgets, such as checkbox, drop-down select box, etc., which provides a better user interface for managing those properties.-->
 
-Deploying the SOE from the .soe file (`../simplerestsoewithproperties/lib/JavaSimpleRESTSOEWithProperties_ent.soe`) does not require you to open the IDE. However, you can load the project (`../simplerestsoewithproperties`) in Eclipse to debug, modify, rebuild, and export the SOE project.
+Deploying the SOE from the .soe file (`../simplerestsoewithproperties/target/simplerestsoewithproperties.soe`) does not require you to open a Java IDE. However, you can open the project (`../simplerestsoewithproperties`) in a Java IDE, such as Eclipse or IntelliJ, to debug, modify, and recompile the SOE code.
 
 
 ## Features
@@ -31,7 +31,7 @@ Any dynamic map service published from ArcGIS Pro. This instruction uses the [US
 1. Log in to ArcGIS Server Manager and click the ***Site*** tab.
 2. Click ***Extensions***.
 3. Click ***Add Extension***.
-4. Click ***Choose File*** and choose the ***JavaSimpleRESTSOEWithProperties_ent.soe*** file (`../lib/JavaSimpleRESTSOEWithProperties_ent.soe` or the SOE export path).
+4. Click ***Choose File*** and choose the ***simplerestsoewithproperties.soe*** file (`../target/simplerestsoewithproperties.soe`).
 5. Click ***Add***.
 
 ### Enable the SOE on a map service

@@ -5,7 +5,7 @@ order: 4
 # Java find nearby features REST SOE
 This sample illustrates how to develop a REST server object extension (SOE) with a new spatial query operation. The spatial query operation returns all the features of a map service layer that fall within the user-defined search distance of a location point.
 
-Deploying the SOE from the .soe file (`../findnearbyfeaturesrestsoe/FindNearbyFeaturesRESTSOE_ent.soe`) does not require you to open the IDE. However, you can load the project (`../findnearbyfeaturesrestsoe`) in Eclipse to debug, modify, and rebuild the SOE code.
+Deploying the SOE from the .soe file (`../findnearbyfeaturesrestsoe/target/findnearbyfeaturesrestsoe.soe`) does not require you to open a Java IDE. However, you can open the project (`../findnearbyfeaturesrestsoe`) in a Java IDE, such as Eclipse or IntelliJ, to debug, modify, and recompile the SOE code.
 
 
 ## Features
@@ -26,7 +26,7 @@ This sample uses the [Veg map service](../../../ReadMe.md#2-veg-service) as the 
 1. Log in to ArcGIS Server Manager and click the ***Site*** tab.
 2. Click ***Extensions***.
 3. Click ***Add Extension***.
-4. Click ***Choose File*** and choose the ***FindNearbyFeaturesRESTSOE_ent.soe*** file (`../findnearbyfeaturesrestsoe/lib/FindNearbyFeaturesRESTSOE_ent.soe` or the SOE export path).
+4. Click ***Choose File*** and choose the ***findnearbyfeaturesrestsoe.soe*** file (`../findnearbyfeaturesrestsoe/target/findnearbyfeaturesrestsoe.soe`).
 5. Click ***Add***.
 
 ### Enable the SOE on a map service

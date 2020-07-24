@@ -43,7 +43,8 @@ namespace NetSimpleRESTSOEWithProperties11x
         Properties = "layerType=feature;returnFormat=json;maxNumFeatures=100;isEditable=false",
         HasManagerPropertiesConfigurationPane = true,
         SupportsREST = true,
-        SupportsSOAP = false)]
+        SupportsSOAP = false,
+        SupportsSharedInstances = true)]
     public class NetSimpleRESTSOEWithProperties11x : IServerObjectExtension, IObjectConstruct, IRESTRequestHandler
     {
         private string soeName;

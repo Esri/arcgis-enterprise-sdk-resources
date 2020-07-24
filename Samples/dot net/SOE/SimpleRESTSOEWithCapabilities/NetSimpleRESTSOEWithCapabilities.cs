@@ -42,7 +42,8 @@ namespace NetSimpleRESTSOEWithCapabilities
         DisplayName = ".NET Simple REST SOE With Capabilities",
         Properties = "",
         SupportsREST = true,
-        SupportsSOAP = false)]
+        SupportsSOAP = false,
+        SupportsSharedInstances = true)]
     public class NetSimpleRESTSOEWithCapabilities : IServerObjectExtension, IRESTRequestHandler
     {
         private string soeName;

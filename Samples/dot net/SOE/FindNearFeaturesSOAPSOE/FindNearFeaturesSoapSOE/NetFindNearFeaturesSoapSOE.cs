@@ -38,7 +38,8 @@ namespace NetFindNearFeaturesSoapSOE
         Properties = "",
         SupportsREST = false,
         SupportsSOAP = true,
-        SOAPNamespaceURI = "http://examples.esri.com/schemas/NetFindNearFeaturesSoapSOE/1.0")]
+        SOAPNamespaceURI = "http://examples.esri.com/schemas/NetFindNearFeaturesSoapSOE/1.0",
+        SupportsSharedInstances = true)]
     public class NetFindNearFeaturesSoapSOE : IRequestHandler2, IServerObjectExtension, IObjectConstruct
     {
         private IServerObjectHelper serverObjectHelper;

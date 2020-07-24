@@ -1,12 +1,12 @@
 ---
-order: 8
+order: 9
 ---
 
 # Java simple SOI
 
 This sample illustrates the basic framework for creating a server object interceptor (SOI). The SOI adds a message to the ArcGIS Server logs whenever a REST request is received before forwarding the request to the underlying default implementation.
 
-Deploying the SOI from the .soe file (`../SimpleSOI/lib/SimpleSOI_ent.soe`) does not require you to open the IDE. However, you can load the project (`../SimpleSOI`) in the IDE to debug, modify, and rebuild the SOI project.
+Deploying the SOI from the .soe file (`../SimpleSOI/target/SimpleSOI.soe`) does not require you to open a Java IDE. However, you can open the project (`../SimpleSOI`) in a Java IDE, such as Eclipse or IntelliJ, to debug, modify, and recompile the SOI project.
 
 ## Features
 
@@ -25,7 +25,7 @@ Any dynamic map service published from ArcGIS Pro. This instruction uses the [US
 1. Log in to ArcGIS Server Manager and click the ***Site*** tab.
 2. Click ***Extensions***.
 3. Click ***Add Extension***.
-4. Click ***Choose File*** and choose the ***SimpleSOI_ent.soe*** file (`../SimpleSOI/lib/SimpleSOI_ent.soe` or the SOI's export path).
+4. Click ***Choose File*** and choose the ***SimpleSOI.soe*** file (`../SimpleSOI/target/SimpleSOI.soe`).
 5. Click ***Add***.
 
 ### Enable the SOI on a map service
