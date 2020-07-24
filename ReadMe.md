@@ -35,7 +35,7 @@ An SOE is capable of extending the functions of a map service in the following w
 > **Note:** ArcGIS Enterprise SDK supports map services published from ArcGIS Pro, including their feature access and OGC capabilities, such as feature service, WMS service, and so on. ArcGIS Enterprise SDK currently does not support hosted feature service or other services. 
 
 ## Resources
-* [ArcGIS Enterprise SDK Developer Guide](https://enterprise.arcgis.com/en/sdk/latest/windows/webframe.html#a2596185-823b-4de3-9831-7842fb6100fb.html)
+* [ArcGIS Enterprise SDK Developer Guide](https://developers.arcgis.com/enterprise-sdk/)
 * [ArcGIS Server - Extending services](https://enterprise.arcgis.com/en/server/latest/develop/windows/about-extending-services.htm)
 
 
