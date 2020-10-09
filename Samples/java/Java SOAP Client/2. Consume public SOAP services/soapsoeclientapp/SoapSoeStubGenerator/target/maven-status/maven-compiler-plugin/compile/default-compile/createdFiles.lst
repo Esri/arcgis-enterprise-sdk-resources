@@ -1,0 +1,6 @@
+com\esri\samples\MySoapSoeService.class
+com\esri\samples\IMySoapSoe.class
+com\esri\samples\GetLayerCountByType.class
+com\esri\samples\ObjectFactory.class
+com\esri\samples\GetLayerCountByTypeResponse.class
+com\esri\samples\package-info.class
