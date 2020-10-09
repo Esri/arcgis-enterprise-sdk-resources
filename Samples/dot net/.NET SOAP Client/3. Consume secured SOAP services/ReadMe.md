@@ -2,7 +2,7 @@
 
 This section illustrates how to create a .NET application that consumes a secured SOAP map service. In this scenario, the WSDL URL of the secured service cannot be accessed without a token. For example, to access the WSDL of the secured service, you need to add the `token` parameter like this:
 
-https://sampleserver6.arcgisonline.com/arcgis/services/USA_secure_user1/MapServer?token=C5rJMY1Levmq1LQfBfOQGqTL6issJEa2qYl01g9h9Z8.&wsdl
+`https://sampleserver6.arcgisonline.com/arcgis/services/USA_secure_user1/MapServer?token=C5rJMY1Levmq1LQfBfOQGqTL6issJEa2qYl01g9h9Z8.&wsdl`
 
 In other words, you should programmatically generate the token first, and then consume the SOAP service by setting the service URL with the token parameter appended. This sample takes a secured map service as an example.
 
