@@ -1,4 +1,4 @@
-## Overview
+## Overview of building .NET SOAP client applications
 
 This section illustrates how to consume a SOAP service in a .NET application. In detail, it mainly discusses three workflows: consuming a SOAP service in .NET, consuming a secured SOAP service in .NET, and generating the source code of the SOAP proxy classes. For the SOAP client samples in Java, you can visit [Java SOAP Client](../../java/Java%20SOAP%20Client).
 
