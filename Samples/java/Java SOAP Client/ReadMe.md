@@ -1,4 +1,4 @@
-## Overview
+## Overview of building Java SOAP client applications
 
 This section illustrates how to consume a SOAP service in a Java console application. In detail, it mainly discusses three workflows: generating SOAP proxy classes, consuming a SOAP service using the SOAP proxy class, and consuming a secured SOAP service in Java. For the SOAP client samples in .NET, you can visit [.NET SOAP Client](../../dot%20net/.NET%20SOAP%20Client).
 
