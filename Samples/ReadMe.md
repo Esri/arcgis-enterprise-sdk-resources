@@ -45,6 +45,9 @@ The following three services are used in the samples:
   * [Operation Access SOI](dot%20net/SOI/NetOperationAccessSOI)
   * [Spatial Restriction SOI](dot%20net/SOI/NetSpatialRestrictionSOI)
 
+* **.NET SOAP Client Samples**
+  * [Overview of building .NET SOAP client application](dot%20net/.NET%20SOAP%20Client)
+  
 ### For Java
 * **Java SOE Samples**
   * [Simple REST SOE](java/soe/simplerestsoe)
@@ -62,3 +65,6 @@ The following three services are used in the samples:
   * [Layer Access SOI](java/soi/LayerAccessSOI)
   * [Operation Access SOI](java/soi/OperationAccessSOI)  
   * [Spatial Restriction SOI](java/soi/SpatialRestrictionSOI)
+  
+* **Java SOAP Client Samples**
+  * [Overview of building Java SOAP client application](java/Java%20SOAP%20Client)
