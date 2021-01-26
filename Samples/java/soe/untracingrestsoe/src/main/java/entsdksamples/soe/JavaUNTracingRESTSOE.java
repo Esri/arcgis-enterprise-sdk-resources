@@ -416,7 +416,7 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
             }
 
             // Get the transformer feature global ID from the asset ID
-            String xfrWhereClause = "ASSETGROUP=" + MV_XFR_ASSETGROUP.toString() + " AND ASSETID=" + xfrAssetID;
+            String xfrWhereClause = "ASSETGROUP=" + MV_XFR_ASSETGROUP.toString() + " AND ASSETID='" + xfrAssetID +"'";
             IStringArray xfrOutFields = new StrArray();
             xfrOutFields.add("GLOBALID");
             xfrOutFields.add("ASSETTYPE");

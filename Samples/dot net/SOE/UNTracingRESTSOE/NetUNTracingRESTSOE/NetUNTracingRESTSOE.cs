@@ -310,7 +310,7 @@ namespace NetUNTracingRESTSOE
                 }
 
                 // Get the transformer feature global ID from the asset ID
-                string xfrWhereClause = "ASSETGROUP=" + MV_XFR_ASSETGROUP.ToString() + " AND ASSETID=" + xfrAssetID;
+                string xfrWhereClause = "ASSETGROUP=" + MV_XFR_ASSETGROUP.ToString() + " AND ASSETID='" + xfrAssetID + "'";
                 IStringArray xfrOutFields = new StrArrayClass();
                 xfrOutFields.Add("GLOBALID");
                 xfrOutFields.Add("ASSETTYPE");
