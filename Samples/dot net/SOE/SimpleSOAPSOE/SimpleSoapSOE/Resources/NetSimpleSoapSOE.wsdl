@@ -9,7 +9,7 @@
 
     <!-- start of esri types -->
 
-    <xs:schema targetNamespace="http://www.esri.com/schemas/ArcGIS/2.6.0" xmlns="http://www.esri.com/schemas/ArcGIS/2.6.0">
+    <xs:schema targetNamespace="http://www.esri.com/schemas/ArcGIS/2.7.0" xmlns="http://www.esri.com/schemas/ArcGIS/2.7.0">
       <xs:element name="GetDocumentInfo">
         <xs:complexType />
       </xs:element>
@@ -5694,11 +5694,11 @@
     <!-- end of esri types -->
 
     
-    <xs:schema xmlns="http://www.esri.com/schemas/ArcGIS/2.6.0"
+    <xs:schema xmlns="http://www.esri.com/schemas/ArcGIS/2.7.0"
                xmlns:tns="http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0" 
                targetNamespace="http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0">
 
-      <xs:import namespace="http://www.esri.com/schemas/ArcGIS/2.6.0"/>
+      <xs:import namespace="http://www.esri.com/schemas/ArcGIS/2.7.0"/>
 
       <xs:element name="EchoInput">
         <xs:complexType>
