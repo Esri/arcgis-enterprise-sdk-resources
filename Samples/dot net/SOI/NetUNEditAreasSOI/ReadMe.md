@@ -21,7 +21,7 @@ Fields (Types):
 
 The administrator that deploys this SOI must enable it on the map service that also has the Utility Network capability enabled.
 
-Deploying the SOE from the .soe file (`..\NetUNEditAreasSOI\bin\Release\NetUNEditAreasSOI_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\NetUNEditAreasSOI\NetUNEditAreasSOI.csproj`) in Visual Studio to debug, modify, and recompile the SOE code.
+Deploying the SOI from the .soe file (`..\NetUNEditAreasSOI\bin\Release\NetUNEditAreasSOI_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\NetUNEditAreasSOI\NetUNEditAreasSOI.csproj`) in Visual Studio to debug, modify, and recompile the SOI's code.
 
 The Utility Network owner must make sure that the network topology has been enabled.
 
