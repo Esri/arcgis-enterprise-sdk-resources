@@ -44,10 +44,10 @@ The following three services are used in the samples:
   * [Layer Access SOI](dot%20net/SOI/NetLayerAccessSOI)
   * [Operation Access SOI](dot%20net/SOI/NetOperationAccessSOI)
   * [Spatial Restriction SOI](dot%20net/SOI/NetSpatialRestrictionSOI)
-  * [Utility Network Edit Areas Collaboration REST SOI](dot%20net/SOI/NetUNEditAreasSOI)(From 10.8.1) :new
+  * [Utility Network Edit Areas Collaboration REST SOI](dot%20net/SOI/NetUNEditAreasSOI)(From 10.8.1) 🆕
 
 * **.NET SOAP Client Samples**
-  * [Overview of building .NET SOAP client application](dot%20net/.NET%20SOAP%20Client) :new
+  * [Overview of building .NET SOAP client application](dot%20net/.NET%20SOAP%20Client) 🆕
   
 ### For Java
 * **Java SOE Samples**
@@ -68,4 +68,4 @@ The following three services are used in the samples:
   * [Spatial Restriction SOI](java/soi/SpatialRestrictionSOI)
   
 * **Java SOAP Client Samples**
-  * [Overview of building Java SOAP client application](java/Java%20SOAP%20Client) :new
+  * [Overview of building Java SOAP client application](java/Java%20SOAP%20Client) 🆕
