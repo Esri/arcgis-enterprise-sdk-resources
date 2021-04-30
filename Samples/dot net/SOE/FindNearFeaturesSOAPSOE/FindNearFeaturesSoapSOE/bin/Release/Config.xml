@@ -9,7 +9,7 @@
   <Company />
   <Date>2018-05-22T17:41:42</Date>
   <Targets>
-    <Target name="Server" version="10.8" />
+    <Target name="Server" version="10.9" />
   </Targets>
   <AddIn language="CLR" library="NetFindNearFeaturesSoapSOE.dll" namespace="NetFindNearFeaturesSoapSOE">
     <CoClass id="NetFindNearFeatures.CustomLayerInfo" class="CustomLayerInfo" guid="{EE82B345-23E7-43A2-94EE-867ABAF0A8AC}" />

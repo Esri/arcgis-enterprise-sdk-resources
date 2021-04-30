@@ -315,7 +315,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Envelope : Geometry {
     }
     
@@ -354,7 +354,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class Geometry {
     }
     
@@ -363,7 +363,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class AttachmentData {
         
         private byte[] dataField;
@@ -424,7 +424,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class AttachmentInfo {
         
         private int attachmentIDField;
@@ -496,7 +496,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriTransportType {
         
         /// <remarks/>
@@ -511,7 +511,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RasterDef {
         
         private string descriptionField;
@@ -601,7 +601,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class SpatialReference {
         
         private string wKTField;
@@ -1039,7 +1039,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class UnknownCoordinateSystem : SpatialReference {
     }
     
@@ -1048,7 +1048,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class GeographicCoordinateSystem : SpatialReference {
     }
     
@@ -1057,7 +1057,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class ProjectedCoordinateSystem : SpatialReference {
     }
     
@@ -1067,7 +1067,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class FilterDef {
     }
     
@@ -1076,7 +1076,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class XMLFilterDef : FilterDef {
         
         private string fieldNameField;
@@ -1114,7 +1114,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class QueryFilter {
         
         private string subFieldsField;
@@ -1241,7 +1241,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class FIDSet {
         
         private int[] fIDArrayField;
@@ -1266,7 +1266,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class SpatialFilter : QueryFilter {
         
         private esriSearchOrder searchOrderField;
@@ -1351,7 +1351,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriSearchOrder {
         
         /// <remarks/>
@@ -1364,7 +1364,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriSpatialRelEnum {
         
         /// <remarks/>
@@ -1404,7 +1404,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class TimeQueryFilter : SpatialFilter {
         
         private TimeValue timeValueField;
@@ -1454,7 +1454,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class TimeValue {
         
         private TimeReference timeReferenceField;
@@ -1476,7 +1476,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class TimeReference {
         
         private string timeZoneNameIDField;
@@ -1550,7 +1550,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class TimeExtent : TimeValue {
         
         private System.DateTime startTimeField;
@@ -1629,7 +1629,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class TimeInstant : TimeValue {
         
         private System.DateTime timeField;
@@ -1649,7 +1649,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriTimeRelation {
         
         /// <remarks/>
@@ -1667,7 +1667,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class ImageQueryFilter : TimeQueryFilter {
         
         private Point pixelSizeField;
@@ -1691,7 +1691,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Point : Geometry {
     }
     
@@ -1700,7 +1700,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PointB : Point {
         
         private byte[] bytesField;
@@ -1722,7 +1722,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PointN : Point {
         
         private double xField;
@@ -1848,7 +1848,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class ServerSymbolOutputOptions {
         
         private esriServerPictureOutputType pictureOutputTypeField;
@@ -1899,7 +1899,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriServerPictureOutputType {
         
         /// <remarks/>
@@ -1917,7 +1917,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RelatedRecordSet {
         
         private Fields relatedRecordFieldsField;
@@ -1953,7 +1953,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class Fields {
         
         private Field[] fieldArrayField;
@@ -1976,7 +1976,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class Field {
         
         private string nameField;
@@ -2209,7 +2209,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriFieldType {
         
         /// <remarks/>
@@ -2257,7 +2257,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class GeometryDef {
         
         private int avgNumPointsField;
@@ -2407,7 +2407,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriGeometryType {
         
         /// <remarks/>
@@ -2434,7 +2434,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Domain {
         
         private string domainNameField;
@@ -2519,7 +2519,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriMergePolicyType {
         
         /// <remarks/>
@@ -2535,7 +2535,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriSplitPolicyType {
         
         /// <remarks/>
@@ -2554,7 +2554,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class CodedValueDomain : Domain {
         
         private CodedValue[] codedValuesField;
@@ -2577,7 +2577,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class CodedValue {
         
         private string nameField;
@@ -2612,7 +2612,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class BitMaskCodedValueDomain : CodedValueDomain {
     }
     
@@ -2621,7 +2621,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RangeDomain : Domain {
         
         private object maxValueField;
@@ -2656,7 +2656,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RelatedRecordGroup {
         
         private int sourceRowIDField;
@@ -2692,7 +2692,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class Record {
         
         private object[] valuesField;
@@ -2715,7 +2715,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapServerForceDeriveFromAnyType {
         
         private RelatedRecordSet relatedRecordSetField;
@@ -2750,7 +2750,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class FieldDomainInfo {
         
         private string fieldNameField;
@@ -2803,7 +2803,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RelateDescription {
         
         private int relationshipIDField;
@@ -2934,7 +2934,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class GeoTransformation {
         
         private string wKTField;
@@ -2982,7 +2982,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class GeometryResultOptions {
         
         private bool densifyGeometriesField;
@@ -3067,7 +3067,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriRelateResultFormat {
         
         /// <remarks/>
@@ -3091,7 +3091,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class StatisticsRequest {
         
         private StatisticDescription[] statisticDescriptionsField;
@@ -3140,7 +3140,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class StatisticDescription {
         
         private string statisticFieldNameField;
@@ -3186,7 +3186,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriDataStatType {
         
         /// <remarks/>
@@ -3216,7 +3216,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class QueryResult {
         
         private byte[] mimeDataField;
@@ -3264,7 +3264,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class QueryResultOptions {
         
         private esriQueryResultFormat formatField;
@@ -3310,7 +3310,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriQueryResultFormat {
         
         /// <remarks/>
@@ -3340,7 +3340,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PropertySet {
         
         private PropertySetProperty[] propertyArrayField;
@@ -3363,7 +3363,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PropertySetProperty {
         
         private string keyField;
@@ -3398,7 +3398,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class CacheControlInfo {
         
         private bool clientCachingAllowedField;
@@ -3420,7 +3420,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class CacheDescriptionInfo {
         
         private TileCacheInfo tileCacheInfoField;
@@ -3494,7 +3494,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class TileCacheInfo {
         
         private SpatialReference spatialReferenceField;
@@ -3608,7 +3608,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class LODInfo {
         
         private int levelIDField;
@@ -3656,7 +3656,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class TileImageInfo {
         
         private string cacheTileFormatField;
@@ -3748,7 +3748,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class ArrayOfLayerCacheInfo {
         
         private LayerCacheInfo layerCacheInfoField;
@@ -3770,7 +3770,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class LayerCacheInfo {
         
         private int layerIDField;
@@ -3803,7 +3803,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriCachedMapServiceType {
         
         /// <remarks/>
@@ -3818,7 +3818,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class CacheStorageInfo {
         
         private esriMapCacheStorageFormat storageFormatField;
@@ -3851,7 +3851,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriMapCacheStorageFormat {
         
         /// <remarks/>
@@ -3868,7 +3868,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class DataClassificationDef {
     }
     
@@ -3877,7 +3877,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class ClassBreaksDef : DataClassificationDef {
         
         private string classificationFieldField;
@@ -4027,7 +4027,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriClassifyMethod {
         
         /// <remarks/>
@@ -4065,7 +4065,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Symbol {
     }
     
@@ -4074,7 +4074,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class XMLBinarySymbol : Symbol {
         
         private XMLPersistedObject dataField;
@@ -4096,7 +4096,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class XMLPersistedObject {
         
         private byte[] bytesField;
@@ -4122,7 +4122,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class MarkerSymbol : Symbol {
         
         private double angleField;
@@ -4201,7 +4201,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Color {
         
         private bool useWindowsDitheringField;
@@ -4262,7 +4262,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class HsvColor : Color {
         
         private short hueField;
@@ -4310,7 +4310,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class HlsColor : Color {
         
         private short hueField;
@@ -4358,7 +4358,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class CmykColor : Color {
         
         private byte cyanField;
@@ -4471,7 +4471,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RgbColor : Color {
         
         private byte redField;
@@ -4519,7 +4519,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class GrayColor : Color {
         
         private byte grayLevelField;
@@ -4543,7 +4543,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class CartographicMarkerSymbol : MarkerSymbol {
         
         private double xScaleField;
@@ -4583,7 +4583,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PictureMarkerSymbol : CartographicMarkerSymbol {
         
         private Color bgColorField;
@@ -4709,7 +4709,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class CharacterMarkerSymbol : CartographicMarkerSymbol {
         
         private int characterIndexField;
@@ -4926,7 +4926,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class SimpleMarkerSymbol : MarkerSymbol {
         
         private bool outlineField;
@@ -4985,7 +4985,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriSimpleMarkerStyle {
         
         /// <remarks/>
@@ -5010,7 +5010,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class LineSymbol : Symbol {
         
         private Color colorField;
@@ -5045,7 +5045,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class SimpleLineSymbol : LineSymbol {
         
         private esriSimpleLineStyle styleField;
@@ -5065,7 +5065,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriSimpleLineStyle {
         
         /// <remarks/>
@@ -5098,7 +5098,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class FillSymbol : Symbol {
         
         private Color colorField;
@@ -5133,7 +5133,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class XMLBinaryFillSymbol : FillSymbol {
         
         private XMLPersistedObject dataField;
@@ -5155,7 +5155,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PictureFillSymbol : FillSymbol {
         
         private byte[] pictureField;
@@ -5470,7 +5470,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class SimpleFillSymbol : FillSymbol {
         
         private esriSimpleFillStyle styleField;
@@ -5490,7 +5490,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriSimpleFillStyle {
         
         /// <remarks/>
@@ -5523,7 +5523,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class TextSymbol : Symbol {
         
         private Color colorField;
@@ -6120,7 +6120,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriTextVerticalAlignment {
         
         /// <remarks/>
@@ -6139,7 +6139,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriTextHorizontalAlignment {
         
         /// <remarks/>
@@ -6158,7 +6158,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriTextPosition {
         
         /// <remarks/>
@@ -6174,7 +6174,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriTextCase {
         
         /// <remarks/>
@@ -6193,7 +6193,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriTextDirection {
         
         /// <remarks/>
@@ -6209,7 +6209,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriMaskStyle {
         
         /// <remarks/>
@@ -6224,7 +6224,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class SimpleTextSymbol : Symbol {
         
         private Color colorField;
@@ -6619,7 +6619,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriSimpleTextVerticalAlignment {
         
         /// <remarks/>
@@ -6638,7 +6638,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriSimpleTextHorizontalAlignment {
         
         /// <remarks/>
@@ -6657,7 +6657,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriFontStyle {
         
         /// <remarks/>
@@ -6673,7 +6673,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriFontWeight {
         
         /// <remarks/>
@@ -6692,7 +6692,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriFontDecoration {
         
         /// <remarks/>
@@ -6715,7 +6715,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class ColorRamp {
         
         private string nameField;
@@ -6737,7 +6737,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MultiPartColorRamp : ColorRamp {
         
         private int numColorRampsField;
@@ -6786,7 +6786,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PresetColorRamp : ColorRamp {
         
         private int numColorsField;
@@ -6861,7 +6861,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RandomColorRamp : ColorRamp {
         
         private int numColorsField;
@@ -7104,7 +7104,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class AlgorithmicColorRamp : ColorRamp {
         
         private string algorithmField;
@@ -7150,7 +7150,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriNormalizationType {
         
         /// <remarks/>
@@ -7174,7 +7174,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class UniqueValuesDef : DataClassificationDef {
         
         private Symbol baseSymbolField;
@@ -7236,7 +7236,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class SQLSyntaxInfo {
         
         private PropertySet functionNamesField;
@@ -7380,7 +7380,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class ScaleBar {
         
         private double barHeightField;
@@ -7751,7 +7751,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriUnits {
         
         /// <remarks/>
@@ -7797,7 +7797,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriScaleBarPos {
         
         /// <remarks/>
@@ -7822,7 +7822,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriScaleBarFrequency {
         
         /// <remarks/>
@@ -7850,7 +7850,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriVertPosEnum {
         
         /// <remarks/>
@@ -7874,7 +7874,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class NumericFormat {
         
         private esriRoundingOptionEnum roundingOptionField;
@@ -8063,7 +8063,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriRoundingOptionEnum {
         
         /// <remarks/>
@@ -8076,7 +8076,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriNumericAlignmentEnum {
         
         /// <remarks/>
@@ -8089,7 +8089,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriScaleBarResizeHint {
         
         /// <remarks/>
@@ -8107,7 +8107,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class SingleDivisionScaleBar : ScaleBar {
         
         private FillSymbol fillSymbolField;
@@ -8259,7 +8259,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class AlternatingScaleBar : ScaleBar {
         
         private FillSymbol fillSymbol1Field;
@@ -8424,7 +8424,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapServerLegendPatch {
         
         private double widthField;
@@ -8498,7 +8498,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class LinePatch : Patch {
     }
     
@@ -8509,7 +8509,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class Patch {
         
         private string nameField;
@@ -8570,7 +8570,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class AreaPatch : Patch {
     }
     
@@ -8579,7 +8579,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapServerInfo {
         
         private string nameField;
@@ -8982,7 +8982,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapLayerInfo : MapTableInfo {
         
         private int layerIDField;
@@ -9675,7 +9675,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RelateInfo {
         
         private string nameField;
@@ -9851,7 +9851,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriRelRole {
         
         /// <remarks/>
@@ -9867,7 +9867,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriRelCardinality {
         
         /// <remarks/>
@@ -9883,7 +9883,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriTimeUnits {
         
         /// <remarks/>
@@ -9923,7 +9923,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriServerHTMLPopupType {
         
         /// <remarks/>
@@ -9943,7 +9943,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class MapTableInfo {
     }
     
@@ -9952,7 +9952,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class StandaloneTableInfo : MapTableInfo {
         
         private int idField;
@@ -10305,7 +10305,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapServerBookmark : MapArea {
         
         private string nameField;
@@ -10332,7 +10332,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class MapArea {
         
         private Envelope extentField;
@@ -10354,7 +10354,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapExtent : MapArea {
     }
     
@@ -10363,7 +10363,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class FeatureExtent : MapArea {
         
         private double defaultScaleField;
@@ -10442,7 +10442,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class CenterAndSize : MapArea {
         
         private Point centerField;
@@ -10503,7 +10503,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class CenterAndScale : MapArea {
         
         private Point centerField;
@@ -10668,7 +10668,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapDescription {
         
         private string nameField;
@@ -10887,7 +10887,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class LayerDescription : MapTableDescription {
         
         private int layerIDField;
@@ -11209,7 +11209,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class LayerResultOptions {
         
         private bool includeGeometryField;
@@ -11281,7 +11281,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class LayerDrawingDescription {
     }
     
@@ -11290,7 +11290,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RasterLayerDrawingDescription : LayerDrawingDescription {
         
         private RasterRenderer rasterRendererField;
@@ -11394,7 +11394,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class RasterRenderer {
         
         private bool indexedField;
@@ -11573,7 +11573,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RasterClassifyRenderer : RasterRenderer {
         
         private string classFieldField;
@@ -11961,7 +11961,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class LegendGroup {
         
         private bool visibleField;
@@ -12023,7 +12023,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class LegendClass {
         
         private Symbol symbolField;
@@ -12084,7 +12084,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class LegendClassFormat {
         
         private Symbol labelSymbolField;
@@ -12171,7 +12171,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RasterUniqueValues {
         
         private int uniqueValuesSizeField;
@@ -12234,7 +12234,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RasterStretchRenderer : RasterRenderer {
         
         private string colorSchemaField;
@@ -12542,7 +12542,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RasterRGBRenderer : RasterRenderer {
         
         private int layerIndex1Field;
@@ -12799,7 +12799,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RasterUniqueValueRenderer : RasterRenderer {
         
         private string valueFieldField;
@@ -13059,7 +13059,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class FeatureLayerDrawingDescription : LayerDrawingDescription {
         
         private FeatureRenderer featureRendererField;
@@ -13227,7 +13227,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class FeatureRenderer {
     }
     
@@ -13236,7 +13236,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class ClassBreaksRenderer : FeatureRenderer {
         
         private string fieldField;
@@ -13402,7 +13402,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class ClassBreakInfo {
         
         private double classMaximumValueField;
@@ -13474,7 +13474,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriRotationType {
         
         /// <remarks/>
@@ -13489,7 +13489,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class UniqueValueRenderer : FeatureRenderer {
         
         private string field1Field;
@@ -13642,7 +13642,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class UniqueValueInfo {
         
         private string valueField;
@@ -13703,7 +13703,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class SimpleRenderer : FeatureRenderer {
         
         private Symbol symbolField;
@@ -13803,7 +13803,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class LabelingDescription {
         
         private LabelClassDescription[] labelClassDescriptionsField;
@@ -13826,7 +13826,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class LabelClassDescription {
         
         private LabelPlacementDescription labelPlacementDescriptionField;
@@ -13994,7 +13994,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class LabelPlacementDescription {
     }
     
@@ -14003,7 +14003,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PolygonLabelPlacementDescription : LabelPlacementDescription {
         
         private esriServerPolygonLabelPlacementType typeField;
@@ -14023,7 +14023,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriServerPolygonLabelPlacementType {
         
         /// <remarks/>
@@ -14035,7 +14035,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class LineLabelPlacementDescription : LabelPlacementDescription {
         
         private esriServerLineLabelPlacementType typeField;
@@ -14055,7 +14055,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriServerLineLabelPlacementType {
         
         /// <remarks/>
@@ -14109,7 +14109,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PointLabelPlacementDescription : LabelPlacementDescription {
         
         private esriServerPointLabelPlacementType typeField;
@@ -14129,7 +14129,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriServerPointLabelPlacementType {
         
         /// <remarks/>
@@ -14163,7 +14163,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriLabelExpressionType {
         
         /// <remarks/>
@@ -14190,7 +14190,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class MapServerSourceDescription {
     }
     
@@ -14199,7 +14199,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class JoinTableSourceDescription : MapServerSourceDescription {
         
         private MapServerSourceDescription leftSourceDescriptionField;
@@ -14284,7 +14284,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriJoinType {
         
         /// <remarks/>
@@ -14299,7 +14299,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapTableSourceDescription : MapServerSourceDescription {
         
         private int mapTableIDField;
@@ -14337,7 +14337,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class DataSourceDescription : MapServerSourceDescription {
         
         private string workspaceIDField;
@@ -14359,7 +14359,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RasterDataSourceDescription : DataSourceDescription {
         
         private string rasterNameField;
@@ -14381,7 +14381,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class QueryTableDataSourceDescription : DataSourceDescription {
         
         private string queryField;
@@ -14442,7 +14442,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class TableDataSourceDescription : DataSourceDescription {
         
         private string tableNameField;
@@ -14479,7 +14479,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class MapTableDescription {
     }
     
@@ -14488,7 +14488,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class StandaloneTableDescription : MapTableDescription {
         
         private int idField;
@@ -14661,7 +14661,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class GraphicElement : Element {
     }
     
@@ -14680,7 +14680,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Element {
     }
     
@@ -14689,7 +14689,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class GroupElement : Element {
         
         private string nameField;
@@ -14921,7 +14921,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Border {
     }
     
@@ -14930,7 +14930,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class SymbolBorder : Border {
         
         private double horizontalGapField;
@@ -14992,7 +14992,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Background {
     }
     
@@ -15001,7 +15001,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class SymbolBackground : Background {
         
         private double horizontalGapField;
@@ -15063,7 +15063,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Shadow {
     }
     
@@ -15072,7 +15072,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class SymbolShadow : Shadow {
         
         private LineSymbol symbolField;
@@ -15133,7 +15133,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class TextElement : GraphicElement {
         
         private string nameField;
@@ -15311,7 +15311,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RectangleElement : GraphicElement {
         
         private Geometry rectangleField;
@@ -15476,7 +15476,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PolygonElement : GraphicElement {
         
         private string nameField;
@@ -15641,7 +15641,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class ParagraphTextElement : GraphicElement {
         
         private string nameField;
@@ -15936,7 +15936,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MarkerElement : GraphicElement {
         
         private string nameField;
@@ -16075,7 +16075,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class EllipseElement : GraphicElement {
         
         private Geometry rectangleField;
@@ -16240,7 +16240,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class CircleElement : GraphicElement {
         
         private Geometry rectangleField;
@@ -16405,7 +16405,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class LineElement : GraphicElement {
         
         private string nameField;
@@ -16568,7 +16568,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriImageReturnType {
         
         /// <remarks/>
@@ -16583,7 +16583,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapImage {
         
         private byte[] imageDataField;
@@ -16710,7 +16710,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class ImageDisplay {
         
         private int imageHeightField;
@@ -16771,7 +16771,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class ImageType {
         
         private esriImageFormat imageFormatField;
@@ -16804,7 +16804,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1586.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public enum esriImageFormat {
         
         /// <remarks/>
@@ -16858,7 +16858,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class ImageDescription {
         
         private ImageType imageTypeField;
@@ -16893,7 +16893,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class SubtypeInfo {
         
         private int subtypeCodeField;
@@ -16942,7 +16942,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapTableSubtypeInfo {
         
         private int tableIDField;
@@ -16991,7 +16991,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapServerLegendInfo {
         
         private int layerIDField;
@@ -17040,7 +17040,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapServerLegendGroup {
         
         private string headingField;
@@ -17076,7 +17076,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapServerLegendClass {
         
         private string labelField;
@@ -17137,7 +17137,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class ImageResult {
         
         private byte[] imageDataField;
@@ -17224,7 +17224,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapServerRow {
         
         private string nameField;
@@ -17299,7 +17299,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapServerRelationship {
         
         private string nameField;
@@ -17335,7 +17335,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapServerIdentifyResult {
         
         private int layerIDField;
@@ -17449,7 +17449,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapServerHyperlink {
         
         private Geometry locationField;
@@ -17484,7 +17484,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MapServerFindResult {
         
         private string valueField;
@@ -17571,7 +17571,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class RecordSet {
         
         private Fields fieldsField;
@@ -17607,7 +17607,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class TriangleStrip : Geometry {
         
         private Point[] pointArrayField;
@@ -17630,7 +17630,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class TriangleFan : Geometry {
         
         private Point[] pointArrayField;
@@ -17653,7 +17653,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class Triangles : Geometry {
         
         private Point[] pointArrayField;
@@ -17678,7 +17678,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class MultiPatch : Geometry {
     }
     
@@ -17687,7 +17687,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MultiPatchN : MultiPatch {
         
         private bool hasIDField;
@@ -17762,7 +17762,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MultiPatchB : MultiPatch {
         
         private byte[] bytesField;
@@ -17786,7 +17786,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Multipoint : Geometry {
     }
     
@@ -17795,7 +17795,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MultipointN : Multipoint {
         
         private bool hasIDField;
@@ -17883,7 +17883,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class MultipointB : Multipoint {
         
         private byte[] bytesField;
@@ -17919,7 +17919,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Curve : Geometry {
     }
     
@@ -17929,7 +17929,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class Path : Curve {
         
         private Point[] pointArrayField;
@@ -17970,7 +17970,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Segment : Curve {
         
         private Point fromPointField;
@@ -18005,7 +18005,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class BezierCurve : Segment {
         
         private int degreeField;
@@ -18041,7 +18041,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class CircularArc : Segment {
         
         private Point centerPointField;
@@ -18154,7 +18154,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class EllipticArc : Segment {
         
         private bool ellipseStdField;
@@ -18241,7 +18241,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class Line : Segment {
     }
     
@@ -18250,7 +18250,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class Ring : Path {
     }
     
@@ -18265,7 +18265,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Polycurve : Curve {
     }
     
@@ -18276,7 +18276,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Polyline : Polycurve {
     }
     
@@ -18285,7 +18285,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PolylineB : Polyline {
         
         private byte[] bytesField;
@@ -18307,7 +18307,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PolylineN : Polyline {
         
         private bool hasIDField;
@@ -18397,7 +18397,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public abstract partial class Polygon : Polycurve {
     }
     
@@ -18406,7 +18406,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PolygonB : Polygon {
         
         private byte[] bytesField;
@@ -18428,7 +18428,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class PolygonN : Polygon {
         
         private bool hasIDField;
@@ -18516,7 +18516,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class EnvelopeB : Envelope {
         
         private byte[] bytesField;
@@ -18538,7 +18538,7 @@ namespace NetFindNearFeaturesSOAPClient.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.6.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.esri.com/schemas/ArcGIS/2.7.0")]
     public partial class EnvelopeN : Envelope {
         
         private double xMinField;

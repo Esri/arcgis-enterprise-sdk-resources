@@ -9,7 +9,7 @@
   <Company />
   <Date>2020-05-14T10:43:35</Date>
   <Targets>
-    <Target name="Server" version="10.8" />
+    <Target name="Server" version="10.9" />
   </Targets>
   <AddIn language="CLR" library="NetUNTracingRESTSOE.dll" namespace="NetUNTracingRESTSOE">
     <ServerObjectType>

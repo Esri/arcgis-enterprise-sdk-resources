@@ -9,7 +9,7 @@
   <Company />
   <Date>2018-05-21T17:06:49</Date>
   <Targets>
-    <Target name="Server" version="10.8" />
+    <Target name="Server" version="10.9" />
   </Targets>
   <AddIn language="CLR" library="NetSimpleSoapSOE.dll" namespace="NetSimpleSoapSOE">
     <ServerObjectType>
