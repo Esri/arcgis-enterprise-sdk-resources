@@ -2,7 +2,7 @@
 
 The samples in this repository are also included with the installation of ArcGIS Enterprise SDK. It's located at `<ArcGIS_Enterprise_SDK_Installation_Path>\Samples`, by default, `C:\Program Files\ArcGIS\EnterpriseSDK\Samples`.
 
-> Note: This repository contains samples built with 10.8.1, the latest version of ArcGIS Enterprise SDK. If you want to download the SOE and SOI samples built with 10.8 or previous versions of ArcGIS Enterprise SDK, refer to [Releases](https://github.com/Esri/arcgis-enterprise-sdk-resources/releases).
+> Note: This repository contains samples built with **10.9**, the latest version of ArcGIS Enterprise SDK. If you want to download the SOE and SOI samples built with 10.8.1 or previous versions of ArcGIS Enterprise SDK, refer to [Releases](https://github.com/Esri/arcgis-enterprise-sdk-resources/releases).
 
 The sample data used to publish the testing services can be found at `<ArcGIS_Enterprise_SDK_Installation_Path>\Samples\EnterpriseSDKSampleData.zip`, by default, `C:\Program Files\ArcGIS\EnterpriseSDK\Samples\EnterpriseSDKSampleData.zip`.
 
@@ -36,7 +36,7 @@ The following three services are used in the samples:
   * [Download File REST SOE](dot%20net/SOE/DownloadFileRESTSOE)
   * [Simple SOAP SOE](dot%20net/SOE/SimpleSOAPSOE)
   * [Find Nearby Features SOAP SOE](dot%20net/SOE/FindNearFeaturesSOAPSOE)
-  * [Utility Network Tracing REST SOE](dot%20net/SOE/UNTracingRESTSOE) (\*New at 10.8.1)
+  * [Utility Network Tracing REST SOE](dot%20net/SOE/UNTracingRESTSOE) (From 10.8.1)
 
 * **.NET SOI Samples**
   * [Simple Logger SOI](dot%20net/SOI/NetSimpleLoggerSOI)
@@ -44,9 +44,10 @@ The following three services are used in the samples:
   * [Layer Access SOI](dot%20net/SOI/NetLayerAccessSOI)
   * [Operation Access SOI](dot%20net/SOI/NetOperationAccessSOI)
   * [Spatial Restriction SOI](dot%20net/SOI/NetSpatialRestrictionSOI)
+  * [Utility Network Edit Areas Collaboration REST SOI](dot%20net/SOI/NetUNEditAreasSOI)(From 10.8.1) :new
 
 * **.NET SOAP Client Samples**
-  * [Overview of building .NET SOAP client application](dot%20net/.NET%20SOAP%20Client)
+  * [Overview of building .NET SOAP client application](dot%20net/.NET%20SOAP%20Client) :new
   
 ### For Java
 * **Java SOE Samples**
@@ -57,7 +58,7 @@ The following three services are used in the samples:
   * [Download File REST SOE](java/soe/downloadfilerestsoe)
   * [Simple SOAP SOE](java/soe/simplesoapsoe)
   * [Find Nearby Features SOAP SOE](java/soe/findnearbyfeaturessoapsoe)
-  * [Utility Network Tracing REST SOE](java/soe/untracingrestsoe) (\*New at 10.8.1)
+  * [Utility Network Tracing REST SOE](java/soe/untracingrestsoe) (From 10.8.1)
 
 * **Java SOI Samples**
   * [Simple SOI](java/soi/SimpleSOI)
@@ -67,4 +68,4 @@ The following three services are used in the samples:
   * [Spatial Restriction SOI](java/soi/SpatialRestrictionSOI)
   
 * **Java SOAP Client Samples**
-  * [Overview of building Java SOAP client application](java/Java%20SOAP%20Client)
+  * [Overview of building Java SOAP client application](java/Java%20SOAP%20Client) :new
