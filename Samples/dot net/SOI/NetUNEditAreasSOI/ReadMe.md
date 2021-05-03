@@ -8,16 +8,7 @@ This sample demonstrates how to communicate the network areas being edited by le
 
 In order to use this SOI, the administrator must first create a new non-versioned feature class with the following properties in the same Enterprise Geodatabase as the Utility Network dataset and under the same owning user.
 
-Feature class name: EDITAREAS
-
-Fields (Types):
-- OBJECTID (Object Id)
-- CREATIONDATE (Date)
-- LASTUPDATE (Date)
-- EDITCOUNT (Long)
-- VERSIONNAME (Text)
-- CREATOR (Text)
-- SHAPE (Shape)
+This sample was shown in the [2021 Esri Developer Summit plenary](https://www.esri.com/arcgis-blog/products/arcgis/administration/dev-summit-2021-extend-and-automate-your-intelligent-enterprise/). Watch the video demo at [Extending and Automating Your Enterprise](https://www.youtube.com/watch?v=hHFLSLXczGY).
 
 The administrator that deploys this SOI must enable it on the map service that also has the Utility Network capability enabled.
 
@@ -33,6 +24,16 @@ The Utility Network owner must make sure that the network topology has been enab
 ## Sample data
 This sample does not require a specific utility network dataset. For example, you can load the [Electric Utility Network Foundation](https://solutions.arcgis.com/electric/help/electric-utility-network-foundation/) Naperville demo data in an Enterprise Geodatabase and publish it as a service on ArcGIS Enterprise. Please follow the instructions provided in the above link to download, configure and publish the data.
 
+- Feature class name: EDITAREAS
+
+- Fields (Types):
+  - OBJECTID (Object Id)
+  - CREATIONDATE (Date)
+  - LASTUPDATE (Date)
+  - EDITCOUNT (Long)
+  - VERSIONNAME (Text)
+  - CREATOR (Text)
+  - SHAPE (Shape)
 
 ## Instructions
 
