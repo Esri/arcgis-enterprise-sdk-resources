@@ -6,7 +6,7 @@
     <property name="java.specification.version" value="11"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectinterceptors\ApplyWatermarkSOI\target\test-classes;C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectinterceptors\ApplyWatermarkSOI\target\classes;C:\Users\hanh7700\.m2\repository\com\esri\arcgis\enterprise\sdk\arcgis-enterprise-sdk\10.9.0\arcgis-enterprise-sdk-10.9.0.jar;C:\Users\hanh7700\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\hanh7700\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.class.path" value="C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectinterceptors\ApplyWatermarkSOI\target\test-classes;C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectinterceptors\ApplyWatermarkSOI\target\classes;C:\Users\hanh7700\.m2\repository\com\esri\arcgis\enterprise\sdk\arcgis-enterprise-sdk\10.9.1\arcgis-enterprise-sdk-10.9.1.jar;C:\Users\hanh7700\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\hanh7700\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="java.vm.vendor" value="AdoptOpenJDK"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -19,7 +19,7 @@
     <property name="sun.boot.library.path" value="C:\Program Files\AdoptOpenJDK\jdk-11.0.10.9-hotspot\bin"/>
     <property name="sun.java.command" value="C:\Users\hanh7700\AppData\Local\Temp\surefire13886033195273532862\surefirebooter16754245538199098396.jar C:\Users\hanh7700\AppData\Local\Temp\surefire13886033195273532862 2021-04-29T12-02-42_449-jvmRun1 surefire504120999835478750tmp surefire_011764803959754930309tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectinterceptors\ApplyWatermarkSOI\target\test-classes;C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectinterceptors\ApplyWatermarkSOI\target\classes;C:\Users\hanh7700\.m2\repository\com\esri\arcgis\enterprise\sdk\arcgis-enterprise-sdk\10.9.0\arcgis-enterprise-sdk-10.9.0.jar;C:\Users\hanh7700\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\hanh7700\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectinterceptors\ApplyWatermarkSOI\target\test-classes;C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectinterceptors\ApplyWatermarkSOI\target\classes;C:\Users\hanh7700\.m2\repository\com\esri\arcgis\enterprise\sdk\arcgis-enterprise-sdk\10.9.1\arcgis-enterprise-sdk-10.9.1.jar;C:\Users\hanh7700\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\hanh7700\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\hanh7700"/>
     <property name="user.language" value="en"/>
