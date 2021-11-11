@@ -52,7 +52,7 @@ Deploying the SOE from the .soe file (`..\SimpleSoapSOE\bin\Release\NetSimpleSoa
    The URL should be a valid WSDL URL in the following format:
 
    ```
-   http://<serverdomain>/<webadaptorname>/services/USA/MapServer/NetSimpleSoapSOE?wsdl
+   https://<serverdomain>/<webadaptorname>/services/USA/MapServer/NetSimpleSoapSOE?wsdl
    ```
 
    2. Right click ***References*** > ***Add Service Reference...***

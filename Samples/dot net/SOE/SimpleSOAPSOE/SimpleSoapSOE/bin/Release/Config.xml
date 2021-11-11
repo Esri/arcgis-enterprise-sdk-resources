@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ESRI.Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.esri.com/Desktop/AddIns">
+<ESRI.Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.esri.com/Desktop/AddIns">
   <Name>NetSimpleSoapSOE</Name>
   <AddInID>6825f9cd-9b33-4719-a7f9-6ac94d09a0d5</AddInID>
   <Description />

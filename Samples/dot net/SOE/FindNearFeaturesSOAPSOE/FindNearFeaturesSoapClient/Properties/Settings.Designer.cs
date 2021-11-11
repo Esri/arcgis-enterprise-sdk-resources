@@ -38,11 +38,11 @@ namespace NetFindNearFeaturesSOAPClient.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6080/arcgis/services/USA_11/MapServer/NetFindNearFeaturesSoapSOE" +
+        [global::System.Configuration.DefaultSettingValueAttribute("https://devserver.esri.com/arcgis/services/USA/MapServer/NetFindNearFeaturesSoapSOE" +
             "")]
-        public string NetFindNearFeaturesSOAPClient_localhost_USA_11_NetFindNearFeaturesSoapSOE {
+        public string NetFindNearFeaturesSOAPClient_localhost_USA_NetFindNearFeaturesSoapSOE {
             get {
-                return ((string)(this["NetFindNearFeaturesSOAPClient_localhost_USA_11_NetFindNearFeaturesSoapSOE"]));
+                return ((string)(this["NetFindNearFeaturesSOAPClient_localhost_USA_NetFindNearFeaturesSoapSOE"]));
             }
         }
     }

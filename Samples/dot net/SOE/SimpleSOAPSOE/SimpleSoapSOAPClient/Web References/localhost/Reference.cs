@@ -27,15 +27,15 @@ namespace NetSimpleSoapSOAPClient.localhost {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="SimpleSoapSOEBinding", Namespace="http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0")]
-    public partial class USA_11_NetSimpleSoapSOE : System.Web.Services.Protocols.SoapHttpClientProtocol {
+    public partial class USA_NetSimpleSoapSOE : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback EchoInputOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
-        public USA_11_NetSimpleSoapSOE() {
-            this.Url = global::NetSimpleSoapSOAPClient.Properties.Settings.Default.NetSimpleSoapSOAPClient_localhost_USA_11_NetSimpleSoapSOE;
+        public USA_NetSimpleSoapSOE() {
+            this.Url = global::NetSimpleSoapSOAPClient.Properties.Settings.Default.NetSimpleSoapSOAPClient_localhost_USA_NetSimpleSoapSOE;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 //this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

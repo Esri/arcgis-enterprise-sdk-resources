@@ -54,8 +54,8 @@ namespace NetFindNearFeaturesSOAPClient
             try
             {
                 //create instance of proxy
-                var nearFeatsService = new localhost.USA_11_NetFindNearFeaturesSoapSOE();
-                nearFeatsService.Url ="http://localhost:6080/arcgis/services/USA_11/MapServer/NetFindNearFeaturesSoapSOE";
+                var nearFeatsService = new localhost.USA_NetFindNearFeaturesSoapSOE();
+                nearFeatsService.Url ="https://devserver.esri.com/arcgis/services/USA/MapServer/NetFindNearFeaturesSoapSOE";
 
                 //getLayerInfos
                 CustomLayerInfo[] layerInfos = nearFeatsService.GetLayerInfos();
@@ -116,8 +116,8 @@ namespace NetFindNearFeaturesSOAPClient
                                Name = "Custom Layer Object"
                            };
 
-            var nearFeatsService = new localhost.USA_11_NetFindNearFeaturesSoapSOE();
-            nearFeatsService.Url ="http://localhost:6080/arcgis/services/USA_11/MapServer/NetFindNearFeaturesSoapSOE";
+            var nearFeatsService = new localhost.USA_NetFindNearFeaturesSoapSOE();
+            nearFeatsService.Url ="https://devserver.esri.com/arcgis/services/USA/MapServer/NetFindNearFeaturesSoapSOE";
 
 
             var result = nearFeatsService.DemoCustomObjectInput(info);
@@ -162,8 +162,8 @@ namespace NetFindNearFeaturesSOAPClient
                 }
             };
 
-            var nearFeatsService = new localhost.USA_11_NetFindNearFeaturesSoapSOE();
-            nearFeatsService.Url = "http://localhost:6080/arcgis/services/USA_11/MapServer/NetFindNearFeaturesSoapSOE";
+            var nearFeatsService = new localhost.USA_NetFindNearFeaturesSoapSOE();
+            nearFeatsService.Url = "https://devserver.esri.com/arcgis/services/USA/MapServer/NetFindNearFeaturesSoapSOE";
 
             var result = nearFeatsService.DemoArrayOfCustomObjectsInput(infos.ToArray());
 
