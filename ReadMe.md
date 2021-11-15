@@ -1,8 +1,8 @@
 # arcgis-enterprise-sdk-resources
 
-This repository provides samples and code snippets for server object extensions (SOEs) and server object interceptors (SOIs) built with **10.9** ArcGIS Enterprise SDK. Learn more about [ArcGIS Enterprise SDK](https://developers.arcgis.com/enterprise-sdk/).
+This repository provides samples and code snippets for server object extensions (SOEs) and server object interceptors (SOIs) built with **10.9.1** ArcGIS Enterprise SDK. Learn more about [ArcGIS Enterprise SDK](https://developers.arcgis.com/enterprise-sdk/).
 
-> Note: If you want to download the SOE and SOI samples built with 10.8.1 or previous versions of ArcGIS Enterprise SDK, refer to [Releases](https://github.com/Esri/arcgis-enterprise-sdk-resources/releases).
+> Note: If you want to download the SOE and SOI samples built with 10.9 or previous versions of ArcGIS Enterprise SDK, refer to [Releases](https://github.com/Esri/arcgis-enterprise-sdk-resources/releases).
 
 An SOI is capable of intercepting REST, SOAP, and OGC requests and responses of a map service in the following way:
 <p align="center">
@@ -13,6 +13,8 @@ An SOE is capable of extending the functions of a map service in the following w
 <p align="center">
   <img src="images/soe.PNG">
 </p>
+
+To get started, visit [ArcGIS Enterprise SDK Overview](https://developers.arcgis.com/enterprise-sdk/) for SDK prerequisites, installation, guide, and more.
 
 ## Features
 - [Samples](Samples)
@@ -39,7 +41,7 @@ An SOE is capable of extending the functions of a map service in the following w
 
 
 ## Issues
-Find a bug or want to request a new feature?  Please let us know by submitting an issue.
+Find a bug or want to request a new feature?  Please let us know by submitting an issue or [contact Technical Support](https://support.esri.com/en/contact-tech-support).
 
 ## Contributing
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).

@@ -3,7 +3,7 @@
   xmlns="http://schemas.xmlsoap.org/wsdl/"
   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:arcgis="http://www.esri.com/schemas/ArcGIS/2.7.0"
+  xmlns:arcgis="http://www.esri.com/schemas/ArcGIS/2.9.0"
   xmlns:soe="http://www.soe.entsdksamples"
   targetNamespace="http://www.soe.entsdksamples">
   <documentation>Esri Server Object Extension</documentation>
@@ -17,7 +17,7 @@
         </jxb:schemaBindings>
       </xs:appinfo>
     </xs:annotation>
-    <xs:import namespace="http://www.esri.com/schemas/ArcGIS/2.7.0"/>
+    <xs:import namespace="http://www.esri.com/schemas/ArcGIS/2.9.0"/>
       <xs:element name="findNearbyFeatures">
         <xs:complexType>
           <xs:sequence>
@@ -38,7 +38,7 @@
 
     </xs:schema>
 
-    <xs:schema targetNamespace="http://www.esri.com/schemas/ArcGIS/2.7.0" xmlns="http://www.esri.com/schemas/ArcGIS/2.7.0"
+    <xs:schema targetNamespace="http://www.esri.com/schemas/ArcGIS/2.9.0" xmlns="http://www.esri.com/schemas/ArcGIS/2.9.0"
       xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="1.0">
     <xs:annotation>
       <xs:appinfo>
@@ -47,24 +47,6 @@
         </jxb:schemaBindings>
       </xs:appinfo>
     </xs:annotation>
-	      
-<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ProjectedCoordinateSystem">
-    <xs:complexContent mixed="false">
-      <xs:extension base="SpatialReference"/>
-    </xs:complexContent>
-  </xs:complexType>
-	      
-<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GeographicCoordinateSystem">
-    <xs:complexContent mixed="false">
-      <xs:extension base="SpatialReference"/>
-    </xs:complexContent>
-  </xs:complexType>
-	      
-<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UnknownCoordinateSystem">
-    <xs:complexContent mixed="false">
-      <xs:extension base="SpatialReference"/>
-    </xs:complexContent>
-  </xs:complexType>
 	      
 <xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GeodataXform">
     <xs:annotation>
@@ -128,6 +110,24 @@
           <xs:element minOccurs="0" name="Dy" type="xs:double"/>
         </xs:sequence>
       </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+	      
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ProjectedCoordinateSystem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="SpatialReference"/>
+    </xs:complexContent>
+  </xs:complexType>
+	      
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GeographicCoordinateSystem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="SpatialReference"/>
+    </xs:complexContent>
+  </xs:complexType>
+	      
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UnknownCoordinateSystem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="SpatialReference"/>
     </xs:complexContent>
   </xs:complexType>
 	      
@@ -256,6 +256,11 @@
       <xs:enumeration value="esriFieldTypeXML">
         <xs:annotation>
           <xs:documentation>XML Document</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="esriFieldTypeBigInteger">
+        <xs:annotation>
+          <xs:documentation>Big Integer.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -576,6 +581,11 @@
       <xs:element minOccurs="0" name="RasterDef" type="RasterDef">
         <xs:annotation>
           <xs:documentation>The raster column definition.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+	  <xs:element minOccurs="0" name="DBMSType" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>The database type of the field.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>

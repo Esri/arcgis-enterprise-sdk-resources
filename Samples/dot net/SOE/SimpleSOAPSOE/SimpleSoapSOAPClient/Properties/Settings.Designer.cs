@@ -26,10 +26,10 @@ namespace NetSimpleSoapSOAPClient.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:6080/arcgis/services/USA_11/MapServer/NetSimpleSoapSOE")]
-        public string NetSimpleSoapSOAPClient_localhost_USA_11_NetSimpleSoapSOE {
+        [global::System.Configuration.DefaultSettingValueAttribute("https://devserver.esri.com/arcgis/services/USA/MapServer/NetSimpleSoapSOE")]
+        public string NetSimpleSoapSOAPClient_localhost_USA_NetSimpleSoapSOE {
             get {
-                return ((string)(this["NetSimpleSoapSOAPClient_localhost_USA_11_NetSimpleSoapSOE"]));
+                return ((string)(this["NetSimpleSoapSOAPClient_localhost_USA_NetSimpleSoapSOE"]));
             }
         }
     }

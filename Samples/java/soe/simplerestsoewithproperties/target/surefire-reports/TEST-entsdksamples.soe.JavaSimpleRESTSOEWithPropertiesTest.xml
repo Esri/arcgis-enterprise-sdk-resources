@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="entsdksamples.soe.JavaSimpleRESTSOEWithPropertiesTest" time="0.056" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="entsdksamples.soe.JavaSimpleRESTSOEWithPropertiesTest" time="0.06" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.specification.version" value="11"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectextensions\simplerestsoewithproperties\target\test-classes;C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectextensions\simplerestsoewithproperties\target\classes;C:\Users\hanh7700\.m2\repository\com\esri\arcgis\enterprise\sdk\arcgis-enterprise-sdk\10.9.0\arcgis-enterprise-sdk-10.9.0.jar;C:\Users\hanh7700\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\hanh7700\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
-    <property name="java.vm.vendor" value="AdoptOpenJDK"/>
+    <property name="java.class.path" value="C:\HS\Github\arcgis-enterprise-sdk-resources\Samples\java\soe\simplerestsoewithproperties\target\test-classes;C:\HS\Github\arcgis-enterprise-sdk-resources\Samples\java\soe\simplerestsoewithproperties\target\classes;C:\Users\hanh7700\.m2\repository\com\esri\arcgis\enterprise\sdk\arcgis-enterprise-sdk\10.9.1\arcgis-enterprise-sdk-10.9.1.jar;C:\Users\hanh7700\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\hanh7700\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.vm.vendor" value="Eclipse Foundation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
-    <property name="java.vendor.url" value="https://adoptopenjdk.net/"/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
     <property name="user.timezone" value="America/Los_Angeles"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="os.name" value="Windows 10"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
-    <property name="sun.boot.library.path" value="C:\Program Files\AdoptOpenJDK\jdk-11.0.10.9-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\hanh7700\AppData\Local\Temp\surefire17364909108917030582\surefirebooter3924159494628156469.jar C:\Users\hanh7700\AppData\Local\Temp\surefire17364909108917030582 2021-04-29T12-02-26_222-jvmRun1 surefire9756140020706640532tmp surefire_03797072380398379103tmp"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Foundation\jdk-11.0.12.7-hotspot\bin"/>
+    <property name="sun.java.command" value="C:\Users\hanh7700\AppData\Local\Temp\1\surefire18179897159115217683\surefirebooter15790622725418312149.jar C:\Users\hanh7700\AppData\Local\Temp\1\surefire18179897159115217683 2021-11-10T11-29-09_723-jvmRun1 surefire5679762472007000073tmp surefire_013050725465210169179tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectextensions\simplerestsoewithproperties\target\test-classes;C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectextensions\simplerestsoewithproperties\target\classes;C:\Users\hanh7700\.m2\repository\com\esri\arcgis\enterprise\sdk\arcgis-enterprise-sdk\10.9.0\arcgis-enterprise-sdk-10.9.0.jar;C:\Users\hanh7700\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\hanh7700\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="surefire.test.class.path" value="C:\HS\Github\arcgis-enterprise-sdk-resources\Samples\java\soe\simplerestsoewithproperties\target\test-classes;C:\HS\Github\arcgis-enterprise-sdk-resources\Samples\java\soe\simplerestsoewithproperties\target\classes;C:\Users\hanh7700\.m2\repository\com\esri\arcgis\enterprise\sdk\arcgis-enterprise-sdk\10.9.1\arcgis-enterprise-sdk-10.9.1.jar;C:\Users\hanh7700\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\hanh7700\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\hanh7700"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.version.date" value="2021-01-19"/>
-    <property name="java.home" value="C:\Program Files\AdoptOpenJDK\jdk-11.0.10.9-hotspot"/>
+    <property name="java.version.date" value="2021-07-20"/>
+    <property name="java.home" value="C:\Program Files\Eclipse Foundation\jdk-11.0.12.7-hotspot"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectextensions\simplerestsoewithproperties"/>
+    <property name="basedir" value="C:\HS\Github\arcgis-enterprise-sdk-resources\Samples\java\soe\simplerestsoewithproperties"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\hanh7700\AppData\Local\Temp\surefire17364909108917030582\surefirebooter3924159494628156469.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\hanh7700\AppData\Local\Temp\1\surefire18179897159115217683\surefirebooter15790622725418312149.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="java.runtime.version" value="11.0.10+9"/>
+    <property name="java.runtime.version" value="11.0.12+7"/>
     <property name="user.name" value="hanh7700"/>
     <property name="path.separator" value=";"/>
     <property name="os.version" value="10.0"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="file.encoding" value="Cp1252"/>
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
-    <property name="java.vendor.version" value="AdoptOpenJDK"/>
+    <property name="java.vendor.version" value="Temurin-11.0.12+7"/>
     <property name="localRepository" value="C:\Users\hanh7700\.m2\repository"/>
-    <property name="java.vendor.url.bug" value="https://github.com/AdoptOpenJDK/openjdk-support/issues"/>
-    <property name="java.io.tmpdir" value="C:\Users\hanh7700\AppData\Local\Temp\"/>
-    <property name="java.version" value="11.0.10"/>
-    <property name="user.dir" value="C:\Program Files\ArcGIS\EnterpriseSDK\Samples\Java\serverobjectextensions\simplerestsoewithproperties"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="C:\Users\hanh7700\AppData\Local\Temp\1\"/>
+    <property name="java.version" value="11.0.12"/>
+    <property name="user.dir" value="C:\HS\Github\arcgis-enterprise-sdk-resources\Samples\java\soe\simplerestsoewithproperties"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="java.library.path" value="C:\Program Files\AdoptOpenJDK\jdk-11.0.10.9-hotspot\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Library\bin;C:\Program Files\ArcGIS\Pro\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.10.9-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0;C:\windows\System32\OpenSSH;C:\Program Files\dotnet;C:\apache-maven-3.6.3\bin;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86;C:\Program Files\PuTTY;C:\Users\hanh7700\Downloads\apache-cxf-3.4.0\apache-cxf-3.4.0\lib;C:\Program Files\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\nodejs;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\dotnet;C:\Users\hanh7700\AppData\Local\Microsoft\WindowsApps;C:\Users\hanh7700\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\hanh7700\AppData\Roaming\npm;C:\Users\hanh7700\.dotnet\tools;C:\Users\hanh7700\AppData\Local\Programs\Fiddler;C:\Users\hanh7700\AppData\Local\GitHubDesktop\bin;C:\Users\hanh7700\.dotnet\tools;C:\Program Files\ArcGIS\Pro\bin\Python\Scripts;C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3;C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Scripts;."/>
+    <property name="java.library.path" value="C:\Program Files\Eclipse Foundation\jdk-11.0.12.7-hotspot\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Library\bin;C:\Program Files\ArcGIS\Pro\bin;C:\Program Files\Eclipse Foundation\jdk-11.0.12.7-hotspot\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0;C:\windows\System32\OpenSSH;C:\Program Files\dotnet;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X64;C:\Program Files (x86)\Pulse Secure\VC142.CRT\X86;C:\Users\hanh7700\Downloads\apache-cxf-3.4.0\apache-cxf-3.4.0\lib;C:\Program Files\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\nodejs;C:\Program Files (x86)\dotnet;C:\Users\hanh7700\Documents\ArcGIS 3rd Party\OracleDatabaseInstantClient12cR1\Windows64\instantclient-basic-windows.x64-12.1.0.1.0\instantclient_12_1;C:\apache-maven-3.8.1\bin;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\PuTTY;C:\apache-maven-3.8.2\bin;C:\Users\hanh7700\Downloads\python3.9\Scripts;C:\Users\hanh7700\Downloads\python3.9;C:\Users\hanh7700\AppData\Local\Microsoft\WindowsApps;C:\Users\hanh7700\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\hanh7700\AppData\Roaming\npm;C:\Users\hanh7700\.dotnet\tools;C:\Users\hanh7700\AppData\Local\Programs\Fiddler;C:\Users\hanh7700\AppData\Local\GitHubDesktop\bin;C:\Users\hanh7700\.dotnet\tools;C:\Program Files\ArcGIS\Pro\bin\Python\Scripts;C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3;C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Scripts;."/>
     <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.vendor" value="AdoptOpenJDK"/>
-    <property name="java.vm.version" value="11.0.10+9"/>
+    <property name="java.vendor" value="Eclipse Foundation"/>
+    <property name="java.vm.version" value="11.0.12+7"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="testGetSchema" classname="entsdksamples.soe.JavaSimpleRESTSOEWithPropertiesTest" time="0.015"/>
+  <testcase name="testGetSchema" classname="entsdksamples.soe.JavaSimpleRESTSOEWithPropertiesTest" time="0.016"/>
   <testcase name="testGetRootResource" classname="entsdksamples.soe.JavaSimpleRESTSOEWithPropertiesTest" time="0"/>
 </testsuite>

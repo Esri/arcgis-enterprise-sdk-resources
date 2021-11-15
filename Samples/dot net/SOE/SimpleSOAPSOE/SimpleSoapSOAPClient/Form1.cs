@@ -35,8 +35,8 @@ namespace NetSimpleSoapSOAPClient
             {
                 //create instance of proxy                   
 
-                USA_11_NetSimpleSoapSOE echoService = new USA_11_NetSimpleSoapSOE();
-                echoService.Url = "http://localhost:6080/arcgis/services/USA_11/MapServer/NetSimpleSoapSOE";
+                USA_NetSimpleSoapSOE echoService = new USA_NetSimpleSoapSOE();
+                echoService.Url = "https://devserver.esri.com/arcgis/services/USA/MapServer/NetSimpleSoapSOE";
 
                 label2.Text = echoService.EchoInput(textBox1.Text);
             }

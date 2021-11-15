@@ -63,7 +63,7 @@ Deploying the SOE from the .soe file (`..\bin\Release\NetFindNearFeaturesSoapSOE
    
       ``` c#
       var nearFeatsService = new localhost.USA_NetFindNearFeaturesSoapSOE();
-      nearFeatsService.Url = "http://<serverdomain>/<webadaptorname>/services/USA/MapServer/NetFindNearFeaturesSoapSOE";
+      nearFeatsService.Url = "https://<serverdomain>/<webadaptorname>/services/USA/MapServer/NetFindNearFeaturesSoapSOE";
       ```
    3. Ensure that `nearFeatsService` references your SOAP SOE and `nearFeatsService.Url` is correct
 4. Run the application and click the buttons. 

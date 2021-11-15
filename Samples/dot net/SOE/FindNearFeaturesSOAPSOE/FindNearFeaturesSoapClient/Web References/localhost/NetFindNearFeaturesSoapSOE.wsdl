@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <definitions xmlns:e="http://examples.esri.com/schemas/NetFindNearFeaturesSoapSOE/1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://examples.esri.com/schemas/NetFindNearFeaturesSoapSOE/1.0" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
-    <xs:schema xmlns="http://www.esri.com/schemas/ArcGIS/2.7.0" targetNamespace="http://www.esri.com/schemas/ArcGIS/2.7.0">
+    <xs:schema xmlns="http://www.esri.com/schemas/ArcGIS/2.9.0" targetNamespace="http://www.esri.com/schemas/ArcGIS/2.9.0">
       <xs:element name="GetDocumentInfo">
         <xs:complexType />
       </xs:element>
@@ -5682,8 +5682,8 @@
         </xs:sequence>
       </xs:complexType>
     </xs:schema>
-    <xs:schema xmlns="http://www.esri.com/schemas/ArcGIS/2.7.0" xmlns:tns="http://examples.esri.com/schemas/NetFindNearFeaturesSoapSOE/1.0" targetNamespace="http://examples.esri.com/schemas/NetFindNearFeaturesSoapSOE/1.0">
-      <xs:import namespace="http://www.esri.com/schemas/ArcGIS/2.7.0" />
+    <xs:schema xmlns="http://www.esri.com/schemas/ArcGIS/2.9.0" xmlns:tns="http://examples.esri.com/schemas/NetFindNearFeaturesSoapSOE/1.0" targetNamespace="http://examples.esri.com/schemas/NetFindNearFeaturesSoapSOE/1.0">
+      <xs:import namespace="http://www.esri.com/schemas/ArcGIS/2.9.0" />
       <xs:element name="GetLayerInfos">
         <xs:complexType />
       </xs:element>
@@ -5833,9 +5833,9 @@
       </output>
     </operation>
   </binding>
-  <service name="USA_11_NetFindNearFeaturesSoapSOE">
+  <service name="USA_NetFindNearFeaturesSoapSOE">
     <port name="FindNearFeaturesSoapSOEPortType" binding="e:FindNearFeaturesSoapSOEBinding">
-      <soap:address location="http://localhost:6080/arcgis/services/USA_11/MapServer/NetFindNearFeaturesSoapSOE" />
+      <soap:address location="https://devserver.esri.com/arcgis/services/USA/MapServer/NetFindNearFeaturesSoapSOE" />
     </port>
   </service>
 </definitions>

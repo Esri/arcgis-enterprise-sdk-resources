@@ -145,16 +145,16 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:6080/arcgis/services/USA_11/MapServer/NetSimpleSoapSOE%3fwsdl">
+    <WebReferenceUrl Include="https://devserver.esri.com/arcgis/services/USA/MapServer/NetSimpleSoapSOE%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\localhost\</RelPath>
-      <UpdateFromURL>http://localhost:6080/arcgis/services/USA_11/MapServer/NetSimpleSoapSOE%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>https://devserver.esri.com/arcgis/services/USA/MapServer/NetSimpleSoapSOE%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>NetSimpleSoapSOAPClient_localhost_USA_11_NetSimpleSoapSOE</CachedSettingsPropName>
+      <CachedSettingsPropName>NetSimpleSoapSOAPClient_localhost_USA_NetSimpleSoapSOE</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

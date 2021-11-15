@@ -5,8 +5,8 @@
     <Setting Name="fdfd" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="NetFindNearFeaturesSOAPClient_localhost_USA_11_NetFindNearFeaturesSoapSOE" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:6080/arcgis/services/USA_11/MapServer/NetFindNearFeaturesSoapSOE</Value>
+    <Setting Name="NetFindNearFeaturesSOAPClient_localhost_USA_NetFindNearFeaturesSoapSOE" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://devserver.esri.com/arcgis/services/USA/MapServer/NetFindNearFeaturesSoapSOE</Value>
     </Setting>
   </Settings>
 </SettingsFile>
