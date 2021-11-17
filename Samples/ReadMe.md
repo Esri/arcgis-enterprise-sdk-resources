@@ -37,6 +37,7 @@ The following three services are used in the samples:
   * [Simple SOAP SOE](dot%20net/SOE/SimpleSOAPSOE)
   * [Find Nearby Features SOAP SOE](dot%20net/SOE/FindNearFeaturesSOAPSOE)
   * [Utility Network Tracing REST SOE](dot%20net/SOE/UNTracingRESTSOE) (From 10.8.1)
+  * [Query Network Dataset REST SOE](dot%20net/SOE/QueryNetworkDatasetRESTSOE) (From 10.9.1) 🆕
 
 * **.NET SOI Samples**
   * [Simple Logger SOI](dot%20net/SOI/NetSimpleLoggerSOI)
@@ -44,10 +45,10 @@ The following three services are used in the samples:
   * [Layer Access SOI](dot%20net/SOI/NetLayerAccessSOI)
   * [Operation Access SOI](dot%20net/SOI/NetOperationAccessSOI)
   * [Spatial Restriction SOI](dot%20net/SOI/NetSpatialRestrictionSOI)
-  * [Utility Network Edit Areas Collaboration REST SOI](dot%20net/SOI/NetUNEditAreasSOI) (From 10.8.1) 🆕
+  * [Utility Network Edit Areas Collaboration REST SOI](dot%20net/SOI/NetUNEditAreasSOI) (From 10.8.1)
 
 * **.NET SOAP Client Samples**
-  * [Overview of building .NET SOAP client application](dot%20net/.NET%20SOAP%20Client) 🆕
+  * [Overview of building .NET SOAP client application](dot%20net/.NET%20SOAP%20Client)
   
 ### For Java
 * **Java SOE Samples**
@@ -68,4 +69,4 @@ The following three services are used in the samples:
   * [Spatial Restriction SOI](java/soi/SpatialRestrictionSOI)
   
 * **Java SOAP Client Samples**
-  * [Overview of building Java SOAP client application](java/Java%20SOAP%20Client) 🆕
+  * [Overview of building Java SOAP client application](java/Java%20SOAP%20Client)
