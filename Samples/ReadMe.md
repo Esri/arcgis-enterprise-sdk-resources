@@ -2,7 +2,7 @@
 
 The SOE samples and SOI samples in this repository are also included with the installation of ArcGIS Enterprise SDK. It's located at `<ArcGIS_Enterprise_SDK_Installation_Path>\Samples`, by default, `C:\Program Files\ArcGIS\EnterpriseSDK\Samples`.
 
-> Note: This repository contains SOE and SOI samples built with **10.9**, the latest version of ArcGIS Enterprise SDK. If you want to download the SOE and SOI samples built with 10.8.1 or previous versions of ArcGIS Enterprise SDK, refer to [Releases](https://github.com/Esri/arcgis-enterprise-sdk-resources/releases).
+> Note: This repository contains SOE and SOI samples built with **10.9.1**, the latest version of ArcGIS Enterprise SDK. If you want to download the SOE and SOI samples built with 10.9 or previous versions of ArcGIS Enterprise SDK, refer to [Releases](https://github.com/Esri/arcgis-enterprise-sdk-resources/releases).
 
 The sample data used to publish the testing services can be found at `<ArcGIS_Enterprise_SDK_Installation_Path>\Samples\EnterpriseSDKSampleData.zip`, by default, `C:\Program Files\ArcGIS\EnterpriseSDK\Samples\EnterpriseSDKSampleData.zip`.
 
@@ -38,6 +38,7 @@ The following three services are used in the samples:
   * [Find Nearby Features SOAP SOE](dot%20net/SOE/FindNearFeaturesSOAPSOE)
   * [Utility Network Tracing REST SOE](dot%20net/SOE/UNTracingRESTSOE) (From 10.8.1)
   * [Query Network Dataset REST SOE](dot%20net/SOE/QueryNetworkDatasetRESTSOE) (From 10.9.1) 🆕
+  * [Topology REST SOE](dot%20net/SOE/TopologyRESTSOE) (From 10.9.1) 🆕
 
 * **.NET SOI Samples**
   * [Simple Logger SOI](dot%20net/SOI/NetSimpleLoggerSOI)
