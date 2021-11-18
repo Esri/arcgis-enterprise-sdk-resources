@@ -18,7 +18,7 @@ Deploying the SOE from the .soe file (`..\TopologyRESTSOE\bin\Release\TopologyRE
 
 ## Sample data
 
-The SOE example uses the sample file geodatabase available in [ArcGIS Online]("https://www.arcgis.com/home/item.html?id=e3c819fb20f04211805adfae425f2b4c"). Download and extract this data to ***C:\Data\\***, so the final geodatabase path will be ***C:\Data\CookCounty.gdb***. *(NOTE: The ArcGIS server account may need permission to access the file geodatbase.)*
+The SOE example uses the sample file geodatabase available in [ArcGIS Online](https://www.arcgis.com/home/item.html?id=e3c819fb20f04211805adfae425f2b4c). Download and extract this data to ***C:\Data\\***, so the final geodatabase path will be ***C:\Data\CookCounty.gdb***. *(NOTE: The ArcGIS server account may need permission to access the file geodatbase.)*
 
 ## Instructions
 
