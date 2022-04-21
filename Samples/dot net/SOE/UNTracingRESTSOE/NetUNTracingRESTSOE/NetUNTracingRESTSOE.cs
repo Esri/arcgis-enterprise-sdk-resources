@@ -66,7 +66,7 @@ namespace NetUNTracingRESTSOE
         private const string MV_TIER_NAME = "Medium Voltage Radial";
         private static int MV_TIER_CODE = 0;
         // Electric Distribution Device Layer Name and Source ID
-        private const string DEVICE_LAYER_NAME = "Electric Distribution Device";
+        private const string DEVICE_LAYER_NAME = "Electric Device";
         private const int DEVICE_SOURCE_ID = 9;
         // Medium Voltage Transformer Asset Group and Load Terminal ID
         private const int MV_XFR_ASSETGROUP = 15;
