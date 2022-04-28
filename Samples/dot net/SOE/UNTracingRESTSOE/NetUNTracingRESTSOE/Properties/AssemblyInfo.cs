@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("NetUNTracingRESTSOE")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -37,9 +37,9 @@ using System.Runtime.InteropServices;
 
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("NetUNTracingRESTSOE", "12a0f14c-e2c2-4fd4-ac34-f3bb115bacbd",
-    Author = "dani8011",
-    Company = "",
-    Date = "5/14/2020 10:43:35 AM",
+    Author = "ESRI",
+    Company = "ESRI",
+    Date = "4/14/2022 10:43:35 AM",
     Description = "",
     TargetProduct = "Server",
     TargetVersion = "11.0",
