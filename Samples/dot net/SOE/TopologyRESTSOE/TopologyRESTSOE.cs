@@ -102,7 +102,7 @@ namespace TopologyRESTSOE
     {
       RestResource rootRes = new RestResource(soe_name, false, RootResHandler);
 
-      RestOperation topologyOperation = new RestOperation("Query Adjoining Parcels",
+      RestOperation topologyOperation = new RestOperation("QueryAdjoiningParcels",
                                                 new string[] { "ParcelObjectID" },
                                                 new string[] { "json" },
                                                 TopologyOperationHandler);

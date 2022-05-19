@@ -90,40 +90,6 @@ namespace NetUNTracingRESTSOE
       return null;
     }
 
-
-    /**
-    * This method returns true if the current extension is of type 'Utility Network Server'
-    */
-    public bool IsUNExtension()
-    {
-      bool isUNService = false;
-      String extensionName = (String)this.GetServerProperty("ExtensionName");
-      if (extensionName != null && extensionName.Equals("UtilityNetworkServer", StringComparison.OrdinalIgnoreCase))
-      {
-        isUNService = true;
-      }
-
-      return isUNService;
-    }
-
-    /**
-    * This method returns a Server property value
-    */
-    public Object GetServerProperty(string propertyName)
-    {
-      Object propertyValue = null;
-      Type envMgrType = Type.GetTypeFromProgID("esriSystem.EnvironmentManager");
-      object envMgrObj = Activator.CreateInstance(envMgrType);
-      IEnvironmentManager envMgr = envMgrObj as IEnvironmentManager;
-      UID envUID = new UIDClass();
-      envUID.Value = "{32D4C328-E473-4615-922C-63C108F55E60}";
-      IServerEnvironment2 serverEnvironment = (IServerEnvironment2)envMgr.GetEnvironment(envUID);
-      IPropertySet serverProps = serverEnvironment.Properties;
-      propertyValue = serverProps.GetProperty(propertyName);
-
-      return propertyValue;
-    }
-
     public JSONObject CreateErrorJSON(int code, string message, int extendedCode = 0, string detailsContent = "")
     {
       JSONObject response = new JSONObject();
