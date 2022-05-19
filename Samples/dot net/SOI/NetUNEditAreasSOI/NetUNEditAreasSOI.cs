@@ -18,12 +18,8 @@ using ESRI.ArcGIS.Server;
 using ESRI.Server.SOESupport;
 using ESRI.Server.SOESupport.SOI;
 using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Text.Json;
 
 //This is REST SOE template of Enterprise SDK
 
@@ -41,7 +37,7 @@ namespace NetUNEditAreasSOI
       DisplayName = "NetUNEditAreasSOI",
       Properties = "",
       SupportsSharedInstances = false)]
-  public class NetUNEditAreasSOI : IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler
+  public class NetUNEditAreasSOI : IServerObjectExtension, IRESTRequestHandler
   {
     private string _soiName;
     private IServerObjectHelper _soHelper;
@@ -56,7 +52,7 @@ namespace NetUNEditAreasSOI
     private const string _lastUpdateFName = "LASTUPDATE";
     private const string _editCountFName = "EDITCOUNT";
     private const string _versionNameFName = "VERSIONNAME";
-    private const string _errorCodeFName = "ERRORCODE";
+    private const string _errorCodeFName = "ERRORCODE";  
 
     public NetUNEditAreasSOI()
     {
@@ -99,7 +95,8 @@ namespace NetUNEditAreasSOI
       responseProperties = null;
       _serverLog.LogMessage(ServerLogger.msgType.infoStandard, _soiName + ".HandleRESTRequest()",
           200, "Request received in Sample Object Interceptor for handleRESTRequest");
-
+      
+      
       // Pre-processing
       // Only intercept calls to UtilityNetworkServer/validateNetworkTopology operation
       if (_soiUtil.GetServerExtensionName() == "UtilityNetworkServer" && operationName == "validateNetworkTopology")
@@ -108,7 +105,7 @@ namespace NetUNEditAreasSOI
         string versionName = null;
         JSONObject inputJSON = _soiUtil.ParseParameters(operationInput);
         inputJSON.TryGetValueAsString("gdbVersion", out versionName);
-
+        // System.Diagnostics.Debugger.Launch();
         if (!String.IsNullOrEmpty(versionName) && !versionName.Equals("sde.DEFAULT", StringComparison.OrdinalIgnoreCase))
           response = ProcessEditAreas(_soHelper.ServerObject, versionName);
 
@@ -147,91 +144,6 @@ namespace NetUNEditAreasSOI
       }
 
       return response;
-    }
-
-    #endregion
-
-    #region SOAP interceptors
-
-    public byte[] HandleStringWebRequest(esriHttpMethod httpMethod, string requestURL,
-        string queryString, string Capabilities, string requestData,
-        out string responseContentType, out esriWebResponseDataType respDataType)
-    {
-      _serverLog.LogMessage(ServerLogger.msgType.infoStandard, _soiName + ".HandleStringWebRequest()",
-          200, "Request received in Sample Object Interceptor for HandleStringWebRequest");
-
-      /*
-       * Add code to manipulate requests here
-       */
-
-      IWebRequestHandler webRequestHandler = _restSOIHelper.FindRequestHandlerDelegate<IWebRequestHandler>();
-      if (webRequestHandler != null)
-      {
-        return webRequestHandler.HandleStringWebRequest(
-                httpMethod, requestURL, queryString, Capabilities, requestData, out responseContentType, out respDataType);
-      }
-
-      responseContentType = null;
-      respDataType = esriWebResponseDataType.esriWRDTPayload;
-      //Insert error response here.
-      return null;
-    }
-
-    public byte[] HandleBinaryRequest(ref byte[] request)
-    {
-      _serverLog.LogMessage(ServerLogger.msgType.infoStandard, _soiName + ".HandleBinaryRequest()",
-            200, "Request received in Sample Object Interceptor for HandleBinaryRequest");
-
-      /*
-       * Add code to manipulate requests here
-       */
-
-      IRequestHandler requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler>();
-      if (requestHandler != null)
-      {
-        return requestHandler.HandleBinaryRequest(request);
-      }
-
-      //Insert error response here.
-      return null;
-    }
-
-    public byte[] HandleBinaryRequest2(string Capabilities, ref byte[] request)
-    {
-      _serverLog.LogMessage(ServerLogger.msgType.infoStandard, _soiName + ".HandleBinaryRequest2()",
-            200, "Request received in Sample Object Interceptor for HandleBinaryRequest2");
-
-      /*
-       * Add code to manipulate requests here
-       */
-
-      IRequestHandler2 requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler2>();
-      if (requestHandler != null)
-      {
-        return requestHandler.HandleBinaryRequest2(Capabilities, request);
-      }
-
-      //Insert error response here.
-      return null;
-    }
-
-    public string HandleStringRequest(string Capabilities, string request)
-    {
-      _serverLog.LogMessage(ServerLogger.msgType.infoStandard, _soiName + ".HandleStringRequest()",
-             200, "Request received in Sample Object Interceptor for HandleStringRequest");
-
-      /*
-       * Add code to manipulate requests here
-       */
-
-      IRequestHandler requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler>();
-      if (requestHandler != null)
-      {
-        return requestHandler.HandleStringRequest(Capabilities, request);
-      }
-
-      //Insert error response here.
-      return null;
     }
 
     #endregion

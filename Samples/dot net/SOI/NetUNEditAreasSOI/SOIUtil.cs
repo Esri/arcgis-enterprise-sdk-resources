@@ -90,41 +90,30 @@ namespace NetUNEditAreasSOI
     /**
      * This method returns the utility network dataset.
     */
-    public IDataset GetUNDataset(IServerObject serverObject, string versionName = null)
+    public IDataset GetUNDataset(IServerObject serverObject, string versionName)
     {
       IMapServer mapService = (MapServer)serverObject;
       IMapServerDataAccess mapServerDataAccess = (IMapServerDataAccess)serverObject;
 
       // Get feature class from any layer
-      IFeatureClass fc = (IFeatureClass)mapServerDataAccess.GetDataSource(mapService.DefaultMapName, 0);
+      IFeatureClass featureClass = (IFeatureClass)mapServerDataAccess.GetDataSource(mapService.DefaultMapName, 0);
 
       // Get the container feature dataset
-      IFeatureDataset fd = fc.FeatureDataset;
+      IFeatureDataset featureDataset = featureClass.FeatureDataset;
 
       // Open feature dataset in specified version
-      if (!String.IsNullOrEmpty(versionName))
+      if (!string.IsNullOrEmpty(versionName))
       {
-        IWorkspace workspace = fd.Workspace;
+        IWorkspace workspace = featureDataset.Workspace;
         IVersionedWorkspace versionedWorkspace = (IVersionedWorkspace)workspace;
         IVersion childVersion = versionedWorkspace.FindVersion(versionName);
-        IFeatureWorkspace childFWS = (IFeatureWorkspace)childVersion;
-        fd = childFWS.OpenFeatureDataset(fd.Name);
+        IFeatureWorkspace featureWorkspace = (IFeatureWorkspace)childVersion;
+        string featureDatasetName = featureDataset.Name;   
+
+        IDataset utilityNetworkDataset = featureWorkspace.OpenExtensionDataset(esriDatasetType.esriDTUtilityNetwork, featureDatasetName);
+        return utilityNetworkDataset;
       }
-
-      // Loop through contained datasets to find the UN one
-      IDataset ds = (IDataset)fd;
-      IEnumDataset enumSubDS = ds.Subsets;
-      IDataset subDS = enumSubDS.Next();
-
-      while (subDS != null)
-      {
-        if (subDS.Type == esriDatasetType.esriDTUtilityNetwork)
-          return subDS;
-        subDS = enumSubDS.Next();
-      }
-
       return null;
-
     }
 
 
