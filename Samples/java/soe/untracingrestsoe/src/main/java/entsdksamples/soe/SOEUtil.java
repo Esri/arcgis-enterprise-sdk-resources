@@ -5,6 +5,7 @@ import com.esri.arcgis.carto.IMapLayerInfo;
 import com.esri.arcgis.carto.IMapLayerInfos;
 import com.esri.arcgis.carto.IMapServer;
 import com.esri.arcgis.carto.IMapServerInfo;
+import com.esri.arcgis.geodatabase.*;
 import com.esri.arcgis.system.*;
 
 import java.io.IOException;
@@ -63,32 +64,36 @@ public class SOEUtil {
     }
 
     /**
-     * This method returns true if the current extension is of type 'Utility Network Server'
+     * This method returns the NetworkSourceID of the UN feature class usage type
      */
-    public boolean isUNExtension() throws IOException {
-        boolean isUNService = false;
-        String extensionName = (String)this.getServerProperty("ExtensionName");
-        if (extensionName != null && extensionName.equalsIgnoreCase("UtilityNetworkServer"))
+    public Integer GetNetworkSourceIdByFeatureClassUsageType(IDEUtilityNetworkProxy deUtilityNetwork, String domainNetworkName, int esriUNFCUTDevice) throws IOException {
+        IArray domainNetworks = deUtilityNetwork.getDomainNetworks();
+
+        for (int i = 0; i < domainNetworks.getCount(); i++)
         {
-            isUNService = true;
+            IDomainNetwork domainNetwork = (IDomainNetwork) domainNetworks.getElement(i);
+            if (domainNetwork != null && domainNetwork.getDomainNetworkName().equals(domainNetworkName))
+            {
+                IArray networkSources = domainNetwork.getSources();
+                for (int j = 0; j < networkSources.getCount(); j++)
+                {
+                    INetworkSource networkSource = (INetworkSource) networkSources.getElement(j);
+                    if (networkSource != null)
+                    {
+                        int networkSourceID = networkSource.getID();
+
+                        IUtilityNetworkSource utilityNetworkSource = (IUtilityNetworkSource)networkSource;
+                        if (utilityNetworkSource != null)
+                        {
+                            if (utilityNetworkSource.getUtilityNetworkFeatureClassUsageType() == esriUNFCUTDevice)
+                            {
+                                return networkSourceID;
+                            }
+                        }
+                    }
+                }
+            }
         }
-
-        return isUNService;
-    }
-
-    /**
-     * This method returns a Server property value
-     */
-    public Object getServerProperty(String propertyName) throws IOException {
-        Object propertyValue = null;
-        EnvironmentManager envMgr = new EnvironmentManager();
-        UID envUID = new UID();
-        envUID.setValue("{32d4c328-e473-4615-922c-63c108f55e60}");
-        IServerEnvironment serverEnvironment = new IServerEnvironment2Proxy(envMgr.getEnvironment(envUID));
-        IPropertySet serverProps = serverEnvironment.getProperties();
-        propertyValue = serverProps.getProperty(propertyName);
-        Cleaner.release(envMgr);
-
-        return propertyValue;
+        return null;
     }
 }

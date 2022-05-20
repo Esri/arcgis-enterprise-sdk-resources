@@ -65,19 +65,18 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
     // Naperville Electric utility network properties
     // >>> Modify these values to use with a different UN dataset
     // Electric Distribution Domain
-    private static String DOMAIN_NETWORK = "ElectricDistribution";
+    private static String DOMAIN_NETWORK = "Electric";
     // Medium Voltage Tier Name and Code
-    private static String MV_TIER_NAME = "Medium Voltage Radial";
+    private static String MV_TIER_NAME = "Electric Distribution";
     private static Integer MV_TIER_CODE = 0;
     // Electric Distribution Device Layer Name and Source ID
-    private static String DEVICE_LAYER_NAME = "Electric Distribution Device";
-    private static Integer DEVICE_SOURCE_ID = 9;
+    private static String DEVICE_LAYER_NAME = "Electric Device";
     // Medium Voltage Transformer Asset Group and Load Terminal ID
-    private static Integer MV_XFR_ASSETGROUP = 15;
+    private static Integer MV_XFR_ASSETGROUP = 38;
     private static Integer MV_XFR_TERMINAL_ID = 8;
     // Service Point Asset Group and Asset Types
-    private static Integer LV_SERVICE_ASSETGROUP = 11;
-    public static Integer[] LV_SERVICE_ASSETTYPES = {0, 401, 402, 403};
+    private static Integer LV_SERVICE_ASSETGROUP = 22;
+    public static Integer[] LV_SERVICE_ASSETTYPES = {421, 422, 423, 424};
 
     public JavaUNTracingRESTSOE() throws Exception {
         super();
@@ -403,17 +402,6 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
 
         try {
             String xfrAssetID = operationInput.getString("transformerAssetId");
-            if (xfrAssetID != null && xfrAssetID.length() > 0)
-            {
-                Integer assetNumber = operationInput.getInt("transformerAssetId");
-                if (assetNumber == null) {
-                    String message = "Unable to parse 'transformerAssetId'.";
-                    this.serverLog.addMessage(1, 500, message);
-                    return ServerUtilities.sendError(500, message, null).getBytes("utf-8");
-                }
-                else
-                    xfrAssetID = assetNumber.toString();
-            }
 
             // Get the transformer feature global ID from the asset ID
             String xfrWhereClause = "ASSETGROUP=" + MV_XFR_ASSETGROUP.toString() + " AND ASSETID='" + xfrAssetID +"'";
@@ -612,6 +600,9 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
         IDEUtilityNetworkProxy deUtilityNetwork =  new IDEUtilityNetworkProxy(deBaseNetwork);
         IDataElement deElement = (IDataElement)deDataset;
 
+        Integer networksourceId = soeUtil.GetNetworkSourceIdByFeatureClassUsageType(deUtilityNetwork, DOMAIN_NETWORK, esriUtilityNetworkFeatureClassUsageType.esriUNFCUTDevice);
+
+
         //Create and initialize network tracer
         IUtilityNetworkQuery unQry = unBaseNetwork.createQuery();
         ITracer unTracer = unBaseNetwork.createTracer();
@@ -644,11 +635,12 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
 
 
         // Add output filter to only return low voltage service points
+
         IArray outFilters = new Array();
         for (int i=0;i<LV_SERVICE_ASSETTYPES.length;i++)
         {
             UNOutputFilter outFilter = new UNOutputFilter();
-            outFilter.setNetworkSourceID(DEVICE_SOURCE_ID);
+            outFilter.setNetworkSourceID(networksourceId);
             outFilter.setAssetGroupCode(LV_SERVICE_ASSETGROUP);
             outFilter.setAssetTypeCode(LV_SERVICE_ASSETTYPES[i]);
             outFilters.add(outFilter);
@@ -657,7 +649,6 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
         traceConfig.setOutputFiltersByRef(outFilters);
 
         ITraceConfiguration tc = new ITraceConfigurationProxy(traceConfig);
-        //unTracer.setTraceConfigurationByRef(traceConfig);
         unTracer.setTraceConfigurationByRef(tc);
 
         // Execute the trace
