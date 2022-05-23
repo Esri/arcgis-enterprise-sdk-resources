@@ -18,7 +18,7 @@ This sample illustrates how to develop a REST server object extension (SOE) with
 
 ## Sample data
 
-This sample uses the [Veg map service](../../../ReadMe.md#2-veg-service) as the sample service to test with the SOE.
+This sample uses the [Vegetation map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples) as the sample service to test with the SOE.
 
 
 ## Instructions
@@ -33,8 +33,8 @@ This sample uses the [Veg map service](../../../ReadMe.md#2-veg-service) as the 
 
 ### Enable the SOE on a map service
 
-1. Make sure you have published the Veg map service using ArcGIS Pro. If not, refer to [veg map service](../../../ReadMe.md#2-veg-service).
-2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select the Veg map service and select ***Capabilities***.
+1. Make sure you have published the Vegetation map service using ArcGIS Pro. If not, refer to [Vegetation map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples).
+2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select the Vegetation map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***.Net Spatial Query REST SOE*** and check the box to enable it.
 4. Keep the SOE selected to check the SOE's properties. Leave them as their default values.
 
@@ -43,7 +43,7 @@ This sample uses the [Veg map service](../../../ReadMe.md#2-veg-service) as the 
 
 ### Test the SOE in the ArcGIS Server Services Directory
 
-1. Open a browser and navigate to the REST services endpoint of the USA map service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/Veg/MapServer`).
+1. Open a browser and navigate to the REST services endpoint of the Vegetation map service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/Veg/MapServer`).
 2. Scroll to the bottom of the above page. Click ***SpatialQueryREST*** in ***Supported Extensions***.
 3. Click ***SpatialQuery*** at ***Supported Operations***, which leads to the following URL:
 

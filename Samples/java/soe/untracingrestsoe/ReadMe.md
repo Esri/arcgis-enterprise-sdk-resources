@@ -43,7 +43,7 @@ This sample requires the [Electric Utility Network Foundation](https://solutions
 
 ### Test the SOE in the ArcGIS Server Services Directory
 
-1. Open a browser and navigate to the REST services endpoint of the Veg map service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/<Naperville>/MapServer`).
+1. Open a browser and navigate to the REST services endpoint of the Naperville service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/<Naperville>/MapServer`).
 2. Scroll to the bottom of the above page and click ***JavaUNTracingRESTSOE*** in ***Supported Extensions***. 
    
    This leads to the SOE's root page, at the following URL:

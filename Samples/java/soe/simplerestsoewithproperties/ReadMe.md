@@ -21,7 +21,7 @@ Deploying the SOE from the .soe file (`../simplerestsoewithproperties/target/sim
 
 ## Sample data
 
-Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as the sample service to test with the SOE.
+Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples) as the sample service to test with the SOE.
 
 
 ## Instructions
@@ -36,7 +36,7 @@ Any dynamic map service published from ArcGIS Pro. This instruction uses the [US
 
 ### Enable the SOE on a map service
 
-1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](../../../ReadMe.md#1-usa-service)
+1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples)
 2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select USA map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***Java Simple REST SOE with Properties*** and check the box to enable it.
 4. Make sure the SOE is selected. Notice four properties appear in the ***Properties*** section.
