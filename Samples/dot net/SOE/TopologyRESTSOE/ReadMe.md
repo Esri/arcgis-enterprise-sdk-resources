@@ -6,7 +6,7 @@ order: 12
 
 This sample demonstrates how to use the topology API to build a topology graph and traverse it to return topological elements within the graph extent. The REST server object extension (SOE) has one operation called **Query Adjoining Parcels**. It takes a parcel feature’s **ObjectID** as the input parameter, then builds a topology graph around the specified parcel feature, next performs graph traversal, and finally returns a list of adjoining parcels and their addresses from the result of graph traversal.
 
-Deploying the SOE from the .soe file (`..\TopologyRESTSOE\bin\Release\TopologyRESTSOE_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\TopologyRESTSOE\TopologyRESTSOE.csproj`) in the Visual Studio to debug, modify, and recompile the SOE code.
+Deploying the SOE from the .soe file (`..\TopologyRESTSOE\bin\Release\net6.0\TopologyRESTSOE_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\TopologyRESTSOE\TopologyRESTSOE.csproj`) in the Visual Studio to debug, modify, and recompile the SOE code.
 
 
 ## Features
@@ -27,7 +27,7 @@ The SOE example uses the sample file geodatabase available in [ArcGIS Online](ht
 1. Log in to the ArcGIS Server Manager and click the ***Site*** tab.
 2. Click ***Extensions***.
 3. Click ***Add Extension***.
-4. Click ***Choose File*** and choose the ***TopologyRESTSOE_ent.soe*** file (`..\bin\Release\ TopologyRESTSOE_ent.soe`).
+4. Click ***Choose File*** and choose the ***TopologyRESTSOE_ent.soe*** file (`..\TopologyRESTSOE\bin\Release\net6.0\TopologyRESTSOE_ent.soe`).
 5. Click ***Add***.
 
 ### Enable the SOE on a map service
