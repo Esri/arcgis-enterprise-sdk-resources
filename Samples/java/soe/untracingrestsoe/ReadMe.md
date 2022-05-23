@@ -21,7 +21,7 @@ The Utility Network owner must make sure that the network topology has been enab
 
 
 ## Sample data
-This sample requires the [Electric Utility Network Foundation](https://solutions.arcgis.com/electric/help/electric-utility-network-foundation/) Naperville demo data to be loaded in an Enterprise Geodatabase and published as a service on ArcGIS Enterprise. Please follow the instructions provided in the above link to download, configure and publish the data.
+This sample requires the [Electric Utility Network Foundation](https://doc.arcgis.com/en/arcgis-solutions/latest/reference/use-electric-utility-network-foundation.htm) Naperville demo data to be loaded in an Enterprise Geodatabase and published as a service on ArcGIS Enterprise. Please follow the instructions provided in the above link to download, configure and publish the data.
 
 
 ## Instructions
@@ -36,7 +36,7 @@ This sample requires the [Electric Utility Network Foundation](https://solutions
 
 ### Enable the SOE on a map service
 
-1. Make sure you have published the Naperville electric utility network service whose data source is from an Enterprise Geodatabase using ArcGIS Pro. If not, refer to [Electric Utility Network Foundation](https://solutions.arcgis.com/electric/help/electric-utility-network-foundation/).
+1. Make sure you have published the Naperville electric utility network service whose data source is from an Enterprise Geodatabase using ArcGIS Pro. If not, refer to [Electric Utility Network Foundation](https://doc.arcgis.com/en/arcgis-solutions/latest/reference/use-electric-utility-network-foundation.htm).
 2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select the Naperville map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***Java UN Tracing REST SOE*** and check the box to enable it.
 4. Click the ***Save and Restart*** button to restart the service.
