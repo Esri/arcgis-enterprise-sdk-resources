@@ -52,7 +52,7 @@ This sample requires the [Electric Utility Network Foundation](https://solutions
    http://<serverdomain>/<webadaptorname>/rest/services/<servicename>/MapServer/exts/JavaUNTracingRESTSOE
    ```
    
-   ![](../../../../images/javasp/JavaUNTracing1.png "UN Tracing SOE sample")
+   ![](../../../../images/javasp/JavaUNTracing2.png "UN Tracing SOE sample")
    
    Make sure that the ***hasValidNetworkTopology*** property returns 'true'. This indicates that the network topology is enabled. Otherwise, the Utility Network owner will need to enable the network topology before using this SOE. 
 
@@ -62,17 +62,8 @@ This sample requires the [Electric Utility Network Foundation](https://solutions
    
    Click the ***getMVTransformerAssetIds*** button. You will receive a response returning the asset IDs of all medium-voltage transformers satisfying the specified where clause:
    
-   ``` JSON
-   {
-	   "assetIds": [
-		   "1",
-		   "2",
-		   "3",
-		   "4",
-		   "5"
-	   ]
-   }
-   ```
+   ![](../../../../images/javasp/JavaUNTracing2.png "UN Tracing SOE sample")
+   
    One of these transformer asset IDs can then be used to get the list of serviced customers.
 
 4. Click ***getCustomers*** in ***Supported Operations*** on the SOE's root page. 
@@ -81,56 +72,5 @@ This sample requires the [Electric Utility Network Foundation](https://solutions
   
    Click the ***getCustomers*** button. You will receive a response returning more information about the transformer, along with the list of service points containing mocked customer information:
    
-   ```bash
-   {
-    "transformer": {
-     "ASSETID": "4",
-     "GLOBALID": "{2A364DF8-6BD7-41E7-8B3B-33FF512E47D7}",
-     "ASSETGROUP": 15,
-     "ASSETTYPE": 522,
-     "geometry": {
-      "x": 1034890.20694192871,
-      "y": 1867360.98282569647,
-      "z": 0,
-      "m": null,
-      "spatialReference": {
-       "wkid": 102671,
-       "latestWkid": 3435,
-       "vcsWkid": 105703,
-       "latestVcsWkid": 6360
-      }
-     }
-    },
-    "servicePoints": [
-     {
-      "GLOBALID": "{5788E55C-5078-4B8A-9305-0EF53820C0E8}",
-      "ASSETID": "1493",
-      "ASSETGROUP": 11,
-      "ASSETTYPE": 402,
-      "geometry": {
-       "x": 1035040.15546092764,
-       "y": 1867418.14216019958,
-       "z": 0,
-       "m": null,
-       "spatialReference": {
-        "wkid": 102671,
-        "latestWkid": 3435,
-        "vcsWkid": 105703,
-        "latestVcsWkid": 6360
-       }
-      },
-      "customerInfo": {
-       "customerID": "XXXXXXXXXX",
-       "firstName": "XXXXXXXXXX",
-       "lastName": "XXXXXXXXXX",
-       "phoneNumber": "XXX-XXX-XXXX",
-       "address": "XXXXXXXXXX",
-       "city": "XXXXXXXXXX",
-       "zipCode": "XXXXX"
-      }
-     },
-     ...
-    ]
-   }
-   ```
-   
+   ![](../../../../images/javasp/JavaUNTracing3.png "UN Tracing SOE sample")
+
