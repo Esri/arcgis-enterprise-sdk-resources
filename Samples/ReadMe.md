@@ -7,19 +7,19 @@ The SOE samples and SOI samples in this repository are also included with the in
 The sample data used to publish the testing services can be found at `<ArcGIS_Enterprise_SDK_Installation_Path>\Samples\EnterpriseSDKSampleData.zip`, by default, `C:\Program Files\ArcGIS\EnterpriseSDK\Samples\EnterpriseSDKSampleData.zip`.
 
 The following three services are used in the samples:
-1. **USA service**
+1. **USA map service**
     1. Open an ArcGIS Pro map.
     2. Add the Cities, Highways, Counties, and State feature classes from usa.gdb (`...\EnterpriseSDKSampleData\data\usa\usa.gdb`) to the map.
     3. Share the map as a web layer. Make sure the Map Image option is checked for Layer Type.
     4. Publish the service
 
-2. **Veg service**
+2. **Vegetation map service**
     1. Open an ArcGIS Pro map.
     2. Add the veg feature class from veg.gdb (`...\EnterpriseSDKSampleData\Yellowstone\veg.gdb`) to the map.
     3. Share the map as a web layer. Make sure the Map Image option is checked for Layer Type.
     4. Publish the service
     
-3. **NapervilleElectricFoundation service**
+3. **Naperville service**
 
     This service is used to test with the [utility network tracing REST SOE](dot%20net/SOE/UNTracingRESTSOE), which is available since 10.8.1. You can follow the instructions at [Electric Utility Network Foundation](https://solutions.arcgis.com/electric/help/electric-utility-network-foundation/) to load the Naperville demo data in an Enterprise Geodatabase and publish it as the NapervilleElectricFoundation service on ArcGIS Enterprise.
    

@@ -17,13 +17,13 @@ Deploying the SOI from the .soe file (`../OperationAccessSOI/target/OperationAcc
 
 ## Sample data
 
-Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as the sample service to test with the SOI.
+Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples) as the sample service to test with the SOI.
 
 ## Instructions
 
 ### Set up testing environment
 
-1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](../../../ReadMe.md#1-usa-service).
+1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples).
 2. Grant proper user access to the USA map service.
 
 #### Option 1: For a stand-alone ArcGIS Server

@@ -18,7 +18,7 @@ Deploying the SOE from the .soe file (`..\EditFeaturesRESTSOE\bin\Release\NetEdi
 
 
 ## Sample data
-This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as the sample service to test with the SOE. Make sure its data source is from an Enterprise Geodatabase and registered with ArcGIS Enterprise.
+This instruction uses the [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples) as the sample service to test with the SOE. Make sure its data source is from an Enterprise Geodatabase and registered with ArcGIS Enterprise.
 
 
 ## Instructions
@@ -34,7 +34,7 @@ This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as
 
 ### Enable the SOE on a map service
 
-1. Make sure you have published the USA map service whose data source is from an editable workspace using ArcGIS Pro. If not, refer to [USA map service](../../../ReadMe.md#2-veg-service).
+1. Make sure you have published the USA map service whose data source is from an editable workspace using ArcGIS Pro. If not, refer to [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples).
 2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select USA map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***.Net Edit Features REST SOE*** and check the box to enable it.
 4. Under ***Properties*** section, make sure that ***layerId*** is set to the layer you would like to edit. In this sample, we can set it to `0`, which is the Cities layer.
@@ -45,13 +45,13 @@ This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as
 
 ### Test the SOE in the ArcGIS Server Services Directory
 
-1. Open a browser and navigate to the REST services endpoint of the Veg map service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/<editable USA>/MapServer`).
+1. Open a browser and navigate to the REST services endpoint of the USA map service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/<editable USA>/MapServer`).
 2. Scroll to the bottom of the above page and click ***NetEditFeaturesRESTSOE*** in ***Supported Extensions***. 
    
    This leads to the SOE's root page, at the following URL:
 
    ```
-   http://<serverdomain>/<webadaptorname>/rest/services/Veg/MapServer/exts/NetFindNearFeaturesRESTSOE
+   http://<serverdomain>/<webadaptorname>/rest/services/USA/MapServer/exts/NetFindNearFeaturesRESTSOE
    ```
    
    ![](../../../../images/netsp/NetEdit2.png "Edit features SOE sample")

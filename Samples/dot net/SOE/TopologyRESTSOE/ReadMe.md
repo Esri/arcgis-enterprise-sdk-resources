@@ -32,7 +32,7 @@ The SOE example uses the sample file geodatabase available in [ArcGIS Online](ht
 
 ### Enable the SOE on a map service
 
-1. Make sure you have a pre-published map service using ArcGIS Pro. If not, refer to [USA map service](../../../ReadMe.md#1-usa-service) to publish a new map service.
+1. Make sure you have a pre-published map service using ArcGIS Pro. If not, refer to [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples) to publish a new map service.
 2. Log in to the ArcGIS Server Manager and click the ***Services*** tab. Then Select the map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***Topology REST SOE*** and check the box to enable it.
 4. Click the ***Save and Restart*** button to restart the service.

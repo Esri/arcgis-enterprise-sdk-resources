@@ -17,7 +17,7 @@ Deploying the SOI from the .soe file (`..\bin\Release\NetSimpleLoggerSOI_ent.soe
 
 ## Sample data
 
-Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as the sample service to test with the SOI.
+Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples) as the sample service to test with the SOI.
 
 
 ## Instructions
@@ -32,7 +32,7 @@ Any dynamic map service published from ArcGIS Pro. This instruction uses the [US
 
 ### Enable the SOI on a map service
 
-1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](../../../ReadMe.md#1-usa-service)
+1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples)
 2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select USA map service and select ***Capabilities***.
 3. In the ***Interceptors*** section, select ***DotNet Simple Logger REST SOI Example*** in the ***Available Interceptors*** box and click the right arrow button to move it to ***Enabled Interceptors***.
 
