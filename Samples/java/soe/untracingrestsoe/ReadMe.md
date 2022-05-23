@@ -62,7 +62,7 @@ This sample requires the [Electric Utility Network Foundation](https://solutions
    
    Click the ***getMVTransformerAssetIds*** button. You will receive a response returning the asset IDs of all medium-voltage transformers satisfying the specified where clause:
    
-   ![](../../../../images/javasp/JavaUNTracing2.png, "UN Tracing SOE sample")
+   ![](../../../../images/javasp/JavaUNTracing2.png "UN Tracing SOE sample")
    
    One of these transformer asset IDs can then be used to get the list of serviced customers.
 
@@ -72,5 +72,5 @@ This sample requires the [Electric Utility Network Foundation](https://solutions
   
    Click the ***getCustomers*** button. You will receive a response returning more information about the transformer, along with the list of service points containing mocked customer information:
    
-   ![](../../../../images/javasp/JavaUNTracing3.png, "UN Tracing SOE sample")
+   ![](../../../../images/javasp/JavaUNTracing3.png "UN Tracing SOE sample")
 
