@@ -6,11 +6,12 @@ order: 8
 
 This sample demonstrates how to use the utility network tracing capabilities to get the list of customers serviced by a single medium-voltage transformer. The UNTracing REST SOE has two operations called ***getMVTransformerAssetIds*** and ***getCustomers***. The first operation queries the Electric Device layer to return a list of medium-voltage transformer asset IDs that can then be used in the second operation to retrieve the list of service points and customers connected to that transformer. Also, the root resource of this SOE returns information about the utility network.
 
-The administrator that deploys this SOE must enable it on the map service that also has the Utility Network capability enabled.
+The administrator that deploys this SOE must enable it on the map service that also has the Utility Network capability enabled. 
 
-Deploying the SOE from the .soe file (`..\untracingrestsoe\target\JavaUNTracingRESTSOE.soe`) does not require you to open a Java IDE. However, you can open the project (`..\untracingrestsoe`) in a Java IDE, such as Eclipse or IntelliJ, to debug, modify, and recompile the SOE code.
+Deploying the SOE from the .soe file (`..\untracingrestsoe\target\JavaUNTracingRESTSOE.soe`) does not require you to open a Java IDE. However, you can open the project (`..\untracingrestsoe`) in a Java IDE, such as Eclipse or IntelliJ, to debug, modify, and recompile the SOE code. Constants' values may need to change. 
 
 The Utility Network owner must make sure that the network topology has been enabled.
+
 
 ## Features
   * Opening a Utility Network dataset (`IFeatureDataset`, `IDataset`)

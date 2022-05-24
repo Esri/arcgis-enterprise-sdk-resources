@@ -174,7 +174,7 @@ namespace AccessUtilityNetworkDataset
       IFeatureWorkspace featureWorkspace = (IFeatureWorkspace)version;
 
       // Get the UtilityNetwork Dataset by opening an extension dataset
-      string extensionDatasetName = "UtilityNetwork";
+      const string extensionDatasetName = "UtilityNetwork";
       IDataset versionedUNDataset = featureWorkspace.OpenExtensionDataset(esriDatasetType.esriDTUtilityNetwork, extensionDatasetName);
       
       IWorkspace unWorkSpace = versionedUNDataset.Workspace;

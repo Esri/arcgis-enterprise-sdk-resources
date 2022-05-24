@@ -4,10 +4,10 @@ order: 11
 
 # .NET Open an Extension Dataset REST SOE
 
-This sample demonstrates how to open and fetch properties of an extension dataset such as  Utility Network Dataset using the open extension dataset method.
-The administrator that deploys this SOE must enable it on the map service that also has the Utility Network capability enabled.
+This sample demonstrates how to open and fetch properties of an extension dataset such as Utility Network Dataset using the open extension dataset method. The administrator that deploys this SOE must enable it on the map service with the Utility Network capability enabled.
 
-Deploying the SOE from the .soe file (`..\AccessUtilityNetworkDatasetSOE\bin\Release\net6.0\AccessUtilityNetworkDatasetProperties_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`AccessUtilityNetworkDatasetSOE\bin\Debug\net6.0\AccessUtilityNetworkDatasetProperties_ent.soe`) in Visual Studio to debug, modify, and recompile the SOE code.
+Deploying the SOE from the .soe file (`..\AccessUtilityNetworkDatasetSOE\bin\Release\net6.0\AccessUtilityNetworkDatasetProperties_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`AccessUtilityNetworkDatasetSOE\bin\Debug\net6.0\AccessUtilityNetworkDatasetProperties_ent.soe`) in Visual Studio to debug, modify, and recompile the SOE code. Constants' values may need to change. 
+
 
 ## Features
   * Opening a Utility Network dataset (`IFeatureDataset`, `IDataset`)

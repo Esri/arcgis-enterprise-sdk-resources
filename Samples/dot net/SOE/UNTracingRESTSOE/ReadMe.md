@@ -8,7 +8,8 @@ This sample demonstrates how to use the utility network tracing capabilities to 
 
 The administrator that deploys this SOE must enable it on the map service that also has the Utility Network capability enabled.
 
-Deploying the SOE from the .soe file (`..\UNTracingRESTSOE\NetUNTracingRESTSOE\bin\Release\net6.0\NetUNTracingRESTSOE_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\UNTracingRESTSOE\NetUNTracingRESTSOE.csproj`) in Visual Studio to debug, modify, and recompile the SOE code.
+Deploying the SOE from the .soe file (`..\UNTracingRESTSOE\NetUNTracingRESTSOE\bin\Release\net6.0\NetUNTracingRESTSOE_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\UNTracingRESTSOE\NetUNTracingRESTSOE.csproj`) in Visual Studio to debug, modify, and recompile the SOE code. Constants' values may need to change. 
+
 
 The Utility Network owner must make sure that the network topology has been enabled.
 

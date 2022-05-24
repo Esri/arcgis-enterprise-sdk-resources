@@ -6,7 +6,7 @@ order: 12
 
 This sample demonstrates how to use the topology API to build a topology graph and traverse it to return topological elements within the graph extent. The REST server object extension (SOE) has one operation called **Query Adjoining Parcels**. It takes a parcel feature’s **ObjectID** as the input parameter, then builds a topology graph around the specified parcel feature, next performs graph traversal, and finally returns a list of adjoining parcels and their addresses from the result of graph traversal.
 
-Deploying the SOE from the .soe file (`..\TopologyRESTSOE\bin\Release\net6.0\TopologyRESTSOE_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\TopologyRESTSOE\TopologyRESTSOE.csproj`) in the Visual Studio to debug, modify, and recompile the SOE code.
+Deploying the SOE from the .soe file (`..\TopologyRESTSOE\bin\Release\net6.0\TopologyRESTSOE_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\TopologyRESTSOE\TopologyRESTSOE.csproj`) in the Visual Studio to debug, modify, and recompile the SOE code. Constants' values may need to change. 
 
 
 ## Features
