@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("TopologyRESTSOE")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -39,8 +39,8 @@ using System.Runtime.InteropServices;
 [assembly: ESRI.Server.SOESupport.AddInPackage("TopologyRESTSOE", "34a3e9ca-0a9d-4589-8159-b8e1abe9a597",
     Author = "ESRI",
     Company = "ESRI",
-    Date = "11/18/2021 4:18:33 PM",
+    Date = "1/18/2022 4:18:33 PM",
     Description = "",
     TargetProduct = "Server",
-    TargetVersion = "10.9",
+    TargetVersion = "11.0",
     Version = "1.0")]

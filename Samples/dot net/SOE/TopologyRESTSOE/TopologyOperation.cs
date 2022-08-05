@@ -44,7 +44,7 @@ namespace TopologyRESTSOE
       List<dynamic> taxParcelIds = new List<dynamic>();
 
       IEnvelope topologyParentsEnvelope = new EnvelopeClass();
-      Dictionary<int, IPoint> parcelsToCentroidMap = new Dictionary<int, IPoint>();
+      Dictionary<long, IPoint> parcelsToCentroidMap = new Dictionary<long, IPoint>();
 
       for (int topoEdgeCount = 0; topoEdgeCount < enumTopologyEdge.Count; topoEdgeCount++)
       {
@@ -57,7 +57,7 @@ namespace TopologyRESTSOE
         for (int parentsCount = 0; parentsCount < parents.Count; parentsCount++)
         {
           esriTopologyParent parent = parents.Next();
-          int parentFID = parent.m_FID;
+          long parentFID = parent.m_FID;
           IFeatureClass parentFC = parent.m_pFC;
           IFeature parentParcelFeature = parentFC.GetFeature(parentFID);
 
@@ -129,16 +129,16 @@ namespace TopologyRESTSOE
     /// <param name="topologyGraph">The topology graph of the area of interest. <see cref="ITopologyGraph"/></param>
     /// <param name="parcelsToCentroidMap">A dictionary object containing the parcel id and its centroid</param>
     /// <returns>A formatted list of parcel and its address information</returns>
-    private List<string> GetParcelsWithAddress(ITopologyGraph topologyGraph, Dictionary<int, IPoint> parcelsToCentroidMap)
+    private List<string> GetParcelsWithAddress(ITopologyGraph topologyGraph, Dictionary<long, IPoint> parcelsToCentroidMap)
     {
       List<string> parcelWithAddressList = new List<string>();
 
       if (topologyGraph == null || parcelsToCentroidMap.Count < 1) return null;
 
       // Iterating parcels to fetch the address node from the topology graph
-      foreach (KeyValuePair<int, IPoint> keyValuePair in parcelsToCentroidMap)
+      foreach (KeyValuePair<long, IPoint> keyValuePair in parcelsToCentroidMap)
       {
-        int parcelID = keyValuePair.Key;
+        long parcelID = keyValuePair.Key;
         IPoint parcelCentroid = keyValuePair.Value;
 
         ITopologyElement addressToplogyElement;
@@ -156,7 +156,7 @@ namespace TopologyRESTSOE
           for (int addressElementCount = 0; addressElementCount < addressElementParents.Count; addressElementCount++)
           {
             esriTopologyParent addressElementParent = addressElementParents.Next();
-            int addressFID = addressElementParent.m_FID;
+            long addressFID = addressElementParent.m_FID;
             IFeatureClass addressFC = addressElementParent.m_pFC;
 
             // Fetch address feature

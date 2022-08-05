@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NetUNTracingRESTSOE")]
+[assembly: AssemblyTitle("AccessUtilityNetworkDataset")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NetUNTracingRESTSOE")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCompany("ESRI")]
+[assembly: AssemblyProduct("AccessUtilityNetworkDataset")]
+[assembly: AssemblyCopyright("Copyright © ESRI 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8b174f02-6dc2-47e1-af74-5ba4f8b3858a")]
+[assembly: Guid("3cb07422-c827-4121-b243-7ab0e6b5ac59")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -36,10 +36,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 
-[assembly: ESRI.Server.SOESupport.AddInPackage("NetUNTracingRESTSOE", "12a0f14c-e2c2-4fd4-ac34-f3bb115bacbd",
-    Author = "ESRI",
+[assembly: ESRI.Server.SOESupport.AddInPackage("AccessUtilityNetworkDataset", "4793c5dc-69c7-4a20-8e71-ef369aabe08f",
+    Author = "aas11333",
     Company = "ESRI",
-    Date = "4/14/2022 10:43:35 AM",
+    Date = "4/29/2022 11:39:55 AM",
     Description = "",
     TargetProduct = "Server",
     TargetVersion = "11.0",

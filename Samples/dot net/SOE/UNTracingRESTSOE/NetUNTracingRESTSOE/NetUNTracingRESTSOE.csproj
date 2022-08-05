@@ -1,93 +1,58 @@
-<?xml version="1.0" ?><Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8B174F02-6DC2-47E1-AF74-5BA4F8B3858A}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NetUNTracingRESTSOE</RootNamespace>
-    <AssemblyName>NetUNTracingRESTSOE</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile/>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>mykey.snk</AssemblyOriginatorKeyFile>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="ESRI.Server.Carto, Version=12.9.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ESRI.Server.Geodatabase, Version=12.9.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ESRI.Server.Geometry, Version=12.9.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ESRI.Server.Server, Version=12.9.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ESRI.Server.SOESupport, Version=12.9.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ESRI.Server.System, Version=12.9.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System"/>
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    <Reference Include="Microsoft.CSharp"/>
-    <Reference Include="System.Data"/>
-    <Reference Include="System.Xml"/>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="NetUNTracingRESTSOE.cs"/>
-    <Compile Include="Properties\AssemblyInfo.cs"/>
-    <Compile Include="SOEUtil.cs"/>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="mykey.snk"/>
-  </ItemGroup>
   <PropertyGroup>
     <ZipFileExtension>soe</ZipFileExtension>
     <AddInTargetProduct>Server</AddInTargetProduct>
-    <AddInTargetVersion>10.9</AddInTargetVersion>
+    <AddInTargetVersion>11.0</AddInTargetVersion>
     <ServerProvider>ArcObjects11</ServerProvider>
   </PropertyGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
-  <Import Condition="Exists('$(MSBuildExtensionsPath)\ESRI\ESRI.ArcGIS.Server.SDK.targets')" Project="$(MSBuildExtensionsPath)\ESRI\ESRI.ArcGIS.Server.SDK.targets"/>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="$(MSBuildExtensionsPath)\ESRI\ESRI.ArcGIS.Enterprise.SDK.targets" Condition="Exists('$(MSBuildExtensionsPath)\ESRI\ESRI.ArcGIS.Enterprise.SDK.targets')" />
+  <ItemGroup>
+    <Reference Include="ESRI.Server.Carto">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ArcGIS\EnterpriseSDK\DotNet\ESRI.Server.Carto.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.Server.DatasourcesFile">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ArcGIS\EnterpriseSDK\DotNet\ESRI.Server.DatasourcesFile.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.Server.DatasourcesGDB">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ArcGIS\EnterpriseSDK\DotNet\ESRI.Server.DatasourcesGDB.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.Server.DatasourcesRaster">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ArcGIS\EnterpriseSDK\DotNet\ESRI.Server.DatasourcesRaster.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.Server.Geodatabase">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ArcGIS\EnterpriseSDK\DotNet\ESRI.Server.Geodatabase.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.Server.GeoDatabaseDistributed">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ArcGIS\EnterpriseSDK\DotNet\ESRI.Server.GeoDatabaseDistributed.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.Server.GeoDatabaseExtensions">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ArcGIS\EnterpriseSDK\DotNet\ESRI.Server.GeoDatabaseExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.Server.Geometry">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ArcGIS\EnterpriseSDK\DotNet\ESRI.Server.Geometry.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.Server.GISClient">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ArcGIS\EnterpriseSDK\DotNet\ESRI.Server.GISClient.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.Server.Server">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ArcGIS\EnterpriseSDK\DotNet\ESRI.Server.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.Server.SOESupport">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ArcGIS\EnterpriseSDK\DotNet\ESRI.Server.SOESupport.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.Server.System">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\ArcGIS\EnterpriseSDK\DotNet\ESRI.Server.System.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  
 </Project>
