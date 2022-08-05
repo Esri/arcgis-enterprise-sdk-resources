@@ -22,7 +22,7 @@ The Utility Network owner must make sure that the network topology has been enab
 
 
 ## Sample data
-This sample requires the [Electric Utility Network Foundation](https://solutions.arcgis.com/electric/help/electric-utility-network-foundation/) Naperville demo data to be loaded in an Enterprise Geodatabase and published as a service on ArcGIS Enterprise. Please follow the instructions provided in the above link to download, configure and publish the data.
+This sample requires the [Electric Utility Network Foundation](https://doc.arcgis.com/en/arcgis-solutions/latest/reference/use-electric-utility-network-foundation.htm) Naperville demo data to be loaded in an Enterprise Geodatabase and published as a service on ArcGIS Enterprise. Please follow the instructions provided in the above link to download, configure and publish the data.
 
 
 ## Instructions
@@ -37,7 +37,7 @@ This sample requires the [Electric Utility Network Foundation](https://solutions
 
 ### Enable the SOE on a map service
 
-1. Make sure you have published the Naperville electric utility network service whose data source is from an Enterprise Geodatabase using ArcGIS Pro. If not, refer to [Electric Utility Network Foundation](https://solutions.arcgis.com/electric/help/electric-utility-network-foundation/).
+1. Make sure you have published the Naperville electric utility network service whose data source is from an Enterprise Geodatabase using ArcGIS Pro. If not, refer to [Electric Utility Network Foundation](https://doc.arcgis.com/en/arcgis-solutions/latest/reference/use-electric-utility-network-foundation.htm).
 2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select the Naperville map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***Java UN Tracing REST SOE*** and check the box to enable it.
 4. Click the ***Save and Restart*** button to restart the service.
@@ -63,17 +63,8 @@ This sample requires the [Electric Utility Network Foundation](https://solutions
    
    Click the ***getMVTransformerAssetIds*** button. You will receive a response returning the asset IDs of all medium-voltage transformers satisfying the specified where clause:
    
-   ``` JSON
-   {
-	   "assetIds": [
-		   "1",
-		   "2",
-		   "3",
-		   "4",
-		   "5"
-	   ]
-   }
-   ```
+   ![](../../../../images/javasp/JavaUNTracing2.png "UN Tracing SOE sample")
+   
    One of these transformer asset IDs can then be used to get the list of serviced customers.
 
 4. Click ***getCustomers*** in ***Supported Operations*** on the SOE's root page. 
@@ -82,56 +73,5 @@ This sample requires the [Electric Utility Network Foundation](https://solutions
   
    Click the ***getCustomers*** button. You will receive a response returning more information about the transformer, along with the list of service points containing mocked customer information:
    
-   ```bash
-   {
-    "transformer": {
-     "ASSETID": "4",
-     "GLOBALID": "{2A364DF8-6BD7-41E7-8B3B-33FF512E47D7}",
-     "ASSETGROUP": 15,
-     "ASSETTYPE": 522,
-     "geometry": {
-      "x": 1034890.20694192871,
-      "y": 1867360.98282569647,
-      "z": 0,
-      "m": null,
-      "spatialReference": {
-       "wkid": 102671,
-       "latestWkid": 3435,
-       "vcsWkid": 105703,
-       "latestVcsWkid": 6360
-      }
-     }
-    },
-    "servicePoints": [
-     {
-      "GLOBALID": "{5788E55C-5078-4B8A-9305-0EF53820C0E8}",
-      "ASSETID": "1493",
-      "ASSETGROUP": 11,
-      "ASSETTYPE": 402,
-      "geometry": {
-       "x": 1035040.15546092764,
-       "y": 1867418.14216019958,
-       "z": 0,
-       "m": null,
-       "spatialReference": {
-        "wkid": 102671,
-        "latestWkid": 3435,
-        "vcsWkid": 105703,
-        "latestVcsWkid": 6360
-       }
-      },
-      "customerInfo": {
-       "customerID": "XXXXXXXXXX",
-       "firstName": "XXXXXXXXXX",
-       "lastName": "XXXXXXXXXX",
-       "phoneNumber": "XXX-XXX-XXXX",
-       "address": "XXXXXXXXXX",
-       "city": "XXXXXXXXXX",
-       "zipCode": "XXXXX"
-      }
-     },
-     ...
-    ]
-   }
-   ```
-   
+   ![](../../../../images/javasp/JavaUNTracing3.png "UN Tracing SOE sample")
+
