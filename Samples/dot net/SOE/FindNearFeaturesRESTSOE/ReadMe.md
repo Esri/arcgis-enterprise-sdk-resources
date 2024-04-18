@@ -33,9 +33,10 @@ This sample uses the [Vegetation map service](https://github.com/Esri/arcgis-ent
 ### Enable the SOE on a map service
 
 1. Make sure you have published the Vegetation map service using ArcGIS Pro. If not, refer to [Vegetation map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples).
-2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select USA map service and select ***Capabilities***.
+2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select Vegetation map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***.NET Find Near Features REST SOE*** and check the box to enable it.
-4. Under ***Operations Allowed*** section, make sure to check both ***GetInfo*** and ***FindFeatures***.
+4. Make sure the SOE is selected.
+5. Under ***Operations Allowed*** section, make sure to check both ***GetInfo*** and ***FindFeatures***.
 
 ![](../../../../images/netsp/NetFindRest1.png "Find near features REST SOE sample")
 
