@@ -48,13 +48,14 @@ Deploying the SOE from the .soe file (`..\bin\Release\NetFindNearFeaturesSoapSOE
 
    The application contains a simple Windows form with buttons and a text box. A ***Web Reference*** has been added to the project to reference the SOE SOAP endpoint. 
 2. Update the ***Web Reference***.
-   1. Right-click the ***Web Reference*** folder in ***Solution Explorer***.
-   2. Click ***Properties***.
-   3. Ensure that the ***Web Reference URL*** matches your own SOE's WSDL URL. The URL is in the following format:
+   1. Make sure the USA Map service Sharing properties is shared with ***Everyone(public)***.
+   2. Right-click the ***Web Reference*** folder in ***Solution Explorer***.
+   3. Click ***Properties***.
+   4. Ensure that the ***Web Reference URL*** matches your own SOE's WSDL URL. The URL is in the following format:
       ```
       http://<serverdomain>/<webadaptorname>/services/USA/MapServer/FindNearFeaturesSoapSOE?wsdl
       ```
-   4. Click ***Update Web Reference***.
+   5. Click ***Update Web Reference***.
    
       ![](../../../../images/netsp/NetFindSoap1.png "Net Find Near SOAP Sample")
 3. Update the service reference and URL in the code behind (Form1.cs).
