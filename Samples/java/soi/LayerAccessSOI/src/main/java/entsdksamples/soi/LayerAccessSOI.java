@@ -129,6 +129,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 		this.serverLog.addMessage(4, 200,"ArcGIS home directory: " + arcgisHome);
 		this.so = soh.getServerObject();
 		//Load the SOI helper.
+		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
 		this.soiHelper = new SOIHelper(arcgisHome + "XmlSchema" + File.separator + "MapServer.wsdl");
 		getPermissionFromFile(this.so);
 		this.serverLog.addMessage(3, 200, "Initialized " + this.getClass().getName() + " SOE.");
