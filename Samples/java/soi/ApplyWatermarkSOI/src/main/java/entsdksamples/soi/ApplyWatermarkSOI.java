@@ -122,7 +122,7 @@ public class ApplyWatermarkSOI
 			arcgisHome += File.separator;
 		// Load the SOI helper.    
 		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
-		this.soiHelper = new SOIHelper(arcgisHome + "XmlSchema" + File.separator + "MapServer.wsdl");
+		this.soiHelper = new SOIHelper(mapServiceWSDLPath);
 	}
 
 	 /**
