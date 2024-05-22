@@ -45,7 +45,7 @@ import com.esri.arcgis.system.ServerUtilities;
 import javax.imageio.ImageIO;
 
 /*
- * For an SOE to act as in interceptor, it needs to implement all request handler interfaces
+ * For an SOI to act as in interceptor, it needs to implement all request handler interfaces
  * IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler now the SOE/SOI can
  * intercept all types of calls to ArcObjects or custom SOEs.
  * 
