@@ -39,7 +39,7 @@ import com.esri.arcgis.system.IWebRequestHandlerProxy;
 import com.esri.arcgis.system.ServerUtilities;
 
 /*
- * For an SOE to act as in interceptor, it needs to implement all request handler interfaces
+ * For an SOI to act as in interceptor, it needs to implement all request handler interfaces
  * IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler now the SOE/SOI can
  * intercept all types of calls to ArcObjects or custom SOEs.
  * 
@@ -90,9 +90,7 @@ public class JavaClippingSOI
 	 */
 	public void init(IServerObjectHelper soh) throws IOException, AutomationException {
 		/*
-		 * An SOE should retrieve a weak reference to the Server Object from the Server Object Helper in
-		 * order to make any method calls on the Server Object and release the reference after making
-		 * the method calls.
+		 * An SOI allow user to intercept requests for existing built-in operations of map services.
 		 */
 		// Get reference to server logger utility
 		this.serverLog = ServerUtilities.getServerLogger();
