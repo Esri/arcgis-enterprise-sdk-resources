@@ -102,9 +102,7 @@ public class OperationAccessSOI implements IServerObjectExtension, IRESTRequestH
 	 */
 	public void init(IServerObjectHelper soh) throws IOException, AutomationException {
 		/*
-		 * An SOE should retrieve a weak reference to the Server Object from the Server Object Helper in
-		 * order to make any method calls on the Server Object and release the
-		 * reference after making the method calls.
+		 * An SOI allow user to intercept requests for existing built-in operations of map services. 
 		 */
 		this.serverLog = ServerUtilities.getServerLogger();
 		String arcgisHome = getArcGISHomeDir();
@@ -128,7 +126,7 @@ public class OperationAccessSOI implements IServerObjectExtension, IRESTRequestH
 	/**
 	 * This method is called to handle REST requests.
 	 *
-	 * SOEs allow the user to to intercept requests for existing built-in operations of map services. 
+	 * SOIs allow the user to to intercept requests for existing built-in operations of map services. 
 	 * To get schema or root resource for a Map Service the REST handler
 	 * calls <code>handleRESTRequest</code> with all arguments as empty.
 	 * For a Map Service the supported REST operations are: find, identify, export.
