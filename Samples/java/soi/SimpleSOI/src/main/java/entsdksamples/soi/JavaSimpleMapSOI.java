@@ -108,7 +108,8 @@ public class JavaSimpleMapSOI
 		if (arcgisHome != null && !arcgisHome.endsWith(File.separator))
 			arcgisHome += File.separator;
 		// Load the SOI helper.    
-		this.soiHelper = new SOIHelper(arcgisHome + "XmlSchema" + File.separator + "MapServer.wsdl");
+		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
+		this.soiHelper = new SOIHelper(mapServiceWSDLPath);
 	}
 
     

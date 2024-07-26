@@ -110,9 +110,8 @@ public class JavaClippingSOI
 		if (arcgisHome != null && !arcgisHome.endsWith(File.separator))
 			arcgisHome += File.separator;
 
-		String xmlSchemaPath = "framework\\runtime\\ArcGIS\\Resources\\XmlSchema\\".replace("\\", File.separator);
-		// Load the SOI helper.
-				this.soiHelper = new SOIHelper(arcgisHome + xmlSchemaPath + "MapServer.wsdl");
+			String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
+			this.soiHelper = new SOIHelper(mapServiceWSDLPath);
 			}
 
     
