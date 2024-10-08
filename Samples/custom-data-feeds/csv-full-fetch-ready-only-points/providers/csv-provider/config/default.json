@@ -1,17 +1,17 @@
 {
     "csv-provider": {
         "sources": {
-        "my-data": {
-            "url": "../data/RunningShoeStores.csv",
-            "geometryColumns": {
-            "Longitude": "Longitude",
-            "Latitude": "Latitude"
-            },
-            "delimiter": ",",
-            "metadata": {
-            "idField": "Id"
+            "my-data": {
+                "url": "../data/RunningShoeStores.csv",
+                "geometryColumns": {
+                    "Longitude": "Longitude",
+                    "Latitude": "Latitude"
+                },
+                "delimiter": ",",
+                "metadata": {
+                    "idField": "Id"
+                }
             }
-        }
         }
     }
 }

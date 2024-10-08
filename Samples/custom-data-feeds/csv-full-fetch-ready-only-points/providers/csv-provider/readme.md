@@ -10,7 +10,7 @@ Cache         : No
 
 OBJECTID      : Uses idField metadata
 
-Comments      : Point data for ficticious shoe stores in USA.
+Comments      : Point data for fictitious shoe stores in USA.
 
 # Path Params
 

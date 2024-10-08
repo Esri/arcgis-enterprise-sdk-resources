@@ -23,21 +23,20 @@ Model.prototype.getData = async function (req, callback) {
   const sourceConfig = config.sources[sourceId];
   const csvFilePath = path.join(__dirname, sourceConfig.url);
 
-  const csv = [];
   let readStream;
 
   if (validUrl.isUri(sourceConfig.url)) {
     // this is a network URL
     const res = await fetch(sourceConfig.url);
     readStream = res.body;
-} else if (csvFilePath.toLowerCase().endsWith(".csv")) {
-    // this is a file path
-    readStream = fs.createReadStream(csvFilePath, "utf8");
-    console.log("CSV File Path:", csvFilePath);
-} else {
-    callback(new Error(`Unrecognized CSV source ${sourceConfig.url}`));
-    return;
-}
+  } else if (csvFilePath.toLowerCase().endsWith(".csv")) {
+      // this is a file path
+      readStream = fs.createReadStream(csvFilePath, "utf8");
+      console.log("CSV File Path:", csvFilePath);
+  } else {
+      callback(new Error(`Unrecognized CSV source ${sourceConfig.url}`));
+      return;
+  }
 
   Papa.parse(readStream, {
     header: true,
