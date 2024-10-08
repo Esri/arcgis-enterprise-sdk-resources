@@ -2,10 +2,10 @@
     "csv-provider": {
         "sources": {
         "my-data": {
-            "url": "providers/csv-provider/data/RunningShoeStores.csv",
+            "url": "../data/RunningShoeStores.csv",
             "geometryColumns": {
-            "longitude": "longitude",
-            "latitude": "latitude"
+            "Longitude": "Longitude",
+            "Latitude": "Latitude"
             },
             "delimiter": ",",
             "metadata": {

@@ -29,9 +29,9 @@ function translate(data, config) {
     for (let i = 0; i < columns.length; i++) {
       const value = values[columns[i]];
   
-      if (columns[i] === geometryColumns.longitude) {
+      if (columns[i] === geometryColumns.Longitude) {
         feature.geometry.coordinates.unshift(value);
-      } else if (columns[i] === geometryColumns.latitude) {
+      } else if (columns[i] === geometryColumns.Latitude) {
         feature.geometry.coordinates.push(value);
       } else if (columns[i] == idField && !isValidId(value)) {
         console.warn(`Invalid ID value: ${value}`);

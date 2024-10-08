@@ -9,7 +9,7 @@
 const koopConfig = require("config");
 const fs = require("fs");
 const Papa = require("papaparse");
-const fetch = require("node-fetch");
+const path = require("path"); 
 var validUrl = require('valid-url');
 const translate = require("./utils/translate-csv");
 
@@ -21,6 +21,7 @@ Model.prototype.getData = async function (req, callback) {
   const config = koopConfig["csv-provider"];
   const sourceId = req.params.id;
   const sourceConfig = config.sources[sourceId];
+  const csvFilePath = path.join(__dirname, sourceConfig.url);
 
   const csv = [];
   let readStream;
@@ -29,13 +30,14 @@ Model.prototype.getData = async function (req, callback) {
     // this is a network URL
     const res = await fetch(sourceConfig.url);
     readStream = res.body;
-  } else if (sourceConfig.url.toLowerCase().endsWith(".csv")) {
+} else if (csvFilePath.toLowerCase().endsWith(".csv")) {
     // this is a file path
-    readStream = fs.createReadStream(sourceConfig.url, "utf8");
-  } else {
+    readStream = fs.createReadStream(csvFilePath, "utf8");
+    console.log("CSV File Path:", csvFilePath);
+} else {
     callback(new Error(`Unrecognized CSV source ${sourceConfig.url}`));
     return;
-  }
+}
 
   Papa.parse(readStream, {
     header: true,
