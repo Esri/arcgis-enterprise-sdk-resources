@@ -1,6 +1,6 @@
 # Ignore the top-level config folder
 /config/
-/providers/google-sheets-provider/config/
+/providers/google-sheets-provider/config/default.json
 
 # Ignore the framework folder
 /framework/
