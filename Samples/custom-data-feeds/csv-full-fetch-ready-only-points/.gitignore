@@ -1,8 +1,5 @@
 # Ignore the top-level config folder
 /config/
-/providers/csv-provider/config/default.json
-/providers/csv-provider/config/
-/providers/csv-provider/config/*
 
 # Ignore the framework folder
 /framework/
@@ -21,6 +18,10 @@
 /cdconfig.json
 /package.json
 /package-lock.json
+/providers/csv-provider/config/default.json
+/providers/csv-provider/package.json
+/providers/csv-provider/package-lock.json
+/providers/csv-provider/cdconfig.json
 
 # Ignore cdpks
 *.cdpk
