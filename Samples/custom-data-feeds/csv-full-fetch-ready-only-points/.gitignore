@@ -1,5 +1,8 @@
 # Ignore the top-level config folder
 /config/
+/providers/csv-provider/config/default.json
+/providers/csv-provider/config/
+/providers/csv-provider/config/*
 
 # Ignore the framework folder
 /framework/

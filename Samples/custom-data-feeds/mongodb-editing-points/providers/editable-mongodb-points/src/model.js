@@ -13,7 +13,7 @@ class Model {
     { connectString, databases, definedCollectionsOnly } = {},
   ) {
     this.#logger = logger;
-    const databaseUri = connectString || config?.editable_mongodb_provider?.connectString;
+    const databaseUri = connectString || config?.editable_mongodb_points?.connectString;
     this.#client = new MongoClient(databaseUri, {
       serverApi: {
         version: ServerApiVersion.v1,
@@ -21,10 +21,10 @@ class Model {
         deprecationErrors: true,
       },
     });
-    this.#databaseLookup = databases || config?.editable_mongodb_provider?.databases || {};
+    this.#databaseLookup = databases || config?.editable_mongodb_points?.databases || {};
     this.#definedCollectionsOnly =
       definedCollectionsOnly ||
-      config?.editable_mongodb_provider?.definedCollectionsOnly ||
+      config?.editable_mongodb_points?.definedCollectionsOnly ||
       false;
   }
 
