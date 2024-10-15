@@ -22,7 +22,7 @@ id   : my-data
 
 ```json
 {
-  "serviceName": "csv-shoe-stores",
+  "serviceName": "csvShoeStores",
   "type": "FeatureServer",
   "description": "Point data for fictitious shoe stores in USA.",
   "capabilities": "Query",
