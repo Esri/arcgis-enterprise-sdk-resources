@@ -40,7 +40,7 @@ class Model {
     const database  = this.#client.db(databaseName);
     const collection = database.collection(collectionName);
 
-    let applyEditsResponse = {}  // initialize the response object
+    let applyEditsResponse = {};  // initialize the response object
 
     // call the necessary functions to handled the edits
     applyEditsResponse = await performEdits(collection, extractedEdits.edits);

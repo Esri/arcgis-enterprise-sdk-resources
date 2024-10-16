@@ -28,7 +28,7 @@ class Model {
                     const data = await response.json();
                     this.allTheData.push(...data.fuel_stations); // store each state array into the main array
                 } catch (error) {
-                    logger.error(`Failed to fetch data for state ${state}:`, error);
+                    console.log(`Failed to fetch data for state ${state}:`, error);
                 }
             }
 
