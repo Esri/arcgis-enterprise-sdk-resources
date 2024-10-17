@@ -1,0 +1,107 @@
+[
+    {
+      "_id": "eca3c261-6f3a-4313-b9e9-4a23f58d4e85",
+      "fireId": "1",
+      "fireName": "PUMP HOUSE",
+      "fireType": "Human",
+      "acres": 0.1,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -117.09982,
+          32.58459
+        ]
+      },
+      "alternateID": 1
+    },
+    {
+      "_id": "b8e44921-70f4-4c0b-bcc2-55c7d7bd5368",
+      "fireId": "2",
+      "fireName": "I5",
+      "fireType": "Human",
+      "acres": 3,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -117.10081,
+          32.64169
+        ]
+      },
+      "alternateID": 2
+    },
+    {
+      "_id": "1c58e659-f8ca-4421-896b-2c10afe7ceda",
+      "fireId": "3",
+      "fireName": "SOUTHBAY",
+      "fireType": "Human",
+      "acres": 0.5,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -117.125,
+          32.59083
+        ]
+      },
+      "alternateID": 3
+    },
+    {
+      "_id": "f4b07f9f-dd69-4d3d-b47e-52803e4a945c",
+      "fireId": "4",
+      "fireName": "MARINA",
+      "fireType": "Human",
+      "acres": 0.1,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -117.1064,
+          32.6553
+        ]
+      },
+      "alternateID": 4
+    },
+    {
+      "_id": "cde5baa4-b041-477a-9989-ad8f6187b179",
+      "fireId": "5",
+      "fireName": "HILL",
+      "fireType": "Human",
+      "acres": 1,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -117.10307,
+          32.64571
+        ]
+      },
+      "alternateID": 5
+    },
+    {
+      "_id": "1a8bb842-bab1-4ef6-88eb-82914f5dcedf",
+      "fireId": "6",
+      "fireName": "IRRIGATION",
+      "fireType": "Human",
+      "acres": 0.1,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -117.10185,
+          32.64381
+        ]
+      },
+      "alternateID": 6
+    },
+    {
+      "_id": "d21134e3-57ad-4717-859f-3e243af24e3a",
+      "fireId": "7",
+      "fireName": "FIELD",
+      "fireType": "Human",
+      "acres": 3,
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -117.09361,
+          32.59284
+        ]
+      },
+      "alternateID": 7
+    }
+]
