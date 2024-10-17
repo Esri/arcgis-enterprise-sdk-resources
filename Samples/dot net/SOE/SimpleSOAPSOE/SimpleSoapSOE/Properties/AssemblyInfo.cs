@@ -39,8 +39,8 @@ using System.Runtime.InteropServices;
 [assembly: ESRI.Server.SOESupport.AddInPackage("NetSimpleSoapSOE", "6825f9cd-9b33-4719-a7f9-6ac94d09a0d5",
     Author = "cont_chau",
     Company = "",
-    Date = "5/21/2018 5:06:49 PM",
+    Date = "4/24/2023 5:06:49 PM",
     Description = "",
     TargetProduct = "Server",
-    TargetVersion = "10.9",
+    TargetVersion = "11.3",
     Version = "1.0")]

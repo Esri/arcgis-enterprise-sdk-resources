@@ -1,7 +1,7 @@
 package entsdksamples.soi;
 
 /*
-COPYRIGHT 2018 ESRI
+COPYRIGHT 2024 ESRI
 TRADE SECRETS: ESRI PROPRIETARY AND CONFIDENTIAL
 Unpublished material - all rights reserved under the
 Copyright Laws of the United States and applicable international
@@ -40,7 +40,7 @@ import com.esri.arcgis.system.IWebRequestHandler;
 import com.esri.arcgis.system.ServerUtilities;
 
 /*
- * For an SOE to act as in intercepter, it needs to implement all request
+ * For an SOI to act as in intercepter, it needs to implement all request
  * handler interfaces IRESTRequestHandler, IWebRequestHandler, IRequestHandler2,
  * IRequestHandler now the SOE/SOI can intercept all types of calls to
  * ArcObjects or custom SOEs.
@@ -102,9 +102,7 @@ public class OperationAccessSOI implements IServerObjectExtension, IRESTRequestH
 	 */
 	public void init(IServerObjectHelper soh) throws IOException, AutomationException {
 		/*
-		 * An SOE should retrieve a weak reference to the Server Object from the Server Object Helper in
-		 * order to make any method calls on the Server Object and release the
-		 * reference after making the method calls.
+		 * An SOI allow user to intercept requests for existing built-in operations of map services. 
 		 */
 		this.serverLog = ServerUtilities.getServerLogger();
 		String arcgisHome = getArcGISHomeDir();
@@ -120,15 +118,15 @@ public class OperationAccessSOI implements IServerObjectExtension, IRESTRequestH
 		this.serverLog.addMessage(4, 200,"ArcGIS home directory: " + arcgisHome);
 		this.so = soh.getServerObject();
 		//Load the SOI helper.
-		this.soiHelper = new SOIHelper(arcgisHome + "XmlSchema" + File.separator + "MapServer.wsdl");
+		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
+		this.soiHelper = new SOIHelper(mapServiceWSDLPath);
 		this.serverLog.addMessage(3, 200, "Initialized " + this.getClass().getName() + " SOE.");
 	}
 
 	/**
 	 * This method is called to handle REST requests.
 	 *
-	 * SOEs allow the user to extend base functionality for ArvGIS Map Services
-	 * and Image Services.
+	 * SOIs allow the user to to intercept requests for existing built-in operations of map services. 
 	 * To get schema or root resource for a Map Service the REST handler
 	 * calls <code>handleRESTRequest</code> with all arguments as empty.
 	 * For a Map Service the supported REST operations are: find, identify, export.
@@ -429,9 +427,7 @@ public class OperationAccessSOI implements IServerObjectExtension, IRESTRequestH
 	 *             the automation exception
 	 */
 	public void shutdown() throws IOException, AutomationException {
-		/*
-		 * The SOE should release its reference on the Server Object Helper.
-		 */
+		
 		this.serverLog.addMessage(3, 200, "Shutting down "
 				+ this.getClass().getName() + " SOI.");
 		this.serverLog = null;
