@@ -1,0 +1,160 @@
+---
+title: Custom Data Provider API Reference
+uid: cdf-custom-data-provider-api-reference
+description: >-
+  Twitter provider
+---
+
+# Custom Data Provider API Reference
+
+
+This topic discusses the custom data provider specification.
+
+## Registration Object
+
+Every custom data provider has a file named **index.js** that exports a
+registration object containing provider information. The object
+describes how to load and use the provider. The following is the code
+that is automatically included in the **index.js** file by the Custom
+Data Feeds (CDF) command line tool.
+
+```js
+const packageInfo = require('../package.json');
+const csconfigInfo = require('../cdconfig.json');
+const provider = {
+  type: csconfigInfo.type,
+  name: csconfigInfo.name,
+  version: packageInfo.version,
+  hosts: csconfigInfo.properties.hosts,
+  disableIdParam: csconfigInfo.properties.disableIdParam,
+  Model: require('./model')
+};
+module.exports = provider;
+```
+
+The table below describes each field in detail:
+
+  |Field             | Required?  | Type        | Description									|
+  ------------------ |----------- |------------ |-----------------------------------------------|
+  |`type`             |Yes         |`string`     	|Set to `'provider'`								|
+  |`name`             |Yes         |`string`     	|URL-safe provider name							|
+  |`version`          |Yes         |`string`     	|Provider version number							|
+  |`hosts`            |No          |`Boolean`    	|Add a `:host` parameter to routes					|
+  |`disableIdParam`   |No          |`Boolean`    	|Remove the `:id` parameter from routes			|
+  |`Model`            |Yes         |`class`      	|`require` statement for Model class				|
+  |`routes`           |No          |`Object[]`   	|Array of provider-specific route objects			|
+  |`Controller`       |No          |`class`      	|Controller class that supports route handling		|
+
+The auto-generated code pulls the provider version from the
+**package.json** file and other fields from the **cdconfig.json** file.
+To modify these fields, change the corresponding values in the
+**cdconfig.json** file instead of the **index.js** file.
+
+## Model Class
+
+Every custom data provider implements a `Model` class, which is usually
+in the **model.js** file. The Model class includes a `getData` function
+that will contain code for fetching and tranforming remote data into GeoJSON. 
+The following table describes the arguments that the `getData` function accepts.
+
+|Name        | Type       |  Description																|
+|------------ |------------ |----------------------------------------------------------------------
+|`req`        |`Object`     |Express.js [request](http://expressjs.com/en/4x/api.html#req) object		|
+|`callback`   |`Function`   |Callback function that either returns a GeoJSON object or an error		|
+
+### Request Object
+
+The following code snippet illustrates how to retrieve the `host` and
+`id` URL parameters from the request object:
+
+
+```js
+const host = req.params.host;
+const id = req.params.id;
+```
+
+
+The `host` parameter will only appear if the value of the host field in
+the **cdconfig.json** file is set to `true`. Similarly, the `id`
+parameter will only appear if the value of the `disableIdParam` field in
+the **cdconfig.json** file is set to `false`. You can use these
+parameters to build the URL to the remote data source.
+
+### Callback Function
+
+Pass the constructed GeoJSON to the callback function inside the `getData`
+function as follows.
+
+`callback(null,geojson)`;
+
+If an error occurs, invoke the callback function with the error as
+follows:
+
+```js
+callback(err);
+```
+
+
+### GeoJSON Metadata
+
+Custom Data Feeds requires that the GeoJSON be decorated with a property called `metadata`. 
+It should have an object as its value. This object contains information important for 
+translating the GeoJSON to its feature service equivalent. The table below describes 
+some of the key metadata properties:
+
+  |Field       | Type      |Description   |Example
+  |----------- |---------- |---------------------------------------------------------------------------------------------------------------------------------------------------------|--|
+  |`capabilities`      |`string`   |Identifies the various capabilities of an ArcGIS Feature Service. Individual capbabliites are listed in a comma-delimited string. <br /> Default: `Query`| `Query`
+  |`defaultVisibility`      |`Boolean`   |Specifies the default visibility of the layer. <br /> Default: `true`| `true`
+  |`description` | `string` |Description of the layer. | `My amazing dataset`
+  |`displayField`      |`string`   |The name of the layer's primary display field.| `FLD0_SUBT_FC2`
+  |`fields` | `object[]` | An arrary of objects that define feature attributes. If you decide to define one attribute, then you must define all of your attributes.  <br /> If this field is not set, the value is inferred from first feature in the dataset. It is highly recommended to always set this field to avoid a situation in which the `fields` are not set properly becuase first feature is not representative of the entire set. Every feature in the remote dataset may not have an identical attribute list. | `[{ name: 'state', type: 'string', alias: 'State', length: 2}]`
+  |`geometryType` | `string` |Geometry type of features. If set to `null`, it will assume tabular data. Possible values include: `Point`, `MultiPoint`, `LineString`, `MultiLineString`, `Polygon`, `MultiPolygon`, and `null`. <br />If this field is not set, the value is inferred from first feature in the dataset. It is highly recommended to always set this field to avoid a situation in which the first feature in the set may lack geometry and leads to `null` geometryType to be inferred for all features. Every feature in the remote dataset may not have geometry.| `Point`
+  |`hasZ`      |`Boolean`   |Indicates whether the features have elevation (z) values. <br /> Default: `false`| `false`
+  |`id`      |`string`   |The unique ID assigned to the layer. <br /> Default: `0`| `1`
+  |`idField`   |`string`   |Every feature layer must have a field that uniquely identifies each feature. This property will be used as the feature's `OBJECTID`. To be maximally compatible with ArcGIS clients, a 64-bit integer is the safest value to use. However, some ArcGIS clients can support other types such as 64-bit strings. Become familiar with the clients that will be consuming your service to pick the best data type for your implementation. [Click here for more information](http://localhost:8000/guide/custom-data-feeds/custom-data-provider-optimization/#setting-idfield-metadata-property) | `id`
+  |`maxRecordCount` | `number` |Maximum number of features the provider can return at once. This value should be set equal to the number of records that can be returned from the remote data source. <br /> Default: `2000`| `2000`
+  |`maxScale`      |`number`   |Defines the maximum scale (most zoomed in) at which the layer is visible in the view. <br /> Default: `0`| `99000`
+  |`minScale`      |`number`   |Defines the minimum scale (most zoomed out) at which the layer is visible in the view. <br /> Default: `0`| `1000`
+  |`name`      |`string`   |Each feature layer must have a name that differentiates it from all other layers. This is the name of this particular layer.| `Test Layer`
+  |`renderer`      |`object`   |Customize how features are visually displayed.| `{ "type": "simple", "symbol": { "type": "esriSMS", "style": "esriSMSCircle", "color": [255,0,0,255], "size": 5, "angle": 0, "xoffset": 0, "yoffset": 0, "outline": { "color": [0,0,0,255], "width": 1 }}, "label": "", "description": "", "rotationType": "geographic", "rotationExpression": "[Rotation] * 2"}`
+  |`supportsPagination`      |`Boolean`   |Indicates whether the query response supports pagination. This field lets ArcGIS clients know if they can expect to fetch multiple pages of data. <br /> Default: `true`| `true`
+
+If your data does not contain a field that can be used as the `OBJECTID`, you can leave `idField` undefined. 
+In such cases Custom Data Feeds will create an `OBJECTID` for each feature by default. However, this is 
+less than ideal as it impacts performance and in very rare cases may lead to `OBJECTID` collisions. The 
+best practice is to have a field on the raw data that meets the requirements of `idField`. See [Setting 
+the idField Property](../custom-data-provider-optimization/) for more details.
+
+## Routes and Controllers
+
+### Routes
+
+To use provider-specific routes, ensure that the `routes` field in the
+**index.js** file points to a file that exports an array of route
+definition objects. The following table describes the fields that each
+route definition object must contain.
+
+|Field       |Type         |Description																	|
+|----------- |------------ |---------------------------------------------------------------------------
+|`path`      |`string`     |Express.js-style route that includes optional parameters						|
+|`methods`   |`string[]`   |HTTP methods that this route can handle										|
+|`handler`   |`string`     |Name of the controller function that should handle requests at this route		|
+
+### Controllers
+
+Set the `handler` field of each route definition object to the function
+name that handles requests for that route. You can define these
+functions in a `Controller` class. The `Controller` field in the
+**index.js** file must reference the `Controller` class. Below is an
+example of how to implement a `Controller` class.
+
+
+```js
+function Controller (model) {
+  this.model = model;
+}
+Controller.prototype.test = function (req, res) {
+  res.status(200).json({version: '1.0.0'});
+};
+```

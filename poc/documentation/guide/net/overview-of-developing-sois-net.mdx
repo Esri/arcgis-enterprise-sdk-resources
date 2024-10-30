@@ -1,0 +1,92 @@
+---
+title: Overview of developing SOIs
+description: >-
+  This topic provides an overview of server object interceptors (SOI)
+  development with the ArcGIS Enterprise SDK, as well as other related topics.
+  ,In this topic,,Intercepting RE Intercepting RE
+---
+
+# Overview of developing SOIs
+
+This topic provides an overview of server object interceptors (SOI) development with the ArcGIS Enterprise SDK, as well as other related topics.
+
+### Intercepting REST, SOAP, and OGC service requests
+
+Map services (including map service extensions, such as feature services) support three types of requests:
+
+- REST API requests
+- SOAP API requests
+- OGC requests
+
+In order for an SOI to intercept these requests, you need to implement the following interfaces:
+
+-   [IRESTRequestHandler](/api-reference/net/IRESTRequestHandler/) – for handling REST API requests
+-   [IRequestHandler2](/api-reference/net/IRequestHandler2/) – for handling SOAP API requests including requests made by ArcMap
+-   [IWebRequestHandler](/api-reference/net/IWebRequestHandler/) – for handling OGC requests
+
+All of these interfaces are found in the [Esri.ArcGIS.System](/api-reference/net/System_library/) namespace.
+
+Even if a particular service configuration does not support OGC requests, you need to handle all of the above interfaces. Depending on the business logic you are implementing there are two general approaches you can take. If you are implementing an SOI that will perform security functions, it is recommended that you begin by implementing all the above interfaces and blocking all requests. As you implement your custom code, you can logically allow access through the above interfaces. If you do not initially block incoming requests and subsequently allow access as desired, you run a greater risk of inadvertently exposing a security hole. If you are not implementing security functionality, you could implement the three interfaces by passing all requests through to the underlying standard implementation, in order to allow normal functionality. You would subsequently add additional business logic to the one or more operations you wish to enhance.
+
+When a service has been configured with an SOI, the server framework routes all service requests to the SOI. It is the responsibility of the SOI to process the requests, delegate the request to the actual map or image service objects if applicable, and then optionally further process the response before returning it to the client.
+
+### Implementing the `IRESTRequestHandler` interface
+
+Handling the REST API is the easiest way to get started with an SOI, as all the operation parameters and responses are text/json and can be easily logged to disk.
+
+This interface primarily contains the function:
+
+```cs
+public byte[] HandleRESTRequest(string capabilities, string resourceName, string
+    operationName, string operationInput, string outputFormat, string
+    requestProperties, ref string responseProperties);
+```
+
+The function models the REST API in terms of resources and operations and its corresponding request properties. The `operationInput` parameter typically contains a JSON object that represents the input. You can easily filter this object using a JSON library available in the platform of your choice. In order to get the default configuration for the service, the REST Services Directory invokes this operation by passing in empty JSON objects for all arguments. By delegating this call to the underlying service and then manipulating the output in the SOI, you can impact what resources (layers) and operations (export, find, identify, etc.) that are presented in the Services Directory and clients.
+
+Another function that must be handled is:
+
+```cs
+public string getSchema()
+```
+
+This function informs the REST Services Directory how to represent the service configuration. Typically, your SOI implementation should delegate this call to the underlying map or image service object and then optionally manipulate the output as desired.
+
+### Implementing the `IRequestHandler2` interface
+
+The implementation of this interface is more involved, as it handles binary requests (from ArcMap and other ArcObjects-based applications) and SOAP requests (from custom SOAP clients). In either case, you need to use the ArcGIS Enterprise SDK API to unpack the incoming request, optionally modify the request parameters, and then repack the request to send to the underlying map service objects. To post-process the responses, you’ll need to use the ArcGIS Enterprise SDK API to unpack the responses before sending it to the client. The SDK contains utility classes to assist with packing and unpacking the response objects.
+
+This interface contains two methods that you need to implement:
+
+```cs
+public byte[] HandleBinaryRequest2(string capabilities, byte[] request)
+```
+
+The above function is invoked when the server receives binary requests (from ArcMap) for a service. The request parameter contains the binary request that must be unpacked using the ArcGIS Enterprise SDK API.
+
+```cs
+public string HandleStringRequest(string capabilities, string request)
+```
+
+This function is invoked when the server receives a SOAP (XML) request. SOAP clients typically make these requests. The request parameter contains the XML request that must be unpacked using the ArcGIS Enterprise SDK API.
+
+### Implementing the `IWebRequestHandler` interface
+
+KML requests and OGC service requests (WMS and WFS) can be intercepted by implementing the `IWebRequestHandler` interface in your SOI. The functions in this interface represent a typical OGC request that is an HTTP request with query parameters. You need to implement the following function:
+
+```cs
+public byte[] HandleStringWebRequest(esriHttpMethod httpMethod, string requestURL,
+    string queryString, string capabilities, string requestData, ref string
+    responseContentType, ref int respDataType)
+```
+
+The _requestData_ parameter is typically text/xml and contains the input for the request. However, parameters are often sent in via the _queryString_ parameter. The _respDataType_ parameter informs your code how the value returned _byte\[]_ must be interpreted. If the _respDataType_ indicates a file, your code must stream the contents of the file path returned by the _byte\[]_. The _responseContentType_ informs the web handler about the content type to set while responding to the HTTP request.
+
+### Utility classes for working with JSON and ArcGIS Enterprise SDK-based results
+
+A utility class called SOISupport is part of the Layer Access sample. This utility class contains methods for interacting with the parent service in order to delegate incoming requests, methods for converting between ArcGIS Enterprise SDK response objects, and much more. See the [layer access sample](/sample-code/Samples/net/SOI/NetLayerAccessSOI/) for examples of how to use these methods particularly when dealing with SOAP and binary requests. Other classes in the ESRI.Server.SOESupport assembly provide functionality for working with JSON data and objects.
+
+### Also See
+
+-   [Debug an extension](../debug-extensions-net/)
+-   [Migrate extensions](../migrate-extensions-net/)

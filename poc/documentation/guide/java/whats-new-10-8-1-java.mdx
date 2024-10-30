@@ -1,0 +1,47 @@
+---
+title: What's new in 10.8.1
+description: >-
+---
+
+# What's new in 10.8.1
+
+### Maven integration
+
+**Maven integration** has been introduced to ArcGIS Enterprise SDK for Java SOE and SOI development. This feature integrates the SDK dependencies and packaging tools into multiple Maven artifacts, which provides the ability to build SOE and SOI projects under the Maven framework. The SDK also includes the **[install-maven-artifacts](../install-the-maven-artifacts/)** tool to help install these artifacts to your local Maven repository. Read more [about Maven integration](../about-maven-integration/). All the SOE and SOI Java samples have been updated to incorporate this **Maven integration** feature.
+
+> Note: This feature does not impact ArcObjects SDK. Building ArcObjects SOEs or SOIs still requires installing Eclipse and the ArcGIS Eclipse plug-in. 
+
+**Maven integration** provides functions that replace **ArcGIS Eclipse plugin** for ArcGIS Enterprise SDK. Due to the introduction of this feature, the following SDK components have been removed at 10.8.1: 
+
+- The **ArcGIS Eclipse plug-in** has been removed from the SDK. Developing Java SOEs and SOIs no longer requires Eclipse. Instead, most Java IDEs that support Maven and JDK11 can be used (see [system requirements](../system-requirements-java/)).
+
+- **Eclipse SOE and SOI templates** have been removed and replaced by the [Maven SOE and SOI archetypes](../about-maven-integration/#arcgis-enterprise-sdk-maven-artifacts). These archetypes can help create an SOE or SOI Maven project based on a template defining the project structure, build behavior, and boilerplate code.
+
+- The workflow for using **SOEpackager** and the **Export SOE/SOI** tool to export SOEs or SOIs is no longer needed. Accordingly, `SOEpackager_ent.bat` and `SOEpackager_ent.sh` have been removed from the SDK. To build the SOE or SOI project and generate the `.soe` file, use the [Maven build](../about-maven-integration/#project-build). 
+
+For a reference of the **ArcGIS Eclipse plugin** feature at 10.8 or previous versions, you can refer to [Use Eclipse plugin (10.6.1-10.8)](../legacy-use-eclipse/). 
+
+### Utility network SOE and SOI
+ArcGIS Enterprise SDK now provides support for utility network datasets in SOEs and SOIs. Developers can directly access the network's metadata and topology, perform trace analysis and more. Viewing and editing network data can also be done through branch versioning. Note that the provided interfaces and classes don't expose functionality to modify the network schema or load data. These operations should be done using the geoprocessing services. For a list of new interfaces and classes, refer to [New in 10.8.1 API](../whats-new-api-10-8-1-java).
+
+You can read [Work with utility networks](../work-with-utility-networks-java/) for more details. A new sample, [Utility Network Tracing REST SOE](/sample-code/Samples/java/soe/untracingrestsoe/ReadMe/), has been added to demonstrate how to develop custom service functions using the utility network tracing capabilities.
+
+To employ this feature, you must upgrade your ArcGIS Server to 10.8.1 or later versions and compile the SOE or SOI with 10.8.1 or later versions of ArcGIS Enterprise SDK.
+
+### Image service SOI
+Building image service SOIs with ArcGIS Enterprise SDK is now supported. You can use `servicetype = "ImageService"` in the [SOI's class annotation](../implement-the-sois-interfaces/#soi-class-annotation) to define an image service SOI. Note that a 10.8.1 or later version of ArcGIS Server is required to allow the image service to work with the SOI. In addition, more interfaces and classes that support functions related to image services, such as `IImageServer` and `IImageServiceInfo`, have been added. For a list of new interfaces and classes, refer to [New in 10.8.1 API](../whats-new-api-10-8-1-java). 
+
+### Shared instance support
+SOEs and SOIs now support shared instances. They can be enabled with map services that are set to use the shared instance pool. To learn more about shared instances, refer to [Configure service instance settings](https://enterprise.arcgis.com/en/server/latest/administer/windows/configure-service-instance-settings.htm). 
+
+Since services using the shared instance pool manage service resources differently, and their initialization mechanism is also different from those using dedicated instances, this affects how SOEs and SOIs work within the shared instance pool. Refer to the following two topics for more details about developing SOEs and SOIs for shared instances:
+
+- [Develop extensions to use with shared instances](../develop-extensions-for-shared-instances-java/)
+- [Debug extensions with shared instances](../debug-extensions-shared-java/)
+
+To allow the SOE or SOI to be used for shared instances, you must upgrade your ArcGIS Server to 10.8.1 or later versions, and compile the SOE or SOI with 10.8.1 or later versions of ArcGIS Enterprise SDK with the `supportsSharedInstances` property set to true. 
+
+### ServerUtilities.getGroupInfo() method
+At 10.8.1, the `ServerUtilities.getGroupInfo()` method is added to ArcGIS Enterprise SDK. This method helps identify all the roles or groups that the current logged-in user is a member of. It uses the role name or group name (also known as group title in [ArcGIS REST API](https://developers.arcgis.com/rest/users-groups-and-items/group.htm)) as the unique identifier for those roles or groups. The method return type is `Set<String>`, which is a collection of the logged-in user's role or group names. This method can be used in SOEs and SOIs. It works for both a standalone ArcGIS Server and a federated ArcGIS Enterprise in 10.8.1 or later versions.
+
+The [Layer Access SOI](/sample-code/Samples/java/soi/LayerAccessSOI/ReadMe/) sample and [Operation Access SOI](/sample-code/Samples/java/soi/OperationAccessSOI/ReadMe/) sample have been updated to demonstrate the `ServerUtilities.getGroupInfo()` method by restricting user access to service resources or operations based on the groups or roles to which the current logged-in user belongs.

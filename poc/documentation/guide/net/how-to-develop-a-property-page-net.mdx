@@ -1,0 +1,22 @@
+---
+title: How to develop a property page for the REST SOE
+description: >-
+  This topic explains how to implememnt property page for REST SOE sample.
+  ,,,,About developing a property page for the REST SOE,The SpatialQueryREST
+  server object extension The SpatialQueryREST server object extension
+---
+
+# How to develop a property page for the REST SOE
+
+### About developing a property page for the REST SOE
+
+The SpatialQueryREST server object extension (SOE) used in this walkthrough has the following properties that must be set by the server administrator:
+
+-   **LayerName — Represents the layer to query**
+-   **FieldName — Field on which to summarize the areas**
+
+The Capabilities tab in ArcGIS Server Manager allows the server administrator to set these properties. Manager detects the properties exposed by the SOE and creates input text boxes where the server administrator can enter the desired values.
+
+You can optionally write custom "property pages" that plug into Manager and expose user interface elements more complex than input text boxes. For example, such a page might allow the server administrator to choose the LayerName from a drop-down list. The drop-down list might have been derived from ArcGIS Enterprise SDK code iterating through the map service to discover all the map layer names.
+
+Custom property pages can require an extensive amount of code and are outside the scope of this walkthrough. In most cases, the default property page in Manager is sufficient for editing properties.

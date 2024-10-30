@@ -1,0 +1,33 @@
+---
+title: Debug extensions
+description: 
+---
+
+# Debug extensions
+
+This topic describes the debugging workflow for server object extensions (SOEs) and server object interceptors (SOIs), and how to attach the Visual Studio debugger.
+
+### Debug workflow
+
+Debugging an extension (SOE or SOI) poses certain challenges, because you must step into a running service process. Visual Studio provides different ways of attaching the debugger to a process, including remote debugging. The workflow for debugging extensions is the same for .NET SOE and SOI. To debug your extension, do the following:  
+
+1. Place breakpoints at the desired locations in the extension code. 
+2. Use ArcGIS Server Manager to [deploy extensions](../deploy-extensions-net/).  
+3. [Enable extensions](../enable-extensions-net/) with a service and restart the service.
+4. Attach the Visual Studio debugger to the running service process. Choose any of the following three options:
+    - [Automatically attach the debugger](../debug-extensions-net-auto/) by calling `System.Diagnostics.Debugger.Launch()`.
+    - [Manually attach the debugger](../debug-extensions-net-manual/).
+    - [Remotely debug extensions](../debug-extensions-net-remote/).
+5. Perform corresponding service operations to hit the breakpoint and step through the code.
+
+To debug an SOE or SOI with a running service instance, the extension must be deployed on ArcGIS Server and enabled with a service first. If you would like to modify the code during debugging, you have to rebuild the extension project, update the extension on ArcGIS Server, and then reenable it with a service, repeating the above steps 1 through 5.  
+
+The rest of this topic mainly discusses step 4 and elaborates on three different ways to attach the Visual Studio debugger to the running service. Prerequisite knowledge of deploying extensions and enabling extensions is required before you continue this topic.  
+
+If ArcGIS Server is installed on the same machine as Visual Studio, there are two different ways of attaching the debugger, and you may either [automatically attach the debugger](../debug-extensions-net-auto/) or [manually attach the debugger](../debug-extensions-net-manual/) to the service process. If ArcGIS Server is not installed on the same machine as Visual Studio, you need to follow the instructions in [remotely debug extensions](../debug-extensions-net-remote/).  
+
+### Also See
+
+-   [Automatically attach the Visual Studio debugger](../debug-extensions-net-auto/)
+-   [Manually attach the debugger](../debug-extensions-net-manual/)
+-   [Remotely debug extensions](../debug-extensions-net-remote/)

@@ -1,0 +1,51 @@
+---
+title: Prerequisites
+uid: cdf-prerequisites
+description: >-
+  Custom Data feed Prerequisites
+---
+
+# Prerequisites
+
+Install [Node.js](https://nodejs.org/en/) before following this how-to
+guide. Custom Data Feeds (CDF) currently supports versions of Node.js between *v16.19.1* and *v20.11.1*.  
+
+_Node.js version 20.11.1 is highly recommended because this version ships with ArcGIS Server 11.3. If you
+need to have other version of Node.js installed on your development machine, consider using
+[NVM](https://github.com/nvm-sh/nvm) (Linux) or [NVM for Windows](https://github.com/coreybutler/nvm-windows) (Windows)
+to switch your version while developing._
+
+1.  Verify successful Node.js installation and the version. In a terminal, run the command: `node -v`
+
+2.  Install the CDF CLI tool. To do this, refer to step 3 in
+    [Installing and configuring](../installing-and-configuring-custom-data-feeds/).
+
+3.  Verify successful installation of CDF CLI tool. In a terminal, run the command: `cdf -h`
+
+If the CDF tool is configured, then the following output will appear:
+
+```
+Usage : cdf <command> [options]
+
+Commands:
+  cdf createapp <name>                              creates a new custom data app
+  cdf createprovider <name>                         creates a new custom data provider within custom 
+                                                    data app
+  cdf listproviders                                 lists custom data providers registered 
+                                                    with custom data app
+  cdf export <name>                                 exports specified custom data provider into 
+                                                    package file with .cdpk extension
+  cdf deleteprovider <name>                         deletes specified custom data provider from 
+                                                    custom data app 
+  cdf register <name> <server-admin-url> <token>    registers a provider with ArcGIS server
+  cdf unregister <name> <server-admin-url> <token>  unregisters a provider with ArcGIS server and
+                                                    optionally deletes associated services
+
+
+Options:
+  -h, --help     Show help                                                                 [boolean]
+  -v, --version  Show version number                                                       [boolean]
+
+Esri - copyright 2024
+```
+

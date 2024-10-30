@@ -1,0 +1,141 @@
+---
+title: Overview of developing SOEs
+description: >-
+  This topic gives you an overview of developing server object extension. ,In
+  this topic,,About server object extensions ,Interfaces for use with all SOEs
+  (IServerObje Interfaces for use with all SOEs (IServerObje
+---
+
+# Overview of developing SOEs
+
+This topic gives you an overview of developing server object extension.
+
+### About server object extensions
+
+A server object extension (SOE) is a Component Object Model (COM) object developed in .NET or Java that implements IServerObjectExtension and any additional interfaces necessary for its implementation.
+
+The service instance (referred to at this level of the developer documentation as the "server object") cocreates the SOE and calls the Init method, handing the SOE a reference to the server object via the server object helper argument. The SOE can then make method calls on the server object.
+
+### Interfaces for use with all SOEs (`IServerObjectExtension` and `IObjectConstruct`)
+
+The `IServerObjectExtension` interface is used by the server object to manage the SOE's life span. Your SOE must implement this interface. This interface includes the following methods:
+
+-   **Init**—Called once when the server object starts.
+-   **Shutdown**—Informs the SOE that the server object is shutting down. In response, the SOE releases its reference on the server object helper.
+
+If your SOE includes configuration properties or requires initialization logic, implement the optional interface IObjectConstruct. This interface includes a single method, Construct, which is called after `IServerObjectExtension.Init()`. Construct returns the configuration properties for the SOE as an instance of IPropertySet interface.
+
+You must not put initialization logic in the SOE class’s constructor or in `Init()`. Instead, put it in `IObjectConstruct.Construct()`, which is called later in the SOE life cycle. This ensures you have a fully created SOE that can log any errors with your initialization logic.
+
+### SOE web service interfaces (`IRESTRequestHandler` and `IRequestHandler2`)
+
+Since SOEs are web services, they use a request handler interface to do their work and the `ESRI.ArcGIS.SOESupport.ServerLogger` object to do the logging.
+
+-   **Representational State Transfer (REST)**—based SOE web services implement the `IRESTRequestHandler` interface.
+-   **Simple Object Access Protocol (SOAP)**—based SOE web services implement the `IRequestHandler2` interface.
+
+It's possible to create an SOE that implements IRESTRequestHandler and IRequestHandler2 to support REST and SOAP.
+
+When using the SOE, a client sends an Hypertext Transfer Protocol (HTTP) request to the web service, which then returns a response. The request handler interfaces facilitate this communication.
+
+### Optional interface `IObjectActivate`
+
+The `IObjectActivate` interface is optional (that is, its implementation is not required unless your SOE requires special logic to execute before and after servicing a request). It includes the following methods:
+
+-   **Activate()**—Called each time a client makes a request to the SOE, via SOAP or REST.
+-   **Deactivate()**—Called each time a client releases the service after using it.
+
+Any logic you implement in these methods should not take a long time to execute because it adds to the total request time.
+
+### Developing SOEs as web services
+
+When you develop an SOE, you are developing a web service that takes in requests and sends back information as responses. SOEs are exposed by ArcGIS Server as web services in the same way other native services (for example, map or geocode services) are exposed.
+
+SOEs run efficiently inside the GIS server to make fine-grained calls to ArcGIS Enterprise SDK objects to implement the necessary geospatial functionality. SOEs can leverage the management and security framework of ArcGIS Server, for example, access to SOE web services can be secured using the ArcGIS Server token service model.
+
+You can develop SOEs using .NET or Java. An SOE can support REST, SOAP, or both. The remainder of this topic describes building REST and SOAP web services using .NET.
+
+### REST and SOAP SOE templates
+
+ArcGIS Enterprise SDK provides REST and SOAP SOE templates that are integrated with Visual Studio. These templates give you the necessary code to start building an SOE. You'll typically begin with the template, then modify the existing code to add logic required by the SOE.
+
+The REST SOE template application is comprised of a class that implements all necessary interfaces for a REST SOE, including IServerObjectExtension, IObjectConstruct, and IRESTRequestHandler.
+
+The SOAP SOE template application is comprised of a class that implements all the necessary interfaces for a SOAP SOE, including `IRequestHandler2`, `IServerObjectExtension`, and `IObjectConstruct`. The other component in the structure is a template Web Service Description Language (WSDL) file that you can use to integrate Esri SOAP types into your SOAP implementation. For more information on the SOAP SOE class implementation, see [developing SOAP SOEs](../develop-soap-soes-net/).
+
+### Basic implementation of an SOE web service
+
+Web services running in ArcGIS Server are implemented by "server objects" hosted in GIS server container processes. The server object contains pre-packaged functionality associated with its purpose; therefore, map server objects host map data, generate map images, and handle queries.
+
+SOEs extend this functionality by using components that exist in the server object in a customized workflow. Access to this workflow is managed by request handler interface(s) implemented by an SOE.
+
+Clients discover how to work with an SOE defined in a standard contract, such as a WSDL for SOAP services and JavaScript Object Notation (JSON) for REST services. Clients send web requests over Hypertext Transfer Protocol (HTTP) to an ArcGIS Server web service instance. This instance contains a SOAP and REST handler to direct the request to an SOE hosted in a server object on the GIS server. The SOE deserializes the request, executes the business logic (usually accessing the server object), and serializes the response. The response is sent back to the client via the same HTTP channel and deserialized.  
+
+ArcGIS Server is built on the COM architecture. A .NET SOE class must be visible and accessible via COM to be used by ArcGIS Server. This is accomplished using the ComVisible and globally unique identifier (GUID) attributes. The `ClassInterfaceType.None` attribute tells type library generation tools that a default class interface does not need to be generated. The SOE template also shows how you should use other attributes to define the capabilities, properties, description, and supported web service architectures (SOAP and REST) for your SOE.
+
+The following code example shows a class declaration for a simple SOE class:
+
+```cs
+[ComVisible(true)]
+[Guid("b210df6d-83af-4e02-bf34-db72387a8257")]
+[ClassInterface(ClassInterfaceType.None)]
+[ServerObjectExtension("MapServer", 
+	AllCapabilities = "", 
+	DefaultCapabilities = "", 
+	Description = "A simple REST SOE", 
+	DisplayName = "RestSOE", 
+	Properties = "", 
+	SupportsREST = true, 
+	SupportsSOAP = false)]
+public class RestSOE: IServerObjectExtension, IObjectConstruct, IRESTRequestHandler
+{
+    . . . 
+}
+```
+
+### SOE capabilities
+
+SOE methods can be grouped into capabilities. Each capability can be authorized on a per-configuration basis. Each call to an SOE includes the configuration capabilities and the method (operation) being called. Implementation of the SOE should check the capabilities to determine if a method can be executed. For example, assume an SOE has methods M1, M2, M3, and Capabilities C1 (which includes M1, M2) and C2 (including M1, M2, M3). When the SOE is enabled on a server object, the configuration only enables access to C1 capabilities. As a result, a call to M3 on the SOE should fail.
+
+> **Note:** Grouping methods into capabilities is optional.
+
+### ESRI.Server.SOESupport library
+
+ArcGIS Server includes a native .NET library, `ESRI.Server.SOESupport`, to assist ArcGIS Server developers in defining and processing SOAP and REST content in an SOE. The library includes boiler-plate code for serialization and de-serialization of messages, dispatching of business methods, error handling, and logging. In general, the template code starts with an implementation class—SoeRestImpl for REST and SoeSoapImpl for SOAP—to organize and define SOE functionality, and delegates calls to methods in the SOE. Use of the library is discussed in the respective SOAP and REST sections.
+
+### Writing log messages
+
+You can write messages to the ArcGIS Server logs within your SOE by using the SOESupport.ServerLogger class. In the constructor of your SOE, you can create the logger. See the following code example:
+
+```cs
+logger = new ServerLogger();
+```
+
+You can then insert log messages of varying levels within the SOE. In the following code example, 8000 is a log code assigned by the developer to custom messages written by the SOE:
+
+```cs
+logger.LogMessage(ServerLogger.msgType.infoStandard, "Shutdown", 8000, 
+    "Custom message: Shutting down the SOE");
+```
+
+The messages' levels available for `ServerLogger.msgType` correspond to the ArcGIS Server log message levels in the following manner:
+
+| ServerLogger.msgType |ArcGIS Server log level|
+|----|----|
+|error|Severe|
+|warning|Warning|
+|infoSimple|Info|
+|infoStandard|Fine|
+|infoDetailed|Verbose|
+|debug|Debug|   
+
+### Supporting REST and SOAP
+
+If you want to expose your SOE functionality through SOAP and REST, you have the following choices:
+
+-   Use the SOAP and REST templates to create separate SOEs. Although this approach is more straightforward, it requires you to give different names to the SOEs.
+-   Implement `IRequestHandler2` and IRESTRequestHandler in the same SOE. One way to do this is to start with the SOAP template and copy in the IRESTRequestHandler implementation from the REST template. To minimize code duplication, separate your business logic into its own classes and call into those from your REST and SOAP handler functions.
+
+### Threading
+
+SOEs should typically create and access ArcGIS Enterprise SDK objects on the primary thread of the SOE. Third-party libraries that don't interact with ArcGIS Enterprise SDK can be used on other threads. ArcGIS Enterprise SDK objects can be used in newly-spawned threads only if they are created and disposed of in the same thread. This conforms to the COM STA threading model.

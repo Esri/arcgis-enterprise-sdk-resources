@@ -1,0 +1,250 @@
+---
+title: ArcGIS Enterprise SDK
+uid: enterprise-sdk
+description: Learn how to use the ArcGIS Enterprise SDK to extend ArcGIS Enterprise functionalities.
+keywords:
+  - server object extensions
+  - server object interceptors
+  - soe
+  - soi
+  - custom data feed
+  - arcgis enterprise
+id: guide-landing-page
+images:
+  - "./images/video1.png"
+  - "./images/video2.png"
+  - "./images/video3.png"
+  - "./images/video4.png"
+  - "./images/video5.png"
+  - "./images/video6.png"
+  - "./images/data-feeds.png"
+  - "./images/blog1.png"
+  - "./images/blog2.png"
+  - "./images/blog3.png"
+  - "./images/dev-summit-2023.jpg"
+---
+
+import SysReq32Icon from "calcite-meridian-icons/icons/system-requirements-64.svg";
+import DownloadIcon from "@esri/calcite-ui-icons/icons/download-32.svg";
+import GuideIcon from "@esri/calcite-ui-icons/icons/notebook-32.svg";
+import APIIcon from "calcite-meridian-icons/icons/programmer-tools-64.svg";
+import SampleIcon from "@esri/calcite-ui-icons/icons/layer-map-service-32.svg";
+
+# ArcGIS Enterprise SDK
+
+ArcGIS Enterprise Software Development Kit (SDK) allows developers to extend ArcGIS Enterprise functionalities. It supports extending the functionality of the [map services](https://pro.arcgis.com/en/pro-app/help/sharing/overview/map-image-layer.htm) and [image services](https://pro.arcgis.com/en/pro-app/latest/help/sharing/overview/web-image-layer.htm) published from ArcGIS Pro. There are three ways to extend these services:
+
+- **Server object extensions (SOEs)** allow you to create new service operations to extend the base service functionality. SOEs are appropriate if you want to perform some well-defined business logic to work with the GIS data and services that is not easily accomplished using the existing service APIs.
+
+- **Server object interceptors (SOIs)** is capable of intercepting requests for built-in operations of map services and image services. This allows you to execute custom logic and alter the behavior of these services by overriding existing operations in a way that is seamless to existing clients, such as ArcGIS Pro, Map Viewer, and more.
+
+- **Custom data feeds** The ArcGIS Enterprise custom data feed implementation is a customization and administration workflow. Bring data into your ArcGIS Enterprise from any data source in real time. See how in this [blog](https://www.esri.com/arcgis-blog/products/arcgis-enterprise/data-management/dev-summit-2023-custom-data-feeds/) and [video](https://mediaspace.esri.com/media/t/1_kk12l8t8).
+
+SOEs and SOIs can be developed with .NET or Java.
+
+## Get started with SOE and SOI
+
+<CardGroup perRow={5}>
+  <Card to="https://enterprise.arcgis.com/en/system-requirements/latest/windows/arcgis-enterprise-sdk-system-requirements.htm">
+    <CardHeader>
+      <Icon icon={SysReq32Icon} size={48} />
+      <h2>Prerequisites</h2>
+    </CardHeader>
+  </Card>
+  <Card href="/#install-arcgis-enterprise-sdk">
+    <CardHeader>
+      <Icon icon={DownloadIcon} size={48} />
+      <h2>Installation</h2>
+    </CardHeader>
+  </Card>
+  <Card>
+    <CardHeader>
+      <Icon icon={GuideIcon} size={48} />
+      <h2>Guide</h2>
+    </CardHeader>
+    <CardBody>[.NET Guide](/guide/net/)</CardBody>
+    <CardBody>[Java Guide](/guide/java/)</CardBody>
+  </Card>
+  <Card>
+    <CardHeader to="/api-reference/">
+      <Icon icon={APIIcon} size={48} />
+      <h2>API Reference</h2>
+    </CardHeader>
+    <CardBody>[.NET API Reference](/api-reference/net/)</CardBody>
+    <CardBody>[Java API Reference](/api-reference/java/)</CardBody>
+  </Card>
+  <Card to="/sample-code/">
+    <CardHeader>
+      <Icon icon={SampleIcon} size={48} />
+      <h2>Samples</h2>
+    </CardHeader>
+  </Card>
+</CardGroup>
+
+## Get started with custom data feeds
+
+<CardGroup perRow={2}>
+  <Card href="/guide/custom-data-feeds/installing-and-configuring-custom-data-feeds/">
+    <CardHeader>
+      <Icon icon={SysReq32Icon} size={48} />
+      <h2>Prerequisites</h2>
+    </CardHeader>
+  </Card>
+  <Card href="/guide/custom-data-feeds/" target="_blank">
+    <CardHeader>
+      <Icon icon={GuideIcon} size={48} />
+      <h2>Guide</h2>
+    </CardHeader>
+  </Card>
+</CardGroup>
+
+### Prerequisites
+
+The ArcGIS Enterprise SDK is included with your license for the ArcGIS Enterprise product. There is no separate purchase or authorization mechanism specifically for the ArcGIS Enterprise SDK. However, as SOEs and SOIs must be deployed via ArcGIS Server, you must have a licensed ArcGIS Server to deploy or test the SOE/SOI.
+
+Before you install the SDK, check [System Requirements](https://enterprise.arcgis.com/en/system-requirements/latest/windows/arcgis-enterprise-sdk-system-requirements.htm) to make sure you have installed the following software or components of supported versions:
+
+- Developing a .NET SOE or SOI:
+  - Visual Studio
+  - .NET Framework
+- Developing a Java SOE or SOI:
+  - Java IDE
+  - JDK
+  - Maven (required since the 10.8.1 release)
+
+### Install ArcGIS Enterprise SDK
+
+Follow these steps to download ArcGIS Enterprise SDK:
+
+- Download at [My Esri](https://my.esri.com).
+
+  1. Log in to https://my.esri.com website.
+  2. Find **_ArcGIS Enterprise_** under **_Downloads_** tab.
+  3. Click the **_View Downloads_** button.
+  4. Find **_ArcGIS Enterprise SDK_** under **_Developer Tools_** section and click **_Download_**.
+
+Then, you can install ArcGIS Enterprise SDK on your development environment. See SDK installation guide for [.NET](/guide/net/installation-net/) and [Java](/guide/java/installation-java/).
+
+### Build a simple SOE or SOI
+
+The following are simple SOEs and SOIs that you can start with:
+
+- Sample: [.NET simple REST SOE sample](/sample-code/Samples/net/SOE/SimpleRESTSOE/)
+- Sample [.NET simple SOI sample](/sample-code/Samples/net/SOI/NetSimpleLoggerSOI/)
+- Walkthrough: [How to create and develop a .NET REST SOE](/guide/net/how-to-develop-the-rest-soe-net/)
+- Walkthrough: [How to create and develop a .NET SOI](/guide/net/quick-tour-of-a-simple-soi-net/)
+- Sample: [Java simple REST SOE sample](/sample-code/Samples/java/soe/simplerestsoe/ReadMe/)
+- Sample: [Java simple SOI sample](/sample-code/Samples/java/soi/SimpleSOI/ReadMe/)
+- Walkthrough: [How to create and develop a Java REST SOE](/guide/java/develop-rest-soes-java/)
+- Walkthrough: [How to create and develop a Java SOI](/guide/java/quick-tour-of-a-simple-soi-java/)
+
+## Video
+
+<CardGroup perRow={3}>
+  <Card href="https://mediaspace.esri.com/media/t/1_kk12l8t8">
+    <CardImage>
+      <Image image={props.images["dev-summit-2023"]} />
+    </CardImage>
+    <CardBody>
+      <h3>Extending and Automating Your Enterprise</h3>
+      <p>Esri Developer Summit 2023</p>
+      <p>See how custom data feeds are used to connect your GIS to various data providers such as Yelp and MongoDB.</p>
+    </CardBody>
+  </Card>
+  <Card href="https://www.esri.com/videos/watch?videoid=hHFLSLXczGY&title=Extending%20and%20Automating%20Your%20Enterprise">
+    <CardImage>
+      <Image image={props.images["video1"]} />
+    </CardImage>
+    <CardBody>
+      <h3>Extending and Automating Your Enterprise</h3>
+      <p>Esri Developer Summit 2021</p>
+      <p>
+        Utility Network takes the Enterprise SDK and demonstrates how you can create a Server Object Interceptor (SOI) to enhance
+        collaboration and coordination.
+      </p>
+    </CardBody>
+  </Card>
+  <Card href="https://www.esri.com/videos/watch?videoid=OmG07JOmqik&title=Extending%20ArcGIS%20Enterprise%3A%20Developer%20Technologies%20and%20Webhooks">
+    <CardImage>
+      <Image image={props.images["video2"]} />
+    </CardImage>
+    <CardBody>
+      <h3>Extending ArcGIS Enterprise: Developer Technologies and Webhooks</h3>
+      <p>Esri Developer Summit 2021</p>
+      <p>
+        Learn about using Server Object Extensions (SOEs), Server Object Interceptors (SOIs), and Webhooks, to extend ArcGIS Enterprise
+        functionality.
+      </p>
+    </CardBody>
+  </Card>
+  <Card href="https://www.esri.com/videos/watch?videoid=8ccxcZqfBuE&title=ArcGIS%20Enterprise%20SDK%3A%20An%20Overview%20of%20the%20Utility%20Network%20API">
+    <CardImage>
+      <Image image={props.images["video3"]} />
+    </CardImage>
+    <CardBody>
+      <h3>ArcGIS Enterprise SDK: An Overview of the Utility Network API</h3>
+      <p>Esri Developer Summit 2021</p>
+      <p>
+        This session will explore how to extend the Utility Network Service REST API to answer various business needs using the ArcGIS
+        Enterprise SDK.
+      </p>
+    </CardBody>
+  </Card>
+  <Card href="https://www.esri.com/videos/watch?videoid=fKx4XNTmlwg&title=Extending%20ArcGIS%20Enterprise%3A%20Developer%20Technologies%20and%20Webhooks">
+    <CardImage>
+      <Image image={props.images["video4"]} />
+    </CardImage>
+    <CardBody>
+      <h3>Extending ArcGIS Enterprise</h3>
+      <p>Esri Developer Summit 2020</p>
+    </CardBody>
+  </Card>
+  <Card href="https://www.esri.com/videos/search?text=extend%20arcgis%20enterprise" centered="true">
+    <CardHeader>
+      <CardImage>
+        <Image image={props.images["video6"]} />
+      </CardImage>
+      <h3>See more videos</h3>
+    </CardHeader>
+  </Card>
+</CardGroup>
+
+## Blog
+
+<CardGroup perRow={4}>
+  <Card href="https://www.esri.com/arcgis-blog/products/arcgis-enterprise/data-management/dev-summit-2023-custom-data-feeds/">
+    <CardImage>
+      <Image image={props.images["data-feeds"]} />
+    </CardImage>
+    <CardBody>
+      <h3>Dev Summit 2023: Custom data feeds</h3>
+      <p>Developers Blog - March 08, 2023</p>
+    </CardBody>
+  </Card>
+  <Card href="https://www.esri.com/arcgis-blog/products/arcgis-enterprise/announcements/migrating-arcobjects-soes-and-sois-to-arcgis-enterprise-sdk/">
+    <CardImage>
+      <Image image={props.images["blog1"]} />
+    </CardImage>
+    <CardBody>
+      <h3>Migrating ArcObjects SOEs and SOIs to ArcGIS Enterprise SDK</h3>
+      <p>Announcement - June 07, 2021</p>
+    </CardBody>
+  </Card>
+  <Card href="https://www.esri.com/arcgis-blog/products/utility-network/developers/extending-utility-network-services-with-the-arcgis-enterprise-sdk-10-8-1/">
+    <CardImage>
+      <Image image={props.images["blog2"]} />
+    </CardImage>
+    <CardBody>
+      <h3>Extending Utility Network Services with the ArcGIS Enterprise SDK 10.8.1</h3>
+      <p>Developers Blog - August 21, 2020</p>
+    </CardBody>
+  </Card>
+  <Card href="https://www.esri.com/arcgis-blog/?s=#&products=arcgis-enterprise" centered="true">
+    <CardHeader>
+      <CardImage>
+        <Image image={props.images["blog3"]} />
+      </CardImage>
+      <h3>See more blogs</h3>
+    </CardHeader>
+  </Card>
+</CardGroup>

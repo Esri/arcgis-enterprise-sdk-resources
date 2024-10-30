@@ -1,0 +1,196 @@
+---
+title: Overview of Maven integration
+description: >-
+---
+
+# Overview of Maven integration
+
+Starting with 10.8.1, ArcGIS Enterprise SDK provides Maven support for Java SOE and SOI development. The SDK integrates multiple Maven artifacts, including dependencies, archetypes, and plugins, to build and manage an SOE or SOI project. It also provides the tool to install those artifacts to the local Maven repository. Creating and developing an SOE or SOI project follows the Maven patterns. This topic illustrates the Maven artifacts included in the SDK and the Maven patterns applied for SOE and SOI project management.
+
+## ArcGIS Enterprise SDK Maven artifacts
+
+ArcGIS Enterprise SDK includes six Maven artifacts that must be installed to your Maven local repository by running the [**install-maven-artifacts**](../install-the-maven-artifacts/) tool. The Maven local repository is a directory on the computer where Maven runs. By default, it's in the following locations:
+- Linux: `/home/{linux-user}/.m2/repository`
+- Windows: `C:\Users\{your-username}\.m2\repository`
+
+> Note: The ArcGIS Enterprise SDK Maven artifacts are not present in the [Maven central repository](https://mvnrepository.com/). They are shipped with the SDK software installation and must be installed to your [local repository](https://maven.apache.org/guides/introduction/introduction-to-repositories.html).
+
+The ArcGIS Enterprise SDK JAR (`arcgis-enterprise-sdk.jar`) and Maven plugin (`sdk-plugin.jar`) will be used by the SOE or SOI project at the `generate-resources` and `package` Maven lifecycle phases, to generate the `.wsdl` file and package the SOE or SOI. They are referenced at the project's POM (`pom.xml` file). The POM is an XML representation of the Maven project, containing project configuration information such as the project's dependencies, the Java compiler used, the developers involved, the URL of where the project lives, and so on. To learn more about POM, refer to the [Maven POM Reference](https://maven.apache.org/pom.html#) page. 
+
+The SDK's archetypes help developers create an SOE or SOI Maven project based on a template defining the project structure, build behavior, and boilerplate code. If you would like to read more about Maven archetypes, see [Introduction to Archetypes](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
+
+- ArcGIS Enterprise SDK JAR (`arcgis-enterprise-sdk.jar`)
+
+    The `arcgis-enterprise-sdk.jar` file contains all the ArcGIS libraries that will be used by an SOE or SOI. It must be specified as a dependency in the Maven project's POM, so that its classes or interfaces can be referenced in the code. When an SOE or SOI project is created from the archetype, this dependency will be added automatically under the project's `dependencies` in the `pom.xml` file (see [POM dependencies](https://maven.apache.org/pom.html#Dependencies)).
+
+    ``` xml
+    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mycompany.soe</groupId>
+    <artifactId>mysoe</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.esri.arcgis.enterprise.sdk</groupId>
+            <artifactId>arcgis-enterprise-sdk</artifactId>
+            <version>11.3</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Include any additional project dependencies here if needed -->
+    </dependencies>
+    </project>
+    ```
+    > Note: If the SOE or SOI requires third-party dependencies, they must be included under the project's `dependencies` in the `pom.xml` file (see the comment of the above POM example).
+
+- Enterprise SDK Maven plugin (`sdk-plugin.jar`)
+
+    The `sdk-plugin.jar` file contains a build plug-in that packages and generates an `.soe` file in the project's `target` folder during project build. For SOAP SOEs, an additional `.wsdl` file is also generated in the same folder. When an SOE or SOI project is created from the archetype, `sdk-plugin` will be added automatically as a build plugin in the project's POM (see [POM plugins](https://maven.apache.org/pom.html#Plugins)).
+
+    ``` xml
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.esri.arcgis.enterprise.sdk</groupId>
+                <artifactId>sdk-plugin</artifactId>
+                <version>11.3</version>
+                <dependencies>
+                    <!-- Include any additional plugin dependencies here if needed -->
+                </dependencies>
+                <configuration>
+                    <configProp>
+                        <Version>1.0</Version>
+                        <Author>AuthorName</Author>
+                        <Company>CompanyName</Company>
+                        <TARGETS>10.9</TARGETS> <!-- Required -->
+                    </configProp>
+                </configuration>
+                <executions>
+                    <!--The following execution is required in SOAP SOE-->
+                    <!--execution>
+                        <id>generate-wsdl-goal</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generate-wsdl</goal>
+                        </goals>
+                    </execution-->
+                    <execution>
+                        <id>package-soe-goal</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>package-soe</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    ```
+    
+    > Note: If a SOAP SOE references classes from a third-party dependency as the SOAP method's parameters or return values, the dependency must be included under both the project's `dependencies` and the `sdk-plugin`'s `dependencies` in the POM (compare the comments of the two POM examples above). This helps the `sdk-plugin` serialize the SOAP method's parameters or return values to be complex types in the generated WSDL. In terms of a REST SOE or SOI, the third-party dependency is only required to be added to the project's `dependencies`, but not the `sdk-plugin`'s `dependencies`.
+
+- REST SOE archetype (`rest-soe-archetype`)
+- SOAP SOE archetype (`soap-soe-archetype`)
+- REST SOAP SOE archetype (`rest-soap-soe-archetype`)
+- SOI archetype (`soi-archetype`)
+    
+    [Maven archetypes](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) help create a ready-to-use SOE or SOI project from a Maven project template that consists of metadata defining how the project is constructed and built. ArcGIS Enterprise SDK provides the four archetypes above. They have the same **groupId** `com.esri.arcgis.enterprise.sdk` and **version** `10.9.1` (for 10.9 Enterprise SDK, use `10.9.0` as the **version** value), with **artifactId** `rest-soe-archetype` for building REST SOEs, `soap-soe-archetype` for building SOAP SOEs, `rest-soap-soe-archetype` for SOEs that support both REST and SOAP functions, and `soi-archetype` for SOIs. 
+    
+    > Note: If you would like to develop an SOE with both REST and SOAP functions implemented, it's recommended that you start with  `rest-soap-soe-archetype`.
+
+## Maven patterns for managing SOE or SOI projects
+
+### Dependency management
+
+The references of a Maven project are managed at the project's POM and you can add a third-party library as a dependency in the [POM](#enterprise-sdk-maven-artifacts). Maven will fetch them either from your local repository or from a remote repository, based on its **groupId**, **artifactId**, and **version** information. If your third-party library is a local JAR file and it's not present in any existing Maven repository yet, you must [install third-party JARs](http://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html) to your local repository using the following Maven command: 
+
+``` bash
+mvn install:install-file -Dfile=<path-to-file> -DgroupId=<group-id> -DartifactId=<artifact-id> -Dversion=<version> -Dpackaging=jar
+```
+- `<path-to-file>` is the path of the JAR file, for example, `C:\Projects\soehelper.jar`.
+- `<group-id>`, `<artifact-id>`, and `<version>` are defined by you and will be referenced later in the `pom.xml` file of the SOE or SOI project.
+
+### Project creation
+    
+There are two ways to create an SOE or SOI project from the Maven archetypes, using either a Java IDE or the Maven command from the command line. To learn more about creating an SOE or SOI using a Java IDE, refer to the [SOE](../develop-soes-java/) or [SOI](../develop-sois-java/) section. This topic only discusses using Maven command to create an SOE or SOI project.
+
+- Use Maven command in interactive mode
+    
+    You can open the command prompt and use the following Maven commands to create projects in interactive mode:
+    
+    For REST SOE, use this command:
+    ``` bash
+    mvn archetype:generate -DarchetypeGroupId=com.esri.arcgis.enterprise.sdk -DarchetypeArtifactId=rest-soe-archetype -DarchetypeVersion=10.9.1
+    ```
+    
+    For SOAP SOE, use this command:
+    ``` bash
+    mvn archetype:generate -DarchetypeGroupId=com.esri.arcgis.enterprise.sdk -DarchetypeArtifactId=soap-soe-archetype -DarchetypeVersion=10.9.1
+    ```
+    
+    For REST SOAP SOE, use this command:
+    ``` bash
+    mvn archetype:generate -DarchetypeGroupId=com.esri.arcgis.enterprise.sdk -DarchetypeArtifactId=rest-soap-soe-archetype -DarchetypeVersion=10.9.1
+    ```
+
+    For SOI, use this command:
+    ``` bash
+    mvn archetype:generate -DarchetypeGroupId=com.esri.arcgis.enterprise.sdk -DarchetypeArtifactId=soi-archetype -DarchetypeVersion=10.9.1
+    ```
+    
+    For other versions of Enterprise SDK, remember to change `-DarchetypeVersion` to the corresponding version of the SDK, such as `-DarchetypeVersion=10.9.0` for 10.9 Enterprise SDK and `-DarchetypeVersion=10.8.1` for 10.8.1 Enterprise SDK.
+
+    After executing the command, you are asked to type the values for the **groupId**, **artifactId**, **version**, **package**, and **soeName** or **soiName** properties one by one for your project and confirm your input by typing `Y`.
+
+    - **groupId** uniquely identifies your project across all projects. A group ID should follow [Java's package name rules](https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html) and will be used as the default **package** name.
+    - **artifactId** is the name of the project and also the name of the generated .soe file.
+    - **soeName** or **soiName** is the class name of your SOE or SOI. 
+    - **version** is the version your SOE or SOI, such as 1.0, 1.1, and so on. By default, it's `1.0-SNAPSHOT`.
+    - **package** uses the same value for **groupId** if it's not defined. Otherwise, you can define your own package name for the project. 
+
+    The **groupId**, **artifactId**, and **soeName** or **soiName** properties are required properties and you must define their values. The **version** and **package** properties are optional properties with default values assigned, so you can skip them during project creation.
+    
+- Use Maven command in non-interactive mode
+    
+    If you would like to create the SOE or SOI project without the interactivity, you can set the interactive property to `false` (`-DinteractiveMode=false`), or use the `-B` flag (see [generate project in batch mode](https://maven.apache.org/archetype/maven-archetype-plugin/examples/generate-batch.html)). 
+    
+    For example, the following command will create a REST SOE project without asking you to type each property one by one or confirming your inputs:
+
+    ``` bash
+    mvn archetype:generate -B -DarchetypeGroupId=com.esri.arcgis.enterprise.sdk -DarchetypeArtifactId=rest-soe-archetype -DarchetypeVersion=10.9.1 -DsoeName=TestSimpleRESTSOE -DgroupId=com.soe.demo -DartifactId=SimpleRESTSOEDemo -Dversion=1.0
+    ```    
+
+    For other versions of Enterprise SDK, remember to change `-DarchetypeVersion` to the corresponding version of the SDK, such as `-DarchetypeVersion=10.9.0` for 10.9 Enterprise SDK and `-DarchetypeVersion=10.8.1` for 10.8.1 Enterprise SDK.
+    
+### Project build
+
+To build an SOE or SOI Maven project, the Maven build lifecycle must be followed. There are three built-in build lifecycles: **default**, **clean**, and **site**. 
+
+The **default** lifecycle handles your project deployment. The **clean** lifecycle handles project cleaning, while the **site** lifecycle handles the creation of your project's site documentation.
+
+Each lifecycle comprises multiple phases in sequence. Executing a specific phase causes all the phases before it to be executed sequentially within the same lifecycle. 
+
+For example, the **default** life cycle includes multiple major phases in the following order: **validate**, **compile**, **test**, **package**, **verify**, **install**, **deploy** (See [Maven lifecycle references](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference) for a complete list of phases). Executing `deploy` phase will first validate the project and then try to compile the sources, run those against the tests, package the binaries (`.jar`, `.soe`, `.wsdl`, and so on), run integration tests against that package, verify the integration tests, install the verified package JAR to the local repository, and deploy the installed package to a remote repository. 
+
+You can use `mvn install` to build the project and install your project's package into the local repository (for use as a dependency in other projects locally). To clean the project and remove all the files generated by the previous build, you can use `mvn clean`. To cleanly build your project, run the following command:
+
+``` bash
+C:\Users\sdkuser\projects\SimpleRESTSOEDemo>mvn clean install
+```
+
+ See the [Build Lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) Maven article for more details about different lifecycle phases.
+
+## Also See
+-   [Maven Repositories](https://maven.apache.org/guides/introduction/introduction-to-repositories.html)
+-   [Maven in 5 Minutes](http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
+-   [Maven POM Reference](https://maven.apache.org/pom.html#)
+-   [Maven Archetypes](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)
+-   [Maven Build Lifecycle](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html)

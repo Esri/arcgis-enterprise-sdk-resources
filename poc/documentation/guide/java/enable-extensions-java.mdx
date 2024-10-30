@@ -1,0 +1,86 @@
+---
+title: Enable extensions
+description: >-
+  This topic describes how to enable server object extensions and server object
+  interceptors on map services (published using ArcGIS Pro) in ArcGIS Server
+  Manager. ,In this topic,,Enable SOEs ,Enable SO Enable SO
+---
+
+# Enable extensions
+
+This topic describes how to enable server object extensions and server object interceptors on map services (published using ArcGIS Pro) in ArcGIS Server Manager and Portal Home Application.
+
+To enable server object extensions (SOEs) and server object interceptors (SOIs) on map services published using ArcGIS Pro, you can use either ArcGIS Server Manager or the Portal Home Application.
+
+If the SOE or SOI is deployed before the map service is published, you can enable it via ArcGIS Pro. Otherwise, you need to enable the SOE or SOI through the ArcGIS Server Manager or the Portal Home Application.
+
+
+### Enable SOEs 
+
+You can enable one or more SOEs for a map service.
+
+#### Enable SOEs with with ArcGIS Server Manager
+
+1.  Log in to ArcGIS Server Manager and browse to your map or image service.
+2.  Click the name of the service, which is a hyperlink.
+3.  Click **Capabilities** and check the check box next to the name of the SOEs you would like to enable for the service.
+4.  If applicable, select the operations you want to allow for the SOEs. These operations were optionally created by the extension developer, and they give you a finer degree of control over the things users can do with the SOEs.
+5.  Set any further properties for the SOEs that appear on this property page. The properties of the SOEs are configurable through a set of input boxes unless the extension developer chose to customize the property page.
+6.  To save your changes, click **Save and Restart**. The service is restarted when you save.
+
+#### Enable SOEs with with Portal Home Application
+
+
+1.  Sign in to Portal Home Application as an item owner with publishing privilieges or an administrator.
+2.  Open the item details page for the map image layer.
+3.  Click **Settings**.
+4.  Scroll to the **Map Image Layer** section and expand the **Extensions** heading.
+5.  Expand the **Server object extensions (SOEs)** heading.
+    A list of SOEs that have been added to your organization appears.  
+6.  Turn on the toggle button next to the SOE that you want to enable on the service.
+7.  Expand the heading for the SOE you have enabled.
+    Operations and properties for the SOE appear. These were optionally created by the extension 
+    developer and give you a finer degree of control over what users can do with SOEs.
+8.  If applicable, select the operations you want to allow.
+9.  If applicable, edit the available properties.
+10. Click Save to apply changes.
+
+The SOE is now enabled on the service. To disable, turn off the toggle button next to the SOE and click Save.
+
+### Enable SOIs
+
+You can enable one or more SOIs for a map service. Enabling multiple SOIs is referred to as chaining. When chaining, you'll need to specify the order in which the SOIs will be executed in the map service.
+
+In earlier versions of ArcGIS Server, you could only enable one SOI for a service. Beginning at 10.4, you can chain together multiple SOIs and specify the order in which they are executed.
+
+#### Enable SOIs with with ArcGIS Server Manager
+
+1.  Log in to ArcGIS Server Manager and browse to your map or image service.
+2.  Click the name of the service, which is a hyperlink.
+3.  Click **Capabilities**.
+4.  In the list of available **Interceptors**, select the SOIs you want to enable and click the right arrow. This adds them to the list of enabled SOIs.
+5.  If you enabled multiple SOIs for the service, use the up and down arrows to specify the order in which the SOIs will be executed in the chain. The SOI at the top of the list will be executed first, followed by the second item in the list, and so on until the bottom of the list. Return to this dialog at any time to modify the list of enabled SOIs and change the order in which the SOIs are executed in the chain.
+6.  Click **Save**.
+7.  If applicable, select the operations you want to allow for the SOIs. These operations were optionally created by the extension developer, and they give you a finer degree of control over the things users can do with the SOIs.
+8.  Set any further properties for the SOIs that appear on this property page. The properties of the SOIs are configurable through a set of input boxes unless the extension developer chose to customize the property page.
+9.  To save your changes, click **Save and Restart**. The service is restarted when you save.
+
+#### Enable SOIs with with Portal Home Application
+
+1.  Sign in to Portal Home Application as an item owner with publishing privilieges or an administrator.
+2.  Open the item details page for the map image layer.
+3.  Click **Settings**.
+4.  Scroll to the **Map Image Layer** section and expand the **Extensions** heading.
+5.  Expand the **Server object interceptors (SOIs)** heading.
+    A list of SOIs that have been added to your organization appears.  
+6.  Turn on the toggle button next to the SOI that you want to enable on the service.
+7.  If you enable multiple SOIs, use drag-and-drop functionality to specify the order in which the SOIs will be run in the chain.
+    The SOI at the top of the list will be run first.
+    > **Tip**:
+    Return to the dislog box at any time to modify the list of enabled SOIs and change the order in which they are run the chain.
+8.  Expand the heading for each SOI you have enabled.
+    Operations and properties for the SOI appear. These were optionally created by the extension developer and give you a finer degree of control over what users can do with SOIs.
+9.  If applicable, edit the available properties.
+10. Click Save to apply changes.
+
+The SOIs are now enabled on the service. To disable, turn off the toggle button next to the SOI and click Save.

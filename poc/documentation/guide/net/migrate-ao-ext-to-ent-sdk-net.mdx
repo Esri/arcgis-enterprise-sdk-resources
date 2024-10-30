@@ -1,0 +1,61 @@
+---
+title: Migrate ArcObjects extensions to ArcGIS Enterprise SDK
+description: >-
+  This group of topic explains how to migrate extenions (SOE/SOI) developed in
+  the ArcObject .NET SDK to the ArcGIS Enterprise SDK. ,,,,This topic explains
+  migration strategies for you to understand be This topic explains migration
+  strategies for you to understand be
+---
+
+# Migrate ArcObjects extensions to ArcGIS Enterprise SDK
+
+Starting from ArcGIS Enterprise 11.0, the ArcMap Runtime Support feature is no longer supported. This impacts both ArcMap-based services and ArcObjects extensions (SOEs and SOIs). You will no longer be able to publish a new ArcMap-based service or deploy a new ArcObjects extension in ArcGIS Enterprise 11.0 or later. Deploying an ArcObjects SOE or SOI to ArcGIS Server 11.0 will return the following error:
+
+*This ArcObjects extension cannot be deployed because ArcObjects extensions are no longer supported starting at version 11.0. See 'ArcGIS Enterprise SDK - Migrate ArcObjects extensions to ArcGIS Enterprise SDK'.*
+
+If you want to continue using the custom functions provided by your extensions in ArcGIS Enterprise 11.0 or later, follow these steps to migrate your ArcObjects extensions to ArcGIS Enterprise SDK:
+
+### 1. Migrate your service to be Pro-based
+
+- **If you use ArcGIS Server 10.9 and 10.9.1**
+   
+  Since ArcGIS Server 10.9.x still supports the ArcMap Runtime, you will have the following three options to migrate your ArcMap-based services to be Pro-based services:
+  
+  - [Migrate a service in Server Manager](https://enterprise.arcgis.com/en/server/latest/publish-services/windows/migrate-a-service-in-manager.htm)
+  - [Migrate services with the UpdateArcMapServices utility](https://enterprise.arcgis.com/en/server/latest/publish-services/windows/migrate-services-using-the-command-line.htm)  
+  - Republish your service using ArcGIS Pro, Pro-based tools, or Pro-prepared service definition.
+   
+  Once you finish migrating your services to ArcGIS Server 10.9.x, the services will continue working with the Pro runtime when you upgrade your ArcGIS Server to version 11.0.
+
+- **If you use ArcGIS Server 11.0 or later versions**
+
+  You will not be able to publish any new services from ArcMap, ArcMap-based tools or service definitions. You can only publish services using ArcGIS Pro, Pro-based tools, or Pro-prepared service definition.
+
+  If you upgrade your ArcGIS Server from an older version to version 11.0, all the existing ArcMap-based map services and image services will be automatically updated to be Pro-based services during the upgrade. After the upgrade, you may see the following error when you try to start these services:
+
+  *The ArcObjects extension is enabled but no longer supported starting at version 11.0. See ‘Migrate ArcObjects extensions to ArcGIS Enterprise SDK’.*
+
+  This error message indicates that your service is successfully updated to use the Pro service runtime after the upgrade, however, as the service has an ArcObjects extension enabled, the service is unable to start. 
+   
+  To use this service without any extensions, you can go to the service's **Capabilities** page in Server Manager and click **Save and Restart** to restart the service. To continue using this service with a supported extension built with Enterprise SDK 11.0, you need to follow the rest of the steps.
+   
+### 2. Migrate your extensions to be built with Enterprise SDK
+  - For .NET SOEs and SOIs, see [Migrate older .NET SOE or SOI projects to 11](../net-8-support/#migrate-older-net-soe-or-soi-projects-to-11).
+  - For Java SOEs and SOIs, see [Migrate extensions (from Java project to Maven project)](../../java/upgrade-extensions/#migrate-extensions-from-java-project-to-maven-project).
+
+  Note that this step requires development efforts. If you are not the SOE or SOI developer, you need to contact the developer or vendor of the extension to ask them for help with this step.
+
+### 3. Deploy the migrated extension to ArcGIS Server
+
+  After the extension is successfully migrated and built with Enterprise SDK in step 2, you can deploy it to ArcGIS Server. See [Deploy extensions](../deploy-extensions-net/) for detailed instructions.
+
+### 4. Enable the extension with Pro-based services
+
+  Find the services that are migrated successfully in step 1, and then enable the migrated extension with it. See [Enable extensions](../enable-extensions-net/) for detailed instructions. The service should be started now and you should be able to consume the functions provided by the extension.
+   
+  Since the ArcObjects extension is no longer in use, you can undeploy it now (see [Undeploy extensions](../deploy-extensions-net/#undeploy-extensions)).
+
+### Also See
+-   [Migration strategies](../migration-strategies-net/)
+-   [Migration steps](../migration-steps-net/)
+-   [Walkthrough: How to migrate an ArcObjects .NET SOE to ArcGIS Enterprise SDK](../how-to-migrate-a-net-soe-net/)

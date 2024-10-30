@@ -1,0 +1,463 @@
+---
+title: How to develop the REST SOE
+description: >-
+  This topic explains how a sample REST SOE might be developed. ,In this
+  topic,,About developing the REST SOE ,Creating an SOE from the Visual Studio
+  template ,Modifying the SOE attributes ,Ad Ad
+---
+
+# How to develop the REST SOE
+
+This topic explains how a sample REST SOE might be developed.
+
+### About developing the REST SOE
+
+This topic is the first in a series that walks through the process of writing and deploying the sample [Spatial Query REST SOE](/sample-code/Samples/net/SOE/SpatialQueryRESTSOE/). This section of the walkthrough explains how to get started developing the server object extension (SOE). It also provides complete code examples that you can paste into Visual Studio if you want to follow along. Although not every line of code can be discussed, the walkthrough points out the most important snippets.
+
+### Creating an SOE from the Visual Studio template
+
+When you install the ArcGIS Enterprise SDK, you get a template you can use to begin developing a REST SOE. It is strongly recommended that you start with the template.
+
+Do the following steps to begin developing a new SOE with the template:
+
+1.  Start Visual Studio.
+2.  Click File, New, then Project. The New Project dialog box appears.
+3.  Under the Installed Templates area, expand the Visual C#, ArcGIS, Server Object Extensions nodes.
+4.  Click the template "REST SOE Template (ArcGIS Pro)".
+5.  Type SpatialQueryREST in the Name field and click OK.
+6.  In the Solution Explorer, double-click SpatialQueryREST.cs and review the template code.
+
+As you review the template, you’ll notice a class already created that implements the necessary interfaces (that is, `IServerObjectExtension`, `IObjectConstruct`, and `IRESTRequestHandler`). Within these implementations is the basic code required to make a REST SOE. You’ll also see some example resources and operations stubbed out for you that you delete when you write your SOE.
+
+For more information about the structure of this template, see [quick tour of the REST SOE](../quick-tour-of-the-rest-soe-net/).
+
+### Modifying the SOE attributes
+
+The SOE attributes define which capabilities and properties the SOE supports, among other information. You need to modify the attributes to contain the display name for your SOE and the following two properties that this SOE supports:
+
+-   FieldName
+-   LayerName
+
+You'll also set default values for those properties. If the server administrator wants to change the values from the defaults, do this in Manager after enabling the SOE on the service.
+
+Find the following code:
+
+```cs
+[ServerObjectExtension("MapServer", 
+    AllCapabilities = "", 
+    DefaultCapabilities = "",
+    Description = "", 
+    DisplayName = "SpatialQueryREST", 
+    Properties = "",
+    SupportsREST = true, 
+    SupportsSOAP = false)]
+```
+
+Replace the preceding code with the following:
+
+```cs
+[ServerObjectExtension("MapServer", 
+    AllCapabilities = "", 
+    DefaultCapabilities = "",
+    Description = "Spatial Query REST SOE Sample", 
+    DisplayName = "SpatialQueryREST",
+    Properties = "FieldName=PRIMARY_;LayerName=veg", 
+    SupportsREST = true,
+    SupportsSOAP = false)]
+```
+
+### Adding variables
+
+You need to add some variables for things you will work with throughout the SOE:
+
+-   Feature class to be queried
+-   Layer name of that feature class
+-   Field on which the area summary will be based
+
+Near the top of the SpatialQueryREST class, find the following variable declarations:
+
+```cs
+private IPropertySet configProps;
+private IServerObjectHelper serverObjectHelper;
+private ServerLogger logger;
+private IRESTRequestHandler reqHandler;
+```
+
+Add three more variables below the preceding variables. See the following code example:
+
+```cs
+private IFeatureClass m_fcToQuery;
+private string m_mapLayerNameToQuery;
+private string m_mapFieldToQuery;
+```
+
+#### Examining the SOE constructor
+
+Immediately below these declarations, you’ll see the SOE’s constructor that only contains a few lines of code. Do not change the template code for the constructor. If you have your initialization logic that should run when the SOE starts, put it in `IObjectConstruct.Construct`.
+
+### Implementing IServerObjectExtension
+
+The members of `IServerObjectExtension` have been stubbed out for you. You won’t change the Init method, but you can add some code to the Shutdown method to log the shutdown and clean up all your variables.
+
+Find the following code:
+
+```cs
+public void Shutdown(){}
+```
+
+Replace the preceding code with the following:
+
+```cs
+public void Shutdown()
+{
+    logger.LogMessage(ServerLogger.msgType.infoStandard, "Shutdown", 8000, 
+        "Custom message: Shutting down the SOE");
+    soe_name = null;
+    m_fcToQuery = null;
+    m_mapFieldToQuery = null;
+    serverObjectHelper = null;
+    logger = null;
+}
+```
+
+### Implementing IObjectConstruct
+
+`IObjectConstruct` contains one member, `Construct`, that runs when the service instance is created. The Construct method is able to retrieve any SOE properties that were set in ArcGIS Pro or Manager. If you have any logic that needs to run only one time, the Construct method is the place to put it.
+
+In this walkthrough, you’ll add some logic to the `Construct` method to get the `IFeatureClass` interface that will be queried by the SOE. Since this SOE doesn’t allow end users to change the feature class they query, you don’t have to run this logic every time someone performs a query; you can just run it once when the service instance is created.
+
+Find the following code for the `Construct` method:
+
+```cs
+public void Construct(IPropertySet props)
+{
+    configProps = props;
+}
+```
+
+Replace the preceding code with the following:
+
+```cs
+public void Construct(IPropertySet props)
+{
+    configProps = props;
+    // Read the properties.
+
+    if (props.GetProperty("FieldName") != null)
+    {
+        m_mapFieldToQuery = props.GetProperty("FieldName")as string;
+    }
+    else
+    {
+        throw new ArgumentNullException();
+    }
+    if (props.GetProperty("LayerName") != null)
+    {
+        m_mapLayerNameToQuery = props.GetProperty("LayerName")as string;
+    }
+    else
+    {
+        throw new ArgumentNullException();
+    }
+    try
+    {
+        // Get the feature layer to be queried.
+        // Since the layer is a property of the SOE, this only has to be done once.
+        IMapServer mapServer = (IMapServer)serverObjectHelper.ServerObject;
+        string mapName = mapServer.DefaultMapName;
+        IMapLayerInfo layerInfo;
+        IMapLayerInfos layerInfos = mapServer.GetServerInfo(mapName).MapLayerInfos;
+        // Find the index position of the map layer to query.
+        int c = layerInfos.Count;
+        int layerIndex = 0;
+        for (int i = 0; i < c; i++)
+        {
+            layerInfo = layerInfos.get_Element(i);
+            if (layerInfo.Name == m_mapLayerNameToQuery)
+            {
+                layerIndex = i;
+                break;
+            }
+        }
+        // Use IMapServerDataAccess to get the data
+        IMapServerDataAccess dataAccess = (IMapServerDataAccess)mapServer;
+        // Get access to the source feature class.
+        m_fcToQuery = (IFeatureClass)dataAccess.GetDataSource(mapName, layerIndex);
+        if (m_fcToQuery == null)
+        {
+            logger.LogMessage(ServerLogger.msgType.error, "Construct", 8000, 
+                "SOE custom error: Layer name not found.");
+            return ;
+        }
+        // Make sure the layer contains the field specified by the SOE's configuration.
+        if (m_fcToQuery.FindField(m_mapFieldToQuery) ==  - 1)
+        {
+            logger.LogMessage(ServerLogger.msgType.error, "Construct", 8000, 
+                "SOE custom error: Field not found in layer.");
+        }
+    }
+    catch 
+    {
+        logger.LogMessage(ServerLogger.msgType.error, "Construct", 8000, 
+            "SOE custom error: Could not get the feature layer.");
+    }
+}
+```
+
+The preceding code can be summarized as follows:
+
+-   Get all the layer information (`IMapLayerInfos`) from this map service (`IMapServer`).
+-   Iterate through all the layer information and get the layer of interest (which was designated in the SOE properties).
+-   Get the data source (`IFeatureClass`) for the layer of interest.  
+
+Along the way, the SOE writes messages to the ArcGIS Server log files. Writing log messages can be an effective way to debug your SOE if you are having trouble stepping through the code.
+
+In the preceding code, the IMapServerDataAccess interface allows this SOE to work with the data underlying the map service. You cannot use any MXD-specific interfaces such as IMap or ILayer to get to the data source; instead, you must use IMapServerDataAccess. For more information about this interface, see [IMapServerDataAccess](/api-reference/net/IMapServerDataAccess/).
+
+### Implementing `IRESTRequestHandler`
+
+Below `IObjectConstruct` you’ll see `IRESTRequestHandler`, which has the following methods:
+
+-   `GetSchema`—You don't need to alter this code unless you want to put a log message here.
+-   `HandleRESTRequest`—You don't need to change this code either.
+
+### Modifying the `CreateRestSchema` function
+
+The `CreateRestSchema` function builds the REST schema for the SOE. All REST SOEs have resources, which are pieces of information returned from the server, and operations, which are things that the server can do with your resource. For each REST SOE, you must programmatically piece together a schema of resources and operations that the SOE will support.
+
+This example, like many REST SOEs, has a simple schema. Like all REST SOEs, it has a resource at the root level. From there, you can access one "SpatialQuery" operation.
+
+In your REST SOE template, find the following `CreateRestSchema` function:
+
+```cs
+private RestResource CreateRestSchema()
+{
+    RestResource rootRes = new RestResource(soe_name, false, RootResHandler);
+    RestOperation sampleOper = new RestOperation("sampleOperation", new string[]
+    {
+        "parm1", "parm2"
+    }
+    , new string[]
+    {
+        "json"
+    }
+    , SampleOperHandler);
+    rootRes.operations.Add(sampleOper);
+    return rootRes;
+}
+```
+
+The preceding code has an example root resource and one example operation stubbed out for you. The code you use to build your SOE schema follows this structure somewhat. For simplicity, delete the entire `CreateRestSchema` function in the preceding code and replace it with the following:
+
+```cs
+private RestResource CreateRestSchema()
+{
+    RestResource rootRes = new RestResource(soe_name, false, RootResHandler);
+    RestOperation spatialQueryOper = new RestOperation("SpatialQuery", new string[]
+    {
+        "location", "distance"
+    }
+    , new string[]
+    {
+        "json"
+    }
+    , SpatialQueryOperationHandler);
+    rootRes.operations.Add(spatialQueryOper);
+    return rootRes;
+}
+```
+
+The difference between the code you deleted and the code you added is the SpatialQuery operation (spatialQueryOper) that was created. To create an operation, create a RestOperation and supply the name you want for the operation, the parameters of the operation, the supported return formats, and the handler function that runs when someone invokes the operation.
+
+You need to supply a handler function for each resource and operation that you put in your schema. These functions run when users invoke the resources and operations. You’ll work with the handler functions next.
+
+### Modifying the `RootResHandler` function
+
+The root resource of your SOE does not do anything special in this example, which is typical. You just need to remove the "hello world" example that is included in the REST SOE template. Find the following line of code in the `RootResHandler` function and delete it:
+
+```cs
+result.AddString("hello", "world");
+```
+
+Leave the remainder of the `RootResHandler` function as is.
+
+### Modifying the operation handler function
+
+The REST SOE template has a sample operation handler function, `SampleOperHandler`. You can remove this function because you added your operation to the schema. Find the following code and delete it:
+
+```cs
+private byte[] SampleOperHandler(NameValueCollection boundVariables, JsonObject
+    operationInput, string outputFormat, string requestProperties, out string
+    responseProperties)
+{
+    responseProperties = null;
+    string parm1Value;
+    bool found = operationInput.TryGetString("parm1", out parm1Value);
+    if (!found || string.IsNullOrEmpty(parm1Value))
+        throw new ArgumentNullException("parm1");
+    string parm2Value;
+    found = operationInput.TryGetString("parm2", out parm2Value);
+    if (!found || string.IsNullOrEmpty(parm2Value))
+        throw new ArgumentNullException("parm2");
+    JsonObject result = new JsonObject();
+    result.AddString("parm1", parm1Value);
+    result.AddString("parm2", parm2Value);
+    return Encoding.UTF8.GetBytes(result.ToJson());
+}
+```
+
+Now, add your handler function for the SpatialQuery operation. Paste the following function where you just deleted the `SampleOperHandler` function:
+
+```cs
+private byte[] SpatialQueryOperationHandler(NameValueCollection boundVariables,
+    JsonObject operationInput, string outputFormat, string requestProperties, out
+    string responseProperties)
+{
+    responseProperties = null;
+    // Deserialize the location.
+    JsonObject jsonPoint;
+    if (!operationInput.TryGetJsonObject("location", out jsonPoint))
+        throw new ArgumentNullException("location");
+    IPoint location = Conversion.ToGeometry(jsonPoint,
+        esriGeometryType.esriGeometryPoint)as IPoint;
+    if (location == null)
+        throw new ArgumentException("SpatialQueryREST: invalid location", "location")
+            ;
+    // Deserialize the distance.
+    double ? distance;
+    if (!operationInput.TryGetAsDouble("distance", out distance) ||
+        !distance.HasValue)
+        throw new ArgumentException("SpatialQueryREST: invalid distance", "distance")
+            ;
+    byte[] result = QueryPoint(location, distance.Value);
+    return result;
+}
+```
+
+Your operation handler must de-serialize the JavaScript Object Notation (JSON) input parameters, do something with those parameters, then return the result as JSON. To learn more about this, see [working with JSON in a REST SOE](../work-with-json-in-a-rest-soe-net/).
+
+In the preceding function, your operation is expecting a point and a distance as input parameters. Notice the call to `TryGetJsonObject` to retrieve the point, followed by the ToGeometry conversion to get it as an IPoint. This takes care of de-serializing the point. The distance is retrieved using `TryGetAsDouble`.
+
+The preceding function runs a helper method, `QueryPoint`, to make the query, summarize the areas, and bundle everything as JSON. It then returns that JSON to the user. The user’s client application (such as a Web application built with the ArcGIS application programming interface \[API] for JavaScript) can try to draw some of the JSON response in the map or display it in a table.
+
+### Adding helper functions `QueryPoint` and `CreateJsonRecords`
+
+Your handler function, `SpatialQueryOperationHandler`, uses the following helper functions:
+
+-   `QueryPoint`
+-   `CreateJsonRecord`
+
+This is where all the ArcGIS Enterprise SDK code occurs to make the spatial query, add up the results, and package everything as JSON to return to the client.
+
+Paste the following functions immediately after your `SpatialQueryOperationHandler` function:
+
+```cs
+private byte[] QueryPoint(ESRI.ArcGIS.Geometry.IPoint location, double distance)
+{
+    if (distance <= 0.0)
+        throw new ArgumentOutOfRangeException("distance");
+    // Buffer the point.
+    ITopologicalOperator topologicalOperator = 
+        (ESRI.ArcGIS.Geometry.ITopologicalOperator)location;
+    IGeometry queryGeometry = topologicalOperator.Buffer(distance);
+    // Query the feature class.
+    ISpatialFilter spatialFilter = new ESRI.ArcGIS.Geodatabase.SpatialFilter();
+    spatialFilter.Geometry = queryGeometry;
+    spatialFilter.SpatialRel =
+        ESRI.ArcGIS.Geodatabase.esriSpatialRelEnum.esriSpatialRelIntersects;
+    spatialFilter.GeometryField = m_fcToQuery.ShapeFieldName;
+    IFeatureCursor resultsFeatureCursor = m_fcToQuery.Search(spatialFilter, true);
+    // Loop through the features, clip each geometry to the buffer,
+    // and total areas by attribute value.
+    topologicalOperator = (ESRI.ArcGIS.Geometry.ITopologicalOperator)queryGeometry;
+    int classFieldIndex = m_fcToQuery.FindField(m_mapFieldToQuery);
+    // System.Collections.Specialized.ListDictionary summaryStatsDictionary = new System.Collections.Specialized.ListDictionary();
+    Dictionary < string, double > summaryStatsDictionary = new Dictionary < string,
+        double > ();
+    // Initialize a list to hold JSON geometries.
+    List < JsonObject > jsonGeometries = new List < JsonObject > ();
+
+    IFeature resultsFeature = null;
+    while ((resultsFeature = resultsFeatureCursor.NextFeature()) != null)
+    {
+        // Clip the geometry.
+        IPolygon clippedResultsGeometry = (IPolygon)topologicalOperator.Intersect
+            (resultsFeature.Shape,
+            ESRI.ArcGIS.Geometry.esriGeometryDimension.esriGeometry2Dimension);
+        clippedResultsGeometry.Densify(0, 0); 
+            // Densify to maintain curved appearance when converted to JSON. 
+        // Convert the geometry to JSON and add it to the list.
+        JsonObject jsonClippedResultsGeometry = Conversion.ToJsonObject
+            (clippedResultsGeometry);
+        jsonGeometries.Add(jsonClippedResultsGeometry);
+        // Get statistics.
+        IArea area = (IArea)clippedResultsGeometry;
+        string resultsClass = resultsFeature.get_Value(classFieldIndex)as string;
+        // If the class is already in the dictionary, add the current feature's area to the existing entry.
+        if (summaryStatsDictionary.ContainsKey(resultsClass))
+            summaryStatsDictionary[resultsClass] = (double)
+                summaryStatsDictionary[resultsClass] + area.Area;
+        else
+            summaryStatsDictionary[resultsClass] = area.Area;
+    }
+    // Use a helper method to get a JSON array of area records.
+    JsonObject[] areaResultJson = CreateJsonRecords(summaryStatsDictionary)as
+        JsonObject[];
+    // Create a JSON object of the geometry results and the area records.
+    JsonObject resultJsonObject = new JsonObject();
+    resultJsonObject.AddArray("geometries", jsonGeometries.ToArray());
+    resultJsonObject.AddArray("records", areaResultJson);
+    // Get byte array of json and return results.
+    byte[] result = Encoding.UTF8.GetBytes(resultJsonObject.ToJson());
+    return result;
+}
+
+// Helper method to read the items in a dictionary and make a JSON object from them.
+private JsonObject[] CreateJsonRecords(Dictionary < string, double >
+    inListDictionary)
+{
+    JsonObject[] jsonRecordsArray = new JsonObject[inListDictionary.Count];
+    int i = 0;
+    // Loop through dictionary.
+    foreach (KeyValuePair < string, double > kvp in inListDictionary)
+    {
+        // Get the current key and value.
+        string currentKey = kvp.Key.ToString();
+        string currentValue = kvp.Value.ToString();
+        // Add the key and value to a JSON object.
+        JsonObject currentKeyValue = new JsonObject();
+        currentKeyValue.AddString(m_mapLayerNameToQuery, currentKey);
+        currentKeyValue.AddString("value", currentValue);
+        // Add the record object to an array.
+        jsonRecordsArray.SetValue(currentKeyValue, i);
+        i++;
+    }
+
+    return jsonRecordsArray;
+}
+```
+
+By the time you get to these functions, you have an input point as an IPoint and a double representing the buffer distance. This is enough for you to start doing all the work you need in ArcGIS Enterprise SDK.
+
+The function QueryPoint does the following:
+
+-   Buffers the input point by the user-specified distance
+-   Queries all the vegetation polygons that intersect the buffer
+-   Loops through each polygon and clips it to the buffer outline
+-   Converts the clipped polygon to a JSON object and adds it to a .NET list
+-   Sums the area of the clipped polygon and adds the area to a dictionary
+-   After looping through all polygons, serializes the clipped polygons and the area stats into one JSON object, and returns that JSON object to the user
+
+To perform this last step of serialization, the SOE uses a helper method, `CreateJsonRecords`, that was written specifically for this SOE. This takes in the dictionary of area statistics and makes a JSON object from each record in the dictionary. Each of these JSON objects is added to an array, which is returned by the function.
+
+Going back to the `QueryPoint` function, notice how the final JSON object is created. A list of JSON objects containing all the clipped polygons and an array of JSON objects containing all the area records are added to a single parent JSON object for return to the client.
+
+### Signing and building the project
+
+Once you’ve finished writing code, you need to sign and build the project. This creates a .soe file that helps you deploy the SOE to ArcGIS Server.
+
+1.  In the Solution Explorer, right-click the SpatialQueryREST project and click Properties.
+2.  Click the Signing tab and ensure the "Sign the assembly" check box is selected.
+3.  In the "Choose a strong name key file" area, choose to use either the key file included with the template mykey.snk or create your own key. Click mykey.snk in the drop-down list to see the New and Browse options.
+4.  Save your project.
+5.  In the Solution Explorer, right-click your project and click Build. This creates SpatialQueryREST_ent.soe in your project's `bin\debug` or `bin\release` folder.

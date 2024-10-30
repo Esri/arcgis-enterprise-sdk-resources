@@ -1,0 +1,70 @@
+---
+title: Overview of extensions
+description: >-
+  This topic describes about extensions and what you need to know for developing
+  extensions. ,In this topic,,About extensions ,Server object extensions (SOEs)
+  ,Server object interceptors (SOIs) ,Wh Wh
+---
+
+# Overview of extensions
+
+This topic describes about extensions and what you need to know for developing extensions.
+
+### About extensions
+
+You can extend ArcGIS Server map services (including map service extensions, such as feature services) published via ArcGIS Pro with custom logic that can be executed in ArcGIS clients. There are two ways to extend these service types:
+
+-   Server object extensions (SOEs)—Allow you to create new service operations to extend the base functionality of map services. SOEs are appropriate if you have some well-defined business logic to perform that is not easily accomplished using the ArcGIS client APIs. Most SOEs do this by using Enterprise SDK code to work with GIS data and maps.
+-   Server object interceptors (SOIs)—Allow you to intercept requests for existing built-in operations of map services. This allows you to execute custom logic and alter the behavior of these services by overriding existing operations in a way that is seamless to existing clients. These clients may be applications built with the ArcGIS API for JavaScript, ArcGIS Runtime SDK, and more.
+
+The following sections describe each type in further detail.
+
+### Server object extensions (SOEs)
+
+SOEs are appropriate if you want to create new service operations to extend the base functionality of map and image services (including map service extensions, such as feature services). SOEs provide the following advantages:
+
+-   You can expose an SOE as a Representational State Transfer (REST) and/or Simple Object Access Protocol (SOAP) web service, allowing custom clients built on top of the ArcGIS client APIs and any other REST or SOAP client to easily invoke them. In fact, your REST SOEs will be shown in the ArcGIS Services Directory and can expose the typical object types that the ArcGIS client APIs understand, mostly in JSON format.
+-   When you build an SOE, you're providing coarse-grained methods that perform work on ArcGIS Server, rather than making a large number of calls from the client to the server. SOEs encapsulate business logic very efficiently, providing an ideal environment to execute your calls quickly.
+
+You might develop an SOE if you wanted to expose custom business logic that is not available in any other manner or that needs to be executed very quickly. SOEs are for experienced developers and require knowledge of various development platforms.
+
+**Do you need an SOE?**
+
+SOEs require knowledge of web development, Enterprise SDK, and programming languages such as Java or a .NET-based language like C# or VB. They must also go through a deployment process to be made available to your server. Additionally, you must develop the application logic to consume the new operations you have exposed on the SOE. Because these are completely new operations defined by you, existing ArcGIS clients will not know how to consume them without additional custom development. Before you develop a server object extension, you might consider some easier alternatives.
+
+The simplest alternative to developing an SOE may be to create a geoprocessing model that accomplishes your business logic, then publish it as a service. You can use ModelBuilder to interactively drag, drop, and connect the needed tools instead of writing Enterprise SDK code. Geoprocessing services also allow for asynchronous execution, allowing you to start a job, do something else, and come back later to check the results. Geoprocessing services have a well-defined interface that is already known to the ArcGIS client APIs and Runtime SDKs including applications built on top of those APIs, such as Web AppBuilder. Hence, unlike with an SOE, you do not need to do a lot of custom application development in order to consume a geoprocessing service.
+
+One drawback of geoprocessing services is that they have a relatively large memory footprint and may run slower than SOEs. If you're running a process only a few times a day, this might not be an issue. However, if you are running a process many times a day, or with many concurrent users, it might be worth investing the time to build an SOE. Many developers have written ArcObjects code in the past for various tasks that are now attainable without ArcObjects.
+
+### Server object interceptors (SOIs)
+
+SOIs are appropriate if you're looking to change the behavior of existing map or image service operations (including map and image service extensions, such as feature service operations). For example, you can change the behavior of a query or map image export request. Examples of what can be done with an SOI include:
+
+-   Add a watermark to all map images
+-   Provide layer-level security
+-   Allow or disallow access to specific operations by user role
+
+**Do you need an SOI?**
+
+SOIs require knowledge of web development, Enterprise SDK, and programming languages such as Java or a .NET-based language like C# or VB. They must also go through a deployment process to be made available to your server. Before you develop a server object interceptor, consider if this is the functionality you need.
+
+If you are looking to extend your server with new capabilities, consider an SOE or geoprocessing models and scripts. SOIs are suitable for adding new functionality or behavior on top of the existing ArcGIS Server operations in a way that is transparent to existing client applications.
+
+If you want to accomplish one or more tasks using a series of extensions, you can do this using SOIs. Multiple SOIs can be chained together on one or more services. At any time, you can modify the list of SOIs and the order in which they are executed in the chain.
+
+You might decide to create an SOI if you need to implement custom business logic, such as security or auditing requirements that are not met by the default map or image service. For example:
+
+-   Include a watermark on all map images created by the server—An SOI can be created to superimpose a custom watermark on map images created by the server. This allows organizations or hosting companies to ensure proper branding on all images.
+-   Auditing and logging all requests—For debugging purposes, you can create an SOI that logs detailed information about incoming requests, such as full information about the input parameters and the user credentials passed in with the request.
+-   Post-processing responses—Additional information from separate business systems not supported by ArcGIS Server could be added to outgoing responses in order to join spatial data with other types of business intelligence data.
+-   Operation-level access control for map services—ArcGIS Server only supports enabling service operations for all users of the service or disabling access completely. An SOI can filter incoming requests based on the user's role in order to implement operation-level access to the service.
+-   Layer-level access control for map services—ArcGIS Server only supports service-level data access; either a user has full access to all service data or the user has no access. An SOI can be implemented to filter access to specific layers or even filter data within a layer based on the user's role.
+
+### What you need to know to develop an extension
+
+Extension development requires knowledge of Enterprise SDK use through Java or the .NET programming languages. It also requires an understanding of REST or SOAP principles. Extensions developed with Java can be deployed to ArcGIS Server (Windows), ArcGIS Server (Linux) and ArcGIS Server (Kubernetes). Extensions developed with .NET can only be deployed to ArcGIS Server (Windows).
+
+An extension can only be developed for a specific service type, either a map or image service. For example, you cannot develop a generic extension that works with both a map and image service. In this case, you must develop individual extensions for each service type, one for a map service and the other for an image service.
+
+Additionally, if you want to write custom property pages for your extensions beyond those automatically generated, you must have a knowledge of web forms development using Hypertext Markup Language (HTML) and JavaScript (for Manager pages).
+

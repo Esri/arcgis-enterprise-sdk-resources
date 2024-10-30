@@ -1,0 +1,47 @@
+---
+title: Create a custom data app
+uid: cdf-create-custom-app
+description: >-
+  Create a custom data app
+---
+
+A _custom data app_ is a Node.js project that can contain one or more
+custom data providers. A custom data app allows you to test your data
+providers without having to package and deploy them to ArcGIS Server.
+
+Complete the following steps to create a custom data app.
+
+1.  Open a command prompt, and navigate to the directory where you want
+    to create a custom data app.
+
+2.  Run the `cdf createapp <name>` command. This creates a directory named
+    with the value you supplied for **_\<name\>_**.
+
+3.  Open the newly created directory in an IDE of your choice. You should see the following
+    folder structure.
+
+    ```
+    - config/
+        | default.json
+    - framework/
+        | cache-memory/
+        | core/
+        | featureserver/
+        | logger/
+        | output-geoservices/
+        | winnow/
+    - node_modules/
+    - src/
+        - request-handlers/
+            | welcome-page.js
+        | index.js
+        | plugins.js
+        | routes.js
+    - cdconfig.json
+    - package-lock.json
+    - package.json
+    ```
+
+4.  Open a command prompt in the app directory and run the `npm
+    start` command to start the app. You will see a message that
+    the _Server is listening at 8080_.

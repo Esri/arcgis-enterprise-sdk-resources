@@ -1,0 +1,38 @@
+---
+title: Design philosophy for ArcGIS Enterprise SDK
+description: >-
+  This topic describes the design philosophy behind the ArcGIS Enterprise SDK.
+  ,In this topic,,Design Philosophy ,,,,Design Philosophy,The ArcGIS Enterprise
+  SDK has been designed as its own software d The ArcGIS Enterprise SDK has been
+  designed as its own software d
+---
+
+# Design philosophy for ArcGIS Enterprise SDK
+
+This topic describes the design philosophy behind the ArcGIS Enterprise SDK.
+
+### Design Philosophy
+
+The ArcGIS Enterprise SDK has been designed as its own software development kit, rather than as a newer version of the ArcObjects SDK. However, it’s easy to migrate code from the ArcObjects-based SOEs and SOIs to the new ArcGIS Enterprise SDK. It's important for ArcObjects developers to understand the design decisions that went into the ArcGIS Enterprise SDK and why the two SDKs differ.
+
+The ArcObjects SDK was designed to be a single SDK that spanned multiple products (ArcGIS Server, ArcGIS Desktop, and ArcGIS Engine). That design made it easy to move code written for ArcMap and then use it in ArcGIS Server, but it also made the scope of the SDK very large, which presented a steep learning curve for new developers.
+
+In recent years, ArcGIS Runtime and ArcGIS Pro have introduced product-specific SDKs that were specifically designed to reduce the barrier of entry when programming with those products. The ArcGIS Enterprise SDK has followed this path and been designed to make it easier to get started while preserving the ability for the vast majority of ArcObjects-based SOEs and SOIs to be migrated to the ArcGIS Enterprise SDK. The APIs in the ArcGIS Enterprise SDKs were designed to be very similar to APIs from the ArcObjects SDK in order to ease migration, but they are not identical.
+
+Perhaps the biggest question about the new ArcGIS Enterprise SDK is what’s included in the SDK, what's not included in the SDK, and why when compared to the existing ArcObjects SDK. Many types of SOEs and SOIs have been written using the ArcObjects SDK, but most of them were in three key areas: data access, map service manipulation, and extending ArcGIS Server. Those three areas are pillars of the ArcGIS Enterprise SDK library design. The Geometry and System areas were brought in, as Data Access relies upon them.
+
+The _Geodatabase_ and _Server_ framework libraries are just as they were in the ArcObjects SDK, and it should be easy to migrate those areas from an ArcObjects SDK-based SOE or SOI. However, you may see some differences in the _Carto_ library between the ArcObjects SDK and the ArcGIS Enterprise SDK, and it's worth noting those differences and why they were made.
+
+Major changes were introduced in map services at ArcGIS 9.3.1 that made them faster, but older-style map services were supported through ArcGIS Server 10.0. At ArcGIS 10.1, only the faster map services were supported. However, many interfaces and methods for the older map services remained in the ArcObjects SDK. Interfaces and functions related to the older-style map services have been removed in the current product. Key map service interfaces have also been simplified. If you used the ArcObjects SDK, you have seen the IMapServer, IMapServer2, IMapServer3, and IMapServer4 interfaces. You will see the ArcGIS Enterprise SDK only has a single IMapServer interface. In the new APIs, there was no need to reflect the older historical heritage that the ArcObjects SDK brought with it. The result is a cleaner API that will make it easier to write code against map services. However, you will need to update ArcObjects SDK code as you migrate code over to the ArcGIS Enterprise SDK. In addition, much of the carto library was focused on workflows and operations that might have made sense in an ArcGIS Engine application but didn't make sense in ArcGIS Server. For instance, esriLayerEventHint was designed for layer interaction in a GUI that made sense in ArcMap and ArcGIS Engine, but did not make sense in ArcGIS Server. You will see many of these classes, interfaces, and functions are not included in the ArcGIS Enterprise SDK.
+
+You will also notice that many libraries not related to data access, map services, or the server framework don't exist in the ArcGIS Enterprise SDK. These libraries were not built for the ArcGIS Enterprise SDK for one of two reasons. The first reason is that many of the libraries did not make sense when extending a map service. For instance, the ArcObjects SDK had libraries for ArcCatalog and ArcScene, which were intended only for those parts of ArcGIS Desktop. Those libraries aren't in the ArcGIS Enterprise SDK because there is no conceivable use for them. Secondly, some libraries were not built for the ArcGIS Enterprise SDK in order to steer developers towards successful patterns. Below are a few patterns that have been changed.
+
+Printing SOEs are some of the most common SOEs built with the ArcObjects SDK. Most of them were written before the ArcGIS Server print service was introduced. This service handles the new cartography that has been added to maps published from ArcGIS Pro; it’s stable and fast, and it can be called from existing applications built with Esri tools and APIs and Runtime SDKs. We encourage developers who want to print in new applications to use the print service.
+
+Geoprocessing is not available in the ArcGIS Enterprise SDK. We want to encourage developers to use geoprocessing services rather than writing geoprocessing code in SOEs. There are multiple reasons for this, but one of the key reasons is that analysis might take significant amounts of time. On the web, it's better to use an asynchronous approach to long-running requests. Many network components will terminate idle web connections after one minute, so a synchronous approach doesn't work well. Often, developers will work on sample data that's fast in a development environment without firewalls, and discover too late that they need an asynchronous pattern. The only type of service that supports asynchronous requests are geoprocessing services.
+
+The ArcGIS Enterprise SDK currently only supports two types of extensions - SOEs and SOIs - while the ArcObjects SDK supports more types of extensions, such as plugin data sources and geodatabase class extensions. Future versions of the ArcGIS Enterprise SDK may include additional extension types as the technology progresses and as customer requirements drive things forward.
+
+### Also See
+
+-   [Overview of extensions](../overview-of-extensions-net/)

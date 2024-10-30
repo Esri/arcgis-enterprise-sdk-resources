@@ -1,0 +1,55 @@
+---
+title: Install and Configure ArcGIS Server Custom Data Feeds
+uid: cdf-index-install
+description: >-
+  Install and Configure ArcGIS Server Custom Data Feeds
+---
+
+# Install and Configure ArcGIS Server Custom Data Feeds
+
+The following steps will guide you through the ArcGIS Server Custom Data Feeds installation and configuration process.
+
+1.  Install ArcGIS Server, and create an ArcGIS Server site on your server machine.
+2.  Install the same version of ArcGIS Server Custom Data Feeds Runtime as the version ArcGIS Server on your server machine. If there are multiple machines in your ArcGIS Server site, then the ArcGIS Server Data Feeds Runtime must be installed on each machine.
+3.  Install an appropriate version of Node.js runtime and the ArcGIS Enterprise SDK on the machine where you will do your development. See the table below for supported version of Node.js. The Custom Data Feeds command line tool is inlcuded in the ArcGIS Enterprise SDK. This development machine does not need to have ArcGIS Server installed.
+
+    *It is highly recommend that your development machine and server machine are running the same operating system and the same version of Node.js. 
+    This development machine does not need to have ArcGIS Enterprise or AcGIS Server installed on it.*
+
+    |Product                  | Version   |Node.js version(s) | Notes       |
+    |------------------------ |-----------|------------------ |------------- |
+    |CDF Command Line Tool    | 11.1      |14.13.1 - 16.19.1  | Any Node.js version in this range is suitable.
+    |ArcGIS Server            | 11.1      |16.19.1            | ArcGIS Server 11.1 ships with Node.js v16.19.1
+    |CDF Command Line Tool    | 11.2      |16.16.2 - 18.17.0  | Any Node.js version in this range is suitable.
+    |ArcGIS Server            | 11.2      |18.17.0            | ArcGIS Server 11.2 ships with Node.js v18.17.1
+    |CDF Command Line Tool    | 11.3      |18.17.1 - 20.11.1  | Any Node.js version in this range is suitable.
+    |ArcGIS Server            | 11.3      |20.11.1            | ArcGIS Server 11.3 ships with Node.js v20.11.1
+
+    If you need to maintain different versions of Node.js on your development machine, consider using [NVM](https://github.com/nvm-sh/nvm) (Linux) or [NVM for Windows](https://github.com/coreybutler/nvm-windows)
+
+4.  Open a command prompt on your development machine, and run the command: `cdf -h`. The following output should appear:
+
+```dos
+Usage : cdf <command> [options]
+
+Commands:
+  cdf createapp <name>                              creates a new custom data app
+  cdf createprovider <name>                         creates a new custom data provider within custom
+                                                    data app
+  cdf listproviders                                 lists custom data providers registered with     
+                                                    custom data app
+  cdf export <name>                                 exports specified custom data provider into     
+                                                    package file with .cdpk extension
+  cdf deleteprovider <name>                         deletes specified custom data provider from     
+                                                    custom data app
+  cdf register <name> <server-admin-url> <token>    registers a provider with ArcGIS server
+  cdf unregister <name> <server-admin-url> <token>  unregisters a provider with ArcGIS server and   
+                                                    optionally deletes associated services
+
+Options:
+  -h, --help     Show help                                                                 [boolean]
+  -v, --version  Show version number                                                       [boolean]
+
+Esri - copyright 2024
+	  
+```

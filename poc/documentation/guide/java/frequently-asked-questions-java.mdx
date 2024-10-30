@@ -1,0 +1,89 @@
+---
+title: Frequently asked questions
+description: >-
+  What’s the difference between the ArcGIS Enterprise SDK and the ArcObjects
+  .NET/
+---
+
+# Frequently asked questions
+
+
+### What is the ArcGIS Enterprise SDK?
+
+The ArcGIS Enterprise SDK allows developers to extend the functionality of ArcGIS server map services published via ArcGIS Pro. These extensions can be written using either the .NET (C# or VB) or Java languages. The Enterprise SDK includes samples, tools, and documentation for both .NET and Java and you can choose during the setup which one you wish to target.
+
+The ArcGIS Enterprise SDK supports Windows and Linux. On Windows, both .NET and Java are supported. On Linux, only Java is supported. In the case of Java, you can develop on one operating system and deploy your extension on another.
+
+### What types of extensions can be created in the ArcGIS Enterprise SDK?
+
+Server Object Extensions (SOEs) and Server Object Interceptors (SOIs) are the two types of extensions that can be created using the ArcGIS Enterprise SDK. SOEs allow you to add new operations to your map services. SOIs let you perform pre-processing and post-processing for the existing operations on your map service. SOEs are typically developed in conjunction with a client application that knows about the new operation and calls into it. SOIs are invoked when any client calls into an existing operation.
+
+### What’s the difference between the ArcGIS Enterprise SDK and the ArcObjects .NET/Java SDK?
+
+The Enterprise SDK is designed to be complementary with the ArcObjects SDK and can co-exist with the ArcObjects .NET/Java SDK on a machine. Developers who are writing Server Object Extensions (SOEs) and Server Object Interceptors (SOIs) for services published from ArcMap should use the ArcObjects .NET/Java SDK. If you are developing any other type of SOE and SOI, such as those for services published from ArcGIS Pro, use the ArcGIS Enterprise SDK. The APIs for the ArcObjects .NET/Java SDK and Enterprise SDK have similarities but are distinct and different APIs.
+
+### Where are the developer content and samples for the Enterprise SDK?
+
+The developer content and samples are installed upon successful installation of the SDK. For specific instructions on how to install the Enterprise SDK, see [how to install the ArcGIS Enterprise SDK](../install-arcgis-enterprise-sdk-java/). 
+
+You can find the samples in the folder **\\&lt;Installation folder of Enterprise SDK>\\Samples\\**.
+
+If you want to use the Help documentation locally, instead of using the online documentation, you can follow the instructions at **\\&lt;Installation folder of Enterprise SDK>\\Help\\README.md** to deploy the Help documentation to your machine.
+
+### What are the supported platforms for the ArcGIS Enterprise SDK?
+
+For a complete list of supported platforms, see the [ArcGIS Enterprise SDK system requirements](https://enterprise.arcgis.com/en/system-requirements/latest/windows/arcgis-enterprise-sdk-system-requirements.htm).
+
+### Can any IDE be used for developing extensions?
+
+ArcGIS Enterprise SDK has three features:
+
+-   Microsoft Visual Studio
+-   Java (with Maven integration)/(with Eclipse plugin)*
+
+For .NET-based development, you must use Microsoft Visual Studio. Esri provides custom templates integrated into Visual Studio, which provides boilerplate code so that you don’t need to write anything from scratch.
+
+\* For Java-based development, you can use the integrated development environment (IDE) of your choice for developing with ArcGIS Enterprise SDK. Before 10.8.1, the SDK provides the Eclipse plug-in which integrates templates, samples, and tools to improve the development experience; you should use Eclipse. Starting with 10.8.1, because the Maven integration feature has been introduced, which provides a richer development experience using the Maven framework, you should choose the Java IDE with Maven support. You can learn more [about Maven integration](../../java/about-maven-integration/).
+
+### Is ArcGIS Pro or ArcGIS Server required to develop extensions?
+
+No. Developing extensions only requires ArcGIS Enterprise SDK with an IDE. ArcGIS Enterprise SDK has no dependency on any ArcGIS products for installation and development, and it can be installed on a machine by itself or with other ArcGIS products installed. 
+
+However, the extensions can only be tested or used with a service, which requires an ArcGIS Server. To prepare or publish the service, you must use ArcGIS Pro or [tools provided by ArcGIS Pro](https://pro.arcgis.com/en/pro-app/tool-reference/server/an-overview-of-the-publishing-toolset.htm). You can't use ArcMap or tools provided by ArcMap to publish or prepare the service.
+
+### What are product licensing requirements for the ArcGIS Enterprise SDK?
+
+The ArcGIS Enterprise SDK is included with your license for the ArcGIS Enterprise product. There is no separate purchase or authorization mechanism specifically for the ArcGIS Enterprise SDK.
+
+### What are the installation steps for the ArcGIS Enterprise SDK?
+
+For java-based development, follow the instructions in the [Installation](../../java/installation-java/) section.
+
+For .NET-based development, you need to install Visual Studio first, and then [Install ArcGIS Enterprise SDK](../../net/installation-net/).
+
+### Which version of .NET Framework or .NET should be used?
+
+See the [ArcGIS Enterprise SDK system requirements](https://enterprise.arcgis.com/en/system-requirements/latest/windows/arcgis-enterprise-sdk-system-requirements.htm).
+
+### Which version of Java should be used?
+
+See the [ArcGIS Enterprise SDK system requirements](https://enterprise.arcgis.com/en/system-requirements/latest/windows/arcgis-enterprise-sdk-system-requirements.htm).
+
+### How does the garbage collection work in the ArcGIS Enterprise SDK?
+
+Although the ArcGIS Enterprise SDK for both Java and .NET reference native C++ code, garbage collection works like any other Java/.NET application. Garbage collection occurs when an object is no longer referenced, and any memory used by native C++ objects will be freed at that time. You can force an object to be garbage collected by using the `Cleaner` class in the system package and call the `release()` method to specifically release resources for an Enterprise SDK component.
+
+### Should I redistribute the arcgis-enterprise-sdk.jar with my extensions?
+
+No, that's not necessary and may cause problems. The library is already delivered with ArcGIS Server and including it with your application may cause problems.
+
+### Can I find the artifacts for ArcGIS Enterprise SDK at Maven central repository?
+No, the artifacts are shipped with the SDK software at 10.8.1 or later versions, and must be deployed to your Maven local repository for use. They are not available at the central repository.
+
+### I created a plugin data source with the ArcObjects SDK; can I port it to the Enterprise SDK?
+
+The only two types of extensions that are supported with the ArcGIS Enterprise SDK are Server Object Extensions and Server Object Interceptors. In the future, we may add further extension types or more capabilities in ArcGIS Enterprise SDK.
+
+### Can I write an extension that uses utility networks or geometric networks?
+
+Starting at 10.8.1, it is possible to create SOEs and SOIs that interact with a utility network dataset. To learn more, see [Work with utility networks](../work-with-utility-networks-java/).

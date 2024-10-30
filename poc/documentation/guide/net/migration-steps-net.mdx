@@ -1,0 +1,28 @@
+---
+title: Migration steps
+description: >-
+  This topic describes recommded migration steps to migrate extension from the
+  ArcObject .NET SDK to the ArcGIS Enterprise SDK. ,In this topic,,Recommended
+  steps ,,,,Recommended steps,It is important to It is important to
+---
+
+# Migration steps
+
+This topic describes recommended migration steps to migrate extension from the ArcObject .NET SDK to the ArcGIS Enterprise SDK.
+
+### Recommended steps
+
+It is important to understand migration strategies before starting migrations of your extensions. This will help to clarify implementation differences. Once you understand these differences, follow the recommended steps below for migrating extensions (SOE/SOI) from the ArcObjects .NET SDK to the ArcGIS Enterprise SDK.
+
+1.  Create new project in Visual Studio, starting with the ArcGIS Enterprise SDK SOE/SOI template. This is needed because new templates contain different packaging logic to make a .soe file and they point at primary interop assemblies (PIAs) shipped with the ArcGIS Enterprise SDK.
+2.  Add appropriate additional references not included in the template.
+3.  Copy the entire class code (but not class declaration) from your ArcObjects .NET SOE and replace the corresponding code in the template. If your migrated SOE or SOI has a different name than your ArcObject .NET SOE or SOI, update the SOE or SOI name in the constructor. Here, you can work out an appropriate approach to copy the entire class code.
+4.  Build your project. You may get build errors. To resolve these errors, you can refer to the [migration strategies](../migration-strategies-net/) topic.
+5.  Once you resolve build errors, rebuild your project. This should create an “.soe” file inside the build output directory.
+6.  Deploy your SOE/SOI in ArcGIS Server.
+7.  In the ArcGIS Server Manager, navigate to “Site -> Extensions”. Make sure that your extension (deployed in step 6) has “ArcGIS Pro” as its provider value.
+
+### Also See
+
+-   [Migration strategies](../migration-strategies-net/)
+-   [Walkthrough : How to migrate an ArcObjects .NET SOE to ArcGIS Enterprise SDK](../how-to-migrate-a-net-soe-net/)

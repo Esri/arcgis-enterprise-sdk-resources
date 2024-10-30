@@ -1,0 +1,66 @@
+---
+title: Handle requests to a REST SOE
+description: >-
+  This topic explains handler functions and output format of REST SOEs. ,In this
+  topic,,About handling requests to a REST server object extension ,Returning
+  formats other than JSON ,,,,A A
+---
+
+# Handle requests to a REST SOE
+
+This topic explains handler functions and output format of REST SOEs.
+
+### About handling requests to a REST server object extension
+
+Each resource and operation you add to your schema needs to have a handler function. This contains the logic that runs when someone invokes the resource or operation. The handler functions are where you write most of your ArcGIS Enterprise SDK related code.
+
+In the REST server object extension (SOE) template, you get one resource handler function stubbed out for you, called `RootResHandler()`. As a sample, it returns a simple "hello:world" JavaScript Object Notation (JSON) string. You can copy `RootResHandler` and adapt it for any number of resources in your schema.
+
+The structure of a resource handler function is defined by a .NET delegate in the SOESupport library. That means all resource handler functions have a signature as shown in the following code example:
+
+```cs
+private byte[] RootResHandler(NameValueCollection boundVariables, string
+    outputFormat, string requestProperties, out string responseProperties)
+{
+    ...
+}
+```
+
+The REST SOE template contains one operation handler, called `SampleOperHandler()`. This simple example function de-serializes two string parameters "parm1" and "parm2" and returns them unmodified as string outputs in a JSON response. You can copy and modify this handler function to accommodate all the operations in your schema.
+
+As with a resource handler, the signature of an operation handler is defined by a delegate. It looks similar to the resource handler, except it also contains a JSON object as input (operationInput). This JSON object holds any of the parameters required by the operation; for example, when invoking some kind of buffer operation, the JSON object might contain a point and a buffer distance. See the following code example:
+
+```cs
+public delegate byte[] OperationHandler(NameValueCollection boundVariables,
+    JsonObject operationInput, string outputFormat, string requestProperties, out
+    string responseProperties);
+```
+
+The main thing you have to be concerned about when writing an operation handler is to de-serialize the JSON input, do your work in ArcObjects or whatever libraries you’re using, then serialize your output as JSON. De-serializing and serializing the JSON can be the trickiest part.
+
+### Returning formats other than JSON
+
+Occasionally you might want to return something from your web service that can’t be represented in JSON, such as an image. In this situation, you need to set the Hypertext Transfer Protocol (HTTP) response Content-Type header in your response properties.
+
+First, when defining your resource or operation, set the supported formats. The following code example defines an operation that returns a Portable Network Graphics (PNG) file:
+
+```cs
+RestOperation pngOper = new RestOperation("generatePng", 
+    null, new string[]{ "png" }, PngHandler);
+soeResource.operations.Add(pngOper);
+```
+
+When you define the handler function, set the final argument string responseProperties to be a JSON representation of the Content-Type header that you need. In the following example, the content type is image/png:
+
+```cs
+private byte[] PngHandler(System.Collections.Specialized.NameValueCollection
+    boundVariables, ESRI.ArcGIS.SOESupport.JsonObject operationInput, string
+    outputFormat, string requestProperties, out string responseProperties)
+{
+    responseProperties =
+        "{\"Content-Type\" : \"image/png\",\"Content-Disposition\": \"attachment; filename=response.png\"}";
+    // Add code to generate and return a PNG.
+}
+```
+
+The preceding technique could be used to return other data formats, such as JPG images or Extensible Markup Language (XML).

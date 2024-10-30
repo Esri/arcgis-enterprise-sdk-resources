@@ -1,0 +1,155 @@
+---
+title: Handle SOAP requests and responses in SOIs
+description: >-
+  This topic demonstrates common workflows of processing SOAP requests and
+  responses in SOIs.
+---
+
+# Handle SOAP requests and responses in SOIs
+
+To handle SOAP requests in an SOI, you must implement `IRequestHandler` and `IRequestHandler2`. These interfaces contain two methods, `HandleBinaryRequest2()` and `HandleStringRequest()`, which allow you to intercept SOAP requests and execute your own business logic.  
+  
+The `HandleBinaryRequest2()` method handles all the SOAP binary requests that come from ArcObjects-based clients, such as ArcMap, ArcGIS Engine, or custom ArcObjects applications. For example, accessing and rendering a map service on ArcMap makes the requests come through the `HandleBinaryRequest2()` method. 
+
+The `HandleStringRequest()` method handles all the SOAP XML string requests that come from non-ArcObjects-based clients, such as requests made via [SOAP SDK](http://resources.arcgis.com/en/help/soap/latest/).   
+  
+To preprocess the SOAP request, you must unpack the incoming request, customize the request parameters, repack the request, and send it to the underlying service object for processing. Similar procedure also applies to postprocessing responses. To postprocess the SOAP response, you must unpack the response, customize the response content, repack the response to appropriate format, and send it back to the client. The SDK contains utility classes to assist with packing and unpacking the relevant request and response objects.  
+  
+This topic demonstrates the workflows for handling SOAP binary requests using the `HandleBinaryRequest2()` method and SOAP string requests using the `HandleStringRequest()` method.   
+
+### Use the `HandleBinaryRequest2()` method
+
+The following code in the `HandleBinaryRequest2()` method is automatically generated if you create an SOI from the Visual Studio template.
+
+``` c#
+        public byte[] HandleBinaryRequest2(string Capabilities, ref byte[] request) 
+        { 
+            _serverLog.LogMessage(ServerLogger.msgType.infoStandard, _soiName + ".HandleBinaryRequest2()", 
+                  200, "Request received in Sample Object Interceptor for HandleBinaryRequest2"); 
+            IRequestHandler2 requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler2>(); 
+            if (requestHandler != null) 
+            { 
+                return requestHandler.HandleBinaryRequest2(Capabilities, request); 
+            } 
+            return null; 
+        } 
+```
+
+Once a SOAP binary request is received, the above `HandleBinaryRequest2()` function will be triggered, and its `Capabilities` and `request` variables will be populated with the request information, such as request name and request parameters. Based on these variables, the `IRequestHandler2.HandleBinaryRequest2()` method will generate the response, which is also a byte array.  
+  
+The following code snippet demonstrates how to preprocess a SOAP binary request. It keeps only the first layer visible for the export operation of a map service, no matter how many layers exist in the map service. 
+ 
+To achieve this function, you must find the parameter that controls the layer visibility for the export operation. Based on [SOAP SDK](http://resources.arcgis.com/en/help/soap/latest/), the SOAP method for the export operation is [**ExportMapImage**](http://resources.arcgis.com/en/help/soap/latest/#/ExportMapImage/01vp0000005q000000/), whose input parameter [`MapDescription`](http://resources.arcgis.com/en/help/soap/latest/01vp/01vp000000r2000000.htm) defines the content of the map to be exported. One of [`MapDescription`](http://resources.arcgis.com/en/help/soap/latest/01vp/01vp000000r2000000.htm)'s properties is `LayerDescriptions`, which is an array of [`LayerDescription`](http://resources.arcgis.com/en/help/soap/latest/#/LayerDescription/01vp00000105000000/) with the `ILayerDescription.Visible` property to control the layer visibility. In this way, you can track down the objects to customize in the SOI.
+
+Sample code:
+
+``` c#
+    public byte[] HandleBinaryRequest2(string Capabilities, ref byte[] request)  
+    {  
+        IRequestHandler2 requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler2>();  
+        if (requestHandler != null)   
+        {   
+            IMessage requestMessage = SoapSOIHelper.ConvertBinaryRequestToMessage(request);   
+            string requestName = requestMessage.Name;   
+            _serverLog.LogMessage(ServerLogger.msgType.infoSimple, _soiName + ".RequestName", 200, "Request Name: " + requestName);//For more information about server logs, go to topic: how to audit requests in SOIs    
+            if (requestName == "ExportMapImage")   
+            {   
+                IXMLSerializeData requestParams = requestMessage.Parameters;   
+                int mapdescriptIndex = requestParams.Find("MapDescription");   
+                IMapDescription mapDescription = requestParams.GetObject(mapdescriptIndex, requestMessage.NamespaceURI, "MapDescription") as IMapDescription;   
+                int layerCount = mapDescription.LayerDescriptions.Count;   
+                for (int i = layerCount - 1; i > 0; i--)   
+                {   
+                    mapDescription.LayerDescriptions.Element[i].Visible = false;//Keep only the first layer visible in export operation      
+                }   
+                byte[] modifiedRequest = SoapSOIHelper.ConvertMessageToBinaryRequest(requestMessage);   
+                return requestHandler.HandleBinaryRequest2(Capabilities, modifiedRequest);   
+            }   
+            return requestHandler.HandleBinaryRequest2(Capabilities, request);   
+        }   
+        //Insert error response here.      
+        return null;   
+    }  
+```
+
+The above code first calls the `SoapSOIHelper.ConvertBinaryRequestToMessage()` method to convert the byte-array request to `IMessage`, which provides access to the request name string and request parameters as `IXMLSerializeData`. Second, the `IXMLSerializeData.GetObject()` method is called to retrieve `IMapDescription`, which is the input parameter to customize in this workflow. Then, `ILayerDescription` can be returned from the `IMapDescription.LayerDescriptions` array and `ILayerDescription.Visible` property can be set. Last, the `SoapSOIHelper.ConvertMessageToBinaryRequest()` method converts the modified request back to byte-array format. This modified byte-array request can then be passed to `IRequestHandler2.HandleBinaryRequest2()` for the service object to process and generate the corresponding response based on the modified request.    
+  
+Postprocessing SOAP binary responses works in a similar way. First, you must obtain the byte-array response returned from the `IRequestHandler2.HandleBinaryRequest2()` method with either the original or modified request. Next, you will convert the byte-array response to `IMessage` using the `SoapSOIHelper.ConvertBinaryRequestToMessage()` method. The `IMessage` interface provides access to the response content via `IMessage.Parameters`, which returns an object that can be cast to the `IXMLSerializeData` interface. Calling the `IXMLSerializeData.GetObject()` method will return the `Result` object. The `Result` object can be cast to the corresponding interface or class which provides access to the element for modification. After the response element is modified, you must convert it from `IMessage` to a byte array by using `SoapSOIHelper.ConvertMessageToBinaryRequest()` and return the byte-array response to the client.
+
+To test the above code, you can deploy the SOI and enable the SOI with a map service. After you add the map service to ArcMap, only the first layer should display on the map. As this code only modifies [**ExportMapImage**](http://resources.arcgis.com/en/help/soap/latest/#/ExportMapImage/01vp0000005q000000/), to customize other SOAP methods, such as [**GetLegendInfo**](http://resources.arcgis.com/en/help/soap/latest/#/GetLegendInfo/01vp00000079000000/), you can refer to the [.NET layer access SOI](/sample-code/Samples/net/SOI/NetLayerAccessSOI/) sample.  
+
+### Use the `HandleStringRequest()` method
+
+The following code in the `HandleStringRequest()` method is automatically generated if you create an SOI from the Visual Studio template.
+
+``` c#
+    public string HandleStringRequest(string Capabilities, string request)  
+    {  
+        _serverLog.LogMessage(ServerLogger.msgType.infoStandard, _soiName + ".HandleStringRequest()",  
+                200, "Request received in Sample Object Interceptor for HandleStringRequest");  
+        IRequestHandler requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler>();  
+        if (requestHandler != null)  
+        {  
+            return requestHandler.HandleStringRequest(Capabilities, request);  
+        }  
+        //Insert error response here.  
+        return null;  
+    } 
+```
+
+Unlike the `HandleBinaryRequest2()` method, `HandleStringRequest()` intercepts all the SOAP requests that come from non-ArcObjects-based clients, such as XML requests sent to the service SOAP endpoint from custom applications using SOAP SDK. 
+
+When the request reaches the service SOAP endpoint, the `HandleStringRequest()` method is triggered and the requests are directly passed in as the `request` string variable. Based on the `request` and `capabilities` variables, `IRequestHandler.HandleStringRequest()` generates the response, which is also an XML string.  
+  
+To preprocess the SOAP string request, you will first convert the request string to `IMessage`. Then, the request parameters can be accessed from the `IMessage.Parameters` method and cast to `IXMLSerializeData`, whose `GetObject()` method can be used to retrieve the underlying request object for modification. After the request object is modified, you must call the `SoapSOIHelper.CreateNewIMessage()` method to copy a new `IMessage` from the original one, and use the `SoapSOIHelper.AddObjectToXMLSerializeData()` method to commit the changes of the request object to the copied `IMessage`, which can then be converted back to a string via `SoapSOIHelper.ConvertMessageToStringRequest()`. This string can be passed to `IRequestHandler.HandleStringRequest()` for the service object to process and generate a response.  
+  
+The same logic also applies to postprocessing SOAP string responses. In the following sample code, the SOI adds a custom message to the `Comments` property of the map service’s **GetDocumentInfo** response. 
+ 
+To customize this response, you must understand the response object type first. Based on SOAP SDK, the [**GetDocumentInfo**](http://resources.arcgis.com/en/help/soap/latest/#/GetDocumentInfo/01vp0000001q000000/) method returns a [`PropertySet`](http://resources.arcgis.com/en/help/soap/latest/#/PropertySet/01vp00000169000000/) which contains a [`PropertySetProperty`](http://resources.arcgis.com/en/help/soap/latest/#/PropertySetProperty/01vp0000018t000000/) named `Comments`. This `PropertySetProperty` can be accessed via `IPropertySet` in Enterprise SDK and its value can be set by the `IPropertySet.SetProperty()` method. Note that the modified `PropertySet` must be committed to `IMessage` copied from the `SoapSOIHelper.CreateNewIMessage()` method. 
+
+Sample code:
+
+``` c#
+    public string HandleStringRequest(string Capabilities, string request) 
+    { 
+        _serverLog.LogMessage(ServerLogger.msgType.infoStandard, _soiName + ".HandleStringRequest()", 200, "Capabilities: " + Capabilities); 
+        _serverLog.LogMessage(ServerLogger.msgType.infoStandard, _soiName + ".HandleStringRequest()", 200, "Request received: " + request); 
+        IRequestHandler requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler>(); 
+        if (requestHandler != null) 
+        { 
+            string response = requestHandler.HandleStringRequest(Capabilities, request); 
+            IMessage responseMessage = SoapSOIHelper.ConvertStringRequestToMessage(response); 
+            if (responseMessage.Name == "GetDocumentInfoResponse") 
+            { 
+                int resultIndex = responseMessage.Parameters.Find("Result"); 
+                IPropertySet propSet = responseMessage.Parameters.GetObject(resultIndex, responseMessage.NamespaceURI, "PropertySet") 
+                    as IPropertySet; 
+                propSet.SetProperty("Comments", "Custom message from SOI."); 
+                //_SoapSOIHelper is instantiated at SOE's Init() method:
+                //_SoapSOIHelper = new SoapSOIHelper(pSOH, 
+                //    "C:\\Program Files\\ArcGIS\\Server\\framework\\runtime\\ArcGIS\\Resources\\XmlSchema\\MapServer.wsdl");
+
+                IMessage modifiedResponseMsg = _SoapSOIHelper.CreateNewIMessage(responseMessage); 
+                IXMLSerializeData modifiedData = modifiedResponseMsg.Parameters; 
+                _SoapSOIHelper.AddObjectToXMLSerializeData("Result", propSet, "PropertySet", modifiedData); 
+                string modifiedResponse = SoapSOIHelper.ConvertMessageToStringRequest(modifiedResponseMsg); 
+                return modifiedResponse; 
+            } 
+            _serverLog.LogMessage(ServerLogger.msgType.infoStandard, _soiName + ".HandleStringRequest()", 200, "Response: " + response); 
+            return response; 
+        } 
+        //Insert error response here.  
+        return null; 
+    } 
+```
+
+In the above code, the `request` variable is directly passed to the `IRequestHandler.HandleStringRequest()` method to generate the raw response string. Then, by calling `SoapSOIHelper.ConvertStringRequestToMessage()`, the raw response string is converted to `IMessage`, which provides access to the response name and the response content as `IXMLSerializeData`.  
+
+As this code intercepts the response from the **GetDocumentInfo** method, the name of the response should be **GetDocumentInfoResponse**. Typically, the name of the response is the service’s SOAP method name with `Response` appended, and the name of the SOAP response content is `Result`. In this case, the `Result` object is of type `PropertySet` (see [**GetDocumentInfo**](http://resources.arcgis.com/en/help/soap/latest/#/GetDocumentInfo/01vp0000001q000000/)). You can set the value of the `Comments` property by using `IPropertySet.SetProperty()`.
+
+Next, you must call the `SoapSOIHelper.CreateNewIMessage()` method to copy a new response `IMessage` from the original `IMessage`. This will allow the updated response element `IPropertySet` to be committed to the new `IMessage` via the the `SoapSOIHelper.AddObjectToXMLSerializeData()` method.
+
+Finally, you can convert the modified response `IMessage` to a string through the `SoapSOIHelper.ConvertMessageToStringRequest()` method. This modified string response will be returned in the `HandleStringRequest()` method and sent to the client.  
+  
+To test how the above code works in the SOI, you can deploy the SOI and enable the SOI with a map service. You can use any non-ArcObjects-based SOAP client to send a **GetDocumentInfo** request, and you will find the value of the `Comments` property in the response XML shows the custom message defined in the SOI. 
+ 

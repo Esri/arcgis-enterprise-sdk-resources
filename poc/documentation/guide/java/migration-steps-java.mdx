@@ -1,0 +1,53 @@
+---
+title: Migration steps
+description: >-
+  This topic provides recommded migration steps to migrate extensions from the
+  ArcObjects Java SDK to the ArcGIS Enterprise SDK. ,In this topic,,Recommended
+  steps ,,,,Recommended steps,Follow the recomm Follow the recomm
+---
+
+# Migration steps
+
+This topic provides instructions on migrating extensions from the ArcObjects SDK to the ArcGIS Enterprise SDK. Since ArcGIS Enterprise SDK started to use the Maven framework to manage SOE and SOI projects at 10.8.1, the migration steps are different depending on which version of ArcGIS Enterprise SDK you want to migrate to.
+
+
+### Migrate from ArcObjects SDK to 10.8.1 or later versions of ArcGIS Enterprise SDK
+
+The following instruction applies to the scenario when you need to migrate your existing ArcObjects SOE or SOI project to use 10.8.1 or later versions of ArcGIS Enterprise SDK. These are the recommended steps:
+
+1. Create a new SOE or SOI Maven project using the Maven archetype (see [Project creation](../about-maven-integration/#project-creation)).
+
+    Since the 10.8.1 SDK manages SOE or SOI project using the Maven framework, you should migrate your ArcObjects Java SOE and SOI project to a Maven project.
+
+    If your SOE or SOI project references any third-party JARs, you must install those JARs to your Maven local repository and reference them at the project's `POM.xml` file (see [Dependency management](../about-maven-integration/#dependency-management)).
+
+2. Copy the code and other relevant files, such as custom property page files, if any, to the new Maven project.
+
+3. You may get some build errors. To resolve those build errors, you can refer to the [Migration strategies](../migration-strategies-java/) topic.
+
+4. Now you can use `mvn install` to build your project. 
+
+### Migrate from ArcObjects SDK to 10.8 or previous versions of ArcGIS Enterprise SDK
+
+The following instruction applies to the scenario when you need to migrate your existing ArcObjects SOE or SOI project to use 10.8 or previous versions of ArcGIS Enterprise SDK. These are the recommended steps:
+
+1. Open the existing ArcObjects SOE or SOI project in Eclipse.
+
+   Click **File** > **Open Projects from File System**. 
+
+   Select your project folder and click **Finish**.
+
+2. Update the ArcGIS Enterprise SDK library.
+   
+   Right-click the project > **Build Path** > **Configure Build Path...**. 
+   
+   Click the **Libraries** tab in the project's **Properties** window. 
+   
+   Choose the existing ArcObjects Library listed under **Libraries** and click the **Remove** button to remove it.
+
+   Add the current ArcGIS Enterprise SDK library (see [add the ArcGIS Enterprise SDK library](../legacy-use-arcgis-eclipse-plugin/#add-the-arcgis-enterprise-sdk-library)).
+
+3. You may get some build errors. To resolve those build errors, you can refer to the [Migration strategies](../migration-strategies-java/) topic.
+
+4. You can save the Java class and build your project now. To export your Java project, see [Export SOEs and SOIs](../legacy-export-soes-and-sois/).
+

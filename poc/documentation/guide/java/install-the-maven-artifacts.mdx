@@ -1,0 +1,38 @@
+---
+title: Install the Maven artifacts
+description: >-
+---
+
+# Install the Maven artifacts
+
+The ArcGIS Enterprise SDK contains the **install-maven-artifacts** tool (`install-maven-artifacts.bat` for Windows and `install-maven-artifacts.sh` for Linux) which can be executed from the command line. This tool installs the [Maven dependencies, archetypes, and plug-ins](../about-maven-integration/#enterprise-sdk-maven-artifacts) required by the SDK at the Maven local repository. 
+    
+Before executing the **install-maven-artifacts** tool, be sure you set up Java and Maven properly on your development environment. Visit [install ArcGIS Enterprise SDK](../install-arcgis-enterprise-sdk-java/) and [install Java and Maven](../install-java-and-maven) for more details. Failure to install Java or Maven will result in issues running the **install-maven-artifacts** tool.
+
+### Linux
+
+1.  Open the terminal and go to the `/java/maven` directory under Enterprise SDK:
+
+    ``` bash
+    [ags@linuxmachine ~]$ cd /home/ags/arcgis/enterprisesdk/java/maven/
+    ```
+2.  Use the `sh` command to run the install-maven-artifacts.sh Bash file:
+    ``` bash
+    [ags@linuxmachine maven]$ sh install-maven-artifacts.sh
+    ```
+
+3.  The following six items, `arcgis-enterprise-sdk`, `sdk-plugin`, `rest-soe-archetype`, `soap-soe-archetype`, `rest-soap-soe-archetype`, and `soi-archetype`, should be installed successfully with the `Build Success` status for each of them.
+
+### Windows
+
+1.  Open the command prompt, and go to the `/java/maven` directory under Enterprise SDK:
+
+    ``` bash
+    C:\Users>cd "C:\Program Files\ArcGIS\EnterpriseSDK\Java\maven"
+    ```
+2.  Run the install-maven-artifacts.bat file.
+    ``` bash
+    C:\Program Files\ArcGIS\EnterpriseSDK\Java\maven>install-maven-artifacts.bat
+    ```
+
+3.  The following six items, `arcgis-enterprise-sdk`, `sdk-plugin`, `rest-soe-archetype`, `soap-soe-archetype`, `rest-soap-soe-archetype`, and `soi-archetype`, should be installed successfully with the `Build Success` status for each of them.

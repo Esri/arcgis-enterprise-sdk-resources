@@ -1,0 +1,31 @@
+---
+title: Deploy extensions
+description: >-
+  This topic describes how to deploy server object extensions and interceptors
+  in ArcGIS Server Manager. It also covers undeploying of server object
+  extensions and interceptors from ArcGIS Server Manager.  This topic describes
+  how to deploy server object extensions and interceptors in ArcGIS Server
+  Manager. It also covers undeploying of server object extensions and
+  interceptors from ArcGIS Server Manager.
+---
+
+# Deploy extensions
+
+This topic describes how to deploy server object extensions and interceptors in ArcGIS Server Manager. It also covers undeploying of server object extensions and interceptors from ArcGIS Server Manager.
+
+If deploying Java-based extensions (SOEs and SOIs) into ArcGIS Enterprise configured in Kubernetes environment please reference [using ArcGIS Enterprise manager is supported](https://devent.esri.com/gis/help/en/11.3/administer/extend-services.htm). 
+
+### Deploy extensions
+
+1.  Log into ArcGIS Server Manager and go to the **Site > Extensions** page.
+2.  Click the **Add Extension** button, browse to your newly created .soe file and click **OK**.
+3.  The extension will be registered and listed on the **Extensions** page.
+4.  Your extension is now deployed to all machines participating in the ArcGIS Server site.
+
+### Undeploy extensions
+
+1.  Log into ArcGIS Server Manager and navigate to the **Site > Extensions** page.
+2.  Click the cross button next to the extension you want to undeploy.
+3.  Click **Yes** in the confirmation dialog box.
+
+Your extension is now undeployed from ArcGIS Server. If this extension was enabled on a service that was running when you undeployed it, that service will be automatically restarted.

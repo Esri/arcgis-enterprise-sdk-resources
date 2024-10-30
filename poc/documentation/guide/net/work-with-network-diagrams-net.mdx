@@ -1,0 +1,155 @@
+---
+title: Work with network diagrams
+description: >-
+---
+
+# Work with network diagrams
+
+Starting with 10.9, you can create SOEs that target network diagrams and so extend functionalities beyond the REST resources and operations already provided with the [Network Diagram Service](https://developers.arcgis.com/rest/services-reference/network-diagram-service.htm) resource hierarchy.
+
+This topic provides most of the essential code snippets you can re-use while developing your network diagram SOEs.
+
+## Retrieve the diagram dataset related to a utility network
+
+Network Diagrams being a capability of the ArcGIS Utility Network Management Extension, you must start by retrieving the utility network related to the utility network service extension enabled on a map service like explained in [Open a utility network dataset](../work-with-utility-networks-net#open-a-utility-network-dataset).
+
+Then, you can easily access the underlying [diagram dataset](/api-reference/net/IDiagramDataset/) like follows:
+
+```c#
+    public IDiagramDataset GetDiagramDataset()
+    {
+      IBaseNetwork unBaseNetwork = GetUtilityNetwork();
+
+      if (unBaseNetwork != null)
+        return unBaseNetwork.DiagramDataset as IDiagramDataset;
+
+      return null;
+    }
+```
+
+## Walk through the main network diagram interfaces and classes
+
+### Network Diagrams OMD
+
+The [Network Diagrams Object Model](/api-reference/EnterpriseSDK_ND_OMD.pdf) document provides the detailed Object Model Diagrams (OMDs) of the network diagram classes, interfaces and enumerations exposed in the Enterprise SDK.
+
+### Access the network diagrams and diagram templates
+
+A diagram template holds the configuration properties defining the content (rule and layout definitions) and presentation (diagram layer definition) of network diagrams. When a user generates a network diagram, he chooses the diagram template on which he wants his network diagram to be based. There are three out-of-the-box diagram templates installed by default at the utility network creation but the utility network administrator could have created and configured his own diagram templates or deleted those installed by default.
+
+Here are the way to access the [diagram templates](/api-reference/net/IDiagramDataset/#idiagramdatasetdiagramtemplates-property) that exist for a given diagram dataset:
+
+```c#
+    public IEnumDiagramTemplate GetDiagramTemplates(IDiagramDataset DiagramDataset)
+    {
+      if (DiagramDataset != null)
+        return DiagramDataset.DiagramTemplates;
+
+      return null;
+    }
+```
+
+Network diagrams are representations of a set of network features or network objects that participate in the utility network. Any newly generated network diagram is temporary by default until it is stored in the diagram dataset. You can access the stored [network diagrams](/api-reference/net/IDiagramDataset/#idiagramdatasetnetworkdiagrams-property) related to a diagram dataset as follows:
+
+```c#
+    public IEnumNetworkDiagram GetDiagrams(IDiagramDataset DiagramDataset)
+    {
+      if (DiagramDataset != null)
+        return DiagramDataset.NetworkDiagrams;
+
+      return null;
+    }
+```
+
+### Work with the network diagram information
+
+This section provides some sample code snippets based on the [network diagram information interface](/api-reference/net/INetworkDiagramInfo/) to retrieve particular diagrams.
+
+Depending on its layout, the extent of a network diagram, [DiagramExtent](/api-reference/net/INetworkDiagramInfo/#inetworkdiagraminfodiagramextent-property), may be more or less close to the geographical extent of the utility network features it represents, [NetworkExtent](/api-reference/net/INetworkDiagramInfo/#inetworkdiagraminfonetworkextent-property).
+
+This first sample code snippet retrieves the name of the network diagram with the larger diagram extent:
+
+```c#
+    private byte[] GetDiagramNameWithDiagramMaxExtent(NameValueCollection boundVariables, JsonObject operationInput, string outputFormat, string requestProperties, out string responseProperties)
+    {
+      responseProperties = null;
+
+      if (ndDataset == null)
+        ndDataset = GetDiagramDataset();
+
+      if (ndDataset == null)
+        throw new RestErrorException("No Network Diagram Dataset found");
+
+      IEnumNetworkDiagram Diagrams = ndDataset.NetworkDiagrams;
+
+      double maxSurface = 0.0;
+      string diagramName = "";
+
+      Diagrams.Reset();
+      INetworkDiagram diagram = Diagrams.Next();
+      while (diagram != null)
+      {
+        INetworkDiagramInfo diagramInfo = diagram.DiagramInfo;
+
+        IEnvelope envelope = diagramInfo.DiagramExtent;
+        double surface = envelope.Height * envelope.Width;
+
+        if (surface > maxSurface)
+        {
+          maxSurface = surface;
+          diagramName = diagram.Name;
+        }
+
+        diagram = Diagrams.Next();
+      }
+
+      JsonObject result = new JsonObject();
+      result.AddString("MaxExtent", diagramName);
+
+      return Encoding.UTF8.GetBytes(result.ToJson());
+
+    }
+```
+
+This second sample code snippet retrieves the name of the network diagram with the larger geographical extent:
+
+```c#
+    private byte[] GetDiagramNameWithGeographicalMaxExtent1(NameValueCollection boundVariables, JsonObject operationInput, string outputFormat, string requestProperties, out string responseProperties)
+    {
+      responseProperties = null;
+
+      if (ndDataset == null)
+        ndDataset = GetDiagramDataset();
+
+      if (ndDataset == null)
+        throw new RestErrorException("No Network Diagram Dataset found");
+
+      IEnumNetworkDiagram Diagrams = ndDataset.NetworkDiagrams;
+
+      double maxSurface = 0.0;
+      string diagramName = "";
+
+      Diagrams.Reset();
+      INetworkDiagram diagram = Diagrams.Next();
+      while (diagram != null)
+      {
+        INetworkDiagramInfo diagramInfo = diagram.DiagramInfo;
+
+        IEnvelope envelope = diagramInfo.NetworkExtent;
+        double surface = envelope.Height * envelope.Width;
+
+        if (surface > maxSurface)
+        {
+          maxSurface = surface;
+          diagramName = diagram.Name;
+        }
+
+        diagram = Diagrams.Next();
+      }
+
+      JsonObject result = new JsonObject();
+      result.AddString("MaxExtent", diagramName);
+
+      return Encoding.UTF8.GetBytes(result.ToJson());
+    }
+```

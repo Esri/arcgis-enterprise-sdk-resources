@@ -1,0 +1,45 @@
+# Upgrade extensions
+
+This topic discusses the extension compatibility with different versions of ArcGIS Enterprise and how to upgrade an older version of SOE or SOI project to be built with a later version of ArcGIS Enterprise SDK. 
+
+## Extension compatibility 
+
+The best practice to deploy extensions to different versions of ArcGIS Enterprise is to compile the extension using the same version of ArcGIS Enterprise SDK as the version of ArcGIS Server where the extension will be deployed. Since how ArcGIS Server works with older versions of extensions is different depending on its version, this section explains the extension compatibility with different versions of ArcGIS Server.
+
+### Extension compatibility with ArcGIS Server 11.0
+
+Starting with ArcGIS Server 11.0, deploying SOEs or SOIs built with ArcGIS Enterprise SDK 10.x is no longer supported. In ArcGIS Server 11.0, if you register an SOE or SOI built with the 10.x version of ArcGIS Enterprise SDK, you will see the following error:
+
+*This extension cannot be deployed because it is built for ArcGIS Server 10.x and needs to be upgraded to version 11. See 'ArcGIS Enterprise SDK - Upgrade extensions'.*
+
+To continue using the extension in ArcGIS Server 11.0, you need to upgrade your extension and build it with ArcGIS Enterprise SDK 11.0. The extension upgrade process requires development efforts. Follow the instructions in [Migrate older .NET SOE or SOI projects to 11](../net-8-support/#migrate-older-net-soe-or-soi-projects-to-11).
+
+### Extension compatibility with ArcGIS Server 10.9.1 or earlier
+
+Deploying an older version of SOE or SOI to ArcGIS Server at 10.9.1 or earlier version is not supported. Even though the extension may still load and function properly in the newer version of ArcGIS Server, the best practice is to recompile the extension using the same version of ArcGIS Enterprise SDK as the version of ArcGIS Server where the extension will be deployed. With that being said, if you want to deploy your SOE or SOI to a specific version of ArcGIS Server, you should compile your SOE or SOI using the same version of ArcGIS Enterprise SDK.
+
+Similarly, if you want to use new features or APIs provided by the newer version of ArcGIS Enterprise SDK, you must upgrade your ArcGIS Server to the same version as the SDK.
+
+## Upgrade steps 
+
+To upgrade your ArcGIS Enterprise SDK, you should first uninstall any previous version of ArcGIS Enterprise SDK. This can be done through the Control Panel for Windows. Then, you should set up the development environment and install the later version of ArcGIS Enterprise SDK you need. Depending on the version of Enterprise SDK you installed, you can either recompile your older version of the SOE or SOI project or migrate your project.
+
+### Upgrade to Enterprise SDK 11.0
+
+You must follow the instructions in [Migrate older .NET SOE or SOI projects to 11](../net-8-support/#migrate-older-net-soe-or-soi-projects-to-11). Directly recompiling your older version of SOE or SOI project with Enterprise SDK 11.0 is not supported. 
+
+### Upgrade to Enterprise SDK 10.9.1 or previous versions
+
+After you install the SDK, you can recompile your older version of the SOE or SOI project by following these steps:
+
+1. Open Visual Studio, click **Open a project or solution**, and choose your existing SOE or SOI project.
+
+2. Expand **References** in **Solution Explorer** on the right side.
+3. Select all the ArcGIS Enterprise SDK libraries (starting with "ESRI.Server.") and set their **Specific Version** property to False in their **Properties** window.
+4. Open `AssemblyInfo.cs` and modify the value of `TargetVersion` to match your SDK version. 
+   For example, if you upgrade to Enterprise SDK 10.9 or Enterprise SDK 10.9.1, set it to `TargetVersion = "10.9"`.
+5. Double-click your project in Solution Explorer to open and edit the project's .csproj file. Change the `AddInTargetVersion` to match your SDK version and save this file.
+   For example, if you upgrade to Enterprise SDK 10.9 or Enterprise SDK 10.9.1, set it to `<AddInTargetVersion>10.9</AddInTargetVersion>`.
+6. Build this project and generate the .soe file. 
+
+   Sometimes Visual Studio may complain that the .soe file already exists in the `bin\Debug` or `obj` folder and can't be deleted when rebuilding the project. If this happens, you can manually delete these folders and then rebuild the project.

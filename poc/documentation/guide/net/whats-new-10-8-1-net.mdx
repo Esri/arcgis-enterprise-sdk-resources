@@ -1,0 +1,30 @@
+---
+title: What's new in 10.8.1
+description: >-
+---
+
+# What's new in 10.8.1
+
+### Utility network SOE and SOI
+ArcGIS Enterprise SDK now provides support for utility network datasets in SOEs and SOIs. Developers can directly access the network's metadata and topology, perform trace analysis and more. Viewing and editing network data can also be done through branch versioning. Note that the provided interfaces and classes don't expose functionality to modify the network schema or load data. These operations should be done using the geoprocessing services. For a list of new interfaces and classes, refer to [New in 10.8.1 API](../whats-new-api-10-8-1-net).
+
+You can read [Work with utility networks](../work-with-utility-networks-net/) for more details. A new sample, [Utility Network Tracing REST SOE](/sample-code/Samples/net/SOE/UNTracingRESTSOE/), has been added to demonstrate how to develop custom service functions using the utility network tracing capabilities.
+
+To employ this feature, you must upgrade your ArcGIS Server to 10.8.1 or later versions and compile the SOE or SOI with 10.8.1 or later versions of ArcGIS Enterprise SDK.
+
+### Image service SOI
+Building image service SOIs with ArcGIS Enterprise SDK is now supported. You can use `ImageServer` as the SOI's [Service Object type](../quick-tour-of-a-simple-soi-net/#soi-attribute) to define an image service SOI. Note that a 10.8.1 or later version of ArcGIS Server is required to allow the image service to work with the SOI. In addition, more interfaces and classes that support functions related to image services, such as `IImageServer` and `IImageServiceInfo`, have been added. For a list of new interfaces and classes, refer to [New in 10.8.1 API](../whats-new-api-10-8-1-net). 
+
+### Shared instance support
+SOEs and SOIs now support shared instances. They can be enabled with map services that are set to use the shared instance pool. To learn more about shared instances, refer to [Configure service instance settings](https://enterprise.arcgis.com/en/server/latest/administer/windows/configure-service-instance-settings.htm). 
+
+Since services using the shared instance pool manage service resources differently, and their initialization mechanism is also different from those using dedicated instances, this affects how SOEs and SOIs work within the shared instance pool. Refer to the following topic for more details about developing SOEs and SOIs for shared instances:
+
+- [Develop extensions to use with shared instances](../develop-extensions-for-shared-instances-net/)
+
+To allow the SOE or SOI to be used for shared instances, you must upgrade your ArcGIS Server to 10.8.1 or later versions, and compile the SOE or SOI with 10.8.1 or later versions of ArcGIS Enterprise SDK with the `SupportsSharedInstances` property set to true.
+
+### ServerUtilities.GetGroupInfo() method
+The `ServerUtilities.GetGroupInfo()` method is added to ArcGIS Enterprise SDK. This method helps identify all the roles or groups that the current logged-in user is a member of. It uses the role name or group name (also known as group title in [ArcGIS REST API](https://developers.arcgis.com/rest/users-groups-and-items/group.htm)) as the unique identifier for those roles or groups. The method return type is `HashSet<String>`, which is a collection of the logged-in user's role or group names. This method can be used in SOEs and SOIs. It works for both a standalone ArcGIS Server and a federated ArcGIS Enterprise in 10.8.1 or later versions. 
+
+The [Layer Access SOI](/sample-code/Samples/net/SOI/NetLayerAccessSOI/) sample and [Operation Access SOI](/sample-code/Samples/net/SOI/NetOperationAccessSOI/) sample have been updated to demonstrate the `ServerUtilities.GetGroupInfo()` method by restricting user access to service resources or operations based on the groups or roles to which the current logged-in user belongs. 

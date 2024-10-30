@@ -1,0 +1,163 @@
+---
+title: Work with utility networks
+description: >-
+---
+
+# Work with utility networks
+
+Starting with 10.8.1, creating SOEs and SOIs that target the utility network is now supported. This means that functionality can be extended beyond what is already available through Utility Network Service REST resources and operations.
+
+When creating SOEs and SOIs that target utility networks, it is important to think about performance. A utility network dataset may contain millions of features. For SOEs, limiting a single REST operation to its minimum and making use of pagination when returning large amounts of data are great ways to avoid timeouts and provide a better client experience. Similarly, limiting the amount of pre and post processing on an existing Utility Network Service operation will help keep SOIs lean and performant.
+
+For SOIs, it's also important to keep in mind that existing REST response formats should not be tampered with. Other client applications, such as ArcGIS Pro, rely on the existing REST API contract to function properly.
+
+### Open a utility network dataset
+
+If a utility network service extension is enabled on the current map service, then it is possible to access its underlying utility network. One way to do this is to first get the utility network’s feature dataset from the current map service’s data source. The following C# example shows how to retrieve the service’s utility network layer and its corresponding feature dataset to open the utility network:
+
+``` c#
+IMapServer ms = (MapServer)pSOH.ServerObject;
+IMapServerDataAccess mapServerDataAccess = (IMapServerDataAccess)_soHelper.ServerObject;
+IMapServerInfo mapServerInfo = ms.GetServerInfo(ms.DefaultMapName);
+IMapLayerInfos layerInfos = mapServerInfo.MapLayerInfos;
+IMapLayerInfo unLayerInfo = null;
+
+// Getting the utility network layer from current service
+for (int i = 0; i < layerInfos.Count; i++)
+{
+    IMapLayerInfo li = layerInfos.Element[i];
+    if (li.Type.Equals("Utility Network Layer", StringComparison.OrdinalIgnoreCase))
+    {
+        unLayerInfo = li;
+        break;
+    }
+}
+
+if(unLayerInfo != null)
+{
+    // A feature class cannot be obtained from a utility network layer, so use its first sublayer instead
+    IFeatureClass fc = (IFeatureClass)mapServerDataAccess.GetDataSource(ms.DefaultMapName, unLayerInfo.SubLayers.Element[0]);
+    // Get the parent feature dataset
+    IFeatureDataset unFeatureDataset = fc.FeatureDataset;
+
+    // Obtain the utility network dataset by looping through the contents of the feature dataset
+    IDataset ds = (IDataset)fd;
+    IEnumDataset enumSubDS = ds.Subsets;
+    IDataset subDS = enumSubDS.Next();
+    while (subDS != null)
+    {
+        if (subDS.Type == esriDatasetType.esriDTUtilityNetwork)
+        {
+            unDataset = subDS;
+            break;
+        }
+        subDS = enumSubDS.Next();
+    }
+    
+    // Simply cast the dataset to the required utility network interface
+    IBaseNetwork unBaseNetwork = (IBaseNetwork)unDataset;
+}
+```
+
+Alternatively, if you know the name of the utility network dataset, you can retrieve it using the following method:            
+
+``` c#
+IFeatureDatasetExtensionContainer fdeContainer = unFeatureDataset as IFeatureDatasetExtensionContainer;
+IFeatureDatasetExtension fdExtension = fdeContainer.FindExtension(esriDatasetType.esriDTUtilityNetwork);
+IDatasetContainer2 dsContainer = (IDatasetContainer2)fdExtension;
+IDataset unDataset = dsContainer.DatasetByName[esriDatasetType.esriDTUtilityNetwork, unDSName];
+
+```
+
+### Walk through the main utility network interfaces and classes
+
+Working with the utility network requires to walk though many interfaces and classes. Navigating through the API can quickly become overwhelming. The following document may help as it provides detailed Object Model Diagrams (OMDs) of the Utility Network classes, interfaces and enumerations exposed in the Enterprise SDK:
+   
+- [**Utility Network OMD**](/api-reference/EnterpriseSDK_UN_OMD.pdf)
+
+As shown above, the first step is to get the dataset containing the utility network:
+
+``` c#
+IDataset unDataset = dsContainer.DatasetByName[esriDatasetType.esriDTUtilityNetwork, unFeatureDataset.Name];
+```
+
+Once this is done, here are ways to access the desired utility network interfaces:
+
+- Core network properties
+
+    ``` c#
+    IBaseNetwork unBaseNetwork = (IBaseNetwork)unDataset;
+    IUtilityNetworkCore unCoreNetwork = (IUtilityNetworkCore)unBaseNetwork;
+    IBaseNetworkTopology unBaseNetworkTopo = (IBaseNetworkTopology)unBaseNetwork;
+    IBaseNetworkAssociation unBaseNetworkAsso = (IBaseNetworkAssociation) unBaseNetwork;
+    ```
+
+- Network tracing 
+
+    A network tracer (`ITracer`) can be obtained directly from `IBaseNetwork`:
+
+    ``` c#
+    IBaseNetwork unBaseNetwork = (IBaseNetwork)unDataset;
+    ITracer unTracer = unBaseNetwork.CreateTracer();
+    ```
+
+- Network associations
+
+    Both `IBaseNetworkAssociation` and `IUtilityNetworkAssociation` contain methods to manage network associations:
+
+    ``` c#
+    IBaseNetwork unBaseNetwork = (IBaseNetwork)unDataset;
+    IBaseNetworkAssociation unBaseNetworkAsso = (IBaseNetworkAssociation)unBaseNetwork;
+    IUtilityNetworkCore unCoreNetwork = (IUtilityNetworkCore)unBaseNetwork;
+    IUtilityNetworkAssociation unCoreNetworkAsso = (IUtilityNetworkAssociation)unCoreNetwork;
+    ```
+
+- Subnetworks
+
+    Working with subnetworks can be done by obtaining a subnetwork manager through `IUtilityNetworkSubnetwork`:
+
+    ``` c#
+    IBaseNetwork unBaseNetwork = (IBaseNetwork)unDataset;
+    IUtilityNetworkCore unCoreNetwork = (IUtilityNetworkCore)unBaseNetwork;
+    IUtilityNetworkSubnetwork unNetworkCoreSubnet = (IUtilityNetworkSubnetwork)unCoreNetwork;
+    IUNSubnetworkManager unSubnetMgr = unNetworkCoreSubnet.CreateSubnetworkManager();
+    ```
+
+- Network topology
+  
+    It is possible to access high-level network topology functionality using `IBaseNetworkTopology`. It is also possible to directly query the network index using `IUtilityNetworkQuery`:
+
+    ``` c#
+    IBaseNetwork unBaseNetwork = (IBaseNetwork)unDataset;
+    IBaseNetworkTopology unBaseNetworkTopo = (IBaseNetworkTopology)unBaseNetwork;               
+    IUtilityNetworkQuery unNetworkIndexQuery = unBaseNetwork.CreateQuery();
+    ```
+
+- Data elements
+
+    The data elements describe a utility network’s structure or schema, including network domains, tiers, etc. All this information can be obtained from the dataset, using `IDEBaseNetwork` and `IDEUtilityNetwork`:
+ 
+    ``` c#
+    IDatasetComponent datasetComponent = (IDatasetComponent)unDataset;
+    IDEDataset deDataset = datasetComponent.DataElement;
+    IDEBaseNetwork deBaseNetwork = (IDEBaseNetwork)deDataset;
+    IDEUtilityNetwork deUtilityNetwork = (IDEUtilityNetwork)deBaseNetwork; 
+    ```
+
+### Verify that the current Server extension is a utility network service
+
+When building an SOI, not only is it important to know which resource and operation are being called, but sometimes it may also be required to know which service type is being targeted. This is especially true when working with services with multiple extensions, such as utility network services. The following C# code demonstrates how to retrieve and check the current server extension.
+
+``` c#
+Type envMgrType = Type.GetTypeFromProgID("esriSystem.EnvironmentManager");
+object envMgrObj = Activator.CreateInstance(envMgrType);
+IEnvironmentManager envMgr = envMgrObj as IEnvironmentManager;
+UID envUID = new UIDClass();
+envUID.Value = "{32D4C328-E473-4615-922C-63C108F55E60}";
+IServerEnvironment2 serverEnvironment = (IServerEnvironment2)envMgr.GetEnvironment(envUID);
+IPropertySet serverProps = serverEnvironment.Properties;
+String extensionName = (String)serverProps.GetProperty(“ExtensionName”);
+if (extensionName != null && extensionName.Equals("UtilityNetworkServer")) {
+    // Do something
+}
+```

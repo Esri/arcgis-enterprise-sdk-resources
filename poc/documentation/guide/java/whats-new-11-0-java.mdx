@@ -1,0 +1,52 @@
+---
+title: What's new in 11.0
+description: >-
+---
+
+# What's new in 11.0
+
+## Migration paths for the 10.x versions of SOEs and SOIs
+
+Using SOEs or SOIs built with the 10.x versions of ArcGIS Enterprise SDK or ArcObjects SDK in ArcGIS Enterprise 11.0 is no longer supported, and you will no longer be able to deploy these extensions to ArcGIS Server. Only the SOEs and SOIs built with ArcGIS Enterprise SDK 11.0 can be deployed to ArcGIS Enterprise 11.0.
+
+Follow the migration paths for the above extensions in 11.0:
+
+- .NET and Java SOEs and SOIs built with ArcObjects SDK
+
+   The ArcObjects SOEs and SOIs need to be migrated to ArcGIS Enterprise SDK. See [Migrate ArcObjects extensions to ArcGIS Enterprise SDK](../../net/net-8-support/#migrate-older-net-soe-or-soi-projects-to-11).
+
+- .NET SOEs and SOIs built with the 10.x versions of ArcGIS Enterprise SDK
+  
+   The .NET SOEs and SOIs built with the 10.x versions of Enterprise SDK need to be migrated to the new .NET 6 SOE or SOI projects created from the templates of the Enterprise SDK 11.0. See [Migrate older .NET SOE or SOI projects to 11](../../net/net-8-support/#migrate-older-net-soe-or-soi-projects-to-11).
+
+- Java SOEs and SOIs built with the 10.x versions of ArcGIS Enterprise SDK
+
+  The Java SOEs and SOIs built with the 10.x versions of Enterprise SDK do not necessarily need to be migrated to the new SOE or SOI Maven projects created with from the archetypes of the Enterprise SDK 11.0. If the older SOE or SOI project is a Maven project, it can be recompiled with the updated 11.0 SDK's artifacts. Otherwise, a new SOE or SOI Maven project should be created from the archetype. See [Upgrade extensions](../upgrade-extensions/) for detailed instructions.
+
+Since certain API changes in ArcGIS Enterprise SDK 11.0 may affect your existing extension's code that works with previous versions of the SDK, refer to [API changes in 11.0](#api-changes-in-110) and [New in 11.0 API](../whats-new-api-11-0-java/) to fix any compile errors that you may encounter when you migrate or upgrade your extensions.
+
+## API changes in 11.0
+
+Certain API changes introduced in Enterprise SDK 11.0 may affect your existing SOE or SOI code that used to work with previuos versions of the SDK and can cause compile errors when you compile your existing SOE or SOI code with Enterprise SDK 11.0. Continue this section to learn about how these API changes may affect your code and how to fix the compile errors. For a complete list of the API changes, visit [New in 11.0 API](../whats-new-api-11-0-java/).
+
+### Interface changes
+
+When you compile your existing SOE or SOI code with Enterprise SDK 11.0, you may see the error `Cannot resolve symbol 'Interface2'`:
+
+![](./bitmaps/upgrade-error2.png "error1")
+    
+To fix this error, change the interface `IField2` to `IField`. Similar errors for `IFieldEdit2`, `IAttachment3`, and more interfaces in the Geodatabase assembly can be fixed by using their main interfaces instead, in other words, removing the number appended at the end of these interfaces.
+
+### Method parameters and return types changed from `int` to `long`
+
+Another typical compile error you may see is the `incompatible types` error:
+
+![](./bitmaps/upgrade-error3.png "error2")
+
+To fix this error, define the method return type as `long` instead of `int` in the above code.
+
+This type of changes not only affect the methods' return types, such as `long IFeatureClass.FeatureCount(IQueryFilter QueryFilter)` and `long IAttachment.AttachmentID`, but also affect the methods' input paramater types, such as `IFeatureClass.GetFeature(long OID)`, and `IFIDSet.Delete(long OID)`. To make the code compile with 11.0 SDK, you will need to change the variable's type from `int` to `long`. 
+
+### Deprecated APIs in GISClient and Server
+
+Some interfaces, classes, and enumerations in the GISClient and Server assemblies are deprecated and removed from ArcGIS Enterprise SDK 11.0. See [New in 11.0 API](../whats-new-api-11-0-java/) for a list of deprecated APIs in these assemblies.

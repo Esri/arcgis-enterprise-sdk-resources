@@ -1,0 +1,21 @@
+---
+title: Strategies for building REST SOEs
+description: >-
+  This topic provides an overview of strategies for building REST Server Object
+  Extensions. ,,,,About strategies for building REST Server Object Extensions,To
+  successfully build a REST se To successfully build a REST se
+---
+
+# Strategies for building REST SOEs
+
+
+To successfully build a REST server object extension (SOE), you need to carefully plan exactly what types of information you will be able to send to the service and what you will expect to get back. Think of your REST SOE as having resources and operations. See the following:
+
+-   A resource is some piece of information that you get back from the server. This can include a list of layers in a map or a set of scale levels available in a map cache. If you’ve spent some time in the programming world, think of a resource as a read-only property.
+-   An operation is something you ask the server to do with your resource. After executing an operation, you could get back textual information, an image, or some other type of thing. Operations are analogous to methods in the programming world.
+
+Before you start writing code for your REST SOE, you need to decide exactly which resources and operations it will expose. Draw a diagram if necessary, and note what input parameters and outputs will result from each. REST SOEs can expose multiple resources and operations, and can become quite complex in this way. If you’re just beginning, it’s a good idea to practice with an SOE that exposes just one operation.
+
+Why is it so important to design your REST SOE schema before you start coding? The answer is that you are going to have to programmatically build the schema for your REST SOE. You get a template to help you start doing this, but you’ll replace the template resources and operations with your own. You’ll start with the root resource (the base uniform resource location \[URL] for your SOE), and progressively add resources and operations until you’ve built your schema.
+
+Another reason to build your schema is that you are going to have to serialize and deserialize all your requests and responses. For example, if someone inputs an x,y location as a parameter to one of your operations, this information will come to the server as JavaScript Object Notation (JSON). In your code, you’ll need to do the work to read that JSON and get the x,y information into an IPoint, or whatever object you need to do some GIS work with it. The objects and methods in the `ESRI.Server.SOESupport` library can help you with this, but it’s still a good idea to know the types you’ll be passing in and out of the service, so you can prepare for the ones that might be challenging to de-serialize and serialize.

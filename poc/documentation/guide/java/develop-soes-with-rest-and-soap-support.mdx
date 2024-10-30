@@ -1,0 +1,20 @@
+---
+title: Develop SOEs with REST and SOAP support
+description: >-
+---
+
+# Develop SOEs with REST and SOAP support
+
+If you would like to create an SOE that supports both REST and SOAP functions, it's recommended that you start creating the project from `rest-soap-soe-archetype`. This archetype is identified by the following properties:
+
+- GroupId: `com.esri.arcgis.enterprise.sdk`
+- ArtifactId: `rest-soap-soe-archetype`
+- Version: `11.3.0` (use `11.3.0` for 11.3.0 SDK and `11.2.0` for 11.2.0 SDK)
+
+The process for creating an SOE project using `rest-soap-soe-archetype` is similar to using `soap-soe-archetype`, and you can follow the instructions for SOAP SOEs as a reference and replace `soap-soe-archetype` with `rest-soap-soe-archetype` in your steps:
+
+- [Build SOAP SOEs using IntelliJ](../build-soap-soes-using-intellij/)
+- [Build SOAP SOEs using Eclipse](../build-soap-soes-using-eclipse/)
+- [Build SOAP SOEs using the Maven command](../build-soap-soes-using-the-maven-command/)
+
+> Note: It's recommended that you do not create an SOE that supports both REST and SOAP functions using `rest-soe-archetype` and then implementing the SOAP interface, as the `rest-soe-archetype` does not contain the required plugins and dependencies, and manually adding them is likely to cause errors.

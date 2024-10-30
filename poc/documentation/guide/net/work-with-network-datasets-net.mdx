@@ -1,0 +1,85 @@
+---
+title: Work with network datasets
+description: >-
+---
+
+# Work with utility networks
+
+Starting with 10.9.1, ArcGIS Enterprise SDK provides support for working with network datasets within server object extensions. Developers can use the SDK to create, edit and build network datasets; get information about how a network dataset is configured; query network elements attributes; and make use of a forward star to find connected network elements.
+
+### Open a network dataset
+
+There are two ways to access a network dataset through a SOE. One way to do this is to get the network dataset from the current map service’s data source, if the current map service includes a network dataset layer. The following C# example shows how to retrieve the service’s network dataset layer and open the network dataset by accessing the network dataset layer’s data source:
+
+``` c#
+IMapServer mapServer = pSOH.ServerObject as IMapServer;
+IMapServerDataAccess mapServerDataAccess = mapServer as IMapServerDataAccess;
+IMapServerInfo mapServerInfo = mapServer.GetServerInfo(mapServer.DefaultMapName);
+IMapLayerInfos layerInfos = mapServerInfo.MapLayerInfos;
+IMapLayerInfo ndLayerInfo = null;
+
+// Get the network dataset layer from current service
+for (var i = 0; i < layerInfos.Count; i++)
+{
+  IMapLayerInfo layerInfo = layerInfos.Element[i];
+  if (layerInfo.Type.Equals("Network Dataset Layer", StringComparison.InvariantCultureIgnoreCase))
+  {
+    ndLayerInfo = layerInfo;
+    break;
+  }
+}
+
+// Get the network dataset
+if (ndLayerInfo != null)
+{
+  var dt = mapServerDataAccess.GetDataSource(mapServer.DefaultMapName, ndLayerInfo.ID);
+  // Cast the dataset to required network dataset interface
+  networkDataset = dt as INetworkDataset;
+}
+```
+
+Alternatively, if you know where the network dataset locates on the server, you can retrieve it using the following method:        
+
+``` c#
+IWorkspaceFactory workspaceFactory =
+  Activator.CreateInstance(typeof(FileGDBWorkspaceFactoryClass)) as IWorkspaceFactory;
+// fgdbPath is the catalog path of the file geodatabase that contains network dataset.
+IFeatureWorkspace fWorkspace =
+  workspaceFactory.OpenFromFile(fgdbPath, 0) as IFeatureWorkspace;
+// fdName is the feature dataset name within the file geodatabase that contains network dataset.
+IFeatureDatasetExtensionContainer fdExtensionContainer = 
+  fWorkspace.OpenFeatureDataset(fdName) as IFeatureDatasetExtensionContainer;
+IDatasetContainer2 datasetContainer2 = 
+  fdExtensionContainer.FindExtension(esriDatasetType.esriDTNetworkDataset) as IDatasetContainer2;
+// ndName is the network dataset name.
+INetworkDataset networkDataset = 
+  datasetContainer2.DatasetByName[esriDatasetType.esriDTNetworkDataset, ndName] as INetworkDataset;
+```
+
+### Walk through the main network dataset interfaces and classes
+
+As shown above, the first step is to get the network dataset. Once this is done, here are ways to access the desired network dataset interfaces:
+
+- Query the elements of the network dataset
+
+   ``` c#
+   INetworkQuery networkQuery = networkDataset as INetworkQuery;
+   ```
+
+- Query information about adjacent elements in the network dataset 
+
+   ``` c#
+   INetworkForwardStar fStar = networkQuery.CreateForwardStar();
+   INetworkForwardStarAdjacencies fStarAdj = networkQuery.CreateForwardStarAdjacencies();
+   ```
+
+- Get network dataset configuration information
+
+   ``` c#
+   IDatasetComponent datasetComponent = networkDataset as IDatasetComponent;
+   IDENetworkDataset deNetworkDataset = datasetComponent.DataElement as IDENetworkDataset;
+   ```
+
+### Create network dataset
+
+There are interfaces to create network dataset programmatically, but it is recommended to use [Create Network Dataset From Template](https://pro.arcgis.com/en/pro-app/latest/tool-reference/network-analyst/create-network-dataset-from-template.htm) tool in a geoprocessing service to create a network dataset, since creating network dataset could potentially take a long time and might not be good for a synchronous service.

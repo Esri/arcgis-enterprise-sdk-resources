@@ -1,0 +1,170 @@
+---
+title: Custom Data CLI Reference
+uid: cdf-custom-data-cli-reference
+description: >-
+  Custom Data CLI Reference
+---
+
+This topic discusses the Custom Data Feeds (CDF) command line tool in
+more detail.
+
+## Summary
+
+The CDF command line tool has five commands, which are described in the
+following table:
+
+| Command                             | Description                                            |
+| ----------------------------------- | ------------------------------------------------------ |
+| `cdf createapp <name>`              | Create a new custom data app                           |
+| `cdf createprovider <name>`         | Create a new custom data provider                      |
+| `cdf export <name>`         | Export a custom data provider into a package file      |
+| `cdf deleteprovider <name>` | Delete a provider from a custom data app               |
+| `cdf listproviders`                 | Lists all the providers registered in a custom data app |
+| `cdf register <name> <server-admin-url> <token>`                 | Registers a provider with ArcGIS Server and optionally creates a Feature Service |
+| `cdf unregister <name> <server-admin-url> <token>`                 | Unregisters a provider with ArcGIS Server and optionally deletes any associated Feature Services |
+
+
+The syntax for the cdf command is `cdf <command> [options]`.
+
+## Create a New Custom Data App
+
+Use the command `cdf createapp <name>` to create a new custom data app.
+This command creates a Node.js project with the following directory
+structure in the current directory.
+
+```
+    - config/
+        | default.json
+    - framework/
+    - node_modules/
+    - src/
+        - request-handlers/
+            | welcome-page.js
+        | index.js
+        | plugins.js
+        | routes.js
+    - cdconfig.json
+    - package-lock.json
+    - package.json
+```
+
+Since the `cdf createapp` command generates several files, it may take
+several minutes to complete.
+
+## Create a New Custom Data Provider
+
+Use the `cdf createprovider <name>` command to create a new custom data
+provider. You must run the command at the root of the custom data app
+directory. The command creates a Node.js project in the **providers** folder
+of the custom data app. If the **providers** folder is missing, the command
+will automatically create it. The **providers** directory will have the following
+structure:
+
+```
+    -providername
+        - config/
+            | default.json
+        - node_modules/
+        - src/
+            | index.js
+            | model.js
+        - test/
+            | index.test.js
+            | model.test.js
+        - cdconfig.json
+        - package-lock.json
+        - package.json
+```
+
+This folder structure serves as a template for creating a custom
+provider. Each time you create a new provider, and a new project directory
+named for the new provider will be created in the **providers** folder.
+
+## Export Custom Data Provider
+
+Use the `cdf export <name>` command to export a data provider
+to a custom data package file (**.cdpk**) after you have written and 
+tested your custom data provider code. You must run the command at
+the root of the custom data app directory. The resulting **.cdpk** file is
+used to register the custom data provider with ArcGIS Server. Any existing provider
+**.cdpk** with the same name will be overwritten.
+
+## Delete a Provider
+
+Use the `cdf deleteprovider <name>` command to delete a custom
+data provider. You must run the command at the root of the custom data
+app directory. This is the recommended method for removing a provider project
+from your **provider** directory. Do not simply **delete** the provider
+project manually.
+
+## List Registered Providers
+
+Use the `cdf listproviders` command at the root of a custom app
+directory to list all providers registered with the app.
+
+## Register a Provider
+
+The `cdf register` command is a multi-functional command that will export the **.cdpk**, 
+upload the **.cdpk**, register the custom data provider, and optionally create a service 
+connected to the provider. The `register` command also doubles as a way to update a 
+registered custom data provider. Using the `register` command with a provider of the same 
+name will update/overwrite the registered provider on ArcGIS Server. Because this command 
+requires the use of administrative APIs, either a valid Portal or Server token is required. 
+The positional arguments and options for the command are listed below.
+
+| Positional          | Description                                           | Usage |
+| --------------- | ----------------------------------------------------- | ----- |
+| `name`    | Name of the custom data provider | Required |
+| `server-admin-url`    | URL for the ArcGIS Server | Required |
+| `token`    | Server or Portal token issued to a user with permission to use Admin APIs | Required |
+
+| Option          | Description                                           | Usage |
+| --------------- | ----------------------------------------------------- | ----- |
+| `--ud, --upload-description`    | Text that describes the uploaded provider | Always optional |
+| `-s, --service-name` | Name for the service that is linked to the provider. Including this option signifies the intention to create a service. | Required if creating a service |
+| `--sd, --service-description` | Text that describes the created service | Always optional |
+| `--host` | Value for the `hosts` parameter in the service path | Required if creating a service and the provider uses the `hosts` parameter |
+| `--id` | Value for the `id` parameter in the service path | Required if creating a service and the provider uses the `id` parameter |
+
+**Example usage:**
+
+1.  _Register a provider_
+
+    `cdf register <name> <server-admin-url> <token>`
+
+2.  _Create a service that uses both path parameters with no descriptions_
+
+    `cdf register <name> <server-admin-url> <token> -s "my-service" --host "foo" --id "bar"`
+
+3.  _Create a service that uses both path parameters with full descriptions_
+
+    `cdf register <name> <server-admin-url> <token> --ud "Description of uploaded .cdpk" -s "my-service" --sd "Description of my service" --host "foo" --id "bar"`
+
+## Unregister a Provider
+
+The `cdf unregister` command is a multi-functional command that will unregister a custom data provider
+and optionally delete services that are connected to the provider. Because this command requires the use 
+of administrative APIs, either a valid Portal or Server token is required. The positional arguments and options 
+for the command are listed below.
+
+| Positional          | Description                                           | Usage |
+| --------------- | ----------------------------------------------------- | ----- |
+| `name`    | Name of the custom data provider | Required |
+| `server-admin-url`    | URL for the ArcGIS Server | Required |
+| `token`    | Server or Portal token issued to a user with permission to use Admin APIs | Required |
+
+
+| Option          | Description                                           | Usage |
+| --------------- | ----------------------------------------------------- | ----- |
+| `-d, --delete-services`    | Delete all services that use this provider | Always optional |
+
+
+**Example usage:**
+
+1.  _Unregister a provider_
+
+    `cdf unregister <name> <server-admin-url> <token>`
+
+2.  _Unregister provider and delete all associated services_
+
+    `cdf unregister <name> <server-admin-url> <token> --delete-services`

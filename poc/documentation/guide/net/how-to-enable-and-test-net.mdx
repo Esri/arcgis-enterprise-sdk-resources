@@ -1,0 +1,37 @@
+---
+title: How to enable and test the REST SOE on a service
+description: >-
+  This topic explains how to enable REST SOE on map service and test it.
+  ,,,,Enabling and testing the REST SOE on a service,Once your server object
+  extension (SOE) and propert Once your server object extension (SOE) and
+  propert
+---
+
+# How to enable and test the REST SOE on a service
+
+### Enabling and testing the REST SOE on a service
+
+Once your server object extension (SOE) and property page are registered, you can enable the SOE on a service. In this section of the walkthrough, you’ll publish a map service from the Yellowstone sample data in the ArcGIS Enterprise SDK. You’ll enable the SOE on the map service and test the SOE using the Services Directory.
+
+The following instructions explain how to package the Yellowstone map into a service definition and publish that service definition using Manager. These steps are included because they support a variety of potential server architectures under which you might be trying this walkthrough.
+
+1.  Start ArcGIS Pro (Make sure ArcGIS Enterprise connection is added in ArcGIS Pro) and create new blank project.
+2.  Click on **New Map**. Remove topographic basemap from map.
+3.  Click in **Add Data**. Browse to Yellowstone folder, which is located at \\&lt;ArcGIS Enterprise SDK install location>\\Samples\\EnterpriseSDKSampleData.zip.
+4.  Add the **veg** layer available inside **veg.gdb**. Symbolize the "veg" layer with primary symbology "Unique Values" and field1 as "PRIMARY\_"
+5.  Right-click the "veg" layer, **Sharing -> Share as Web Layer**.
+6.  Enter a **Name**, a **Summary**, a **Tags** inside the item details section of the "Sharing As Web Layer" pane.
+7.  Inside the Data section choose the option **Copy all data** and inside the Layer Type section make sure the **Map Image** option is selected.
+8.  In the Sharing With section choose **Everyone**.
+9.  In configuration pane of the **Sharing as Web Layer** window, inside the capabilities section, choose **SpatialQueryREST**. In the properties window, ensure that the LayerName is **veg** and that the FieldName is **PRIMARY\_**.
+10. Click on the **Publish** button inside the **Finish Sharing** section, to publish the service. Your SOE is now enabled and it's properties are set. You can easily test it using the Services Directory.
+11. Access your directory by opening `https://<server name>:6443/arcgis/rest/services` in a web browser.
+12. Click on map service (which is created in above steps), scroll down to the bottom of the page, and click **SpatialQueryREST**. You’re now at the root resource page of your SOE.
+13. Click the one operation available, **SpatialQuery**. You can test this operation by adding some simple JavaScript Object Notation (JSON) parameters in the input boxes.
+14. Type \{x:544000,y:4900000\} in the location box.
+15. Type 5000 in the distance box.
+16. Click the **SpatialQuery (GET)** button.
+
+You can also enable the SpatialQueryREST SOE for a map service in ArcGIS Server Manager or Portal Home application, for more information please reference [Enable Extensions](../enable-extensions-net).
+
+You should see a long JSON response containing the clipped polygon geometries from the spatial query. Scroll to the bottom of the response and you’ll see a list of the total areas for each vegetation type. This information structure isn’t easy to read for a human, but it’s great for a web browser or application programming interface (API). In the next section of the walkthrough, you’ll learn how to put this information in maps and tables in a web application.

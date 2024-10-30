@@ -1,0 +1,121 @@
+---
+title: Audit requests in SOIs
+description: >-
+  This topic demonstrates how to audit and log REST request information in SOIs,
+  enable SOIs with a map service, and check the SOI auditing information from
+  ArcGIS Server logs. ,In this topic,,
+---
+
+# Audit requests in SOIs
+
+This topic demonstrates how to audit and log REST request information in SOIs, enable SOIs with a map service, and check the SOI auditing information from ArcGIS Server logs.
+
+### Audit REST requests in SOIs
+
+After an SOI is created from a template, the REST request handler is automatically generated.  
+
+```java
+public byte[] handleRESTRequest(String capabilities, String resourceName, String operationName, 
+        String operationInput, String outputFormat, String requestProperties, String[] responseProperties) throws IOException, AutomationException { 
+    //... 
+} 
+```
+
+As the above method carries REST request details, you can log this information for auditing purposes. You can either use built-in ArcGIS Server logs, or choose your own log management mechanism.  
+
+For example, the following code writes the name of the logged-in user, the name of the operation performed by the user, input parameters, and other information to info level log messages. Copy this code under the `handleRESTRequest()` function above.  
+
+```java
+serverLog.addMessage(3, 200, "Request logged in SampleSOI. User: " + getLoggedInUserName() + ", Operation: " + operationName + ", Operation Input: " + processOperationInput(operationInput)); 
+
+String loginUser = "current user=" + ServerUtilities.getServerUserInfo().getName();  
+String userAction = "Capabilities= " + capabilities + ", resourceName= " + resourceName   
+        + ", operationName= " + operationName + ", operationInput= " + operationInput   
+        + ", outputFormat= " + outputFormat + ", requestProperties= " + requestProperties;   
+serverLog.addMessage(3, 200, loginUser);   
+serverLog.addMessage(3, 200, userAction);    
+```
+
+The `ILog` interface allows the SOI to write server logs that can be viewed by the server administrator from ArcGIS Server Manager. Custom messages along with different message types can be defined. See the [log messages](../log-messages-java/) section for further information. If you would like to log more detailed information to server logs, such as method name, or message code, and so on, you must use the `ILog2.addMessage()` method instead.  
+
+As this auditing logic doesn't need to alter the request or response, you can leave the rest of the boilerplate code as is.  
+
+For auditing SOAP requests and OGC requests, you can perform similar logics to their corresponding request handlers. See [overview of developing server object interceptors](../overview-of-developing-sois-java/).  
+
+### Enable SOIs
+
+Now you can follow these steps to deploy and test the SOI auditing function:  
+
+1.  Build the SOI.  
+
+    Execute `mvn clean install` to cleanly build the project.
+    
+    This should generate a .soe file in the SOI project's `target` folder.  
+
+2.  Upload the SOI to ArcGIS Server.  
+
+    a.  Browse to ArcGIS Server Manager > **Site > Extensions > Add Extension**.  
+
+    b.  Select the .soe file to add.  
+
+    c.  The SOI will show up at the Extensions page.  
+
+    The **Provider** field indicates whether this SOI is built by Enterprise SDK (Provider: ArcGIS Pro) or ArcObjects (Provider: ArcMap).
+
+    The three buttons listed under the **Action** field are the **Help** button, **Update** button, and **Delete** button. The SOI's description will appear when you click the **Help** button.
+
+    ![](./bitmaps/javaaudit2.png "auditsoi")
+
+3.  Enable the SOI with a map service.  
+
+    a.  Browse to ArcGIS Server Manager > **Services** tab.  
+
+    b.  Find a map service published from Pro.  
+
+    c.  Under the **Capabilities** tab > **Interceptors**, select the SOI and click the **→** button to enable it.  
+
+    d.  Click the **Save and Restart** button to restart the map service. SOI will not take effect until the service is restarted.  
+
+    ![](./bitmaps/javaaudit3.png "auditsoi")  
+
+### Check ArcGIS Server logs
+
+After the SOI is enabled, you can check the SOI logging from ArcGIS Server Manager now. First, you need to make sure the log level is properly set in the server settings. Then you can view the SOI logs from the server manager.  
+
+1.  Browse to ArcGIS Server Manager > **Logs** > **View Logs** page.  
+
+    ![](./bitmaps/javaaudit4.png "auditsoi")  
+
+2.  Click the **Columns** button and check **Code** in the **Manage Columns** window.  
+
+    ![](./bitmaps/javaaudit5.png "auditsoi")  
+
+    This will show the message code and message name defined in the SOI's `ILog.addMessage()` method.  
+
+3.  Click the **Settings** button and set the **log level** to info. Click **Save**.  
+
+    ![](./bitmaps/javaaudit6.png "auditsoi")  
+
+    The server logs will show all the log messages that are above the log level in these settings. Since this SOI has the info level messages logged, you can set the log level to info or any lower level to allow all the custom messages to display.  
+
+    Note, as the debug log level may cause a significant decrease in performance, it should only be used temporarily while debugging or troubleshooting. If you use the debug log level for troubleshooting SOIs, make sure you switch the log level back after you finish checking debug logs.  
+
+4.  Now you can test the SOI function by accessing the service REST endpoint as a logged-in user.  
+
+    For example, you can test with the export operation of the map service from the browser. Ensure that **Logged in** user appears on the upper right of the html page; otherwise, no logged-in user information can be logged.  
+
+    ![](./bitmaps/javaaudit7.png "auditsoi")  
+
+5.  Check ArcGIS Server logs.  
+
+    a.  Go back to ArcGIS Server Manager > **Logs** > **View Logs** page.  
+
+    b.  Make sure **Log Filter** is set to **info** or any lower level. You may also use other **Log Filter** settings, such as **Age**, **Source**, and **Machine** to help query the logs that you want to find.  
+
+    c.  Click the **Query** button. The following log messages can be found:  
+
+    ![](./bitmaps/javaaudit8.png "auditsoi")  
+
+6.  To debug an SOI with a running service, see [debug extensions](../debug-extensions-dedicated-java/).  
+
+7.  After you finish testing the SOI, ensure that the log level is not set to the debug level, especially for a production environment.  

@@ -1,0 +1,32 @@
+---
+title: What's new in 11.3
+description: >-
+---
+
+# What's new in 11.3
+
+## JDK 17 support for SOEs and SOIs
+
+Starting from ArcGIS Enterprise SDK 11.3, developing the Java-Based SOEs and SOIs with JDK 17 is supported. This is in addition to existing support for JDK 11. See [Install Java and Maven](../install-java-and-maven).
+
+## User interfaces in Portal Home Application to enable/disable extensions, reorder the SOIs
+
+Starting from ArcGIS Enterprise 11.3, support is added for enabling/disabling SOEs and SOIs using Portal Home app. Enabled SOIs reordering is possible using Portal Home App. See [Enable Extensions](../enable-extensions-java) for more information.
+
+## API changes in 11.3
+
+Added new methods in [IImageServerEx](https://developers.arcgis.com/enterprise-sdk/api-reference/java/) interface.
+
+* [getPhysicalOutputDirectory](https://developers.arcgis.com/enterprise-sdk/api-reference/java/)
+* [getPhysicalCacheDirectory](https://developers.arcgis.com/enterprise-sdk/api-reference/java/)
+* [getVirtualOutputDirectory](https://developers.arcgis.com/enterprise-sdk/api-reference/java/).
+
+Added two new interfaces
+
+* [IServerEnvironmentEx](https://developers.arcgis.com/enterprise-sdk/api-reference/java/)
+* [IServerDirectoryInfo2](https://developers.arcgis.com/enterprise-sdk/api-reference/java/).
+
+## Support for Java-based extensions (SOEs and SOIs) on map services published in ArcGIS Enterprise deployed on Kubernetes environment
+
+Deploying Java-based extensions (SOEs and SOIs) developed using ArcGIS Enterprise SDK 11.3 into ArcGIS Enterprise configured in Kubernetes environment [is supported](https://enterprise-k8s.arcgis.com/en/latest/introduction/what-is-arcgis-enterprise-kubernetes.htm). Enable Java-based [server object extensions (SOEs)](https://enterprise.arcgis.com/en/portal/latest/use/enable-service-extensions.htm#ESRI_SECTION1_B124D96C897A4125AA5D3BA917297615) and [server object interceptors (SOIs)](https://enterprise.arcgis.com/en/portal/latest/use/enable-service-extensions.htm#ESRI_SECTION1_E0907FB9FD2047B89B157A59FBF12E8F) on map services from the item details page of map image layers in home app. Enabling the extension on map service is also possible via ArcGIS Pro while publishing a new map service.
+Steps for creating the Java-based extensions (SOEs and SOIs) are same for both ArcGIS Enterprise target environments (Windows/Linux and Kubernetes).

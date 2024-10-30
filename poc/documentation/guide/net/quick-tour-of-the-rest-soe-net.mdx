@@ -1,0 +1,60 @@
+---
+title: Quick tour of the REST SOE
+description: >-
+  This topic provides a tour of the REST Server Object Extension template in the
+  ArcGIS Enterprise SDK. ,,,,About the REST SOE,This topic explains some of the
+  code you'll see in the REST server  This topic explains some of the code
+  you'll see in the REST server
+---
+
+# Quick tour of the REST SOE
+
+This topic explains some of the code you'll see in the REST server object extension (SOE) template, which is included in Visual Studio when you install the ArcGIS Enterprise SDK. For more information on how to open the template, see [how to open REST SOE templates in Visual Studio](../how-to-open-soe-templates-in-visual-studio-net/).
+
+It’s important to remember that an SOE is a Component Object Model (COM) class that resides on your server. So, you have a few lines related to COM that give your SOE a unique ID and make it visible to COM. You'll also see some attributes for your SOE, where you can define its display name, properties, and capabilities. See the following code example:
+
+```cs
+[ComVisible(true)]
+[Guid("fbcd47be-14e5-4c65-b49d-7cdb6871f30a")]
+[ClassInterface(ClassInterfaceType.None)]
+[ServerObjectExtension("MapServer",
+  AllCapabilities ="",
+  DefaultCapabilities = "",
+  Description = "Insert SOE Description here",
+  DisplayName = "SimpleRestSoe1",
+  Properties = "",
+  SupportsREST = true,
+  SupportsSOAP = false)]
+```
+
+You should not reuse this code as is. The globally unique identifier (GUID) is generated for you when you create a project.
+
+You’ll also notice that your SOE class implements a number of interfaces, some of which might be new to you. See the following code example:
+
+```cs
+public class SimpleRestSoe1: IServerObjectExtension, IObjectConstruct, IRESTRequestHandler
+```
+
+All of these interfaces are required for building a REST SOE. The following describes what the interfaces do:
+
+- **[IServerObjectExtension](/api-reference/net/IServerObjectExtension/)** — Contains `Init()` and `Shutdown()` methods that start up and shut down your SOE. You don’t have to alter these from the template, unless there’s something you specifically want to destroy on shutdown. If you have business logic that you want to run when the SOE first becomes enabled, don’t put it in `Init()` or in your SOE class’s constructor; instead, use the following IObjectConstruct.Construct() method.
+- **[IObjectConstruct](/api-reference/net/IObjectConstruct/)** — Contains one method, `Construct()`, that runs when your SOE is first enabled. This is where you put any expensive business logic that you don’t need to run on each request. For example, if you know you’re always working with the same layer in the map, you can put the code to get the layer here.
+- **[IRESTRequestHandler](/api-reference/net/IRESTRequestHandler/)** — Allows for REST requests and responses to come into the service. These methods create the schema and handle the requests. In the template, you can generally leave this code alone.
+
+Moving down to the SOE constructor, you’ll notice the class `SoeRestImpl` being used. See the following code example:
+
+```cs
+reqHandler = new SoeRestImpl(soe_name, CreateRestSchema())as IRESTRequestHandler;
+```
+
+The `SoeRestImpl` class has code to do the following:
+
+- Validate the SOE schema
+- Validate the resourceName and operationName of the HandleRESTRequest calls
+- Validate SOE capabilities
+- Log the service calls and responses
+- Handle errors
+
+`SoeRestImpl` implements `IRESTRequestHandler`. Normally, the SOE class contains an instance of the `SoeRestImpl` class and keeps a reference to the `IRESTRequestHandler` interface. You can see this later in the template.
+
+The remainder of the template contains some stubbed out functions for defining what the REST SOE can do and how each request to the SOE should be handled. `CreateRestSchema()` defines the resources and operations available in your SOE. Each of these resources and operations has an associated handler function that describes what to do when the resource or operation is invoked. The template contains one sample resource handler, `RootResHandler()`, and one sample operation handler, `SampleOperHandler()`.

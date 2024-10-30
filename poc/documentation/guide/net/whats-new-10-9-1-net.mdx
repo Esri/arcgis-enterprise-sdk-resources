@@ -1,0 +1,37 @@
+---
+title: What's new in 10.9.1
+description: >-
+---
+
+# What's new in 10.9.1
+
+### Network dataset support
+
+ArcGIS Enterprise SDK now provides support for working with network datasets within server object extensions. Developers can use the SDK to create, edit and build network datasets; get information about how a network dataset is configured; query network elements attributes; and make use of a forward star to find connected network elements. For more details, see [Work with network dataset](../work-with-network-datasets-net/).
+
+To find all the interfaces or classes available for network dataset support, refer to [.NET API Reference](/api-reference/net/GeoDatabase_library/). For a list of new interfaces and classes, refer to [New in 10.9.1 API](../whats-new-api-10-9-1-net).
+
+### Topology support
+
+ArcGIS Enterprise SDK now provides support for topology datasets in SOEs and SOIs. Developers can directly access the topology dataset, and then can retrieve existing topology, create new topology, validate topology, and many more. For more details, see [Work with topologies](../work-with-topologies-net/).
+
+To find all the interfaces or classes available for topology support, refer to [.NET API Reference](/api-reference/net/GeoDatabase_library/). For a list of new interfaces and classes, refer to [New in 10.9.1 API](../whats-new-api-10-9-1-net).
+
+### Database helper classes
+
+In 10.9.1, ArcGIS Enterprise SDK offers several database helper classes and methods. The [ICursorExtensions](/api-reference/net/esriSOESupport/ICursorExtensions/) class contains several extension methods that convert the [IFeatureCursor](/api-reference/net/IFeatureCursor/) object and [ICursor](api-reference/net/ICursor/) object into the .NET [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view=net-5.0) objects, so that looping through a collection of features or rows can be achieved via a generic .NET enumerable object rather than a COM cursor.
+
+It also provides the extension methods that extend [IFeatureClass::Search](/api-reference/net/IFeatureClass/#ifeatureclasssearch-method) and [ITable::Search](/api-reference/net/ITable/#itablesearch-method), which allows accessing the query results of a feature class or table through the .NET [IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/system.collections.ienumerable?view=net-5.0). See [IFeatureClassExtensions](/api-reference/net/esriSOESupport/IFeatureClassExtensions/) and [ITableExtensions](/api-reference/net/esriSOESupport/ITableExtensions/) for their usages.
+
+
+Last, the new helper classes, [DisposableFeatureCursor](/api-reference/net/esriSOESupport/DisposableFeatureCursor/) and [DisposableCursor](/api-reference/net/esriSOESupport/DisposableCursor/), are added. They are disposable classes that wrap [IFeatureCursor](api-reference/net/IFeatureCursor/) and [ICursor](api-reference/net/ICursor/), and they also automatically release the cursor objects after they are used, so there is no need to explicitly release them.
+
+For a list of new classes, refer to [New in 10.9.1 API](../whats-new-api-10-9-1-net).
+
+### Issues addressed in 10.9.1
+
+- [BUG-000137272](https://support.esri.com/en/bugs/nimbus/QlVHLTAwMDEzNzI3Mg==): A WFS response from `IWebRequestHandler.HandleStringWebRequest()` method in SOI (Server Object Interceptor) returns null instead of a valid byte array.
+- [ENH-000140378](https://support.esri.com/en/bugs/nimbus/RU5ILTAwMDE0MDM3OA==): API reference for the `ESRI.Server.SOESupport.JSONObject` class is missing in ArcGIS Enterprise SDK.
+- [ENH-000141762](https://support.esri.com/en/bugs/nimbus/RU5ILTAwMDE0MTc2Mg==): Add Network Dataset APIs for the transportation and location-based workflows to ArcGIS Enterprise SDK.
+- [ENH-000141882](https://support.esri.com/en/bugs/nimbus/RU5ILTAwMDE0MTg4Mg==): Add the `IDEGeoDataset` interface to ArcGIS Enterprise SDK.
+- [BUG-000144082](https://support.esri.com/en/bugs/nimbus/QlVHLTAwMDE0NDA4Mg==): The `ServerUtilities.GetGroupInfo()` method returns null instead of the valid group names when the federated server site is not set as the portal's hosting server.

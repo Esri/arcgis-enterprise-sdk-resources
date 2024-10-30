@@ -1,0 +1,29 @@
+---
+title: What's new in 10.9.1
+description: >-
+---
+
+# What's new in 10.9.1
+
+### Network dataset support
+
+ArcGIS Enterprise SDK now provides support for working with network datasets within server object extensions. Developers can use the SDK to create, edit and build network datasets; get information about how a network dataset is configured; query network elements attributes; and make use of a forward star to find connected network elements.
+
+To find all the interfaces or classes available for network dataset support, refer to [Java API Reference](../../../api-reference/java/). For a list of new interfaces and classes, refer to [New in 10.9.1 API](../whats-new-api-10-9-1-java).
+
+### Topology support
+ArcGIS Enterprise SDK now provides support for topology datasets in SOEs and SOIs. Developers can directly access the topology dataset, and then can retrieve existing topology, create new topology, validate topology, and many more. 
+
+To find all the interfaces or classes available for topology support, refer to [Java API Reference](../../../api-reference/java/). For a list of new interfaces and classes, refer to [New in 10.9.1 API](../whats-new-api-10-9-1-java).
+
+### Database helper class
+
+In 10.9.1, ArcGIS Enterprise SDK provides a new helper class, [DatabaseUtilities](/api-reference/java/), which allows querying a feature class or table with the Java [Iterator](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Iterator.html) returned as the query results, so that looping through a collection of features or rows can be achieved via a generic Java iterator object rather than a COM cursor.
+
+### Issues addressed in 10.9.1
+
+- [BUG-000137272](https://support.esri.com/en/bugs/nimbus/QlVHLTAwMDEzNzI3Mg==): A WFS response from `IWebRequestHandler.HandleStringWebRequest()` method in SOI (Server Object Interceptor) returns null instead of a valid byte array.
+- [ENH-000140378](https://support.esri.com/en/bugs/nimbus/RU5ILTAwMDE0MDM3OA==): API reference for the `ESRI.Server.SOESupport.JSONObject` class is missing in ArcGIS Enterprise SDK.
+- [ENH-000141762](https://support.esri.com/en/bugs/nimbus/RU5ILTAwMDE0MTc2Mg==): Add Network Dataset APIs for the transportation and location-based workflows to ArcGIS Enterprise SDK.
+- [ENH-000141882](https://support.esri.com/en/bugs/nimbus/RU5ILTAwMDE0MTg4Mg==): Add the `IDEGeoDataset` interface to ArcGIS Enterprise SDK.
+- [BUG-000144082](https://support.esri.com/en/bugs/nimbus/QlVHLTAwMDE0NDA4Mg==): The `ServerUtilities.GetGroupInfo()` method returns null instead of the valid group names when the federated server site is not set as the portal's hosting server.

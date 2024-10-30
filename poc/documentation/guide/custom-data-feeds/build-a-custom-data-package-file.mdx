@@ -1,0 +1,56 @@
+---
+title: Build a Custom Data Package File
+uid: cdf-build-a-custom-data-package-file
+description: >-
+  Build a Custom Data Package File
+---
+# Build a Custom Data Package File
+
+Your custom data provider must be bundled into a custom data package
+file (**.cdpk**) in order to deploy it to ArcGIS Server. To build a **.cdpk**
+file, your provider must have a valid **cdconfig.json** file in the root of
+the custom data provider directory. The **cdconfig.json** file is generated when you create a
+custom data provider using the `createprovider` command. Below are the
+auto-generated contents of the file.
+
+```json
+{
+  "name": "<name-of-provider>",
+  "arcgisVersion": "11.3.0",
+  "parentServiceType": "FeatureServer",
+  "customdataRuntimeVersion": "1",
+  "type": "provider",
+  "properties": {
+    "hosts": true,
+    "disableIdParam": false
+  }
+}
+
+```
+
+Change the values of the `hosts` and `disableIdParam` fields depending
+on whether your provider requires the `host` and `id` URL parameters. To
+package your provider into a **.cdpk** file, run
+the `cdf export <name> `command at the command line in the
+custom data app directory.
+
+After the **.cdpk** file has been successfully created, the contents of 
+**cdconfig.json** are again updated to the reflect the file name of your 
+new **.cdpk** file as seen below.
+
+```json
+{
+  "name": "<name-of-provider>",
+  "arcgisVersion": "11.3.0",
+  "parentServiceType": "FeatureServer",
+  "customdataRuntimeVersion": "1",
+  "type": "provider",
+  "properties": {
+    "hosts": true,
+    "disableIdParam": false
+  },
+  "fileName": "<name-of-provider>.cdpk"
+}
+
+```
+

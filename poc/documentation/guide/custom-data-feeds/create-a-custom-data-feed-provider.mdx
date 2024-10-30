@@ -1,0 +1,165 @@
+---
+title: Create a Custom Data Feed Provider
+uid: cdf-create-a-custom-data-feed-provider
+description: >-
+  Create a Custom Data Feed Provider
+---
+
+A custom data provider connects to and fetches data from remote data
+sources. These data sources may be hosted static files, such as a CSV, 
+remote APIs, or SQL or NoSQL databases. You can have one or more custom data
+providers in a custom data app. The custom data providers can adhere to two broadly defined types:
+
+- **Full-fetch** providers are designed to pull an entire dataset from a remote data source and perform post-processing
+  functions after all of the data have been retrieved. This type of provider may be used where:
+  - datasets are small and the entire dataset can be fetched
+  - the remote API does not support filtering or queries
+  - the remote API is slow to respond  
+
+  All queries and filtering performed in your ArcGIS client will only be performed on the dataset that is currently loaded into memory. 
+
+- **Pass-through** providers allow for the remote API to perform some post-processing. By providing the analogous GeoServices API
+  query parameters to the remote API, the remote API can return a subset of the data. This type of provider may be used where:
+  - datasets are large and the entire dataset cannot be fetched
+  - the remote API does support filtering or queries
+  - the remote API is quick to respond  
+
+  Queries and filters in your ArcGIS client are translated in your custom data provider code into a query that your remote data source
+  can understand. The request is sent to this remote data source, and the response is used to update what is currently in memory in your ArcGIS client.
+  See the use of query parameters at the bottom of this page and in the example here: [MongoDB sample code](../mongodb-provider/). See the 
+  topic on [Pass-through providers](../pass-through-custom-data-providers/) for more information.
+ 
+
+To create a custom data provider, open a command prompt on your
+development machine in your custom data app directory, and run the `cdf
+createprovider <name>` command. The command will create a
+project template for a custom data provider in the **providers** folder
+inside the custom data app.
+
+## Understanding the Model Class
+
+The **model.js** file contains a Model class for fetching data from your
+data sources. The Model field in the **index.js** file must point to
+this class. For each provider, you must implement the `getData` function 
+that includes your custom logic for fetching data and formatting it as GeoJSON. 
+The `getData` function accepts two arguments: `req` and `callback`. You must 
+use the `req` argument to pass a standard Express.js request object and the 
+callback function to return data parsed as GeoJSON. The following code shows 
+examples of using the Model class in a template **model.js** file:
+
+```js
+// model.js
+function Model() {}
+Model.prototype.getData = (req, callback) => {
+  // implement provider-specific logic here
+  // ...
+  const geojson = {
+    type: "FeatureCollection",
+    features: []
+  };
+  callback(null, geojson);
+};
+// export model
+module.exports = Model;
+
+```
+
+```js
+// model.js
+class Model {
+  // implement some code here, such as a constructor with a database connection
+  async getData (req, callback) {
+    // implement provider-specific logic here
+    // ...
+    const geojson = {
+      type: "FeatureCollection",
+      features: []
+    };
+    callback(null, geojson);
+  }
+}
+// export model
+module.exports = Model;
+
+```
+
+To callback with an error, pass the error message as the first argument
+to the `callback` function as follows:
+`callback(err)`
+
+To callback with properly-formatted GeoJSON, call the
+`callback` function as follows:
+`callback(null, geojson)`
+
+All of the features in the GeoJSON features array must have the same geometry-type. 
+This requirements differs from the GeoJSON specification [GeoJSON
+specification](https://datatracker.ietf.org/doc/html/rfc7946) which allows for mixed geometries. 
+However, feature services require uniform geometries, so it is important that this 
+rule is enforced.
+
+
+Custom Data Feeds requires that the GeoJSON be decorated with a property called `metadata`. 
+It should have an object as its value. This object contains information important for 
+translating the GeoJSON to its feature service equivalent. Key GeoJSON metadata properties can be
+referenced here: [CDF API Reference](../custom-data-provider-api-reference/). An example
+of the GeoJSON metadata field is shown below.
+
+```js
+geojson.metadata = {
+  idField: "id"
+};
+```
+
+If your data does not contain a field that can be used as the `OBJECTID`, you can leave 
+`idField` undefined. In such cases Custom Data Feeds will create an `OBJECTID` for each 
+feature by default. However, this is less than ideal as it impacts performance and in 
+very rare cases may lead to `OBJECTID` collisions. The best practice is to have a field 
+on the raw data that meets the requirements of `idField`.
+
+## Understanding Provider Configuration
+
+Define your configurable parameters, such as API keys and database
+connection strings, in the **default.json** file found in the config folder.
+Once defined, you can load the config module and access the parameters
+in any JavaScript file in the **src** directory typing this line:
+
+`const config = require('../config/default.json');`
+
+The top-level keys in the **default.json** file must be unique for all providers both in your 
+development and production environments. If two provider configurations have the same 
+top-level keys in their **default.json** files, provider configurations will be overwritten. 
+
+Below is an example of a configuration file for a MongoDB provider, where `mongodb` is the 
+top-level key.
+
+```json
+{
+  "mongodb": {
+    "connectString": "<your connection string>",
+    "db": "<your db name>",
+    "collection": "<your collection name>"
+  }
+}
+```
+
+## Use Route Parameters to Fetch Data
+
+You can use route parameters to build the URL to the remote data source.
+Each provider provides two route parameters: `host` and `id`. The code
+snippet below shows how to use these parameters to build a URL.
+
+```js
+Model.prototype.getData(request, callback) {
+  const {params: {host, id}} = request
+  request(`https://${host}/resource${id}`, (err, res, body) => {
+    if (err) return callback(err)
+    // format response body as GeoJSON
+    callback(null, body)
+  })
+}
+```
+
+To access the `host` and `id` parameters, set the `properties.hosts`
+field to `true`and the`properties.disableIdParam` field to `false` in
+the **cdconfig.json** file located in the root of your custom data provider
+directory.

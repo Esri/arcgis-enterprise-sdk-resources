@@ -1,0 +1,60 @@
+---
+title: How to migrate a .NET SOE to ArcGIS Enterprise SDK
+description: >-
+  This topic walks you through the exact steps needed to migrate SOE from
+  ArcObject .NET SDK to the ArcGIS Enterprise SDK. ,In this topic,,Mig Mig
+---
+
+# How to migrate a .NET SOE to ArcGIS Enterprise SDK
+
+Migrating an SOE that was created using the ArcObjects SDK for .NET requires that you copy most of your SOE code into the latest Visual Studio templates for Representational State Transfer (REST) or Simple Object Access Protocol (SOAP) SOEs. This is because the new templates contain different packaging logic to make an .soe file. The .soe file is created when you build the project.
+
+Another advantage of the new template is that the references are already pointing at primary interop assemblies (PIAs) shipped with the SDK. If your project requires any references other than those included in the template, you need to manually add those references.
+
+The steps for migrating an SOE created using the ArcObjects SDK for .NET are as follows:
+
+1.  Launch Visual Studio and click **Create a new project**.
+2.  Choose the REST or SOAP SOE template that matches your ArcObjects SOE type, define the project name, location, and solution name for your SOE, and then click OK.
+3.  Add any references and directives your project requires that are not already included in the template.
+4.  In the template, modify the .NET attribute ServerObjectExtension to contain the capabilities (allowed operations), description, display name, properties, and supported Web service architectures for your SOE. A C# SOE might look like the following code example:
+
+    ```cs
+    [ServerObjectExtension("MapServer", 
+        AllCapabilities = "GetCommonInfo;GetSecretInfo",
+        DefaultCapabilities = "GetCommonInfo", 
+        Description = "An example SOE for the help system", 
+        DisplayName = "My Sample SOE", 
+        Properties = "PropertyA=500;PropertyB=Cities", 
+        SupportsREST = true, 
+        SupportsSOAP = false)]
+    ```
+
+5.  Copy the entire class code (but not the class declaration) from your ArcObjects .NET SOE and replace the corresponding code in the template. The boilerplate class code in the template is identical to the boilerplate class code in the template available with the ArcObjects SDK for .NET. You should remove these items if you do a complete copy and paste. You can use the most recent template and samples as a guide.
+
+    The following code example shows what you should remove and replace with your ArcObjects for .NET SOE code when migrating to an ArcGIS Enterprise SDK C# REST SOE:
+
+    ```cs
+    public class MySampleSOE: IServerObjectExtension, IObjectConstruct, IRESTRequestHandler
+    {
+        // Delete template code and paste your 
+        //   corresponding existing SOE code here.
+    }
+    ```
+
+    If your migrated SOE has a different name than your ArcObjects .NET SOE, update the SOE name in the constructor. See the following code example:
+
+    ```cs
+    public MySampleSOE()
+    {
+        soe_name = this.GetType().Name;
+        logger = new ServerLogger();
+        reqHandler = new SoeRestImpl(soe_name, CreateRestSchema())as IRESTRequestHandler;
+    }
+    ```
+
+6.  Save your solution and build your project.
+7. After you build you solution, you may receive an error such as "The type or namespace name could not be found. (Are you missing a using directive or an assembly reference?)". To resolve such errors, refer to [migration strategies](../migration-strategies-net/) and [.NET API Reference](/api-reference/net/) sections of this help guide.  
+    For example, if you receive an error stating "The type or namespace name 'IMapServer3' could not be found. (Are you missing a using directive or an assembly reference?)", change the interface name from "IMapServer3" to "IMapServer".
+8. Fix your build errors. You can refer to [migration strategies](../migration-strategies-net/) and [ArcGIS Enterprise SDK .NET Namespaces](/api-reference/net/) sections of this help guide.
+9. Once all build errors are fixed, rebuild the solution. This creates an .soe file under your project's build output directory.
+10. Deploy your SOE to ArcGIS Server using the instructions in [how to deploy a server object extension to ArcGIS Server](../deploy-extensions-net/).

@@ -1,0 +1,58 @@
+---
+title: What is ArcGIS Enterprise SDK
+description: >-
+  This topic provides an overview of the ArcGIS Enterprise software development
+  kit (SDK) covering its essential features, core libraries, and current
+  limitations, and how to migrate e This topic provides an overview of the
+  ArcGIS Enterprise software development kit (SDK) covering its essential
+  features, core libraries, and current limitations, and how to migrate e
+---
+
+# What is ArcGIS Enterprise SDK
+
+This topic provides an overview of the ArcGIS Enterprise software development kit (SDK) covering its essential features, core libraries, and current limitations, and how to migrate extensions.
+
+### Overview of the ArcGIS Enterprise SDK
+
+The ArcGIS Enterprise SDK allows developers to extend the functionality of ArcGIS Enterprise. The two primary ways that the ArcGIS Enterprise can be extended is through server object extensions (SOEs) and server object interceptors (SOIs). Developers can add new operations to map services published from ArcGIS Pro using SOEs, and can change existing operations by introducing either pre-processing or post-processing logic using SOIs. The ArcGIS Enterprise SDK is targeted at services published from ArcGIS Pro, which is designed to complement the ArcObjects SDK which allows developers to create SOEs and SOIs for map services and image services published from ArcMap.
+
+The ArcGIS Enterprise SDK supports both the .NET and Java platforms; it provides samples, templates, documentation, and libraries for both platforms.
+
+Refer to the section [design philosophy](../java/design-philosophy-for-arcgis-enterprise-sdk-java/) to understand the fundamental principles behind the ArcGIS Enterprise SDK.
+
+### Essential Features
+
+With the ArcGIS Enterprise SDK, you can extend ArcGIS Server map service with custom logic that can be invoked from ArcGIS or from custom clients. There are two ways to extend these service types:
+
+- **Server object extensions (SOEs)** allow you to create new service operations to extend the base functionality of map services. SOEs are appropriate if you have some well-defined business logic to perform that is not easily accomplished using the ArcGIS client APIs. Most SOEs do this by using ArcObjects code to work with GIS data and maps. ArcObjects are the core components on which ArcGIS is built and allow you the most flexibility in writing GIS functions.
+
+- **Server object interceptors (SOIs)** allow you to intercept requests for existing built-in operations of map services. This allows you to execute custom logic and alter the behavior of these services by overriding existing operations in a way that is seamless to existing clients. These clients may be applications built with the ArcGIS API for JavaScript, ArcGIS Runtime SDK, and more.
+
+### ArcGIS Enterprise SDK Libraries
+
+The ArcGIS Enterprise SDK is comprised of the following libraries to facilitate the development of custom extensions. A logical overview of each library is provided below. For further details on each library, please review the Java references for the ArcGIS Enterprise SDK.
+
+| Library                | Description                                                                                                                                                                                                                                                                                                                                                                                     |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Carto                  | Provides the key interfaces for working with the MapServer. You will find interfaces for layers, tables, and information about the map service such as extent and scale information. It's also the starting point for getting access to the underlying data.                                                                                                                                    |
+| DataSourcesFile        | Typically, you will access data already being referenced by a service, but if you need to open file-based vector data that's independent of the service, then this library may help. It can be used to open workspaces (connections to the files) to shapefiles, TINs, CAD files, and more. Once you have a reference to a dataset, you can use the Geodatabase library to access the features. |
+| DataSourcesGDB         | Typically, you will access data already being referenced by the service, but if you need to open an independent file geodatabase, a SQLite database, or an enterprise geodatabase, this library allows you to do so. Once you have a reference to a dataset, you can use the Geodatabase library to access the features.                                                                        |
+| DataSourcesRaster      | Typically, you will access data already being referenced by the service, but if you need to open raster data not referenced by the service, this library allows you to do so.                                                                                                                                                                                                                   |
+| Geodatabase            | Whether you have a reference to the data through your service or you have opened it using one of the DataSources libraries, you will access the data (features and raster) through the geodatabase library.                                                                                                                                                                                     |
+| GeodatabaseDistributed | Typically, you will use this for SOIs that are intercepting WFS requests.                                                                                                                                                                                                                                                                                                                       |
+| GeodatabaseExtensions  | Contains objects to aid in the creation, management, and use of terrain datasets and cadastral fabrics.                                                                                                                                                                                                                                                                                         |
+| Geometry               | Provides the interfaces and functions for working with feature geometries.                                                                                                                                                                                                                                                                                                                      |
+| GISClient              | Provides access to objects for working with remote geographic information system (GIS) services.                                                                                                                                                                                                                                                                                                |
+| Server                 | Primarily used to get information about an ArcGIS Server and perform administrative operations such as querying logs.                                                                                                                                                                                                                                                                           |
+| System                 | Provides basic classes and interfaces that all the other libraries reference. ArcGIS Enterprise SDK developers will often use it to handle REST and SOAP requests.                                                                                                                                                                                                                              |
+
+### Migrating Existing Extensions
+
+You can migrate existing extensions developed using ArcObjects .NET or Java SDK into the ArcGIS Enterprise SDK.
+
+Refer to the [Migration strategies](../java/migration-strategies-java/) section on how to migrate extensions developed using ArcObjects Java SDK into the ArcGIS Enterprise SDK.
+
+### Also See
+
+- [Design philosophy](../java/design-philosophy-for-arcgis-enterprise-sdk-java/)
+- [Install ArcGIS Enterprise SDK](../java/install-arcgis-enterprise-sdk-java/)

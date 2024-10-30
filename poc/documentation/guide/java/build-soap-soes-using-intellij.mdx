@@ -1,0 +1,108 @@
+---
+title: Build SOAP SOEs using IntelliJ
+description: >-
+---
+
+# Build SOAP SOEs using IntelliJ
+
+This topic describes how to create, build, and deploy a SOAP server object extension (SOE) under the Maven framework using IntelliJ.
+
+1. [Create the SOAP SOE project](#create-the-soap-soe-project)
+2. [Build the SOAP SOE project](#build-the-soap-soe-project)
+3. [Deploy the SOE to ArcGIS Server](#deploy-the-soe-to-arcgis-server)
+
+The SOE that you will create in this topic is also provided as a sample, named Simple SOAP SOE in the ArcGIS Enterprise SDK(`..\EnterpriseSDK\Samples\Java\serverobjectextensions\simplesoapsoe`).
+
+### Create the SOAP SOE project
+
+To create a SOAP SOE using IntelliJ, complete the following steps:
+
+1. Ensure that ArcGIS Enterprise SDK, Java, and Maven are all installed on your development environment. See more details in the [Installation](../installation-java/) section.
+2. Launch IntelliJ and click **File**。
+3. Click **New** and Select **Project**.
+4. Choose **Maven Archetype** on the left menu.
+5. Give **name** for the project and choose the location you would like to use.
+6. Ensure the project SDK is set to the supported JDK before you proceed.
+7. Keep the **Catalog** as **Internal**.
+8. For Archetype:
+ 
+   Click the **Add** button on the right, type the following values in the **Add Archetype** wizard, and then click **Add**:
+    - GroupId: `com.esri.arcgis.enterprise.sdk`
+    - ArtifactId: `soap-soe-archetype`
+    - Version: `11.3.0` (use `11.2.0` for 11.2.0 SDK and `11.0` for 11.0 SDK)
+
+     ![](./bitmaps/JavaSOAP_Archetype.png "soap soes")
+
+
+    The `soap-soe-archetype` is now added. 
+
+     ![](./bitmaps/JavaSOAP_Maven.png "soap soes")
+
+9. Click **Advanced Settings**.
+
+
+    ![](./bitmaps/JavaSOAP_AdvanceSetting.png "soap soes")
+
+10. Confirm the information in the parameters below and click **Create**.
+
+11. Ensure **Maven home directory** is set to use the supported Maven and the **soeName** property is added. Click **Finish**.
+
+     ![](./bitmaps/Maven-version.png "soap soes")
+12. A new SOE project is created. You should see `Build Success` on the right of the bottom **Run** Tool Window. 
+
+      ![](./bitmaps/building-soap-soe-intellij5.png "soap soes")
+
+   If you see any warnings, you can ignore them for now as long as the project successfully builds (`Build Success`) and generates the `entsdksamples.soe` package and `JavaSimpleSOAPSOE` class and `IJavaSimpleSOAPSOE` interface under the `src\main\java` folder. You will address those warnings during project build. Continue to [build the SOAP SOE project](#2-build-the-soap-soe-project) now. 
+
+
+### Build the SOAP SOE project
+Building an SOE project will package the project's classes, dependencies, and resources into a `.soe` file, which can be deployed to ArcGIS Server. Since it's a Maven project, the Maven build lifecycle must be followed to build the SOAP SOE. Read more about [project build](../about-maven-integration/#project-build). 
+
+You can build the SOE project in either the **Maven** tool window or the **Terminal** tool window. 
+
+![](./bitmaps/building-soap-soe-intellij6.png "soap soes")
+
+Because the project is created from `soap-soe-archetype`, it automatically loads the boilerplate code that implements a ready-to-use SOE. For now, you can customize the `displayName` and `description` of the SOE and leave the rest of the code as is.
+
+1. Open the SOE class `JavaSimplesoapSOE`, located in the `src\main\java` folder (see **A** in the example above).
+2. Set the `displayName` and `description` to `Java Simple SOAP SOE` (see **B**).
+3. Now follow these steps to build the project.
+
+   - To build the project in the **Maven** tool window, do the following:
+
+      a. Click the **Maven** tab on the right side of IntelliJ (see **C**).
+
+      b. Expand `simplesoapsoe`. You should see **Lifecycle**, **Plugins** and **Dependencies** listed.
+
+      c. If you don't see **Dependencies**, click the **Reimport All Maven Projects** button (see **D**) on the far left of the tool bar in the **Maven** tool window. 
+
+      d. Now you should see **Dependencies**, and **com.esri.arcgis.enterprise.sdk:arcgis-enterprise-sdk:version** is listed as one of the dependencies.
+
+      e. Expand **Lifecycle** and click **install**. You can also click **clean** and click **install** for a clean build of the project. 
+      
+      f. The project is built successfully with detailed log messages in the **Run** tool window (see **E**).
+
+   - Alternatively, to build the project in the **Terminal** tool window, do the following:
+
+      a. Click the **Terminal** tab at the bottom of IntelliJ (see **F**).
+
+      b. Ensure the directory is pointing to the project's root directory.
+
+      c. Type `mvn clean install`. This command does a clean build of the project, and you should see `Build Success`. 
+
+4. Once the build finishes, a new folder named `target` appears in the project's base directory, and you can find the SOE file `simplesoapsoe.soe` and the generated WSDL file `JavaSimpleSOAPSOE.wsdl` in this folder (see **G**).
+
+If you would like to add third-party libraries as dependencies, you can add them to the project's `pom.xml` (see **H**). The POM contains project configuration information, such as the Java compiler (JDK) used, plug-ins used, project's dependencies, and project's version. Learn more about [POM dependency management](../about-maven-integration/#enterprise-sdk-maven-artifacts).
+
+> Note: If the SOAP SOE references classes from a third-party dependency as the SOAP method's parameters or return values, the dependency must be included under both the project's `dependencies` and the `sdk-plugin`'s `dependencies` in the POM. Learn more details in the [Enterprise SDK Maven plugin](../about-maven-integration/#enterprise-sdk-maven-artifacts) section.
+
+### Deploy the SOE to ArcGIS Server
+
+The SOE you created must be deployed to ArcGIS Server and enabled on a map service. To learn how to deploy an SOE, see the [Deploy extensions](../deploy-extensions-java/) topic in the ArcGIS Enterprise SDK help. Note that the term “deploy” is used here to mean uploading the .soe file to ArcGIS Server and registering it as an extension to map services. To learn how to enable an SOE on a map service, see the [Enable extensions](../enable-extensions-java/) topic of the ArcGIS Enterprise SDK help.
+
+### Also See
+
+-   [Install the Java IDE](../install-the-java-ide/)
+-   [SOE with properties](../soe-properties-java/)
+-   [Log messages](../log-messages-java/)
+-   [Debug extensions](../debug-extensions-dedicated-java/)

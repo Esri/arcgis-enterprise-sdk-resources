@@ -1,0 +1,164 @@
+---
+title: Work with utility networks
+description: >-
+---
+
+# Work with utility networks
+
+Starting with 10.8.1, creating SOEs and SOIs that target the utility network is now supported. This means that functionality can be extended beyond what is already available through Utility Network Service REST resources and operations.
+
+When creating SOEs and SOIs that target utility networks, it is important to think about performance. A utility network dataset may contain millions of features. For SOEs, limiting a single REST operation to its minimum and making use of pagination when returning large amounts of data are great ways to avoid timeouts and provide a better client experience. Similarly, limiting the amount of pre and post processing on an existing Utility Network Service operation will help keep SOIs lean and performant.
+
+For SOIs, it's also important to keep in mind that existing REST response formats should not be tampered with. Other client applications, such as ArcGIS Pro, rely on the existing REST API contract to function properly.
+
+### Open a utility network dataset
+
+If a utility network service extension is enabled on the current map service, then it is possible to access its underlying utility network. One way to do this is to first get the utility network’s feature dataset from the current map service’s data source. The following Java example shows how to retrieve the service’s utility network layer and its corresponding feature dataset to then open the utility network dataset:
+
+``` Java
+SOIHelper soHelper = soh;
+IMapServer mapService = (IMapServer) this.soHelper.getServerObject();
+IMapServerDataAccess mapServerDataAccess = (IMapServerDataAccess) soHelper.getServerObject();
+IMapServerInfo mapServerInfo = mapService.getServerInfo(mapService.getDefaultMapName());
+IMapLayerInfos layerInfos = mapServerInfo.getMapLayerInfos();
+IMapLayerInfo unLayerInfo = null;
+IDataset unDataset = null;
+
+// Get the Utility Network layer
+for (int i = 0; i < layerInfos.getCount(); i++)
+{
+    IMapLayerInfo layerInfo = layerInfos.getElement(i);
+    if (layerInfo.getType().equalsIgnoreCase("Utility Network Layer"))
+    {
+        unLayerInfo = layerInfo;
+        break;
+    }
+}
+if (unLayerInfo != null) {
+    // Get the Utility Network dataset
+    FeatureClass fc = new FeatureClass(mapServerDataAccess.getDataSource(mapService.getDefaultMapName(), unLayerInfo.getSubLayers().getElement(0)));
+
+    // Open UN dataset
+    IFeatureDataset fd = fc.getFeatureDataset();
+    IDataset ds = new IDatasetProxy(fd);
+    IEnumDataset enumSubDS = ds.getSubsets();
+    IDataset subDS = enumSubDS.next();
+    while (subDS != null)
+    {
+        if (subDS.getType() == esriDatasetType.esriDTUtilityNetwork)
+        {
+            unDataset = subDS;
+            break;
+        }
+        subDS = enumSubDS.next();
+    }
+
+    // Create an instance of the required utility network interface proxy class using the UN dataset
+    IBaseNetworkProxy bn = new IBaseNetworkProxy(unDataset);
+}
+```
+
+Alternatively, if you know the name of the utility network dataset, you can retrieve it using the following method:   
+
+``` Java
+IFeatureDatasetExtensionContainer fdec = new IFeatureDatasetExtensionContainerProxy(fd);
+IFeatureDatasetExtension fdExtension = fdec.findExtension(esriDatasetType.esriDTUtilityNetwork);
+IDatasetContainer2 dsContainer = new IDatasetContainer2Proxy(fdExtension);
+IDataset unDataset = dsContainer.getDatasetByName(esriDatasetType.esriDTUtilityNetwork, fd.getName());
+```
+
+### Walk through the main utility network interfaces and classes
+
+Working with the utility network requires to walk though many interfaces and classes. Navigating through the API can quickly become overwhelming. The following document may help as it provides detailed Object Model Diagrams (OMDs) of the Utility Network classes, interfaces and enumerations exposed in the Enterprise SDK:
+   
+- [**Utility Network OMD**](/api-reference/EnterpriseSDK_UN_OMD.pdf)
+
+As shown above, the first step is to get the dataset containing the utility network:
+
+``` Java
+IDataset unDataset = dsContainer.getDatasetByName(esriDatasetType.esriDTUtilityNetwork, fd.getName());
+```
+
+Once this is done, here are ways to access the desired utility network interfaces:
+
+- Core network properties
+
+    `IBaseNetwork` is the entry point to the utility network. From there, it is possible to get the basic network information and access other key functionalities, such as tracing, associations, topology and subnetworks:
+
+    ``` Java
+    IBaseNetworkProxy unBaseNetwork = new IBaseNetworkProxy(unDataset);
+    IUtilityNetworkCoreRuleProxy unCoreNetwork = new IUtilityNetworkCoreRuleProxy(unBaseNetwork);
+    IBaseNetworkTopologyProxy unBaseNetworkTopo = new IBaseNetworkTopologyProxy(unBaseNetwork);
+    IBaseNetworkAssociationProxy unBaseNetworkAsso = new IBaseNetworkAssociationProxy(unBaseNetwork);
+    ```
+
+- Network tracing 
+
+    A network tracer (`ITracer`) can be obtained directly from `IBaseNetwork`:
+
+    ``` Java
+    IBaseNetworkProxy unBaseNetwork = new IBaseNetworkProxy(unDataset);
+    ITracer unTracer = unBaseNetwork.CreateTracer();
+    ```
+
+- Network associations
+
+  Both `IBaseNetworkAssociation` and `IUtilityNetworkAssociation` contain methods to manage network associations:
+
+   ``` Java
+    IBaseNetworkProxy unBaseNetwork = new IBaseNetworkProxy(unDataset);
+    IBaseNetworkAssociationProxy unBaseNetworkAsso = new IBaseNetworkAssociationProxy(unBaseNetwork);
+    IUtilityNetworkCoreProxy unCoreNetwork = new IUtilityNetworkCoreProxy(unBaseNetwork);
+    IUtilityNetworkAssociationProxy unCoreNetworkAsso = new IUtilityNetworkAssociationProxy(unBaseNetwork);
+   ```
+
+- Subnetworks
+
+  Working with subnetworks can be done by obtaining a subnetwork manager through `IUtilityNetworkSubnetwork`:
+
+   ``` Java
+    IBaseNetworkProxy unBaseNetwork = new IBaseNetworkProxy(unDataset);
+    IUtilityNetworkCoreProxy unCoreNetwork = new IUtilityNetworkCoreProxy(unBaseNetwork);
+    IUtilityNetworkSubnetworkProxy unNetworkCoreSubnet = new IUtilityNetworkSubnetworkProxy(unBaseNetwork);
+    IUNSubnetworkManager unSubnetMgr = unNetworkCoreSubnet.createSubnetworkManager();
+   ```
+
+- Network topology
+  
+  It is possible to access high-level network topology functionality using `IBaseNetworkTopology`. It is also possible to directly query the network index using `IUtilityNetworkQuery`:
+
+   ``` Java
+    IBaseNetworkProxy unBaseNetwork = new IBaseNetworkProxy(unDataset);
+    IBaseNetworkTopologyProxy unBaseNetworkTopo = new IBaseNetworkTopologyProxy(unBaseNetwork);
+    IUtilityNetworkQuery unNetworkIndexQuery = unBaseNetwork.createQuery();
+   ```
+
+- Data elements
+
+  The data elements describe a utility network’s structure or schema, including network domains, tiers, etc. All this information can be obtained from the dataset, using `IDEBaseNetwork` and `IDEUtilityNetwork`:
+ 
+   ``` Java
+    IDatasetComponentProxy datasetComponent = new IDatasetComponentProxy(unDataset);
+    IDEDataset deDataset = datasetComponent.getDataElement();
+    IDEBaseNetworkProxy deBaseNetwork = new IDEBaseNetworkProxy(deDataset);
+    IDEUtilityNetworkProxy deUtilityNetwork = new IDEUtilityNetworkProxy(deBaseNetwork);
+   ```
+
+### Verify that the current Server extension is a utility network service
+
+When building an SOI, not only is it important to know which resource and operation are being called, but sometimes it may also be required to know which service type is being targeted. This is especially true when working with services with multiple extensions, such as utility network services. The following Java code demonstrates how to retrieve and check the current server extension.
+
+``` Java
+EnvironmentManager envMgr = new EnvironmentManager();
+UID envUID = new UID();
+envUID.setValue("{32d4c328-e473-4615-922c-63c108f55e60}");
+IServerEnvironment serverEnvironment = new IServerEnvironment2Proxy(envMgr.getEnvironment(envUID));
+IPropertySet serverProps = serverEnvironment.getProperties();
+String extensionName = (String)serverProps.getProperty(“ExtensionName”);
+Cleaner.release(envMgr);
+
+if (extensionName != null && extensionName.equalsIgnoreCase("UtilityNetworkServer"))
+{
+    // Do something
+}
+```

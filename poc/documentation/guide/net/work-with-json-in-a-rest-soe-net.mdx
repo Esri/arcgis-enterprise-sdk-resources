@@ -1,0 +1,180 @@
+---
+title: Work with JSON in a REST SOE
+description: >-
+  This topic explains how to de-serialize JSON input and serialize output JSON
+  response. ,In this topic,,About working with JSON in a REST server object
+  extension ,De-serializing JSON input  De-serializing JSON input
+---
+
+# Work with JSON in a REST SOE
+
+This topic explains how to de-serialize JSON input and serialize output JSON response.
+
+### About working with JSON in a REST server object extension
+
+Often when clients and servers are talking through REST, they speak JavaScript Object Notation (JSON). JSON is a highly structured format for transferring data between two applications in clear text and is great for use with web services.
+
+The problem is that the ArcGIS Enterprise SDK API does not understand JSON. Your handler functions must de-serialize the JSON input, meaning that they need to extract the values needed by your business logic. When you’re done performing your business logic, your code needs to take the result and make some JSON out of it, that is, serialize the response. This section describes how you would go about these tasks.
+
+The SOESupport library contains helper functions to help you de-serialize and serialize JSON. When a client makes a request, JSON is brought into your handler function as an instance of the `SOESupport.JsonObject` class. You can also send results out of your handler function as an instance of `JsonObject`.
+
+### De-serializing JSON input
+
+The JSON input to your operation handler is an instance of `SOESupport.JsonObject`. To de-serialize the JSON input, you can use the TryGet\* methods on `JsonObject`.
+
+You can see this pattern occurring in the sample operation handler that comes with the REST server object extension (SOE) template. See the following code example:
+
+```cs
+private byte[] SampleOperHandler(NameValueCollection boundVariables, JsonObject
+    operationInput, string outputFormat, string requestProperties, out string
+    responseProperties)
+{
+    responseProperties = null;
+    string parm1Value;
+    bool found = operationInput.TryGetString("parm1", out parm1Value);
+    if (!found || string.IsNullOrEmpty(parm1Value))
+        throw new ArgumentNullException("parm1");
+    ...
+}
+```
+
+In the previous code example, the code looks in the input `JsonObject` (`operationInput`) and uses the `TryGetString` method to try to get the value of a string parameter ("parm1"). Notice the error handling that’s included in case a parameter named "parm1" isn’t found.
+
+The following are all the TryGet methods included on `SOESupport.JsonObject`:
+
+-   TryGetArray
+-   TryGetAsBoolean
+-   TryGetAsDate
+-   TryGetAsDouble
+-   TryGetAsLong
+-   TryGetJsonObject (handles nested levels of objects in the JSON)
+-   TryGetObject
+-   TryGetString
+
+The TryGet methods allow you to extract the value of JSON parameters and assign them to variables in your project. You can then use those variables to create the ArcGIS Enterprise SDK types you need.
+
+If you’re trying to de-serialize geometries, you can use the `SOESupport.Conversion.ToGeometry()` method, which takes a JSON object or a string as input, and returns an IGeometry type.
+
+The following code example converts a JsonObject "location" into an IPoint:
+
+```cs
+JsonObject jsonPoint;
+if (!operationInput.TryGetJsonObject("location", out jsonPoint))
+    throw new ArgumentNullException("location");
+IPoint location = Conversion.ToGeometry(jsonPoint,
+    esriGeometryType.esriGeometryPoint)as IPoint;
+```
+
+Again, error checking is essential when using these methods. If your JSON object contained an x- and y-value, for example, `{x:-123,y:47}`, you would get an `IPoint`. However, if it did not contain sufficient data to construct the point, you would get an exception.
+
+### Serializing a JSON response
+
+Once you’ve completed your business logic and derived your result, you must serialize it as JSON or stream it back to the client in another way. This topic focuses on how to serialize your results to JSON.
+
+To prepare your JSON response, you can create an empty instance of `SOESupport.JsonObject` and add things to it using the helper methods on `JsonObject`. Again, you can see this pattern used in the REST SOE template in a very simple format. See the following code example:
+
+```cs
+JsonObject result = new JsonObject();
+result.AddString("parm1", parm1Value);
+```
+
+The previous code example creates an empty `JsonObject` and adds one string to it, a "parm1" property with the value of the parm1Value variable. If parm1Value held the "myFirstParameter" value, the resulting JSON looks like the following code example:
+
+```json
+    {
+      "parm1" : "myFirstParameter"
+    }
+```
+
+The following shows the Add methods you can use to serialize your JSON response. (Perhaps not surprisingly, they correspond to the TryGet\* methods you use to de-serialize the input.)
+
+-   AddArray
+-   AddBoolean
+-   AddDate
+-   AddDouble
+-   AddJsonObject (allows for nested levels of objects in your JSON)
+-   AddLong
+-   AddObject
+-   AddString
+
+Some geometries would ordinarily be tricky to serialize because they contain nested objects and arrays. Consequently, the `SOESupport.Conversion.ToJsonObject()` is provided to help you serialize your geometries. You can pass in any object that implements `IGeometry` and get it serialized to JSON.
+
+In the following code example, `resultsGeometry` is a geometry object that gets serialized to JSON. An optional loop could be placed in this code if you had multiple geometries to serialize. This code example uses a .NET list to hold all the serialized geometries, then adds the list to a final JSON object using `JsonObject.AddArray()`:
+
+```cs
+ // Create an empty .NET list of JsonObjects.
+List < JsonObject > jsonGeometries = new List < JsonObject > ();
+// Optionally, you could start a loop here.
+JsonObject jsonResultsGeometry = Conversion.ToJsonObject(resultsGeometry);
+jsonGeometries.Add(jsonResultsGeometry);
+// You would end the optional loop here.
+// Add the list of json objects to a final json object as an array.
+JsonObject resultJsonObject = new JsonObject();
+resultJsonObject.AddArray("geometries", jsonGeometries.ToArray());
+// Get byte array of json and return results.
+byte[] result = Encoding.UTF8.GetBytes(resultJsonObject.ToJson());
+return result;
+```
+
+The result of the previous code example is JSON that can be easily parsed by a client application. For example, the following code is some JSON where each polygon is represented by a "rings" object:
+
+``` bash
+      "geometries" : [
+        {
+          "rings" : [
+            [
+              [
+                537677.56250619888,
+                4900994.4999926779
+              ],
+              [
+                537952.21783445403,
+                4900502.2883762196
+              ],
+              [
+                537942.24243737175,
+                4900503.3471435569
+              ],
+              etc. . .
+            ]
+          ]
+        },
+        {
+          "rings" : [
+            [
+              [
+                537952.21783445403,
+                4900502.2883762196
+              ],
+              [
+                537677.56250619888,
+                4900994.4999926779
+              ],
+              [
+                537826.87501833774,
+                4901122.9999607969
+              ],
+              etc . . .
+            ]
+          ]
+        }
+      ]
+```
+
+In the ArcGIS application programming interface (API) for JavaScript, you could loop through these geometries and create Polygon objects from them. See the following code example:
+
+```js
+ var geometries = response.geometries;
+// Loop through all graphics in the JSON.
+for (var i = 0, il = geometries.length; i < il; i++){
+    // Make a new polygon.
+    var polygon = new esri.geometry.Polygon(sr);
+    // Loop through all rings in the JSON and add to polygon.
+    for (var j = 0, jl = geometries[i].rings.length; j < jl; j++){
+        polygon.addRing(geometries[i].rings[j]);
+    }
+    // Create a graphic from the polygon and add it to the map.
+    var currentGraphic = new esri.Graphic(polygon, symbol, attr, infoTemplate);
+    map.graphics.add(currentGraphic);
+}
+```

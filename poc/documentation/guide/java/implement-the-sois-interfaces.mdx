@@ -1,0 +1,109 @@
+---
+title: Implement the SOI's interfaces
+description: >-
+  This topic describes how to create a REST server object extension (SOE) and
+  export it using the Eclipse IDE wizard that is available via the ArcGIS
+  Enterprise SDK ArcGIS Eclipse plugin. It als This topic describes how to
+  create a REST server object extension (SOE) and export it using the Eclipse
+  IDE wizard that is available via the ArcGIS Enterprise SDK ArcGIS Eclipse
+  plugin. It als
+---
+
+# Implement the SOI's interfaces
+
+This topic illustrates key components in an SOI class structure. The pattern for developing server object interceptors (SOIs) is to create a Java class that implements the following interfaces:
+
+- **`IServerObjectExtension`** interface provides the `init()` and `shutdown()` methods that are called when your service starts and shuts down.
+- **`IRestRequestHandler`** interface provide the `handleRESTRequest()` method that intercepts the HTTP REST requests and responses through the service.
+- **`IRequestHandler2`** and **`IRequestHandler`** interfaces provide the `handleBinaryRequest()` and `handleStringRequest()` methods that handle SOAP requests.
+- **`IWebRequestHandler`** provides the `handleStringWebRequest()` method that handles the OGC requests. 
+
+### SOI class annotation
+
+After the SOI class is created from the template, the annotation, interfaces, and methods required for the SOI class are automatically implemented. The following SOI class annotation with several properties automatically populated is used to help the server administrator identify and understand the SOI deployed in ArcGIS Server Manager.  
+
+```java
+@ArcGISExtension 
+@ServerObjectExtProperties(
+    displayName = "Simple SOI (Map Service - Pro)", 
+    description = "This is a simple SOI for a map service published from ArcGIS Pro.",
+    interceptor = true, 
+    servicetype = "MapService",
+    supportsSharedInstances = false) 
+public class SimpleSOI implements IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, 
+    IRequestHandler2, IRequestHandler { 
+    //... 
+} 
+```
+
+- **displayName** defines the SOI name that appears under **Service > Capabilities** tab on ArcGIS Server Manager.  
+
+- **description** displays after the **Help** button of the extension is clicked on **Site > Extensions** tab on ArcGIS Server Manager. See the [enable extensions](../enable-extensions-java/) section.  
+
+- **interceptor** indicates that this is a class for an SOI.
+
+- **servicetype** defines the type of services that this SOI can be enabled with. By default, `MapService` is set for this attribute. Starting with 10.8.1, `ImageService` is also supported for SOIs to work with image services.
+
+- **supportsSharedInstances** is an optional attribute indicating whether this SOI supports shared instances and whether this SOI can be enabled when the service is set to use shared instances. By default, it's always `false`, which forbids the SOI to be enabled with shared instances. If the SOI follows the [best practices for extensions with shared instances](../develop-extensions-for-shared-instances-java/), this attribute can be set to `true` and the SOI can be used with a service set for shared instances. The **supportsSharedInstances** attribute is introduced at 10.8.1.
+
+### SOI initialization
+
+The initialization logic of the SOI is defined in the`init()`method, which contains the following boilerplate code:  
+
+```java
+public void init(IServerObjectHelper soh) throws IOException, AutomationException { 
+    // Get reference to server logger utility 
+    this.serverLog = ServerUtilities.getServerLogger(); 
+    // Log message with server 
+    this.serverLog.addMessage(3, 200, "Initialized " + this.getClass().getName() + " SOI."); 
+    this.so = soh.getServerObject(); 
+    String arcgisHome = getArcGISHomeDir(); 
+    /* If null, throw an exception */ 
+    if (arcgisHome == null) { 
+        serverLog.addMessage(1, 200, "Could not get ArcGIS home directory. Check if environment variable " 
+                + ARCGISHOME_ENV + " is set."); 
+        throw new IOException("Could not get ArcGIS home directory. Check if environment variable " + ARCGISHOME_ENV 
+                + " is set."); 
+    } 
+    if (arcgisHome != null && !arcgisHome.endsWith(File.separator)) 
+        arcgisHome += File.separator; 
+    // Load the SOI helper.     
+    this.soiHelper = new SOIHelper(arcgisHome + "XmlSchema" + File.separator + "MapServer.wsdl"); 
+} 
+```
+
+After the SOI is enabled with a map service and service restarts, the first method that will be triggered in the SOI is this`init()`method.`IServerObjectHelper`helps hold the reference to the current server object, which is a`MapServer`object providing service data access, layer properties, and access to other service information. `SOIHelper`provides access to REST request schema and REST request handler.  
+
+The `ServerUtilities.getServerLogger()` method returns `ILog`, allowing the SOI to write server logs that can be viewed by the server administrator. You may also refer to the SimpleSOI sample (**\\&lt;Installation folder of ArcGIS Enterprise SDK>\\Samples\\Java\\serverobjectinterceptors\\SimpleSOI**) for the complete SOI code.  
+
+
+### SOI request handler
+
+The SOI class implements several interfaces, which handle different types of requests, such as REST, SOAP, and OGC requests. For example, the`handleRESTRequest()` method is implemented by `IRESTRequestHandler` for REST request. This method is called every time a service operation is performed through REST endpoint.  
+
+```java
+public byte[] handleRESTRequest(String capabilities, String resourceName, String operationName, 
+        String operationInput, String outputFormat, String requestProperties, String[] responseProperties) 
+        throws IOException, AutomationException { 
+    serverLog.addMessage(3, 200, "Request logged in SampleSOI. User: " + getLoggedInUserName() + ", Operation: " 
+            + operationName + ", Operation Input: " + processOperationInput(operationInput));  
+    // Find the correct delegate to forward the request too 
+    IRESTRequestHandler restRequestHandler = soiHelper.findRestRequestHandlerDelegate(so); 
+    if (restRequestHandler != null) { 
+        // Return the response 
+        return restRequestHandler.handleRESTRequest(capabilities, resourceName, operationName, operationInput, 
+                outputFormat, requestProperties, responseProperties); 
+    } 
+    return null; 
+} 
+```
+
+The REST request sent to a map service carries lots of information, including request headers, output format, request parameters, operation name, and other service information. Request headers are returned by `requestProperties`. The output format is returned by `outputFormat`, which can be JSON, GeoJSON, image, and so on, depending on the specific operation. Request parameters are passed in as `operationInput`. The `capabilities`, `resourceName`, and `operationName` variables are usually used to locate the specific service operation to intercept.  
+
+The `handleRESTRequest()` method in the above code is used to process the REST request and generate a byte-array response. Right now, this code doesn't modify any request or response, and just let through the request as default.  
+
+To modify the request, you can modify the request parameters, such as changing certain `operationInput` parameters and passing the updated parameters to the `restRequestHandler.handleRESTRequest()` method.  
+
+To modify the response, you can customize the return byte array object. For example, if the result of a map service query is a JSON, you can first get a byte array object from the `restRequestHandler.handleRESTRequest()` method, and then convert this byte-array object to a JSON object and customize the JSON object based on your business logic. Finally, you can pack the updated JSON object back to a byte array and return it for the above `handleRESTRequest()` method. Additionally, you can also provide your custom response headers by assigning `responseProperties`.  
+
+Similarly, you can use the `handleStringRequest()` method to intercept SOAP XML requests, the `handleBinaryRequest()` for certain requests sent from ArcMap and other ArcObjects-based clients, and the `handleStringWebRequest()` method for OGC service requests.  

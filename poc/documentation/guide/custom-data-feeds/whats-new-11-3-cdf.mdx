@@ -1,0 +1,29 @@
+---
+title: What's New in 11.3
+uid: cdf-whats-new-in-11.3
+description: >-
+  New features in custom data feeds 11.3
+---
+
+## User interfaces in ArcGIS Server Manager to manage custom data providers and create custom data feed feature services
+
+New user interfaces were added in ArcGIS Server Manager to manage custom data providers (register, update, and delete) 
+and create custom data feed feature services with parameters. Refer to documentation on 
+[managing custom data provider](https://enterprise.arcgis.com/en/server/latest/develop/windows/administer-custom-data-providers-using-server-manager.htm) 
+and [creating custom data feed](https://enterprise.arcgis.com/en/server/latest/publish-services/windows/about-service-definition-files.htm#ESRI_SECTION1_28830F549A904DD9A42CE01C79F0E76B) 
+feature service using ArcGIS Server Manager.
+
+
+## Support for “pbf” response format for the layer level query operation in custom data feed feature services
+
+Custom data feeds feature services now support PBF as a response format for the layer level query operation. 
+ArcGIS clients (such as ArcGIS Pro, Map Viewer, etc.) can request responses in PBF format when querying a
+custom data feeds feature service. By default, `supportedQueryFormats` will include `JSON, geoJSON, PBF` for 
+custom data feed feature services.
+
+ 
+## Two new commands in custom data feed command line tool - Register, Unregister
+
+Two new commands were added in the custom data feeds command line tool to 
+register/unregister custom data providers and create/delete feature 
+services associated with custom data providers.

@@ -1,0 +1,47 @@
+---
+title: Build the schema of a REST SOE
+description: >-
+  This topic covers quick tour of REST Server Object Extension template of
+  ArcGIS Enterprise SDK. ,,,,About building the schema of a REST server object
+  extension,The function, CreateRestS The function, CreateRestS
+---
+
+# Build the schema of a REST SOE
+
+
+The function, `CreateRestSchema()`, is essential to any REST server object extension (SOE). This is where you define and build the schema for your service, telling it which resources and operations it will support.
+
+-   For each resource, you’ll define a RestResource.
+-   For each operation, you’ll define a RestOperation.
+
+Once you’ve defined all resources and operations, call some `Add()` methods on the resources and operations to build your schema.
+
+The following code example shows CreateRestSchema() as it appears in the template:
+
+```cs
+private RestResource CreateRestSchema()
+{
+    RestResource rootRes = new RestResource(soe_name, false, RootResHandler);
+    RestOperation sampleOper = new RestOperation("sampleOperation", new string[]
+    {
+        "parm1", "parm2"
+    }
+    , new string[]
+    {
+        "json"
+    }
+    , SampleOperHandler);
+    rootRes.operations.Add(sampleOper);
+    return rootRes;
+}
+```
+
+In the schema above, you get one resource, rootRes. To that resource is added one operation, sampleOper.
+
+When you create a RestResource or RestOperation, you can optionally pass in a capability name as one of the parameters. Capabilities are groups of resources and operations that a server administrator can enable or disable to expose or hide certain subsets of functionality.
+
+Note that capabilities are actually called "Operations allowed" when you view the Service configuration pane in ArcGIS Pro or edit a service in Manager. Do not confuse SOE capabilities with the "Capabilities" you can check and uncheck on those dialog boxes. The "Capabilities" on the dialog boxes refer to the SOEs themselves.
+
+The stubbed-out code in the template doesn’t define any capabilities, but you can see an example in the Find Near Features REST SOE sample.
+
+Building a schema is like snapping little toy building bricks together one at a time until you’ve created a big final product. You start at the deepest level of your schema and add operations and resources to each other until you reach the root level, at which point you have a full schema. This isn’t immediately apparent in the template because it stubs out just one resource and operation; however, you’ll see some more complex schema building in the SDK samples.

@@ -1,0 +1,132 @@
+---
+title: Overview of .NET 6 support
+description: >-
+  This topic describes the new .NET 6 support feature in the 11.0 release. It illustrates how to build an SOE or SOI with .NET 6 and how to migrate a .NET SOE/SOI built with previous versions of the Enterprise SDK to the 11.0 version.
+---
+
+# Overview of .NET 6 support for SOEs and SOIs
+
+Starting from 11.0, ArcGIS Enterprise SDK supports creating and building SOEs and SOIs with [.NET 6](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-6). The .NET SOE and SOI project templates and build tools provided by the SDK now target .NET 6 instead of .NET Framework 4.x, which impacts the following workflows with ArcGIS Enterprise SDK:
+
+First, developing SOEs or SOIs with .NET Framework 4.x is no longer supported and .NET 6 must be used to compile SOEs and SOIs with 11.0 or later versions of ArcGIS Enterprise SDK.
+
+Second, recompiling the 10.x version of .NET SOE or SOI projects with ArcGIS Enterprise SDK 11.0 is no longer supported. To build your existing SOE or SOI projects with the latest Enterprise SDK, you must [Migrate older .NET SOE or SOI projects to 11](#migrate-older-net-soe-or-soi-projects-to-11).
+
+The .NET 6 support also impacts the extension workflows in ArcGIS Server. 
+
+Starting from 11.0, ArcGIS Server supports deploying the SOEs and SOIs built with .NET 6 and no longer supports the SOEs or SOIs built with .NET Framework 4.x. This indicates that you will not be able to deploy any SOEs or SOIs built with the 10.x versions of ArcGIS Enterprise SDK to 11.0 or later versions of ArcGIS Server. To use these SOEs or SOIs in the latest ArcGIS Server, you should [Migrate older .NET SOE or SOI projects to 11](#migrate-older-net-soe-or-soi-projects-to-11) and then redeploy the migrated SOEs or SOIs that are compiled with the latest Enterprise SDK. 
+
+It's also worth noting that deploying .NET 6 SOEs and SOIs requires installing .NET 6 on the server machine and the .NET Extension Support feature of ArcGIS Server. See [Deploy the .NET 6 SOEs or SOIs to ArcGIS Server](#deploy-net-6-soes-and-sois-to-arcgis-server) for more details.
+
+> Note: The .NET-based SOEs and SOIs built with .NET 6 can be deployed to ArcGIS Server in Windows. Currently, they are not supported for ArcGIS Server in Linux. Only Java-based SOEs and SOIs can be deployed to ArcGIS Server in Linux.
+
+## Set up the .NET 6 development environment
+
+Make sure you go through [System requirements](../system-requirements-net/) first to install all the supported software before installing ArcGIS Enterprise SDK.
+
+To set up the .NET development environment for Enterprise SDK 11.0, you must first install Visual Studio 2022 with the **.NET desktop development** workload enabled (see [Installation](../installation-net/)). Since this automatically installs **.NET SDK 6.0 (x64) from Visual Studio**, you will not need to install .NET SDK 6.0 (x64) by yourself. You can confirm that both Visual Studio 2022 and .NET SDK 6.0 are successfully installed by checking Programs and Features in Control Panel as shown in the following screenshot.
+
+![](./bitmaps/net6-sdk.png "programs and features")
+
+After Visual Studio 2022 is installed, you should be able to launch the Enterprise SDK setup and select the **Visual Studio 2022 Community/Professional/Enterprise Edition** feature to complete the installation. See the following screenshot:
+
+![](./bitmaps/installation-net2.png "SDK install")
+
+## Create a new .NET 6 SOE or SOI
+
+The workflow of creating a new SOE or SOI with ArcGIS Enterprise SDK 11.0 is the same as using the previous versions of the SDK. You can refer to [How to create an SOE from the template in Visual Studio](../how-to-open-soe-templates-in-visual-studio-net/) and [Create a simple SOI](../quick-tour-of-a-simple-soi-net/#create-a-simple-soi) for detailed instructions.
+
+## Build .NET 6 SOEs and SOIs
+
+Once the SOE or SOI project is created from the template, it automatically targets .NET 6. There is no need to change the project's target framework. You can inspect it by right-clicking the project in Solution Explorer and selecting Properties.
+
+![](./bitmaps/net6-properties.png "project properties")  
+
+The **Target framework** property of the SOE or SOI project should only be set to `.NET 6.0`. Other versions of .NET are not supported to set for target framework of SOEs or SOIs. 
+
+All the ESRI libraries (`ESRI.Server.*`) are referenced under the project's **Dependencies > Assemblies** with their properties automatically set properly once the project is created. There is no need to change or set any properties of these assemblies, even though some properties of these assemblies may not display any values. 
+
+> Note: The **Embed Interop Types** property of these assemblies should only be set to `No`. The **Copy Local** property of these assemblies should only be set to **Yes**. Using the **Copy Local** property as **No** for these ESRI assemblies is currently not supported with Enterprise SDK 11.0.
+
+![](./bitmaps/net6-assembly-props.png "assembly properties")  
+
+Now, you can build the SOE or SOI project, which will generate an .soe file in the project output folder (`\bin\Debug\net6.0\` or `\bin\Release\net6.0`). There will be multiple other files copied to this project output folder, however, the .soe file is the only file needed to deploy the extension to ArcGIS Enterprise.
+
+## Debug .NET 6 SOEs and SOIs
+
+Debugging a .NET 6 SOE or SOI works the same way as previous versions of ArcGIS Enterprise SDK, see [Debug extensions](../debug-extensions-net/).
+
+## Deploy .NET 6 SOEs and SOIs to ArcGIS Server
+
+The prerequisites for deploying and consuming a .NET 6 SOE and SOI is to install both .NET 6.0 and the **.NET Extension Support** feature of ArcGIS Server on the server machine. See [.NET 6 requirement for .NET Extension Support](https://enterprise.arcgis.com/en/system-requirements/latest/windows/arcgis-server-system-requirements.htm#ESRI_SECTION1_C284997E64A045F282C8FB3839FBF716).
+
+Follow these steps to install the prerequisites before you deploy a .NET 6 SOE or SOI to ArcGIS Enterprise:
+
+### 1. Install .NET 6.0
+
+   Make sure you install either **.NET SDK 6.0 (x64)** or **.NET Desktop Runtime 6.0 (x64)** (see the [Download .NET 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) site) on your server machine. You do not need to download or install .NET 6.0 from the above site if you have already installed Visual Studio 2022 with the **.NET desktop development** workload, since Visual Studio 2022 includes **.NET SDK 6.0 (x64)**. 
+   
+   You can also find the version of the installed .NET in **Programs and Features**. For example, any one of the following .NET installations meets the .NET 6.0 prerequisite.
+
+   ![](./bitmaps/net6-net-install.png ".NET 6 installs")
+
+### 2. Install .NET Extension Support
+
+   Once you complete step 1, you should install the **.NET Extension Support** feature of ArcGIS Server.
+
+   ![](./bitmaps/net6-server-setup1.png ".NET 6 Server installation")  
+   
+   If you see the **Missing Dependencies** page like the following screenshot, this indicates you don't have a supported .NET 6.0 installed:
+
+   ![](./bitmaps/net6-server-missing-deps.png "SDK install")
+
+   You should revisit step 1 to install the supported .NET 6.0, run the ArcGIS Server setup again, or modify the existing ArcGIS Server setup, and then you should be able to install the **.NET Extension Support** feature.
+
+## Migrate older .NET SOE or SOI projects to 11
+
+Follow these steps to migrate a 10.x version of .NET SOE or SOI to 11.0.
+
+1. [Set up the .NET 6 development environment](#set-up-the-net-6-development-environment).
+2. Create a new .NET 6 SOE or SOI using the template of Enterprise SDK 11.0.
+   
+   This step is required as the SDK project templates and build tools provided by Enterprise SDK 11.0 target .NET 6. The older SOE or SOI projects don't contain or reference these project build tools, so they are unable to work with .NET 6. Recompiling an older version of the SOE or SOI project with the 11.0 SDK assemblies and .NET 6 is not supported.
+
+3. Copy all your code files and project files to the new project.
+
+   You may see some compile errors saying *"The type or namespace name 'IField2' could not be found. (Are you missing a using directive or an assembly reference?)"*:
+
+   ![](./bitmaps/net6-migrate1.png "Migrate error1")
+   
+   To fix this error, change `IField2` to `IField`. Similar errors can be fixed for `IFieldEdit2`, `IAttachment3`, and more interfaces in the Geodatabase assembly.
+
+   You may also see this compile error *"Cannot implicitly convert type 'long' to 'int'. An explicit conversion exists (are you missing a cast?)"*:
+
+   ![](./bitmaps/net6-migrate2.png "Migrate error2")
+
+   To fix this error, define the method return type as `long` instead of `int` in the above code.
+
+   See [API changes in 11.0](../whats-new-11-0-net/#api-changes-in-110) and [New in 11.0 API](../whats-new-api-11-0-net/) for more details on how the API changes in Enterprise SDK 11.0 may affect your existing code. 
+
+4. Migrate third-party libraries.
+
+   If you referenced any custom library built by yourself in your old project, you need to recompile your custom library to target either .NET 6.0 or .NET Standard. In this way, your custom library will be compatible with the .NET 6 SOE or SOI project.
+
+   If you referenced any libraries that are no longer supported with .NET 6.0, such as the .NET Framework assembly `System.Web.Serialization`, you will need to use an alternative library that is compatible with .NET 6.0, such as the `System.Text.Json` or `Newtonsoft` library. 
+
+5. Build the project.
+
+   See [Build .NET 6 SOEs and SOIs](#build-net-6-soes-and-sois).
+   
+## Troubleshooting and errors
+
+This section illustrates a few typical errors that you may see when you deploy an SOE or SOI in ArcGIS Server 11.0.
+
+- Add Extension error: "The extension cannot be registered because it requires the .NET Extension Support feature which is not installed. See 'ArcGIS Server system requirements'."
+
+   ![](./bitmaps/net6-error1.png "deployment error")
+
+   This error indicates that you are trying to deploy a .NET 6 SOE or SOI, but your ArcGIS Server doesn't have **.NET Extension Support** installed. To deploy a .NET SOE or SOI in ArcGIS Server 11.0, you must install the **.NET Extension Support** feature first. Follow the steps in [Deploy the .NET 6 SOE or SOI to ArcGIS Server](#deploy-net-6-soes-and-sois-to-arcgis-server) to install this feature.
+
+- Add Extension error: "The extension cannot be deployed because it is a .NET-based extension and is currently not supported on Linux. Please deploy a Java-based extension."
+
+   This error indicates that you are trying to deploy a .NET SOE or SOI to ArcGIS Server on Linux, which is currently not supported. You can only deploy Java SOEs or SOIs to ArcGIS Server on Linux. ArcGIS Server on Windows supports both .NET-based extensions and Java-based extensions.

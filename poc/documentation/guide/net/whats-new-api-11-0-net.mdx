@@ -1,0 +1,295 @@
+---
+title: New in 11.0 API 
+description: >-
+---
+
+# New in 11.0 API
+
+## Added interfaces and classes
+
+Namespace|Name|Type|Note
+--|--|--|--
+ESRI.ArcGIS.DatasourcesGDB	|	MemoryWorkspaceFactory	|	Class	|	This class replaces ColumnaDBWorkspaceFactory.
+ESRI.ArcGIS.DatasourcesRaster		|	ComplexFunctionArguments	|	Class	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	CreateColorCompositeFunction	|	Class	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	CreateColorCompositeFunctionArguments	|	Class	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	IArgStatisticsFunctionArguments2	|	Interface	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	IComplexFunctionArguments	|	Interface	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	ICreateColorCompositeFunctionArguments	|	Interface	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	IExportItemsParameters2	|	Interface	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	IInterpolateIrregularDataFunctionArguments2	|	Interface	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	ILasToRasterFunctionArguments4	|	Interface	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	IPushbroomXform	|	Interface	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	ISpectralAngleMapperFunctionArguments	|	Interface	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	ITerrainFlattenFunctionArguments	|	Interface	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	PushbroomXform	|	Class	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	SpectralAngleMapperFunction	|	Class	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	SpectralAngleMapperFunctionArguments	|	Class	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	SuperViewBuilder	|	Class	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	SuperViewFileCrawler	|	Class	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	TerrainFlattenFunction	|	Class	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	TerrainFlattenFunctionArguments	|	Class	|	New functions.
+ESRI.ArcGIS.DatasourcesRaster		|	esriArgStatisticsComparisonType	|	Enum	|	New functions.
+ESRI.ArcGIS.Geodatabase		|	ITopologyClassEvents	|	Interface	|	New functions.
+ESRI.ArcGIS.Geodatabase		|	ITopologyName	|	Interface	|	New functions.
+ESRI.ArcGIS.Geodatabase		|	IVersionEventsOnArchiveUpdatedEvent	|	Interface	|	New functions.
+ESRI.ArcGIS.Geodatabase		|	IVersionEventsOnBeginReconcileEvent	|	Interface	|	New functions.
+ESRI.ArcGIS.Geodatabase		|	IVersionEventsOnDeleteVersionEvent	|	Interface	|	New functions.
+ESRI.ArcGIS.Geodatabase		|	IVersionEventsOnPostEvent	|	Interface	|	New functions.
+ESRI.ArcGIS.Geodatabase		|	TopologyName	|	Class	|	New functions.
+
+## Removed interfaces, classes, and enumerations
+Namespace	|	Name	|	Type	|	Note
+--|--|--|--
+ESRI.ArcGIS.DatasourcesGDB	|	ColumnaDBWorkspaceFactory	|	Class	|	Use MemoryWorkspaceFactory instead.
+ESRI.ArcGIS.DatasourcesGDB	|	IFeatureServiceName	|	Interface	|	For internal use only.
+ESRI.ArcGIS.DatasourcesGDB	|	IFieldCalculate	|	Interface	|	For internal use only.
+ESRI.ArcGIS.DatasourcesGDB	|	IVersionEditForBranch	|	Interface	|	For internal use only.
+ESRI.ArcGIS.DatasourcesGDB	|	IVersionEditForBranch2	|	Interface	|	For internal use only.
+ESRI.ArcGIS.DatasourcesGDB	|	IVersionEditForBranchImpl	|	Interface	|	For internal use only.
+ESRI.ArcGIS.DatasourcesGDB	|	StreamServiceDBWorkspace	|	Class	|	For internal use only.
+ESRI.ArcGIS.DatasourcesGDB	|	StreamServiceDBWorkspaceFactory	|	Class	|	For internal use only.
+ESRI.ArcGIS.Geodatabase		|	IAssociationObject2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IAssociationObject3	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IAttachment2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IAttachment3	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IAttachmentInfo2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IAttachmentInfo3	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IAttachmentManager2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IAttachmentManager3	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IBaseNetworkAssociation2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IBaseNetworkTopology2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IConfigurationKeyword2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IConfigurationParameter2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IDEBaseNetwork2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IEnumRowPairsImpl	|	Interface	|	For internal use only.
+ESRI.ArcGIS.Geodatabase		|	IFIDSet2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IFeatureCacheManager	|	Interface	|	For internal use only.
+ESRI.ArcGIS.Geodatabase		|	IFeatureService	|	Interface	|	For internal use only.
+ESRI.ArcGIS.Geodatabase		|	IFeatureServiceDataset	|	Interface	|	For internal use only.
+ESRI.ArcGIS.Geodatabase		|	IFeatureServiceEdit	|	Interface	|	For internal use only.
+ESRI.ArcGIS.Geodatabase		|	IFeatureServiceEdit2	|	Interface	|	For internal use only.
+ESRI.ArcGIS.Geodatabase		|	IField2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IFieldEdit2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IFieldGroup2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IFieldGroupEdit2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IFieldInfo2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IFieldInfo3	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IFields2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	INetworkElement64	|	Interface	|	Use INetworkElement instead.
+ESRI.ArcGIS.Geodatabase		|	INetworkEvaluatorSetup	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Geodatabase		|	INetworkScriptEvaluatorFunctions	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Geodatabase		|	ITableAttachmentsImpl	|	Interface	|	For internal use only.
+ESRI.ArcGIS.Geodatabase		|	IThumbnailInfoImpl	|	Interface	|	For internal use only.
+ESRI.ArcGIS.Geodatabase		|	ITier2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	ITimeAwareEvaluator	|	Interface	|	Use INetworkEvaluator::IsTimeAware instead.
+ESRI.ArcGIS.Geodatabase		|	ITraceResults2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	ITracer2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	ITracer3	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IUNResultType2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IUNTraceConfiguration2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IUNTraceResults2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IUtilityNetworkQueryTracer2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersion2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersion3	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersion4	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersionEdit2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersionEdit3	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersionEdit4	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersionEdit5	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersionEdit6	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersionEvents2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersionInfo2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersionedObject2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersionedObject3	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersionedWorkspace2	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersionedWorkspace3	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	IVersionedWorkspace4	|	Interface	|	Use the main interface instead.
+ESRI.ArcGIS.Geodatabase		|	VersionEvents2	|	Class	|	Use the main class instead.
+ESRI.ArcGIS.Geodatabase		|	esriFeatureServiceEditSessionMode	|	Enum	|	For internal use only.
+ESRI.ArcGIS.GISClient		|	IAdminUploader	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IAdminUploadsClient	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IEnumUploadItem	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IIMSAxlRequest	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IIMSFeatureClass	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IIMSMetadataAxlRequest	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IIMSServiceDescription	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IIMSUserRole	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IIMSWorkspace	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IIMSWorkspace2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IMSCatalogPathParser	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IMSMetadataServiceName	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IMSServiceName	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IMSWorkspaceFactory	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IRESTServerObjectAdmin	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IRemoteMetadataName	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IRemoteMetadataName2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IServerObjectDescription	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IServiceUploader	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IServiceUploadsClient	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	ISetDefaultAgsConnectionInfo	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IUploadItem	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IUploadItem2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IUploader	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IUploadsClient	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSBoundingBoxInfo	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSClientEvents	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSConnection	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSConnectionFactory	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSConnectionName	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSCoverageDescription	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSCoverageField	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSCoverageName	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSRange	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSServiceDescription	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSServiceDescription2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSServiceExceptionHandler	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWCSSpatialDomain	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWFSClientEvents	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWFSClientEventsAdapter	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWFSClientEventsWFSExceptionEvent	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWFSClientEventsWFSRequestEvent	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWFSConnection	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWFSConnectionFactory	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWFSConnectionName	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWFSLayerDescription	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWFSServiceDescription	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWFSServiceDescription2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWFSServiceExceptionHandler	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSClientEvents	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSClientEventsAdapter	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSClientEventsWMSExceptionEvent	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSClientEventsWMSRequestEvent	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSConnection	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSConnectionFactory	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSConnectionName	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSLayerDescription	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSLayerDescription2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSLayerStyleDescription	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSLayerStyleDescription2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSServiceDescription	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMSServiceExceptionHandler	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMTSConnection	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMTSConnectionFactory	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMTSConnectionName	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMTSDimension	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMTSLayerDescription	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMTSServiceDescription	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMTSTileMatrix	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMTSTileMatrixSet	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	IWMTSTileMatrixSetLink	|	Interface	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	UploadItem	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	Uploader	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	UploadsClient	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WCSConnection	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WCSConnectionFactory	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WCSConnectionName	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WCSServiceExceptionHandler	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WFSConnection	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WFSConnectionFactory	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WFSConnectionName	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WFSServiceExceptionHandler	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WMSConnection	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WMSConnectionFactory	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WMSConnectionName	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WMSServiceExceptionHandler	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WMTSConnection	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WMTSConnectionFactory	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WMTSConnectionName	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WMTSDimension	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WMTSLayerDescription	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WMTSTileMatrix	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WMTSTileMatrixSet	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	WMTSTileMatrixSetLink	|	Class	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	acIndexStatus	|	Enum	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	acMapUnits	|	Enum	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	acSecurityType	|	Enum	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	acServiceType	|	Enum	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	acUserRole	|	Enum	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	imsErrors	|	Enum	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	wcsErrors	|	Enum	|	Obsolete.
+ESRI.ArcGIS.GISClient		|	wmsErrors	|	Enum	|	Obsolete.
+ESRI.ArcGIS.Server		|	IConfigurationFactory	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IConfigurationFactory2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IConfigurationFactory3	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IGISServer	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IGISServers	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IIdentity	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IManagerWebService	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IPermissionsAdmin	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IPermissionsAdmin2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IPermissionsManager	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	ISOMController	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerCLRHost	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerConfigurationStorage	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerDirectory2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerDirectory3	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerDirectoryInfo2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerEnvironmentEx	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerEnvironmentImpl	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerEnvironmentImpl2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerErrorReports	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerInfo	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerInfos	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerInit	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerInit2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerJobManager	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerLog2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerMachine2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerMachine3	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerMachineEnvironment	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerMachineInfo	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerMachineStatus	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectConfiguration2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectConfiguration3	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectConfiguration4	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectConfiguration5	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectConfigurationInfo2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectConfigurationManager	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectConfigurationManager2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectExtensionType2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectExtensionType3	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectExtensionTypeInfo2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectType2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectType3	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectType4	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectTypeInfo2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerObjectTypeInfo3	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerStatistics	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerStatus	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServerTimeRange	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServiceCatalogAdmin	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServiceCatalogAdmin2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServiceCatalogAdmin3	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServiceDescription2	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	IServiceDescription3	|	Interface	|	Obsolete.
+ESRI.ArcGIS.Server		|	SOMController	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	Server	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerDirectory	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerDirectoryInfo	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerLogImpl	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerMachine	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerMachineStatus	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerObject	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerObjectAdmin	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerObjectConfiguration	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerObjectConfigurationInfo	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerObjectConfigurationStatus	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerObjectExtensionType	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerObjectExtensionTypeInfo	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerObjectManager	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerObjectType	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerObjectTypeInfo	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerP	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerStatisticsArray	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServerStatisticsResults	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	ServiceCatalog	|	Class	|	Obsolete.
+ESRI.ArcGIS.Server		|	esriAccessLevel	|	Enum	|	Obsolete.
+ESRI.ArcGIS.Server		|	esriLoadBalancing	|	Enum	|	Obsolete.
+ESRI.ArcGIS.Server		|	esriMachineStatus	|	Enum	|	Obsolete.
+ESRI.ArcGIS.Server		|	esriServerConnectionType	|	Enum	|	Obsolete.
+ESRI.ArcGIS.Server		|	esriServerDirectoryType	|	Enum	|	Obsolete.
+ESRI.ArcGIS.Server		|	esriServerExceptionHandlingMode	|	Enum	|	Obsolete.
+ESRI.ArcGIS.Server		|	esriServerStatEvent	|	Enum	|	Obsolete.
+ESRI.ArcGIS.Server		|	esriServerStatFunction	|	Enum	|	Obsolete.
+ESRI.ArcGIS.Server		|	esriServerTimePeriod	|	Enum	|	Obsolete.

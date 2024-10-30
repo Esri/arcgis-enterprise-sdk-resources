@@ -1,0 +1,156 @@
+---
+title: Twitter provider
+uid: cdf-twitter-provider
+description: >-
+  Twitter provider
+---
+
+# Twitter provider
+
+This sample provider reads tweets from a Twitter user's timeline using
+the Twitter API and exposes a feature service that displays point data
+by parsing the location data of each tweet. Click
+[here](./samples/twitter-feed-provider.zip) to download the source code
+for the provider onto your developer machine.
+
+## How the Provider Works
+
+This sample provider uses Twitter's API to query tweets and expects
+tweets in the format shown below.
+
+````
+Text: <...>
+Street: <...>
+City: <...>
+State: <...>
+Zip Code: <...>
+````
+
+The `text` and `street` fields are required, whereas the others are
+optional. For the best geocoding accuracy, ensure all fields have a
+valid value.
+
+## Set up the Provider
+
+1.  Run the `cdf createapp twitter-app` command to create a new custom
+    data app or use an existing custom data app.
+2.  Run the `cdf createprovider twitter-feed-provider` command to create
+    a custom data provider.
+3.  Navigate to the **providers/twitter-feed-provider** directory in a
+    command prompt and run the `npm i needle node-geocoder` command.
+4.  Copy the contents of the src folder in the provided source code into
+    the src folder inside your **providers/twitter-feed-provider/src**
+    directory.
+
+## Obtain API Keys and ID
+
+1.  Follow the instructions in Twitter's developer documentation to
+    obtain access to the Twitter API.
+2.  Once you have a valid bearer token, specify it in the
+    **twitter-feed-provider/config/default.json** file as the value for
+    the **twitter.bearer_token** field. The file is located in the
+    config folder inside the **twitter-feed-provider** directory.
+3.  Follow the instructions in the OpenCage Geocoding API documentation
+    to obtain an OpenCage Geocoding API key.
+4.  Specify the OpenCage Geocoding API in the
+    **twitter-feed-provider/config/default.json** file as the value for
+    the **opencage.api_key** field.
+5.  Use [TweeterID](https://tweeterid.com/) to get a Twitter user's ID.
+    Specify the user ID in the
+    **twitter-feed-provider/config/default.json** file as the value for
+    the **twitter.user_id** field. The user ID will be a string of
+    numbers such as _1223333342149173272_.
+
+## Configure the Provider
+ 
+1.  In the **cdconfig.json** file, set the value of the
+    `properties.hosts` field to `false` and
+    `properties.disableIdParam` field to `true`. The file is located
+    in the root of the **twitter-feed-provider** directory.
+
+## Test the Provider
+
+1.  Navigate to the **twitter-app** directory in a command prompt and
+    run the `npm start` command to start the custom data app
+2.  In a web browser, navigate to
+    http://localhost:8080/twitter-feed-provider/rest/services/FeatureServer/0/query,
+    and verify that the Twitter provider is returning data points.
+
+## Build and Deploy the Custom Data Provider Package File
+
+1.  Stop the custom data app, if it is currently running.
+2.  Open a command prompt, and navigate to the custom data app directory.
+3.  Run the `cdf export twitter-feed-provider` command.
+4.  In a web browser, navigate to the ArcGIS Server Administrator
+    Directory, and sign in as an administrator.
+5.  Click **uploads \> upload**.
+6.  On the **Upload Item** page, click **Choose File**, and select the
+    **csv-provider.cdpk** file. Optionally, provide a description in the
+    **Description** text box.
+7.  Click **Upload**. Once the file is uploaded, you will be directed to
+    a page with the following header: **Uploaded item - \<item_id\>** .
+    Copy the item id.
+8.  Browse back to the root of the Administrator Directory and then
+    click **services \> types \> customdataproviders**.
+9.  On the **Registered Customdata Providers** page, click the **register** link and 
+    then paste the item id into the **Id** of **uploaded item** field.
+10. Click the **Register** button.
+
+## Create Feature Service
+
+1.  Browse back to the root of the Administrator Directory and click
+    **services \> createService**.
+
+2.  On the **Create Service** page, copy and paste the following JSON
+    into the **Service (in JSON format)** text box.
+
+    ```json
+    {
+      "serviceName": "twitterfeed",
+      "type": "FeatureServer",
+      "description": "",
+      "capabilities": "Query",
+      "provider": "CUSTOMDATA",
+      "clusterName": "default",
+      "minInstancesPerNode": 0,
+      "maxInstancesPerNode": 0,
+      "instancesPerContainer": 1,
+      "maxWaitTime": 60,
+      "maxStartupTime": 300,
+      "maxIdleTime": 1800,
+      "maxUsageTime": 600,
+      "loadBalancing": "ROUND_ROBIN",
+      "isolationLevel": "HIGH",
+      "configuredState": "STARTED",
+      "recycleInterval": 24,
+      "recycleStartTime": "00:00",
+      "keepAliveInterval": 1800,
+      "private": false,
+      "isDefault": false,
+      "maxUploadFileSize": 0,
+      "allowedUploadFileTypes": "",
+      "properties": {
+        "disableCaching": "true"
+      },
+      "jsonProperties": {
+        "customDataProviderInfo": {
+          "dataProviderName": "twitter-feed-provider",
+          "dataProviderHost": "",
+          "dataProviderId": ""
+        }
+      },
+      "extensions": [],
+      "frameworkProperties": {},
+      "datasets": []
+    }
+    ```
+
+3.  Click **Create.**
+
+## Consume Feature Service
+
+To access the twitterfeed feature service that you created in the
+previous section, use the appropriate URL (e.g.,
+https://\<domain_or_machine_name\>/\<webadaptor_name\>/rest/services/twitterfeed/FeatureServer).
+You can use this URL to consume data from Twitter in ArcGIS clients like
+ArcGIS Pro, ArcGIS Online, and ArcGIS Enterprise.

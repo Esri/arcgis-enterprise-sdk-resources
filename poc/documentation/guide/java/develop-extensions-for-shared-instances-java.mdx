@@ -1,0 +1,60 @@
+---
+title: Work with shared instances
+description: >-
+---
+
+# Work with shared instances
+
+### Use the `supportsSharedInstances` property
+
+Starting with 10.8.1, enabling SOEs or SOIs with map services that are set to use the [shared instance pool](https://enterprise.arcgis.com/en/server/latest/administer/windows/configure-service-instance-settings.htm) is supported. Since shared instances manage service resources and service initialization differently from dedicated instances, not all extensions are safe to use with shared instances. You, as the developer, should follow the [best coding practice](#best-coding-practice) to ensure that the SOE or SOI meets all the requirements and is safe to use with shared instances. 
+
+To distinguish the extensions that meet those criteria, a new extension property, named `supportsSharedInstances`, is introduced to allow the developer to flag if the extension can be used for shared instances. The following is an example of the `supportsSharedInstances` property:
+
+``` java
+@ArcGISExtension 
+@ServerObjectExtProperties(
+    displayName = "Simple REST SOE (Map Service - Pro)", 
+    description = "This is a simple REST SOE for a map service published from ArcGIS Pro.",
+    properties = "" ,
+	allSOAPCapabilities = "" ,
+	defaultSOAPCapabilities = "" ,
+	supportsSharedInstances = true)
+```
+
+The code sets `supportsSharedInstances` to `true`, which allows this SOI to be enabled with a map service set to use the shared instance pool. This property is an optional property with the default value `false`. Unless you explicitly set it to `true` as shown in the code example, the SOE or SOI can't be enabled with map services set for shared instances. You should only set this property to `true` to allow the extension for shared instances after ensuring your extension follows the [best coding practice](#best-coding-practice).
+
+### Best coding practice 
+
+If your extension will be enabled with multiple services that are set to use shared instances, it's important to ensure that the resources accessed by the extension of each service are handled properly. 
+
+First, you should not use global or static variables in your SOE or SOI, because these variables can be accessed by different services sharing the same instance, which can cause unexpected values to be assigned to those variables. It's safe to use local variables, because their scope is within the current extension or service and they can't be altered by other services.
+
+Second, be cautious when you write your own singletons in extensions. Your singletons should be stateless. The singletons in ArcGIS Enterprise SDK, such as `SdeWorkspaceFactory` and `SpatialReferenceEnvironment`, are all stateless and safe to use with shared instances.
+
+Last, SOEs and SOIs should be single threaded. Multi-threading is not supported in SOEs or SOIs for both dedicated instances and shared instances. If your SOE involves long-time processing, you should consider developing a [custom geoprocessing tool](https://pro.arcgis.com/en/pro-app/arcpy/geoprocessing_and_python/a-quick-tour-of-creating-tools-in-python.htm) to be published as a geoprocessing service instead of using an SOE. 
+
+### Life cycle of extensions using shared instances
+
+In SOEs and SOIs, the `init()` method handles the extension's initialization. When the extension is enabled with dedicated instances, this `init()` method is called after the service is started using either [ArcGIS Server Manager](https://enterprise.arcgis.com/en/server/latest/publish-services/windows/starting-and-stopping-services.htm) or [ArcGIS REST API](https://developers.arcgis.com/rest/enterprise-administration/server/startservice.htm). With shared instances, starting the service does not trigger the extension's `init()` method immediately. This method is only called after the service is accessed or receives a request. For example, the REST SOE's `init()` method will not be called until you visit the REST endpoint of the SOE or send a REST request to the SOE, and the SOI's `init()` method will not be called until you send a request to the service with which the SOI is enabled.
+
+Stopping the service using either [ArcGIS Server Manager](https://enterprise.arcgis.com/en/server/latest/publish-services/windows/starting-and-stopping-services.htm) or [ArcGIS REST API](https://developers.arcgis.com/rest/enterprise-administration/server/stopservice.htm) triggers the extension's `shutdown()` method for both dedicated instances and shared instances.
+
+### Use the DynamicMappingHost service
+
+Since all the shared instances are managed by the DynamicMappingHost service, the life cycle of SOEs and SOIs are also subject to the status of the DynamicMappingHost service, which can be managed via ArcGIS REST API:
+
+- Stop `https://machine:port/webadaptor/admin/services/System/DynamicMappingHost.MapServer/stop`
+
+- Start `https://machine:port/webadaptor/admin/services/System/DynamicMappingHost.MapServer/start`
+
+- Status `https://machine:port/webadaptor/admin/services/System/DynamicMappingHost.MapServer/status`
+
+Starting the DynamicMappingHost service will launch the underlying DynamicMappingHost ArcSOC processes. The [number of shared instances per machine](https://enterprise.arcgis.com/en/server/latest/administer/windows/configure-service-instance-settings.htm#ESRI_SECTION1_100EBEA6FF554B0BAFE3662F08772BC3) setting for shared instance controls the number of the DynamicMappingHost ArcSOC processes that are running. Once the DynamicMappingHost service is started, you can access a running extension to trigger its `init()` method. Stopping the DynamicMappingHost service will first trigger the extension's `shutdown()` method, and then stop all the DynamicMappingHost ArcSOC processes.
+
+Since each instance in the shared pool caches information about the services that have received requests, restarting the DynamicMappingHost service will clear the cache. 
+
+### Also See
+-   [Introducing shared instances in ArcGIS Server](https://www.esri.com/arcgis-blog/products/arcgis-enterprise/administration/shared-instances-arcgis-server-107/)
+-   [Configure service instance settings](https://enterprise.arcgis.com/en/server/latest/administer/windows/configure-service-instance-settings.htm#)
+-   [Debug extensions with shared instances](../debug-extensions-shared-java/)

@@ -1,0 +1,210 @@
+---
+title: More on Pass-through Custom Data Providers
+uid: pass-through-custom-data-providers
+description: >-
+  More on Pass-through Custom Data Providers
+---
+
+Creating a pass-through custom data provider requires deeper understanding 
+of your remote data source and the ArcGIS REST specification. This topic goes into 
+more detail on how to create pass-through providers required for datasets that 
+contain large numbers of records.
+
+There is no hard mimimum number of requested records that requires using 
+a pass-through provider. Generally, if the number of records that can be 
+requested exceeds the default `maxRecordCount` value of 2000, then using a pass-through 
+provider should be considered. Check the specification of the remote data source. If 
+the remote data source limits the number of records that can be returned in a single 
+request to a number that is smaller than total number of records will be requested, then 
+using a pass-through provider should be considered.
+
+## Understanding ArcGIS Client Requests 
+
+Pass-through providers need to pass on requests for dataset metadata, filtering, and pagination 
+operations to the remote API. Pass-through providers need to inspect, parse, and process individual 
+requests and perform specific operations in response to them. Handling request query parameters 
+in the provider code is essential for adherence to the remote API specification to create  
+appropriate queries to the remote API.
+
+ArcGIS clients make many types of requests in order retrieve geospatial data for visualization. 
+Initial service requests determine how much data to expect and how much data to 
+request on subsequent feature service queries. Query parameters related to initial metadata requests include:
+- `returnCountOnly`
+- `count` 
+- `returnExtentOnly`   
+
+Once the client knows how many items are in the feature set, the client will request 
+data in pages rather than the entire dataset. A request for a page of data is defined by 
+the following query parameters:
+- `resultRecordCount`
+- `resultOffset`  
+
+How these properties are used is discussed below, but refer to the [API reference](../custom-data-provider-api-reference/)
+for more details.
+
+## Returning a Dataset's Record Count
+
+Examine this query with attention to the values for `returnExtentOnly` and `returnCountOnly`.
+
+`query?f=json&returnExtentOnly=true&returnCountOnly=true&outSR=102100&spatialRel=esriSpatialRelIntersects&where=1%3D1&token=someValue`
+
+The ArcGIS client is expecting a JSON response like this:
+
+```
+{
+    "extent": {
+        "ymin": -700000,
+        "xmin": 9000000,
+        "ymax": 3500000,
+        "xmax": 14000000,
+        "spatialReference": {
+            "wkid": 102100
+        }
+    },
+    "count": 1895
+}
+
+```
+
+From this response, the ArcGIS client will know where set the initial map `extent`, and by the value of `count` that
+it can expect `1895` items in the feature set.
+
+## Querying for the Feature Set
+
+The ArcGIS client will now send off a sequence of requests to retrieve the full feature set in paginated fashion. Examine 
+the following query with attention to the values for `resultOffset` and `resultRecordCount`.
+
+`query?f=json&cacheHint=true&resultOffset=0&resultRecordCount=300&where=1%3D1&orderByFields=someValue&outFields=someValueD&outSR=102100&spatialRel=esriSpatialRelIntersects&token=someValue`
+
+The value of `resultRecordCount`, in this case `300`, is how many features the client requests each time. The value of `resultOffset` 
+is used to keep track of which "page" of data the client is requesting. So with a `count` of `1895` and a `resultRecordCount` of `300`, seven queries must 
+be sent by the client to retrieve all the data. The `resultOffset` begins at `0` and increments by `300` on each request.
+
+## Implementing Pagination in the Custom Data Provider Code
+
+This is a high-level overview of how pagination could be implemented in custom data provider code. There are two main tasks in the code 
+that need to be addressed: 
+1. Recognize a request for `returnCountOnly` and supply the value for `count`. 
+2. Recognize requests for the feature set.  
+
+Here is an example JSON response from an API for a remote data source:
+
+```
+{
+    "offset": 0,
+    "limit": 300,
+    "endOfRecords": false,
+    "count": 1895,
+    "results": [
+        {// data not shown in example}
+    ],
+    "facets": []
+}
+```
+
+Many APIs and databases will return a `count` (or some similar key) for the total number of items that match the submitted query even when there is a 
+limit to the number of items that can be returned in single query. They will also return `limit` and `offset`, if these query parameters are supported. 
+
+### Example Pseudocode
+
+```js
+// model.js
+
+// maxRecordCount should be equal to the number of items your remote data source can return in one request
+const maxRecordCount = 300;
+
+// other filters can be applied too, such as 'where' or 'geometry', see documentation
+const filtersApplied = {
+  resultRecordCount: true,
+  resultOffset: true,
+};
+
+class Model {
+  // implement some code here, such as a constructor with a database connection
+  async getData (req, callback) {
+
+    // conditional logic to capture the request for the returnCountOnly
+    if (req.query.returnCountOnly === 'true') {
+
+      const res = await fetch(`https://<host>/path?value=foo&limit=1`);
+
+      const jsonRes = await res.json();
+      let recordCount = jsonRes.count; // the key for the number of items
+
+      // return the count and desired initial extent
+      return callback(null, {
+        "count": recordCount,
+        "extent": {
+            "xmin": val1,
+            "ymin": val2,
+            "xmax": val3,
+            "ymax": val4,
+            "spatialReference": {
+                "wkid": 102100
+            }
+        }
+      }) 
+    }
+    else {
+      // implement code for returning items in feature set
+
+      // destructure req.query to get value of 'resultOffset'
+      const {
+        where,
+        orderByFields,
+        objectIds,
+        resultRecordCount,
+        resultOffset,
+        idField,
+      } = req.query;
+
+      // construct a new url that conforms to your remote data source's specification
+
+      // build up a new `where` clause in addition to limit and offset if desired
+      const limitClause = `&limit=${maxRecordCount}`;
+      const offsetClause = `&offset=${resultOffset}`;
+
+      const newURL = `https://<host>/path?value=foo${limitClause}${offsetClause}`;
+
+      // fetch features
+      const response = await fetch(newURL);
+      const jsonResults = await response.json();
+
+      // construct and return the GeoJSON
+      callback(null, {
+        ...geojson,
+        metadata: {  
+          maxRecordCount
+        },
+        filtersApplied
+      })
+
+    }
+  }
+}
+// export model
+module.exports = Model;
+
+```
+
+### Breaking Down the Example Pseudocode
+
+At the top of the **model.js** file, constants are declared for `maxRecordCount` and the filters that will be used. Note that 
+many more filters can be applied beyond these. `maxRecordCount` should be adjusted based on the `limit` that can be returned 
+by the remote data source.
+
+The `getData()` function is always executed when custom data feature service receives a request. In the custom data provider code, 
+we have access to the `query` object in the request. Based on the keys in the `query` object, we can customize the response from our 
+custom data provider. In this case, we conditionally return an object that includes `count` and `extent` if the `query` contains 
+the `returnCountOnly` key and the value is `true`. In the example here, the API doesn't have a dedicated REST endpoint for only 
+querying the number of items. The user has to submit a query for at least one item to get the total count. To efficiently capture the `count`, we can 
+put `limit=1` in our initial request so that only the minimum amount of data needs to be returned for the initial request.
+
+If the client is asking for the feature set items, we need to build up a URL that the remote data source can understand by 
+interpreting the client's query parameters. Here we are destructuring some of the common query parameters into constants. Note that 
+we are only using the `resultOffset` in this example, but it is very likely that you'll want to use others such as the `where` clause. 
+See [Create Custom Data Provider](../create-a-custom-data-feed-provider/) for more information on the `where` clause.
+
+Finally, we translate the API's response into GeoJSON and set the metadata.
+
+

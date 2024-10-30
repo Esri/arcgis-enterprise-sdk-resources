@@ -1,0 +1,26 @@
+---
+title: ArcGIS Enterprise SDK Developer Guide
+description: >-
+  The ArcGIS Enterprise Software Development Kit (SDK) allows developers to
+  extend the function
+---
+
+# ArcGIS Enterprise SDK Developer Guide
+
+ArcGIS Enterprise SDK Developer Guide
+
+      ArcGIS Enterprise SDK for Developers   
+
+### About the ArcGIS Enterprise SDK
+
+The ArcGIS Enterprise Software Development Kit (SDK) allows developers to extend the functionality of ArcGIS Server map services published via ArcGIS Pro. There are two types of extensions in ArcGIS Enterprise:
+
+-       **Server Object Extensions (SOEs)** - Allow developers to expose new operations in ArcGIS Server. These operations are exposed through the ArcGIS Server REST interface for map services. SOEs can be written for a specific map service or for mutiple map services. They are exposed as REST services and typically communicate information using JSON. SOEs cannot be consumed by Esri clients and applications since they introduce new APIs. Typically, SOEs are used with custom applications developed using Esri's ArcGIS Enterprise SDK.
+
+
+-       **Server Object Interceptors (SOIs)** - Allow developers to modify the behavior of existing operations in ArcGIS Server through pre-processing or post-processing of requests. They can be used with map services and SOEs. Since SOIs perform pre-processing and post-processing of existing service operations, they are invoked when any client, including any Esri application, accesses ArcGIS Server services. However, this means that SOIs cannot add input arguments or change return types for the existing Esri API.
+
+These extensions can be written using either the .NET (C# or VB) or Java languages. The Enterprise SDK includes samples, tools, and documentation for both .NET and Java and you can choose during the setup which one you wish to target.
+
+The Enterprise SDK is designed to be complementary with the ArcObjects SDK and can co-exist with the ArcObjects SDK on a machine. Developers who are writing SOEs and SOIs for services published from ArcMap should use the ArcObjects SDK. If you are developing any other type of SOE and SOI, such as those for services published from ArcGIS Pro, use the ArcGIS Enterprise SDK. The APIs for the ArcObjects SDK and Enterprise SDKs have similarities but are distinct and different APIs.
+
