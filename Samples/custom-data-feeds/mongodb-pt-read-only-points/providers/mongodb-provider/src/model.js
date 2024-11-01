@@ -36,7 +36,7 @@ class Model {
       false;
   }
 
-  async getData(req, callback) {
+  async getData(req) {
     // Get  the "host" and "id" parameters from route-path
     const databaseName = req.params.host;
     const collectionName = req.params.id;
@@ -71,7 +71,7 @@ class Model {
       // for aggregate requests, aggregate directly with MongoDB
       if (geoserviceParams.returnCountOnly || geoserviceParams.returnExtentOnly) {
         const result = await aggregateDocs(collection, dbParams.pipeline);
-        return callback(null, result);
+        return result;
       }
 
       // Fetch docs from Mongo
@@ -86,17 +86,17 @@ class Model {
       // Convert docs to geojson
       const geojson = convertDocsToGeoJSON(features, geometryField);
 
-      callback(null, {
+      return {
         ...geojson,
         metadata: { idField, maxRecordCount, exceededTransferLimit },
         filtersApplied,
         ttl: cacheTtl,
         crs,
-      });
+      };
 
     } catch (error) {
       this.#logger.error(`MongoDB Provider: ${JSON.stringify(error)}`);
-      return callback(error);
+      throw error;
     }
   }
 
