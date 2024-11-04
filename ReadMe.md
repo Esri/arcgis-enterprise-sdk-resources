@@ -26,12 +26,12 @@ To get started, visit [ArcGIS Enterprise SDK Overview](https://developers.arcgis
 ## Requirements
 * ArcGIS Enterprise (or a standalone ArcGIS Server)
 * ArcGIS Enterprise SDK
-* Node.js (Developing a CDF)
+* Node.js (Only required for CDF)
 * IDE
    * Visual Studio for .NET (C# or VB) 
    * IntelliJ IDEA, Eclipse IDE, or other IDE for Java
    * Any IDE or text editor
-* ArcGIS Pro 
+* ArcGIS Pro (Not required for CDF))
 
    ArcGIS Pro is required to prepare or publish the service that the SOE or SOI can be enabled with. 
    
