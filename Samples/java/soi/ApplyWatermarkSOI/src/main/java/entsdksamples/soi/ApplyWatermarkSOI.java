@@ -1,7 +1,7 @@
 package entsdksamples.soi;
 
 /*
-COPYRIGHT 2020 ESRI
+COPYRIGHT 2024 ESRI
 TRADE SECRETS: ESRI PROPRIETARY AND CONFIDENTIAL
 Unpublished material - all rights reserved under the 
 Copyright Laws of the United States and applicable international
@@ -45,7 +45,7 @@ import com.esri.arcgis.system.ServerUtilities;
 import javax.imageio.ImageIO;
 
 /*
- * For an SOE to act as in interceptor, it needs to implement all request handler interfaces
+ * For an SOI to act as in interceptor, it needs to implement all request handler interfaces
  * IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler now the SOE/SOI can
  * intercept all types of calls to ArcObjects or custom SOEs.
  * 
@@ -123,7 +123,10 @@ public class ApplyWatermarkSOI
 		// Load the SOI helper.    
 		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
 		this.soiHelper = new SOIHelper(mapServiceWSDLPath);
+<<<<<<< HEAD
 		
+=======
+>>>>>>> master
 	}
 
 	 /**

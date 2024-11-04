@@ -110,4 +110,10 @@ This instruction uses the [USA map service](https://github.com/Esri/arcgis-enter
    ![](../../../../images/netsp/NetEdit4.png "Edit features SOE sample")   
 4. Perform the following ***Query*** operation to confirm the feature is updated:
 
+<<<<<<< HEAD
    https://<serverdomain>/<webadaptorname>/rest/services/USA_Edit/MapServer/0/query?where=&text=&objectIds=3961&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&having=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=html
+=======
+    ```
+   https://<serverdomain>/<webadaptorname>/rest/services/USA_Edit/MapServer/0/query?where=&text=&objectIds=3961&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&having=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=html
+   ```
+>>>>>>> master

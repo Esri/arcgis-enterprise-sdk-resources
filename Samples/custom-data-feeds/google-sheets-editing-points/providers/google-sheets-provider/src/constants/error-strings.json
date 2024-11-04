@@ -1,0 +1,4 @@
+{
+    "ROW_ID_LESS_THAN_MIN" : "Google Sheets has no row ids less than 2.",
+    "NOT_UPDATED_OR_DOESNT_EXIST": "The specified feature could not be updated or does not exist."
+}

@@ -47,8 +47,14 @@ Deploying the SOE from the .soe file (`..\SimpleSoapSOE\bin\Release\NetSimpleSoa
 
 1. Create a new console application in Visual Studio.
 2. Add the SOAP SOE's WSDL as Web Reference:
+<<<<<<< HEAD
     1. Make sure the USA map service's Sharing properties is shared with ***Everyone(public)***.
     2. Copy the SOE's SOAP URL from the service page in ArcGIS Server Manager.
+=======
+   1. Make sure the USA map service's ***Sharing properties*** is shared with ***Everyone(public)***.
+   2. Copy the SOE's SOAP URL from the service page in ArcGIS Server Manager.
+
+>>>>>>> master
    The URL should be a valid WSDL URL in the following format:
 
    ```
