@@ -36,11 +36,14 @@ This sample uses the [Vegetation map service](https://github.com/Esri/arcgis-ent
 2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select Vegetation map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***.NET Find Near Features REST SOE*** and check the box to enable it.
 4. Make sure the SOE is selected.
+<<<<<<< HEAD
+=======
+5. Under ***Operations Allowed*** section, make sure to check both ***GetInfo*** and ***FindFeatures***.
+>>>>>>> master
+
 5. Under ***Operations Allowed*** section, make sure to check both ***GetInfo*** and ***FindFeatures***.
 
-![](../../../../images/netsp/NetFindRest1.png "Find near features REST SOE sample")
-
-5. Click the ***Save and Restart*** button to restart the service.
+   ![](../../../../images/netsp/NetFindRest1.png "Find near features REST SOE sample")
 
 ### Test the SOE in the ArcGIS Server Services Directory
 

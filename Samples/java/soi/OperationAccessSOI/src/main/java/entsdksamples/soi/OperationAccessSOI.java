@@ -119,7 +119,11 @@ public class OperationAccessSOI implements IServerObjectExtension, IRESTRequestH
 		this.so = soh.getServerObject();
 		//Load the SOI helper.
 		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
+<<<<<<< HEAD
+        this.soiHelper = new SOIHelper(mapServiceWSDLPath);
+=======
 		this.soiHelper = new SOIHelper(mapServiceWSDLPath);
+>>>>>>> master
 		this.serverLog.addMessage(3, 200, "Initialized " + this.getClass().getName() + " SOE.");
 	}
 

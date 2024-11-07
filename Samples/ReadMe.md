@@ -2,9 +2,9 @@
 
 The SOE samples and SOI samples in this repository are also included with the installation of ArcGIS Enterprise SDK. It's located at `<ArcGIS_Enterprise_SDK_Installation_Path>\Samples`, by default, `C:\Program Files\ArcGIS\EnterpriseSDK\Samples`.
 
-> Note: This repository contains SOE and SOI samples built with **11.3**, the latest version of ArcGIS Enterprise SDK. If you want to download the SOE and SOI samples built with 11.2 or previous versions of ArcGIS Enterprise SDK, refer to [Releases](https://github.com/Esri/arcgis-enterprise-sdk-resources/releases).
+> Note: This repository contains SOE and SOI samples built with **11.4**, the latest version of ArcGIS Enterprise SDK. If you want to download the SOE and SOI samples built with 11.3 or previous versions of ArcGIS Enterprise SDK, refer to [Releases](https://github.com/Esri/arcgis-enterprise-sdk-resources/releases).
 
-The sample data used to publish the testing services can be found at `<ArcGIS_Enterprise_SDK_Installation_Path>\Samples\EnterpriseSDKSampleData.zip`, by default, `C:\Program Files\ArcGIS\EnterpriseSDK\Samples\EnterpriseSDKSampleData.zip`.
+The sample data used to publish the testing services for SOEs/SOIs can be found at `<ArcGIS_Enterprise_SDK_Installation_Path>\Samples\EnterpriseSDKSampleData.zip`, by default, `C:\Program Files\ArcGIS\EnterpriseSDK\Samples\EnterpriseSDKSampleData.zip`.
 
 The following three services are used in the samples:
 1. **USA map service**
@@ -71,3 +71,12 @@ The following three services are used in the samples:
   
 * **Java SOAP Client Samples**
   * [Overview of building Java SOAP client application](java/Java%20SOAP%20Client)
+
+### For Custom Data Feeds
+* [csv full fetch ready only points](custom-data-feeds/csv-full-fetch-ready-only-points)
+* [google sheets editing points](custom-data-feeds/google-sheets-editing-points)
+* [mongodb editing polygons](custom-data-feeds/mongodb-editing-polygons)
+* [mongodb pt read only points](custom-data-feeds/mongodb-pt-read-only-points)
+* [nrel hybrid ready only points](custom-data-feeds/nrel-hybrid-ready-only-points)
+* [socrata full fetch read only points](custom-data-feeds/socrata-full-fetch-read-only-points)
+* [yelp full fetch ready only points](custom-data-feeds/yelp-full-fetch-ready-only-points)

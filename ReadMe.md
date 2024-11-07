@@ -1,8 +1,8 @@
 # arcgis-enterprise-sdk-resources
 
-This repository provides samples and code snippets for server object extensions (SOEs) and server object interceptors (SOIs) built with **10.9.1** ArcGIS Enterprise SDK. Learn more about [ArcGIS Enterprise SDK](https://developers.arcgis.com/enterprise-sdk/).
+This repository provides samples and code snippets for server object extensions (SOEs), server object interceptors (SOIs) and custom data feeds (CDF) built with **11.4** ArcGIS Enterprise SDK. Learn more about [ArcGIS Enterprise SDK](https://developers.arcgis.com/enterprise-sdk/).
 
-> Note: If you want to download the SOE and SOI samples built with 10.9 or previous versions of ArcGIS Enterprise SDK, refer to [Releases](https://github.com/Esri/arcgis-enterprise-sdk-resources/releases).
+> Note: If you want to download the SOE and SOI samples built with 11.4 or previous versions of ArcGIS Enterprise SDK, refer to [Releases](https://github.com/Esri/arcgis-enterprise-sdk-resources/releases).
 
 An SOI is capable of intercepting REST, SOAP, and OGC requests and responses of a map service in the following way:
 <p align="center">
@@ -26,10 +26,12 @@ To get started, visit [ArcGIS Enterprise SDK Overview](https://developers.arcgis
 ## Requirements
 * ArcGIS Enterprise (or a standalone ArcGIS Server)
 * ArcGIS Enterprise SDK
+* Node.js (Only required for CDF)
 * IDE
    * Visual Studio for .NET (C# or VB) 
    * IntelliJ IDEA, Eclipse IDE, or other IDE for Java
-* ArcGIS Pro 
+   * Any IDE or text editor
+* ArcGIS Pro (Not required for CDF))
 
    ArcGIS Pro is required to prepare or publish the service that the SOE or SOI can be enabled with. 
    
