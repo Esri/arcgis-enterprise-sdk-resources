@@ -66,11 +66,11 @@ Any Image Service published from ArcGIS Pro or from ArcGIS Admin Rest API.
 
    This SOE root resource page displays the SOE's description: Get raster item statistics in a mosaic dataset. And showing SupportRasterItemAccess: true
 
-   ![](../../../../images/netsp/GetRasterStatistics1.png "GetRasterStatistics")
+![](../../../../images/netsp/GetRasterStatistics1.png "GetRasterStatistics")
 
 4. Click the ***GetRasterStatistics*** operation.
 
 5. Type in a number in the ***ObjectID*** box.  Click the ***GetRasterStatistics(GET)*** button.Raster Statistics results show as below screen shot:
 
-    ![](../../../../images/netsp/GetRasterStatistics2.png "GetRasterStatistics")
+![](../../../../images/netsp/GetRasterStatistics2.png "GetRasterStatistics")
 
