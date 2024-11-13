@@ -1,5 +1,5 @@
 ---
-order: 7
+order: 19
 ---
 
 # .NET Get Raster Statistics REST SOE
