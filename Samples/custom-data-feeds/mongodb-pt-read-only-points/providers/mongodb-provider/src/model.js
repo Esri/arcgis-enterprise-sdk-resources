@@ -55,7 +55,7 @@ class Model {
         geometryField,
         idField = 'alternateID',
         cacheTtl = 0,
-        crs = 4326,
+        inputCrs = 4326,
         maxRecordCount = 2000,
       } = this.#getMetadata(databaseName, collectionName);
 
@@ -64,7 +64,7 @@ class Model {
         ...geoserviceParams,
         geometryField,
         idField,
-        crs,
+        inputCrs,
         resultRecordCount: maxRecordCount,
       });
 
@@ -88,10 +88,9 @@ class Model {
 
       return {
         ...geojson,
-        metadata: { idField, maxRecordCount, exceededTransferLimit },
+        metadata: { idField, maxRecordCount, exceededTransferLimit, inputCrs },
         filtersApplied,
         ttl: cacheTtl,
-        crs,
       };
 
     } catch (error) {
