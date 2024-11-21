@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NetSimpleSoapSOAPClient.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="NetSimpleSoapSOAPClient_localhost_USA_NetSimpleSoapSOE" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://devserver.esri.com/arcgis/services/USA/MapServer/NetSimpleSoapSOE</Value>
+    <Setting Name="NetSimpleSoapSOAPClient_localhost_SampleWorldCities_NetSimpleSoapSOE" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://localhost:6443/arcgis/services/SampleWorldCities/MapServer/NetSimpleSoapSOE</Value>
     </Setting>
   </Settings>
 </SettingsFile>

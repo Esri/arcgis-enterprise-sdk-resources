@@ -50,12 +50,13 @@ import java.util.HashMap;
 
 @ArcGISExtension
 @ServerObjectExtProperties(displayName = "Java Simple REST SOE With Properties",
-			description = "Java Simple REST SOE With Properties.",
-			properties = {"layerType=feature", "returnFormat=json", "maxNumFeatures=100",
+		description = "Java Simple REST SOE With Properties.",
+		properties = {"layerType=feature", "returnFormat=json", "maxNumFeatures=100",
 				"isEditable=false" },
-			 allSOAPCapabilities = "" ,
-			 defaultSOAPCapabilities = "" ,
-			supportsSharedInstances = true)
+		allSOAPCapabilities = "" ,
+		defaultSOAPCapabilities = "" ,
+		servicetype = "MapService",
+		supportsSharedInstances = false)
 
 public class JavaSimpleRESTSOEWithProperties implements IServerObjectExtension, IRESTRequestHandler, IObjectConstruct
 	 {

@@ -14,30 +14,30 @@
 #pragma warning disable 1591
 
 namespace NetSimpleSoapSOAPClient.localhost {
-    using System;
-    using System.Web.Services;
     using System.Diagnostics;
-    using System.Web.Services.Protocols;
+    using System;
     using System.Xml.Serialization;
     using System.ComponentModel;
+    using System.Web.Services.Protocols;
+    using System.Web.Services;
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="SimpleSoapSOEBinding", Namespace="http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0")]
-    public partial class USA_NetSimpleSoapSOE : System.Web.Services.Protocols.SoapHttpClientProtocol {
+    public partial class SampleWorldCities_NetSimpleSoapSOE : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback EchoInputOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
-        public USA_NetSimpleSoapSOE() {
-            this.Url = global::NetSimpleSoapSOAPClient.Properties.Settings.Default.NetSimpleSoapSOAPClient_localhost_USA_NetSimpleSoapSOE;
+        public SampleWorldCities_NetSimpleSoapSOE() {
+            this.Url = global::NetSimpleSoapSOAPClient.Properties.Settings.Default.NetSimpleSoapSOAPClient_localhost_SampleWorldCities_NetSimpleSoapSOE;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
-                //this.UseDefaultCredentials = true;
+                this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
             }
             else {
@@ -122,11 +122,11 @@ namespace NetSimpleSoapSOAPClient.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void EchoInputCompletedEventHandler(object sender, EchoInputCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1586.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class EchoInputCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {

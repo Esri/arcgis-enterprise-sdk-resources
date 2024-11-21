@@ -1,7 +1,7 @@
 package entsdksamples.soi;
 
 /*
-COPYRIGHT 2024 ESRI
+COPYRIGHT 2018 ESRI
 TRADE SECRETS: ESRI PROPRIETARY AND CONFIDENTIAL
 Unpublished material - all rights reserved under the
 Copyright Laws of the United States and applicable international
@@ -18,7 +18,6 @@ email: contracts@esri.com
 */
 
 import java.io.*;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,7 +72,7 @@ import com.esri.arcgis.system.ServerUtilities;
  * 2: This example only implements layer level access on Map Service operations. Image Service
  * operations need to be implemented.
  *
- * 3: This example is incomplete and is intended to teach patters to writting SOIs and is not designed
+ * 3: This example is incomplete and is intended to teach patters to writing SOIs and is not designed
  * to work with custom SOE's or with service capabilities (for e.g. Mobile Data Access etc.) enabled.
  */
 
@@ -82,7 +81,7 @@ import com.esri.arcgis.system.ServerUtilities;
 		description = "SOI to control access to different layers",
 		interceptor = true,
 		servicetype = "MapService",
-		supportsSharedInstances = true)
+		supportsSharedInstances = false)
 public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler,
 		IRequestHandler2, IRequestHandler {
 	private static final String ARCGISHOME_ENV = "AGSSERVER";
@@ -91,14 +90,13 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 	private IServerObject so;
 	private SOIHelper soiHelper;
 
-	private String urlString = "https://customdatafeeds.s3.amazonaws.com/permission.json";
-
 	/*
 	 * Map used to store permission information. Permission rules for each service is read form the
-	 * permisson.json file( https://customdatafeeds.s3.amazonaws.com/permission.json)
+	 * permisson.json file.
 	 */
 	private Map<String, String> servicePermissionMap = null;
 
+	private String permissionfileURL = "https://esriresources.s3.amazonaws.com/sdkresources/permission.json";
 	public LayerAccessSOI() throws Exception {
 		super();
 	}
@@ -112,47 +110,36 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 	 */
 	public void init(IServerObjectHelper soh) throws IOException, AutomationException {
 		/*
-		 * An SOI should retrieve a weak reference to the Server Object from the Server Object Helper in
+		 * An SOE should retrieve a weak reference to the Server Object from the Server Object Helper in
 		 * order to make any method calls on the Server Object and release the reference after making
 		 * the method calls.
 		 */
-		// Get reference to server logger utility
 		this.serverLog = ServerUtilities.getServerLogger();
-		this.so = soh.getServerObject();
 		String arcgisHome = getArcGISHomeDir();
-		if (arcgisHome == null) {
-			serverLog.addMessage(1, 200, "Could not get ArcGIS home directory. Check if environment variable " + ARCGISHOME_ENV + " is set.");
+		/* Still null - throw exception */
+		if(arcgisHome == null) {
+			serverLog.addMessage(1, 200,"Could not get ArcGIS home directory. Check if environment variable " + ARCGISHOME_ENV + " is set.");
 			throw new IOException("Could not get ArcGIS home directory. Check if environment variable " + ARCGISHOME_ENV + " is set.");
 		}
-		if (!arcgisHome.endsWith(File.separator)) {
+		if(arcgisHome != null && !arcgisHome.endsWith(File.separator)) {
 			arcgisHome += File.separator;
 		}
-<<<<<<< HEAD
 		// Set Log Level to 4 to log the detailed message
 		this.serverLog.addMessage(4, 200,"ArcGIS home directory: " + arcgisHome);
 		this.so = soh.getServerObject();
-		//Load the SOI helper.
-		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
-		this.soiHelper = new SOIHelper(mapServiceWSDLPath);
-		getPermissionFromFile(this.so);
-=======
-		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
 		// Load the SOI helper.
+		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
 		this.soiHelper = new SOIHelper(mapServiceWSDLPath);
->>>>>>> master
+		this.servicePermissionMap = readPermissionFile(this.permissionfileURL);
 		this.serverLog.addMessage(3, 200, "Initialized " + this.getClass().getName() + " SOE.");
-		servicePermissionMap = readPermissionFileFromURL(urlString);
-		this.serverLog.addMessage(3, 200, "Finished initializing " + this.getClass().getName() + " SOE.");
 	}
 
 	/**
 	 * This method is called to handle REST requests.
 	 *
-	 * SOIs allow the user to intercept requests for existing built-in operation of Map Services.
-	 * This allows you to execute custom logic and alter the behavior of these services by overriding existing
-	 * operations in a way that is seamless to existing clients. These clients may be applications built with
-	 * the ArcGIS API fot JavaScript, ArcGIS Runtime SDK, and more.
-	 *
+	 * SOEs allow the user to extend base functionality for ArvGIS Map Services and Image Services.
+	 * For a <b>Map Service</b> the supported REST operations are: find, identify, export. For an
+	 * <b>Image Service</b> the supported REST operations are: identify, export, etc.
 	 *
 	 * In this example we demonstrate layer level access on REST operators for a Map Service.
 	 * Authorized layers for each user role is read from the permission.json file. When user queries a
@@ -205,8 +192,6 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 		 * Note: When resourceName, operationName and operationInput are empty its the Map Service
 		 * resource (or getInfo) call
 		 */
-
-
 		try {
 			/*
 			 * Get roles for the user making the request.
@@ -450,7 +435,6 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 							 * Perform filtering on the response based on access to different layers.
 							 */
 							responseStr = filterJSONGetInfoResponse(new String(response), authorizedLayers);
-
 							serverLog.addMessage(3, 200, "REST getInfo response :: " + responseStr);
 							return responseStr.getBytes();
 						}
@@ -1067,72 +1051,53 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 	}
 
 	/**
-	 * Reads a permission file and return the defined permissions.
-	 * getPermissionFromFile method is working when the permission.json is in ArcGIS Server home directory
-	 * @param serverobject
-	 * @throws IOException
-	 */
-	private void getPermissionFromFile(IServerObject serverobject) throws IOException {
-		String serverDir = null;
-		MapServer mapserver= (MapServer)serverobject;
-		String physicalOutputDir= mapserver.getPhysicalOutputDirectory();
-		int index = physicalOutputDir.indexOf(File.separator + "directories" + File.separator + "arcgisoutput");
-		if(index > 0) {
-			serverLog.addMessage(4, 200, "The physical directory for output files: " + physicalOutputDir);
-			serverDir = physicalOutputDir.substring(0,index);
-		} else {
-			serverLog.addMessage(1, 200,"Incorrect physical directory for output files: " + physicalOutputDir);
-			throw new IOException("Incorrect physical directory for output files: " + physicalOutputDir);
-		}
-		/*
-		 * Permission are read from this external file. Advantage of an external file is that same SOI can
-		 * be used for multiple services and permission for all of these services is read from the
-		 * permission.json file.
-		 */
-		String permssionFilePath = serverDir + File.separator +  "permission.json";
-		// Read the permissions file
-		if (new File(permssionFilePath).exists()) {
-			serverLog.addMessage(4, 200, "The permission file is located at : " + permssionFilePath);
-			servicePermissionMap = readPermissionFileFromURL(urlString);
-		} else {
-			serverLog.addMessage(1, 200,"Cannot find the permission file at " + permssionFilePath);
-			throw new IOException("Cannot find the permission file at " + permssionFilePath);
-		}
-	}
-
-	/**
 	 * Read permission information from disk
-	 * readPermissionFileFromURL method is working when the permission.json is in https://customdatafeeds.s3.amazonaws.com/permission.json
-	 * @param urlString path and name of the file to read permissions from
+	 *
+	 * @param fileurl URL of the file to read permissions from
 	 * @return
 	 */
-
-	private Map<String, String> readPermissionFileFromURL(String urlString) {
+	private Map<String, String> readPermissionFile(String fileurl) {
+		// read the permissions file
 		Map<String, String> permissionMap = new HashMap<String, String>();
 		try {
-			URL url = new URL(urlString);
-			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-			connection.setRequestMethod("GET");
-			try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-				String line;
-				StringBuilder permissionFileDataString = new StringBuilder();
-				while ((line = reader.readLine()) != null) {
-					permissionFileDataString.append(line);
-				}
-				serverLog.addMessage(3,200,"URL is"+ url);
-				JSONObject permissionsJSON = new JSONObject(permissionFileDataString.toString());
-				JSONArray permissionsArray = permissionsJSON.getJSONArray("permissions");
-				for (int i = 0; i < permissionsArray.length(); i++) {
-					String fqsn = permissionsArray.getJSONObject(i).getString("fqsn");
-					JSONArray permissionArray = permissionsArray.getJSONObject(i).getJSONArray("permission");
-					for (int j = 0; j < permissionArray.length(); j++) {
-						String role = permissionArray.getJSONObject(j).getString("role");
-						String authorizedLayers = permissionArray.getJSONObject(j).getString("authorizedLayers");
-						permissionMap.put(fqsn + "." + role, authorizedLayers);
-					}
+			URL url = new URL(fileurl); // Replace with your URL
+			BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
+			StringBuilder stringBuilder = new StringBuilder();
+
+			String line;
+			while ((line = reader.readLine()) != null) {
+				stringBuilder.append(line);
+				stringBuilder.append(System.lineSeparator()); // Preserve line breaks
+			}
+			reader.close();
+
+			String content = stringBuilder.toString();
+
+			// Read the permissions file
+			if (content.isEmpty()) {
+				serverLog.addMessage(1, 200,"Failed to read permission file from  " + fileurl);
+				throw new IOException("Failed to read permission file from  " + fileurl);
+			}
+
+			JSONObject permissionsJSON = new JSONObject(content);
+			// create a map of permissions
+			// read the permissions array
+			JSONArray permissionsArray = permissionsJSON.getJSONArray("permissions");
+			// add to map
+			for (int i = 0; i < permissionsArray.length(); i++) {
+				// get the fqsn or service name
+				String fqsn = permissionsArray.getJSONObject(i).getString("fqsn");
+				// read the permission for that service
+				JSONArray permissionArray = permissionsArray.getJSONObject(i).getJSONArray("permission");
+				for (int j = 0; j < permissionArray.length(); j++) {
+					String role = permissionArray.getJSONObject(j).getString("role");
+					// read and get all authorized layers
+					String authorizedLayers = permissionArray.getJSONObject(j).getString("authorizedLayers");
+					permissionMap.put(fqsn + "." + role, authorizedLayers);
 				}
 			}
-		} catch (Exception ignore){};
+		} catch (Exception ignore) {
+		}
 		return permissionMap;
 	}
 
@@ -1282,23 +1247,26 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 	 * @throws Exception
 	 */
 	private String getArcGISHomeDir() throws IOException {
-		String arcgisHome = System.getProperty(ARCGISHOME_ENV);
-		if (arcgisHome == null) {
+		String arcgisHome = null;
+		/* Not found in env, check system property */
+		if (System.getProperty(ARCGISHOME_ENV) != null) {
+			arcgisHome = System.getProperty(ARCGISHOME_ENV);
+		}
+
+		if(arcgisHome == null) {
+			/* To make env lookup case insensitive */
 			Map<String, String> envs = System.getenv();
 			for (String envName : envs.keySet()) {
 				if (envName.equalsIgnoreCase(ARCGISHOME_ENV)) {
 					arcgisHome = envs.get(envName);
-					break;
 				}
 			}
 		}
-		if (arcgisHome != null && !arcgisHome.endsWith(File.separator)) {
+		if(arcgisHome != null && !arcgisHome.endsWith(File.separator)) {
 			arcgisHome += File.separator;
 		}
 		return arcgisHome;
 	}
-
-
 
 	/**
 	 * String or binary request mode

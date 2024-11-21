@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ESRI.Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.esri.com/Desktop/AddIns">
+  <Name>NetFindNearFeaturesRESTSOE</Name>
+  <AddInID>e2dcaefa-2d03-4c03-ad9b-c3f2a8ed70d8</AddInID>
+  <Description />
+  <Version>1.0</Version>
+  <Author>cont_chau</Author>
+  <Provider>ArcObjects11</Provider>
+  <Company />
+  <Date>2018-04-05T16:19:48</Date>
+  <Targets>
+    <Target name="Server" version="11.4" />
+  </Targets>
+  <AddIn language="CLR" library="NetFindNearFeaturesRESTSOE.dll" namespace="NetFindNearFeaturesRESTSOE">
+    <ServerObjectType>
+      <Name>MapServer</Name>
+      <ExtensionTypes>
+        <ExtensionType id="NetFindNearFeaturesRESTSOE.NetFindNearFeaturesRESTSOE" library="NetFindNearFeaturesRESTSOE.dll" class="NetFindNearFeaturesRESTSOE.NetFindNearFeaturesRESTSOE">
+          <Name>NetFindNearFeaturesRESTSOE</Name>
+          <DisplayName>.NET Find Near Features REST SOE</DisplayName>
+          <Description>.NET Find Near Features REST SOE Sample</Description>
+          <Properties />
+          <Resources />
+          <Info>
+            <DefaultWebCapabilities>GetInfo</DefaultWebCapabilities>
+            <AllWebCapabilities>GetInfo,FindFeatures</AllWebCapabilities>
+            <SupportsREST>true</SupportsREST>
+            <SupportsSOAP>false</SupportsSOAP>
+            <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
+            <SupportsInterceptor>false</SupportsInterceptor>
+            <SupportsSharedInstances>true</SupportsSharedInstances>
+          </Info>
+        </ExtensionType>
+      </ExtensionTypes>
+    </ServerObjectType>
+  </AddIn>
+</ESRI.Configuration>

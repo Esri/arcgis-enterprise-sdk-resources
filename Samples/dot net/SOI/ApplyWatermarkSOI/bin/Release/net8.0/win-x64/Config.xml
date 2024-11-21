@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ESRI.Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.esri.com/Desktop/AddIns">
+  <Name>NetApplyWatermarkSOI</Name>
+  <AddInID>db28693e-edd6-4237-99a2-6f04baea1237</AddInID>
+  <Description />
+  <Version>1.0</Version>
+  <Author>cont_chau</Author>
+  <Provider>ArcObjects11</Provider>
+  <Company />
+  <Date>2018-04-05T17:00:33</Date>
+  <Targets>
+    <Target name="Server" version="11.4" />
+  </Targets>
+  <AddIn language="CLR" library="NetApplyWatermarkSOI.dll" namespace="NetApplyWatermarkSOI">
+    <ServerObjectType>
+      <Name>MapServer</Name>
+      <ExtensionTypes>
+        <ExtensionType id="NetApplyWatermarkSOI.NetApplyWatermarkSOI" library="NetApplyWatermarkSOI.dll" class="NetApplyWatermarkSOI.NetApplyWatermarkSOI">
+          <Name>NetApplyWatermarkSOI</Name>
+          <DisplayName>DotNet Apply Watermark Sample SOI</DisplayName>
+          <Description>SOI example that applies watermark to exported images</Description>
+          <Properties />
+          <Resources />
+          <Info>
+            <DefaultWebCapabilities />
+            <AllWebCapabilities />
+            <SupportsREST>false</SupportsREST>
+            <SupportsSOAP>false</SupportsSOAP>
+            <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
+            <SupportsInterceptor>true</SupportsInterceptor>
+            <SupportsSharedInstances>true</SupportsSharedInstances>
+          </Info>
+        </ExtensionType>
+      </ExtensionTypes>
+    </ServerObjectType>
+  </AddIn>
+</ESRI.Configuration>

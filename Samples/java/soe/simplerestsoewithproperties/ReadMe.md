@@ -4,7 +4,8 @@ order: 3
 
 # Java simple REST SOE with properties
 
-This sample illustrates how to develop a REST server object extension (SOE) with properties and a custom property page for ArcGIS Server Manager. These properties appear in ArcGIS Server Manager and can be changed by the server administrator.For the Kubernetes ArcGIS Server environment, delete the Resources folder from the sample code and regenerate the SOE specifically for Kubernetes.
+This sample illustrates how to develop a REST server object extension (SOE) with properties and a custom property page for ArcGIS Server Manager. These properties appear in ArcGIS Server Manager and can be changed by the server administrator.
+
 ![](../../../../images/netsp/NetProps0.png "Java Properties Sample")
 
 <!--Creating a custom property page requires the knowledge of JavaScript and web forms development using HTML. If you are not familiar with JavaScript, you can start from the default properties (`HasManagerPropertiesConfigurationPane = false`) and explore whether the default properties will meet your needs. They appear as textboxes in server manager, whereas the custom property page allows more widgets, such as checkbox, drop-down select box, etc., which provides a better user interface for managing those properties.-->
@@ -20,7 +21,7 @@ Deploying the SOE from the .soe file (`../simplerestsoewithproperties/target/sim
 
 ## Sample data
 
-Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples) as the sample service to test with the SOE.
+Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as the sample service to test with the SOE.
 
 
 ## Instructions
@@ -35,7 +36,7 @@ Any dynamic map service published from ArcGIS Pro. This instruction uses the [US
 
 ### Enable the SOE on a map service
 
-1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples)
+1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](../../../ReadMe.md#1-usa-service)
 2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select USA map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***Java Simple REST SOE with Properties*** and check the box to enable it.
 4. Make sure the SOE is selected. Notice four properties appear in the ***Properties*** section.

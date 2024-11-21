@@ -1,4 +1,4 @@
-﻿// Copyright 2018 ESRI
+﻿// Copyright 2023 ESRI
 // 
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -44,7 +44,7 @@ namespace NetSimpleSoapSOE
     {
         private const string c_SOEName = "SimpleSoapSOE";
         internal static string c_SOENamespace = "http://examples.esri.com/schemas/NetSimpleSoapSOE/1.0";
-        internal static string c_ESRINamespace = "http://www.esri.com/schemas/ArcGIS/10.1";
+        internal static string c_ESRINamespace = "http://www.esri.com/schemas/ArcGIS/3.3.0";
 
         IRequestHandler2 reqHandler;
 
