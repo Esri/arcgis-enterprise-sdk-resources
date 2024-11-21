@@ -16,7 +16,7 @@ Deploying the SOE from the .soe file (`../findnearbyfeaturesrestsoe/target/findn
 
 
 ## Sample data
-This sample uses the [Vegetation map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples) as the sample service to test with the SOE.
+This sample uses the [Veg map service](../../../ReadMe.md#2-veg-service) as the sample service to test with the SOE.
 
 
 ## Instructions
@@ -31,14 +31,14 @@ This sample uses the [Vegetation map service](https://github.com/Esri/arcgis-ent
 
 ### Enable the SOE on a map service
 
-1. Make sure you have published the Vegetation map service using ArcGIS Pro. If not, refer to [Vegetation map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples/ReadMe.md#2-veg-service)
-2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select Vegetation map service and select ***Capabilities***.
+1. Make sure you have published the Veg map service using ArcGIS Pro. If not, refer to [Veg map service](../../../ReadMe.md#2-veg-service)
+2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select Veg map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***Java Find Nearby Features REST SOE*** and check the box to enable it.
 4. Click the ***Save and Restart*** button to restart the service.
 
 ### Test the SOE in the ArcGIS Server Services Directory
 
-1. Open a browser and navigate to the REST services endpoint of the Vegetation map service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/Veg/MapServer`).
+1. Open a browser and navigate to the REST services endpoint of the Veg map service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/Veg/MapServer`).
 2. Scroll to the bottom of the above page and click ***JavaFindNearbyFeaturesRESTSOE*** in ***Supported Extensions***. 
    
    This leads to the SOE's root page, at the following URL:

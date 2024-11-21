@@ -1,7 +1,7 @@
 package entsdksamples.soi;
 
 /*
-COPYRIGHT 2024 ESRI
+COPYRIGHT 2020 ESRI
 TRADE SECRETS: ESRI PROPRIETARY AND CONFIDENTIAL
 Unpublished material - all rights reserved under the 
 Copyright Laws of the United States and applicable international
@@ -17,6 +17,7 @@ USA
 email: contracts@esri.com
 */
 
+
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
@@ -24,7 +25,10 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Map;
+import javax.imageio.ImageIO;
 
 import com.esri.arcgis.interop.AutomationException;
 import com.esri.arcgis.interop.extn.ArcGISExtension;
@@ -34,18 +38,16 @@ import com.esri.arcgis.server.IServerObjectExtension;
 import com.esri.arcgis.server.IServerObjectHelper;
 import com.esri.arcgis.server.SOIHelper;
 import com.esri.arcgis.server.json.JSONObject;
-import com.esri.arcgis.system.ILog;
 import com.esri.arcgis.system.IRESTRequestHandler;
 import com.esri.arcgis.system.IRequestHandler;
 import com.esri.arcgis.system.IRequestHandler2;
 import com.esri.arcgis.system.IWebRequestHandler;
-import com.esri.arcgis.system.IWebRequestHandlerProxy;
+import com.esri.arcgis.system.ILog;
 import com.esri.arcgis.system.ServerUtilities;
-
-import javax.imageio.ImageIO;
+import com.esri.arcgis.system.OutputStore;
 
 /*
- * For an SOI to act as in interceptor, it needs to implement all request handler interfaces
+ * For an SOE to act as in interceptor, it needs to implement all request handler interfaces
  * IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler now the SOE/SOI can
  * intercept all types of calls to ArcObjects or custom SOEs.
  * 
@@ -61,12 +63,12 @@ import javax.imageio.ImageIO;
 @ArcGISExtension
 
 @ServerObjectExtProperties(
-        displayName = "Java Watermark SOI",
-        description = "Overlays a watermark on the export image operation",
-        interceptor = true,
-        servicetype =  "MapService" ,
+		displayName = "Java Image Service Watermark SOI",
+		description = "Overlays a watermark on the export image operation",
+		interceptor = true,
+		servicetype =  "MapService" ,
 		properties = "" ,
-		supportsSharedInstances = true)
+		supportsSharedInstances = false)
 
 public class ApplyWatermarkSOI
 		implements IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler
@@ -78,10 +80,10 @@ public class ApplyWatermarkSOI
 	private IServerObject so;
 	private SOIHelper soiHelper;
 
+	 private OutputStore outputStore;
+
 	 // Text used as watermark
 	 private static final String WATERMARK_STRING = "© ESRI Inc.";
-	 // Path to arcgis output directory
-	 private static final String OUTPUT_DIRECTORY = "C:/arcgisserver/directories/arcgisoutput";
 
 	 /**
 	 * Default constructor.
@@ -118,15 +120,12 @@ public class ApplyWatermarkSOI
 			throw new IOException("Could not get ArcGIS home directory. Check if environment variable " + ARCGISHOME_ENV
 					+ " is set.");
 		}
-		if (arcgisHome != null && !arcgisHome.endsWith(File.separator))
+		if (!arcgisHome.endsWith(File.separator))
 			arcgisHome += File.separator;
-		// Load the SOI helper.    
+		// Load the SOI helper.
 		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
 		this.soiHelper = new SOIHelper(mapServiceWSDLPath);
-<<<<<<< HEAD
-		
-=======
->>>>>>> master
+		this.outputStore = ServerUtilities.getOutputStore(soh.getServerObject());
 	}
 
 	 /**
@@ -175,24 +174,20 @@ public class ApplyWatermarkSOI
 					 BufferedImage sourceImage = null;
 					 if (outputFormat.equalsIgnoreCase("image")) {
 						 sourceImage = byteArrayToBufferedImage(response);
-
 						 byte[] watermarkedImage =
-								 addTextWatermark(WATERMARK_STRING, sourceImage, new JSONObject(operationInput).getString("format"),
-										 outputFormat, null);
-
+								 addTextWatermark(WATERMARK_STRING, "", sourceImage, new JSONObject(operationInput).getString("format"),
+										 outputFormat);
 						 // return the watermarked image
 						 if (watermarkedImage != null)
 							 return watermarkedImage;
 					 } else if (outputFormat.equalsIgnoreCase("json")) {
-						 // Generate output file location
-						 File outputImageFileLocation =
-								 getOutputImageFileLocation(new JSONObject(new String(response)).getString("href"));
-						 sourceImage = fileToBufferedImage(outputImageFileLocation);
-
-						 //byte[] watermarkedImage =
-						 //addTextWatermark(WATERMARK_STRING, sourceImage, new JSONObject(operationInput).getString("format"),
-						 //outputFormat, outputImageFileLocation);
-
+						 //Get the virtual directory path
+						 String virtualPath = new JSONObject(new String(response)).getString("href");
+						 String[] virtualPathParts = virtualPath.split("/");
+						 String imagefilename = virtualPathParts[virtualPathParts.length - 1];
+						 sourceImage = streamToBufferedImage(imagefilename);
+						 addTextWatermark(WATERMARK_STRING, imagefilename, sourceImage, new JSONObject(operationInput).getString("format"),
+								 outputFormat);
 						 // return response as is because we have modified the file its pointing to
 						 return response;
 					 } else if (outputFormat.equalsIgnoreCase("kmz")) {
@@ -210,7 +205,6 @@ public class ApplyWatermarkSOI
 							 .getBytes();
 				 }
 			 }
-
 			 return response;
 		 }
 
@@ -225,18 +219,19 @@ public class ApplyWatermarkSOI
 	  * @param virtualPath Path returned by the MapServer SO
 	  * @return
 	  */
-	 private File getOutputImageFileLocation(String virtualPath) {
+	 private File getOutputImageFileLocation(String virtualPath) throws IOException {
 		 /*
 		  * Sample output returned by MapServer SO
 		  *
 		  * example : /rest/directories/arcgisoutput/SampleWorldCities_MapServer/
 		  * _ags_map26c62f8c2c0c4965b53e87e300e1912f.png
 		  */
+		 serverLog.addMessage(3, 200, "Virtual Image File Location is " + virtualPath);
 		 String[] virtualPathParts = virtualPath.split("/");
-		 String imageFileLocation = OUTPUT_DIRECTORY;
+		 String imageFileLocation = outputStore.getServicePhysicalOutputDir();
 
 		 // build the physical path to the image file
-		 boolean buildPath = false;
+		 /*boolean buildPath = false;
 		 for (String virtualPathPart : virtualPathParts) {
 			 if (buildPath) {
 				 imageFileLocation += "/" + virtualPathPart;
@@ -244,8 +239,9 @@ public class ApplyWatermarkSOI
 			 if (virtualPathPart.equalsIgnoreCase("arcgisoutput")) {
 				 buildPath = true;
 			 }
-		 }
-
+		 }*/
+		 imageFileLocation += "/" + virtualPathParts[virtualPathParts.length - 1];
+		 serverLog.addMessage(3, 200, "Image File Location is " + imageFileLocation);
 		 return new File(imageFileLocation);
 	 }
 
@@ -289,6 +285,32 @@ public class ApplyWatermarkSOI
 	 }
 
 	 /**
+		* Read an Image file and convert it into a BufferedImage
+		*
+		* @param fileurl
+		* @return
+		* @throws IOException
+		*/
+	 private BufferedImage urlToBufferedImage(String fileurl) throws IOException {
+		 // Convert the String to a URL object
+		 URL url = new URL(fileurl);
+
+		 // Read the image from the URL
+		 return ImageIO.read(url);
+	 }
+
+	 private BufferedImage streamToBufferedImage(String filename) throws IOException {
+
+		 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		 outputStore.read(filename, outputStream);
+
+		 byte[] imageData = outputStream.toByteArray();
+		 // Create BufferedImage from byte array
+		 ByteArrayInputStream bais = new ByteArrayInputStream(imageData);
+		 return ImageIO.read(bais);
+	 }
+
+	 /**
 	  * Write image to disk
 	  *
 	  * @param sourceImage
@@ -301,18 +323,17 @@ public class ApplyWatermarkSOI
 	 }
 
 	 /**
-	  * Add watermark to an image
-	  *
-	  * @param watermarkText Text to be added as watermark.
-	  * @param sourceImage Image data in a byte array
-	  * @param imageType Type of image (png, jpeg etc.)
-	  * @param outputFormat json or image or kmz
-	  * @param outputImageFile
-	  * @return
-	  * @throws IOException
-	  */
-	 private byte[] addTextWatermark(String watermarkText, BufferedImage sourceImage, String imageType,
-									 String outputFormat, File outputImageFile) throws IOException {
+		* Add watermark to an image
+		*
+		* @param watermarkText Text to be added as watermark.
+		* @param sourceImage Image data in a byte array
+		* @param imageType Type of image (png, jpeg etc.)
+		* @param outputFormat json or image or kmz
+		* @return
+		* @throws IOException
+		*/
+	 private byte[] addTextWatermark(String watermarkText, String fileName, BufferedImage sourceImage, String imageType,
+																	 String outputFormat) throws IOException {
 		 // Create BufferedImage and Graphics2D objects
 		 Graphics2D g2d = (Graphics2D) sourceImage.getGraphics();
 
@@ -335,11 +356,13 @@ public class ApplyWatermarkSOI
 		 if (outputFormat.equalsIgnoreCase("image")) {
 			 return bufferedImagetoByteArray(sourceImage, imageType);
 		 } else if (outputFormat.equalsIgnoreCase("json")) {
-			 // replace watermarked image with original image
-			 writeImageToDisk(sourceImage, imageType, outputImageFile);
+			 ByteArrayOutputStream os = new ByteArrayOutputStream();
+			 ImageIO.write(sourceImage, imageType, os);
+			 InputStream inputStream = new ByteArrayInputStream(os.toByteArray());
+			 long fileSize = os.size();
+			 outputStore.write(fileName, inputStream, fileSize);
 			 return null;
 		 }
-
 		 return null;
 	 }
 

@@ -1,4 +1,4 @@
-﻿// Copyright 2018 ESRI
+// Copyright 2023 ESRI
 // 
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -156,14 +156,15 @@ namespace NetSimpleRESTSOE
         {
             responseProperties = "{\"Content-Type\" : \"application/json\"}";
 
-            IPropertySet pPropSet = SOIBase.QueryConfigurationProperties(this.soHelper.ServerObject.ConfigurationName, this.soHelper.ServerObject.TypeName);
-            
+            IPropertySet pPorpSet = SOIBase.QueryConfigurationProperties(this.soHelper.ServerObject.ConfigurationName, this.soHelper.ServerObject.TypeName);
+
             JSONObject jo = new JSONObject();
-            jo.AddString("MaxRecordCount", pPropSet.GetProperty("MaxRecordCount").ToString());
-            jo.AddString("MaxImageHeight", pPropSet.GetProperty("MaxImageHeight").ToString());
-            jo.AddString("MaxImageWidth", pPropSet.GetProperty("MaxImageWidth").ToString());
-            jo.AddString("PhysicalOutputDirectory", pPropSet.GetProperty("outputDir").ToString());
-            jo.AddString("PhysicalCacheDirectory", pPropSet.GetProperty("cacheDir").ToString());
+            jo.AddString("MaxRecordCount", pPorpSet.GetProperty("MaxRecordCount").ToString());
+            jo.AddString("MaxBufferCount", pPorpSet.GetProperty("MaxBufferCount").ToString());
+            jo.AddString("MaxImageHeight", pPorpSet.GetProperty("MaxImageHeight").ToString());
+            jo.AddString("MaxImageWidth", pPorpSet.GetProperty("MaxImageWidth").ToString());
+            jo.AddString("PhysicalOutputDirectory", pPorpSet.GetProperty("outputDir").ToString());
+            jo.AddString("PhysicalCacheDirectory", pPorpSet.GetProperty("cacheDir").ToString());
 
             JSONObject result = new JSONObject();
             result.AddJSONObject("serviceproperties", jo);

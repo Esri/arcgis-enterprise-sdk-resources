@@ -1,4 +1,4 @@
-// Copyright 2018 ESRI
+// Copyright 2023 ESRI
 // 
 // All rights reserved under the copyright laws of the United States
 // and applicable international laws, treaties, and conventions.
@@ -16,6 +16,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Security;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Forms;
 using NetSimpleSoapSOAPClient.localhost;
@@ -35,8 +38,21 @@ namespace NetSimpleSoapSOAPClient
             {
                 //create instance of proxy                   
 
-                USA_NetSimpleSoapSOE echoService = new USA_NetSimpleSoapSOE();
-                echoService.Url = "https://devserver.esri.com/arcgis/services/USA/MapServer/NetSimpleSoapSOE";
+                var echoService = new SampleWorldCities_NetSimpleSoapSOE();
+                echoService.Url = "https://localhost:6443/arcgis/services/SampleWorldCities/MapServer/NetSimpleSoapSOE";
+
+
+
+                // TODO REMOVE FOR PRODUCTION
+                // This code disables HTTPS errors for self-serve certificates
+                ServicePointManager.ServerCertificateValidationCallback = delegate (
+               Object obj, X509Certificate certificate, X509Chain chain,
+               SslPolicyErrors errors)
+                {
+                    return (true);
+                };
+
+
 
                 label2.Text = echoService.EchoInput(textBox1.Text);
             }

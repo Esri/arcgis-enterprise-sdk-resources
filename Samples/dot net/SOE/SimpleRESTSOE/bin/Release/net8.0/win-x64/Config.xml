@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ESRI.Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.esri.com/Desktop/AddIns">
+  <Name>NetSimpleRESTSOE</Name>
+  <AddInID>EE6B19D3-9AFF-482E-A671-0B9E1DA2E591</AddInID>
+  <Description />
+  <Version>1.0</Version>
+  <Author>serg0000</Author>
+  <Provider>ArcObjects11</Provider>
+  <Company>Esri</Company>
+  <Date>2022-01-05T13:42:00</Date>
+  <Targets>
+    <Target name="Server" version="11.4" />
+  </Targets>
+  <AddIn language="CLR" library="NetSimpleRESTSOE.dll" namespace="NetSimpleRESTSOE">
+    <ServerObjectType>
+      <Name>MapServer</Name>
+      <ExtensionTypes>
+        <ExtensionType id="NetSimpleRESTSOE.NetSimpleRESTSOE" library="NetSimpleRESTSOE.dll" class="NetSimpleRESTSOE.NetSimpleRESTSOE">
+          <Name>NetSimpleRESTSOE</Name>
+          <DisplayName>.NET Simple REST SOE</DisplayName>
+          <Description>.NET Simple REST SOE Sample</Description>
+          <Properties />
+          <Resources />
+          <Info>
+            <DefaultWebCapabilities />
+            <AllWebCapabilities />
+            <SupportsREST>true</SupportsREST>
+            <SupportsSOAP>false</SupportsSOAP>
+            <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
+            <SupportsInterceptor>false</SupportsInterceptor>
+            <SupportsSharedInstances>true</SupportsSharedInstances>
+          </Info>
+        </ExtensionType>
+      </ExtensionTypes>
+    </ServerObjectType>
+  </AddIn>
+</ESRI.Configuration>

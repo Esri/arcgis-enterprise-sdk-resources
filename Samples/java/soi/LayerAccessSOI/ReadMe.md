@@ -23,14 +23,14 @@ Deploying the SOI from the .soe file (`../LayerAccessSOI/target/LayerAccessSOI.s
 
 ## Sample data
 
-Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples) as the sample service to test with the SOI.
+Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as the sample service to test with the SOI.
 
 
 ## Instructions
 
 ### Set up testing environment
 
-1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/master/Samples).
+1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](../../../ReadMe.md#1-usa-service).
 2. Set the service's ***disableCaching*** property to true.
 
    As this sample SOI restricts user access to certain layers, it also alters the service's directory page content, which by default is cached. Therefore, you must disable service caching to view the changes on the service's directory page. This setting is only necessary when the service directory page content changes dynamically.

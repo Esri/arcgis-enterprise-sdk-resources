@@ -3,7 +3,7 @@
   xmlns="http://schemas.xmlsoap.org/wsdl/"
   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:arcgis="http://www.esri.com/schemas/ArcGIS/2.9.0"
+  xmlns:arcgis="http://www.esri.com/schemas/ArcGIS/3.4.0"
   xmlns:soe="http://www.soe.entsdksamples"
   targetNamespace="http://www.soe.entsdksamples">
   <documentation>Esri Server Object Extension</documentation>
@@ -17,7 +17,7 @@
         </jxb:schemaBindings>
       </xs:appinfo>
     </xs:annotation>
-    <xs:import namespace="http://www.esri.com/schemas/ArcGIS/2.9.0"/>
+    <xs:import namespace="http://www.esri.com/schemas/ArcGIS/3.4.0"/>
       <xs:element name="findNearbyFeatures">
         <xs:complexType>
           <xs:sequence>
@@ -38,7 +38,7 @@
 
     </xs:schema>
 
-    <xs:schema targetNamespace="http://www.esri.com/schemas/ArcGIS/2.9.0" xmlns="http://www.esri.com/schemas/ArcGIS/2.9.0"
+    <xs:schema targetNamespace="http://www.esri.com/schemas/ArcGIS/3.4.0" xmlns="http://www.esri.com/schemas/ArcGIS/3.4.0"
       xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="1.0">
     <xs:annotation>
       <xs:appinfo>
@@ -47,6 +47,54 @@
         </jxb:schemaBindings>
       </xs:appinfo>
     </xs:annotation>
+	      
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ProjectedCoordinateSystem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="SpatialReference"/>
+    </xs:complexContent>
+  </xs:complexType>
+	      
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GeographicCoordinateSystem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="SpatialReference"/>
+    </xs:complexContent>
+  </xs:complexType>
+	      
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="LinearUnit">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Unit"/>
+    </xs:complexContent>
+  </xs:complexType>
+	      
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="AngularUnit">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Unit"/>
+    </xs:complexContent>
+  </xs:complexType>
+	      
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="AreaUnit">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Unit"/>
+    </xs:complexContent>
+  </xs:complexType>
+	      
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" abstract="true" name="Unit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="WKT" type="xs:string"/>
+      <xs:element minOccurs="0" name="WKID" type="xs:int"/>
+      <xs:element name="StandardUnitsPerUnit" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+	      
+<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UnknownCoordinateSystem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="SpatialReference">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Unit" type="Unit"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 	      
 <xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GeodataXform">
     <xs:annotation>
@@ -110,24 +158,6 @@
           <xs:element minOccurs="0" name="Dy" type="xs:double"/>
         </xs:sequence>
       </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-	      
-<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ProjectedCoordinateSystem">
-    <xs:complexContent mixed="false">
-      <xs:extension base="SpatialReference"/>
-    </xs:complexContent>
-  </xs:complexType>
-	      
-<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="GeographicCoordinateSystem">
-    <xs:complexContent mixed="false">
-      <xs:extension base="SpatialReference"/>
-    </xs:complexContent>
-  </xs:complexType>
-	      
-<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema" name="UnknownCoordinateSystem">
-    <xs:complexContent mixed="false">
-      <xs:extension base="SpatialReference"/>
     </xs:complexContent>
   </xs:complexType>
 	      
@@ -195,12 +225,12 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="esriFieldTypeSmallInteger">
         <xs:annotation>
-          <xs:documentation>Integer.</xs:documentation>
+          <xs:documentation>16-bit Integer.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="esriFieldTypeInteger">
         <xs:annotation>
-          <xs:documentation>Long Integer.</xs:documentation>
+          <xs:documentation>32-bit Integer.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="esriFieldTypeSingle">
@@ -223,9 +253,24 @@
           <xs:documentation>Date.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+	  <xs:enumeration value="esriFieldTypeDateOnly">
+        <xs:annotation>
+          <xs:documentation>Date only.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+	  <xs:enumeration value="esriFieldTypeTimeOnly">
+        <xs:annotation>
+          <xs:documentation>Time only.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+	  <xs:enumeration value="esriFieldTypeTimestampOffset">
+        <xs:annotation>
+          <xs:documentation>Timestamp with time zone.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
       <xs:enumeration value="esriFieldTypeOID">
         <xs:annotation>
-          <xs:documentation>Long Integer representing an object identifier.</xs:documentation>
+          <xs:documentation>32-bit Integer representing an object identifier.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="esriFieldTypeGeometry">
@@ -260,7 +305,7 @@
       </xs:enumeration>
       <xs:enumeration value="esriFieldTypeBigInteger">
         <xs:annotation>
-          <xs:documentation>Big Integer.</xs:documentation>
+          <xs:documentation>64-bit Integer. Reserved for future use.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>

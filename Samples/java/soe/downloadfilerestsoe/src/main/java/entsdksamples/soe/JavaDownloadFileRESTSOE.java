@@ -17,53 +17,55 @@ USA
 
 email: contracts@esri.com
 */
-
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.esri.arcgis.interop.AutomationException;
 import com.esri.arcgis.interop.extn.ArcGISExtension;
+import com.esri.arcgis.interop.extn.ServerObjectExtProperties;
 import com.esri.arcgis.server.IServerObjectExtension;
 import com.esri.arcgis.server.IServerObjectHelper;
-import com.esri.arcgis.system.*;
-import com.esri.arcgis.interop.extn.ServerObjectExtProperties;
-import com.esri.arcgis.carto.IMapServerDataAccess;
-import com.esri.arcgis.carto.IMapLayerInfo;
-import com.esri.arcgis.carto.IMapLayerInfos;
-import com.esri.arcgis.carto.IMapServer;
-import com.esri.arcgis.carto.IMapServer;
-import com.esri.arcgis.carto.IMapServerInfo;
 import com.esri.arcgis.server.json.JSONArray;
 import com.esri.arcgis.server.json.JSONException;
 import com.esri.arcgis.server.json.JSONObject;
-import com.esri.arcgis.server.SOIHelper;
+import com.esri.arcgis.system.EnvironmentManager;
+import com.esri.arcgis.system.ILog;
 import com.esri.arcgis.system.IPropertySet;
-import com.esri.arcgis.geodatabase.FeatureClass;
+import com.esri.arcgis.system.IRESTRequestHandler;
+import com.esri.arcgis.system.IServerEnvironment2;
+import com.esri.arcgis.system.IServerEnvironment2Proxy;
+import com.esri.arcgis.system.OutputStore;
+import com.esri.arcgis.system.ServerUtilities;
+import com.esri.arcgis.system.UID;
+
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @ArcGISExtension
 @ServerObjectExtProperties(displayName = "Java Download File REST SOE",
-			description = "Java Sample Download File REST SOE.",
-			 properties = "" ,
-			 allSOAPCapabilities = "" ,
-			 defaultSOAPCapabilities = "" ,
-			supportsSharedInstances = true)
+		description = "Java Sample Download File REST SOE.",
+	 	properties = "" ,
+		allSOAPCapabilities = "" ,
+	 	defaultSOAPCapabilities = "" ,
+		servicetype = "MapService",
+		supportsSharedInstances = false)
 
 public class JavaDownloadFileRESTSOE implements IServerObjectExtension, IRESTRequestHandler
 	 {
 
-	private static final long serialVersionUID = 1L;
-	private ILog serverLog;
-	private IServerObjectHelper soHelper;
+		 private static final long serialVersionUID = 1L;
+		 private ILog serverLog;
 
-	private String localFilePath = "";
-	private String virtualFilePath = "";
-	private String virtualOutputDir = "";
+		 private OutputStore outputStore;
+		 private String virtualOutputDir;
+
+		 private Exception ex;
 
 	public JavaDownloadFileRESTSOE()throws Exception{
         super();
@@ -89,29 +91,28 @@ public class JavaDownloadFileRESTSOE implements IServerObjectExtension, IRESTReq
 	 * init() is called once, when the instance of the SOE is created.
 	 */
 	public void init(IServerObjectHelper soh)throws IOException,AutomationException{
-        /*
-         * An SOE should retrieve a weak reference to the Server Object from the Server Object Helper in
-         * order to make any method calls on the Server Object and release the
-         * reference after making the method calls.
-         */
-        this.soHelper=soh;
-        this.serverLog=ServerUtilities.getServerLogger();
-
-		serverLog.addMessage(3, 200, "Beginning init in "
-				+ this.getClass().getName() + " SOE.");
-
-		IMapServer ms = (IMapServer) soh.getServerObject();
-		String outputDir = outputDir = ms.getPhysicalOutputDirectory();
-		int len = outputDir.length();
-		if (outputDir!=null && len>0){
-			String mapservicePath = outputDir.substring(0,len-1);
-			int getTest =mapservicePath.lastIndexOf(File.separatorChar);
-			virtualFilePath = mapservicePath.substring(getTest+1);
-			localFilePath = mapservicePath;
-			virtualOutputDir = "/rest/directories/arcgisoutput";
+		/*
+		 * An SOE should retrieve a weak reference to the Server Object from the Server Object Helper in
+		 * order to make any method calls on the Server Object and release the
+		 * reference after making the method calls.
+		 */
+		try {
+			this.serverLog=ServerUtilities.getServerLogger();
+			serverLog.addMessage(3, 200, "Beginning init in "
+					+ this.getClass().getName() + " SOE.");
+			outputStore = ServerUtilities.getOutputStore(soh.getServerObject());
+			virtualOutputDir = outputStore.getServiceVirtualOutputDir();
+			this.serverLog.addMessage(3,200,"Initialized "+this.getClass().getName()+" SOE.");
 		}
-        this.serverLog.addMessage(3,200,"Initialized "+this.getClass().getName()+" SOE.");
-    }
+		catch (Exception ex) {
+			this.ex = ex;
+			String message = "Error during init()";
+			try {
+				serverLog.addMessage(1, 200, message + "\n\n" + ex);
+			} catch (Exception ignore) {}
+			throw new RuntimeException(message, ex);
+		}
+	}
 
 	/**
 	 * shutdown() is called once when the Server Object's context is being shut down and is
@@ -134,38 +135,26 @@ public class JavaDownloadFileRESTSOE implements IServerObjectExtension, IRESTReq
 	  */
 	 private byte[] DownloadFile(JSONObject operationInput, String outputFormat, JSONObject requestPropertiesJSON,
 								 java.util.Map<String, String> responseProperties) throws Exception {
-
-		 String fileId = UUID.randomUUID().toString().substring(0, 7);
-		 String fileName = "testFile_" + fileId + ".txt";
-		 String file = localFilePath + File.separator + fileName;
-		 String inputText = operationInput.getString("inputText");
-		 if (inputText == null || inputText.isEmpty()) {
-			 inputText = "default testing content...";
-		 }
-
-		 BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-		 writer.write(inputText);
-		 writer.close();
-		 long fileSize = new File(file).length();
-
-		 if (outputFormat.equals("json")) {
-			 responseProperties.put("Content-Type", "application/json");
-			 IPropertySet prop = RequestProperties();
-			 String requestURL = (String)prop.getProperty("RequestContextURL");
-			 String fileVirtualURL = requestURL + virtualOutputDir + "/" + virtualFilePath + "/" + fileName;
-			 JSONObject jsonResult = new JSONObject();
-			 jsonResult.put("url", fileVirtualURL);
-			 jsonResult.put("fileName", fileName);
-			 jsonResult.put("fileSizeBytes", fileSize);
-			 return jsonResult.toString().getBytes("utf-8");
-		 }
-		 else if (outputFormat.equals("file")) {
+		 try {
+			 String fileName = operationInput.optString("fileName");
+			 if (fileName == null || fileName.isEmpty()) {
+				 String fileId = UUID.randomUUID().toString().substring(0, 7);
+				 fileName = "testFile_" + fileId + ".txt";
+				 String inputText = "default testing content...";
+				 byte[] inputBytes = inputText.getBytes();
+				 long fileSize = inputBytes.length;
+				 InputStream fileStream = new ByteArrayInputStream(inputBytes);
+				 outputStore.write(fileName, fileStream, fileSize);
+			 }
+			 ByteArrayOutputStream out = new ByteArrayOutputStream();
+			 outputStore.read(fileName, out);
 			 responseProperties.put("Content-Type", "application/octet-stream");
 			 responseProperties.put("Content-Disposition", "attachment; filename=" + fileName);
-			 return Files.readAllBytes(Paths.get(file));
+			 return out.toByteArray();
+		 } catch (Exception ex) {
+			 responseProperties.put("Content-Type", "application/json");
+			 return new JSONObject().put("error", ex).toString().getBytes(StandardCharsets.UTF_8);
 		 }
-		 else
-			 return new JSONObject("Only JSON or File format is supported.").toString().getBytes("utf-8");
 	 }
 
 	 /**
@@ -175,20 +164,17 @@ public class JavaDownloadFileRESTSOE implements IServerObjectExtension, IRESTReq
 	  */
 	 private byte[] DeleteFile(JSONObject operationInput, String outputFormat, JSONObject requestPropertiesJSON,
 							   java.util.Map<String, String> responseProperties) throws Exception {
-
 		 responseProperties.put("Content-Type", "application/json");
-		 String fileName = operationInput.getString("fileName");
-		 String file = localFilePath + File.separator + fileName;
-		 if (fileName == null || fileName.isEmpty() || !Files.exists(Paths.get(file))) {
-			 return new JSONObject().put("error", "file not found.").toString().getBytes("utf-8");
+		 String fileName = operationInput.optString("fileName");
+		 if (fileName == null || fileName.isEmpty() || !outputStore.exists(fileName)) {
+			 return new JSONObject().put("error", "file not found.").toString().getBytes(StandardCharsets.UTF_8);
 		 }
 		 try {
-			 Files.delete(Paths.get(file));
-			 return new JSONObject().put("success", true).toString().getBytes("utf-8");
-
+			 outputStore.delete(fileName);
+			 return new JSONObject().put("success", true).toString().getBytes(StandardCharsets.UTF_8);
 		 }
 		 catch(Exception e) {
-			 return new JSONObject().put("error", e.getMessage()).toString().getBytes("utf-8");
+			 return new JSONObject().put("error", e.getMessage()).toString().getBytes(StandardCharsets.UTF_8);
 		 }
 	 }
 
@@ -199,7 +185,7 @@ public class JavaDownloadFileRESTSOE implements IServerObjectExtension, IRESTReq
 		 json.put("name", "root resource");
 		 json.put("description",
 				 "This SOE generates a text file on the Server and allows clients to download the file from the Server.\n It also provides REST endpoints to manage those files such as obtaining file names and deleting the files.");
-		 return json.toString().getBytes("utf-8");
+		 return json.toString().getBytes(StandardCharsets.UTF_8);
 	 }
 
 	 /**
@@ -207,27 +193,23 @@ public class JavaDownloadFileRESTSOE implements IServerObjectExtension, IRESTReq
 	  * This resource is not a collection.
 	  * @return String JSON representation of Files resource.
 	  */
-	 private byte[] getSubresourcefiles(String capabilitiesList, String outputFormat, JSONObject requestPropertiesJSON,
-										java.util.Map<String, String> responsePropertiesMap) throws Exception {
+	 private byte[] getSubresourcefiles(JSONObject operationInput,
+																			Map<String, String> responsePropertiesMap) throws Exception {
 
+		 String subDir = operationInput.optString("subDir");
+		 if (subDir == null || subDir.isEmpty()) {
+			 subDir = "";
+		 }
 		 responsePropertiesMap.put("Content-Type", "application/json");
-		 File[] files = new File(localFilePath).listFiles(new FilenameFilter() {
-			 @Override
-			 public boolean accept(File dir, String name) {
-				 // TODO Auto-generated method stub
-				 return name.endsWith(".txt");
-			 }
-		 });
+		 List<String> files = outputStore.listFiles(subDir);
 		 JSONArray filesArr = new JSONArray();
-		 for(File f: files) {
-			 JSONObject fileJson = new JSONObject();
-			 fileJson.put("filename", f.getName());
-			 filesArr.put(fileJson);
+		 for(String fileName: files) {
+			 filesArr.put(fileName);
 		 }
 		 JSONObject resultJson = new JSONObject();
 		 resultJson.put("files", filesArr);
 
-		 return resultJson.toString().getBytes("utf-8");
+		 return resultJson.toString().getBytes(StandardCharsets.UTF_8);
 	 }
 
 	 /**
@@ -236,12 +218,6 @@ public class JavaDownloadFileRESTSOE implements IServerObjectExtension, IRESTReq
 	  */
 	 private byte[] getResource(String capabilitiesList, String resourceName, String outputFormat,
 								JSONObject requestPropertiesJSON, java.util.Map<String, String> responsePropertiesMap) throws Exception {
-		 if (resourceName.equalsIgnoreCase("") || resourceName.length() == 0) {
-			 return getRootResource(outputFormat, requestPropertiesJSON, responsePropertiesMap);
-		 } else if (resourceName.equals("Files")) {
-			 return getSubresourcefiles(capabilitiesList, outputFormat, requestPropertiesJSON, responsePropertiesMap);
-		 }
-
 		 return null;
 	 }
 
@@ -264,11 +240,16 @@ public class JavaDownloadFileRESTSOE implements IServerObjectExtension, IRESTReq
 
 		 //permitted capabilities list can be used to allow/block access to operations
 
-		 if (resourceName.equalsIgnoreCase("") || resourceName.length() == 0) {
+		 if (resourceName.isEmpty()) {
+			 if (operationName.equalsIgnoreCase("WriteFile")) {
+				 operationOutput = WriteFile(operationInputAsJSON, outputFormat, requestPropertiesJSON,
+						 responsePropertiesMap);
+			 }
 			 if (operationName.equalsIgnoreCase("DownloadFile")) {
 				 operationOutput = DownloadFile(operationInputAsJSON, outputFormat, requestPropertiesJSON,
 						 responsePropertiesMap);
-			 } else if (operationName.equalsIgnoreCase("DeleteFile")) {
+			 }
+			 else if (operationName.equalsIgnoreCase("DeleteFile")) {
 				 operationOutput = DeleteFile(operationInputAsJSON, outputFormat, requestPropertiesJSON,
 						 responsePropertiesMap);
 			 }
@@ -276,18 +257,55 @@ public class JavaDownloadFileRESTSOE implements IServerObjectExtension, IRESTReq
 		 {
 			 return ServerUtilities
 					 .sendError(0, "No sub-resource by name " + resourceName + " found.", new String[] { "" })
-					 .getBytes("utf-8");
+					 .getBytes(StandardCharsets.UTF_8);
 		 }
 
 		 return operationOutput;
 	 }
+
+		 private byte[] WriteFile(JSONObject operationInput,
+															String outputFormat,
+															JSONObject requestProperties,
+															Map<String, String> responseProperties) {
+			 if (ex != null) {
+				 return ex.toString().getBytes();
+			 }
+			 JSONObject jsonResult = new JSONObject();
+			 try {
+				 String fileName = operationInput.optString("fileName");
+				 if (fileName == null || fileName.isEmpty()) {
+					 String fileId = UUID.randomUUID().toString().substring(0, 7);
+					 fileName = "testFile_" + fileId + ".txt";
+				 }
+				 String inputText = operationInput.optString("inputText");
+				 if (inputText == null || inputText.isEmpty()) {
+					 inputText = "default testing content...";
+				 }
+				 byte[] inputBytes = inputText.getBytes();
+				 long fileSize = inputBytes.length;
+				 InputStream fileStream = new ByteArrayInputStream(inputBytes);
+				 outputStore.write(fileName, fileStream, fileSize);
+
+				 responseProperties.put("Content-Type", "application/json");
+				 IPropertySet prop = RequestProperties();
+				 String requestURL = (String)prop.getProperty("RequestContextURL");
+				 String fileVirtualURL = requestURL + virtualOutputDir + "/" + fileName;
+				 jsonResult.put("url", fileVirtualURL);
+				 jsonResult.put("fileName", fileName);
+				 jsonResult.put("fileSizeBytes", fileSize);
+			 }
+			 catch (Exception ex) {
+				 jsonResult.put("error", ex.getMessage());
+			 }
+			 return jsonResult.toString().getBytes(StandardCharsets.UTF_8);
+		 }
 
 	 /**
 	  * Handles REST request by determining whether an operation or resource has been invoked and then forwards the
 	  * request to appropriate Java methods, along with request and response properties
 	  */
 	 public byte[] handleRESTRequest(String capabilities, String resourceName, String operationName,
-									 String operationInput, String outputFormat, String requestProperties, String[] responseProperties)
+																	 String operationInput, String outputFormat, String requestProperties, String[] responseProperties)
 			 throws IOException, AutomationException {
 		 // parse request properties, create a map to hold request properties
 		 JSONObject requestPropertiesJSON = new JSONObject(requestProperties);
@@ -299,9 +317,14 @@ public class JavaDownloadFileRESTSOE implements IServerObjectExtension, IRESTReq
 			 // if no operationName is specified send description of specified
 			 // resource
 			 byte[] response;
-			 if (operationName.length() == 0) {
-				 response = getResource(capabilities, resourceName, outputFormat, requestPropertiesJSON,
-						 responsePropertiesMap);
+			 if (operationName.isEmpty()) {
+				 if (resourceName.isEmpty()) {
+					 return getRootResource(outputFormat, requestPropertiesJSON, responsePropertiesMap);
+				 } else if (resourceName.equals("Files")) {
+					 JSONObject input = new JSONObject(operationInput);
+					 return getSubresourcefiles(input, responsePropertiesMap);
+				 }
+				 throw new Exception("No operation specified for resource " + resourceName + ".");
 			 } else
 			 // invoke REST operation on specified resource
 			 {
@@ -318,28 +341,27 @@ public class JavaDownloadFileRESTSOE implements IServerObjectExtension, IRESTReq
 			 String message = "Exception occurred while handling REST request for SOE " + this.getClass().getName() + ":"
 					 + e.getMessage();
 			 this.serverLog.addMessage(1, 500, message);
-			 return ServerUtilities.sendError(0, message, null).getBytes("utf-8");
+			 return ServerUtilities.sendError(0, message, null).getBytes(StandardCharsets.UTF_8);
 		 }
 	 }
 
 	 /**
-	  * This method returns the resource hierarchy of a REST based SOE in JSON format.
-	  */
+		* This method returns the resource hierarchy of a REST based SOE in JSON format.
+		*/
 	 public String getSchema() throws IOException, AutomationException {
 		 try {
 			 JSONObject _DownloadFileRESTSOE = ServerUtilities.createResource("DownloadFileRESTSOE",
 					 "This SOE generates a text file on the Server and allows clients to download the file from the Server.\n It also provides REST endpoints to manage those files such as obtaining file names and deleting the files.",
 					 false, false);
-			 JSONArray _DownloadFileRESTSOE_OpArray = new JSONArray();
-			 _DownloadFileRESTSOE_OpArray
-					 .put(ServerUtilities.createOperation("DownloadFile", "inputText", "json, file", false));
-			 _DownloadFileRESTSOE_OpArray
-					 .put(ServerUtilities.createOperation("DeleteFile", "fileName", "json", false));
-			 _DownloadFileRESTSOE.put("operations", _DownloadFileRESTSOE_OpArray);
-			 JSONArray _DownloadFileRESTSOE_SubResourceArray = new JSONArray();
+			 JSONArray opArray = new JSONArray();
+			 opArray.put(ServerUtilities.createOperation("WriteFile", "fileName, inputText", "json", false));
+			 opArray.put(ServerUtilities.createOperation("DownloadFile", "fileName", "file", false));
+			 opArray.put(ServerUtilities.createOperation("DeleteFile", "fileName", "json", false));
+			 _DownloadFileRESTSOE.put("operations", opArray);
+			 JSONArray subResourceArray = new JSONArray();
 			 JSONObject _Files = ServerUtilities.createResource("Files", "Files description", false, false);
-			 _DownloadFileRESTSOE_SubResourceArray.put(_Files);
-			 _DownloadFileRESTSOE.put("resources", _DownloadFileRESTSOE_SubResourceArray);
+			 subResourceArray.put(_Files);
+			 _DownloadFileRESTSOE.put("resources", subResourceArray);
 			 return _DownloadFileRESTSOE.toString();
 		 } catch (JSONException e) {
 			 e.printStackTrace();

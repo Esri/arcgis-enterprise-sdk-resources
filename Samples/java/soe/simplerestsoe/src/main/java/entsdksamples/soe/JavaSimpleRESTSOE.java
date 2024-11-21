@@ -50,10 +50,11 @@ import java.util.HashMap;
 
 @ArcGISExtension
 @ServerObjectExtProperties(displayName = "Java Simple REST SOE", description = "Java Simple REST SOE",
-			 properties = "" ,
-			 allSOAPCapabilities = "" ,
-			 defaultSOAPCapabilities = "" ,
-			supportsSharedInstances = true)
+	 	properties = "" ,
+	 	allSOAPCapabilities = "" ,
+	 	defaultSOAPCapabilities = "" ,
+		servicetype = "MapService",
+		supportsSharedInstances = false)
 
 public class JavaSimpleRESTSOE implements IServerObjectExtension, IRESTRequestHandler, IObjectActivate
 	 {
@@ -97,13 +98,13 @@ public class JavaSimpleRESTSOE implements IServerObjectExtension, IRESTRequestHa
         this.soHelper=soh;
         this.serverLog=ServerUtilities.getServerLogger();
 
-		serverLog.addMessage(3, 200, "Beginning init in "
-				+ this.getClass().getName() + " SOE.");
+				serverLog.addMessage(3, 200, "Beginning init in "
+						+ this.getClass().getName() + " SOE.");
 
         IMapServer ms=(IMapServer)this.soHelper.getServerObject();
         IMapServerInfo mapServerInfo=ms.getServerInfo(ms.getDefaultMapName());
         this.layerInfos=mapServerInfo.getMapLayerInfos();
-		this.soiHelper = new SOIHelper();
+				this.soiHelper = new SOIHelper();
 
         this.serverLog.addMessage(3,200,"Initialized "+this.getClass().getName()+" SOE.");
     }
@@ -116,8 +117,8 @@ public class JavaSimpleRESTSOE implements IServerObjectExtension, IRESTRequestHa
         /*
          * The SOE should release its reference on the Server Object Helper.
          */
-		serverLog.addMessage(3, 200, "Shutting down "
-				+ this.getClass().getName() + " SOE.");
+				serverLog.addMessage(3, 200, "Shutting down "
+						+ this.getClass().getName() + " SOE.");
         this.serverLog.addMessage(3,200,"Shutting down "+this.getClass().getName()+" SOE.");
         this.serverLog=null;
     }

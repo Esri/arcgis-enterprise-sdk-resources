@@ -37,10 +37,11 @@ import com.esri.arcgis.system.IPropertySet;
 @ArcGISExtension
 @ServerObjectExtProperties(displayName = "Java Simple SOAP SOE",
 		description = "Java Simple SOAP SOE.",
-		 properties = "" ,
-		 allSOAPCapabilities = "" ,
-		 defaultSOAPCapabilities = "" ,
-		supportsSharedInstances = true)
+	 	properties = "" ,
+	 	allSOAPCapabilities = "" ,
+	 	defaultSOAPCapabilities = "" ,
+		servicetype = "MapService",
+		supportsSharedInstances = false)
 
 public class JavaSimpleSOAPSOE extends SOAPRequestHandler
 		implements IServerObjectExtension, IJavaSimpleSOAPSOE

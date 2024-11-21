@@ -37,7 +37,7 @@ import com.esri.arcgis.system.IWebRequestHandler;
 import com.esri.arcgis.system.ServerUtilities;
 
 /*
- * For an SOI to act as in interceptor, it needs to implement all request handler interfaces
+ * For an SOE to act as in interceptor, it needs to implement all request handler interfaces
  * IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler now the SOE/SOI can
  * intercept all types of calls to ArcObjects or custom SOEs.
  * 
@@ -53,12 +53,12 @@ import com.esri.arcgis.system.ServerUtilities;
 @ArcGISExtension
 
 @ServerObjectExtProperties(
-        displayName = "Java Simple Map SOI",
-        description = "Intercepts and logs all calls to ArcObjects or custom SOEs",
-        interceptor = true,
-        servicetype =  "MapService" ,
-         properties = "" ,
-		supportsSharedInstances = true)
+		displayName = "Java Simple Map SOI",
+		description = "Intercepts and logs all calls to ArcObjects or custom SOEs",
+		interceptor = true,
+		servicetype =  "MapService" ,
+	 	properties = "" ,
+		supportsSharedInstances = false)
 
 public class JavaSimpleMapSOI
 		implements IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler
@@ -88,7 +88,9 @@ public class JavaSimpleMapSOI
 	 */
 	public void init(IServerObjectHelper soh) throws IOException, AutomationException {
 		/*
-		 * An SOI allow user to intercept requests for existing built-in operations of map services.
+		 * An SOE should retrieve a weak reference to the Server Object from the Server Object Helper in
+		 * order to make any method calls on the Server Object and release the reference after making
+		 * the method calls.
 		 */
 		// Get reference to server logger utility
 		this.serverLog = ServerUtilities.getServerLogger();
@@ -105,7 +107,7 @@ public class JavaSimpleMapSOI
 		}
 		if (arcgisHome != null && !arcgisHome.endsWith(File.separator))
 			arcgisHome += File.separator;
-		// Load the SOI helper.    
+		// Load the SOI helper.
 		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
 		this.soiHelper = new SOIHelper(mapServiceWSDLPath);
 	}
