@@ -47,6 +47,6 @@ Any Image service published from ArcGIS Pro or Admin rest end and geoprocessing 
    ```
 3. The watermark ***(c) ESRI Inc.*** will appear at the bottom left corner of the exported image.
 
-   ![](../../../../images/netsp/NetWatermarkSOI2.png "Net Image Service Watermark SOI Sample")
+   ![](../../../../images/netsp/ImageServiceWaterMarkSOI2.png "Net Image Service Watermark SOI Sample")
 
 
