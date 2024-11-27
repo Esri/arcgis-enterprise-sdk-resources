@@ -7,42 +7,41 @@ class Model {
     }
 
     async getData() {
-        
-        const states = config.altFuelStations.states; // get the list of states from our config
+        const states = config.altFuelStations.states;
         const currentTime = Date.now();
         const timeElapsed = currentTime - this.lastFetchTime;
-        const shouldFetch = timeElapsed > 86400000; // 24 hours in milliseconds
-        
+        const shouldFetch = timeElapsed > 86400000;
+    
         if (shouldFetch) {
-
-            this.allTheData = []; // clear the contents of the cache when we need to fetch again
-
-            for (const state of states) {  // loop through all the states
+            this.allTheData = [];
+    
+            // Use Promise.all with map to make requests asynchronously
+            await Promise.all(states.map(async (state) => {
                 try {
                     const response = await fetch(`${config.altFuelStations.afsURL}/v1.json?api_key=${config.altFuelStations.apiKey}&state=${state}`);
-                    
+    
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
-
+    
                     const data = await response.json();
-                    this.allTheData.push(...data.fuel_stations); // store each state array into the main array
+                    this.allTheData.push(...data.fuel_stations);
                 } catch (error) {
                     console.log(`Failed to fetch data for state ${state}:`, error);
                 }
-            }
-
-            this.lastFetchTime = Date.now(); // Update last fetch time
+            }));
+    
+            this.lastFetchTime = Date.now();
         } else {
             console.log("Using cached data.");
         }
-
+    
         let geojson = convertToGeoJSON(this.allTheData);
-
+    
         return {
             ...geojson,
             metadata: {
-                idField: "id", // use the id field as the ObjectID
+                idField: "id",
                 maxRecordCount: 5000
             }
         };
