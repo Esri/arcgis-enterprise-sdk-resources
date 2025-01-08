@@ -23,7 +23,7 @@ Deploying the SOE from the .soe file (`..\bin\Release\NetFindNearFeaturesSoapSOE
 
 
 ## Sample data
-  Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as the sample service to test with the SOE.
+  `This sample is designed for use with the SampleWorldCities map service. If you intend to use it with a different map service, please modify the sample code accordingly.`
 
 
 ## Instructions
@@ -38,8 +38,8 @@ Deploying the SOE from the .soe file (`..\bin\Release\NetFindNearFeaturesSoapSOE
 
 ### Enable the SOE on a map service
 
-1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](../../../ReadMe.md#1-usa-service)
-2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select USA map service and select ***Capabilities***.
+1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to SampleWorldCities map service.
+2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select SampleWorldCities map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***.NET Find Near Features SOAP SOE*** and check the box to enable it.
 4. Click the ***Save and Restart*** button to restart the service.
 
