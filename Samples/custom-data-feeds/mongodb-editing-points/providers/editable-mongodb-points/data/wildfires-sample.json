@@ -1,0 +1,63 @@
+[
+    {
+        "_id": "1150d48a-4283-409f-95dc-d97487b8ad84",
+        "fireId": "AK6448214467319840607",
+        "fireName": "GLACIER CREEK",
+        "fireType": "Wildfire",
+        "acres": 1897,
+        "location": {
+          "type": "Point",
+          "coordinates": [
+            -144.67327160022626,
+            64.48231108796996
+          ]
+        },
+        "alternateID": 1
+    },
+    {
+        "_id": "2ed4a7fe-4075-497b-bfed-28544eea0a64",
+        "fireId": "SD4308410285019840906",
+        "fireName": "SANDOZ",
+        "fireType": "Wildfire",
+        "acres": 2691,
+        "location": {
+          "type": "Point",
+          "coordinates": [
+            -102.84988692628048,
+            43.083932904689185
+          ]
+        },
+        "alternateID": 2
+    },
+    {
+        "_id": "b8d075b3-ee3e-4cd9-b376-62fce343ac7e",
+        "fireId": "MT4880411345819840819",
+        "fireName": "NAPI PEAK",
+        "fireType": "Wildfire",
+        "acres": 3680,
+        "location": {
+          "type": "Point",
+          "coordinates": [
+            -113.45773370783657,
+            48.804351445398524
+          ]
+        },
+        "alternateID": 3
+    },
+    {
+        "_id": "7c5f6471-3194-4152-91fc-e2946446865d",
+        "fireId": "MT4561710632319840918",
+        "fireName": "LAKE CREEK",
+        "fireType": "Wildfire",
+        "acres": 3617,
+        "location": {
+          "type": "Point",
+          "coordinates": [
+            -106.32285065969035,
+            45.61685063906595
+          ]
+        },
+        "alternateID": 4
+    }
+
+]
