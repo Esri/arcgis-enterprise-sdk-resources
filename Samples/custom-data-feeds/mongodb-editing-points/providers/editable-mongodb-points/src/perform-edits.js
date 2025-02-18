@@ -1,3 +1,9 @@
+const crypto = require('crypto');
+const { ObjectId } = require('mongodb');
+const codes = require('@esri/proj-codes');
+const proj4 = require('proj4');
+const SOURCE_CRS_WKID = 4326;
+
 async function performEdits(collection, editsBody) {
 
     let applyEditsResponse = {
@@ -51,12 +57,12 @@ function transformToDatasourceJson(record) {
 
   // check if the incoming SR is the same as the data SR; if differnt, convert and modify the record
   const featureSR = record.geometry.spatialReference.wkid;
-  if (featureSR !== CONSTANTS.SOURCE_CRS_WKID) {
+  if (featureSR !== SOURCE_CRS_WKID) {
 
     // look up the code
     const crs = codes.lookup(featureSR);
     // convert coordinates from what is currently in client to our data source crs
-    const convertedCoordinates = proj4(crs.wkt,`EPSG:${CONSTANTS.SOURCE_CRS_WKID}`, [record.geometry.x, record.geometry.y]);
+    const convertedCoordinates = proj4(crs.wkt,`EPSG:${SOURCE_CRS_WKID}`, [record.geometry.x, record.geometry.y]);
     // push the converted coordinates into the array 
     record.geometry.x = convertedCoordinates[0];
     record.geometry.y = convertedCoordinates[1];
@@ -185,12 +191,12 @@ async function updateMongoDocs(collection, updates) {
           // check if the incorming SR is the same as the data SR
           const featureSR = record.geometry.spatialReference.wkid;
 
-          if (featureSR !== CONSTANTS.SOURCE_CRS_WKID) {
+          if (featureSR !== SOURCE_CRS_WKID) {
 
               // look up the code
               const crs = codes.lookup(featureSR);
               // convert coordinates from what is currently in client to our data source crs
-              const convertedCoordinates = proj4(crs.wkt,`EPSG:${CONSTANTS.SOURCE_CRS_WKID}`, [record.geometry.x, record.geometry.y]);
+              const convertedCoordinates = proj4(crs.wkt,`EPSG:${SOURCE_CRS_WKID}`, [record.geometry.x, record.geometry.y]);
               // push the converted coordinates into the array 
               coordinatesArray.push(convertedCoordinates[0]);
               coordinatesArray.push(convertedCoordinates[1]);
