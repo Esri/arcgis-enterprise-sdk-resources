@@ -3,9 +3,7 @@ function Controller (model) {
 }
 
 Controller.prototype.editData = async function (req, res) {
-    const pathParams = req.params;
-    const body = req.body;
-    const reply = await this.model.editData(pathParams, body);
+    const reply = await this.model.editData(req);
     res.status(200).json(reply)
 }
 

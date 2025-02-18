@@ -1,6 +1,6 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const config = require('config');
-const { normalizeRequestedEdits, performEdits, fetchDocs, convertDocsToGeoJSON } = require('./helpers');
+const { performEdits } = require('./perform-edits');
 
 class Model {
   #client;
@@ -28,14 +28,14 @@ class Model {
       false;
   }
 
-  async editData(pathParams, body) {
+  async editData(req) {
 
     // assign database and collection name from path parameters
-    const databaseName = pathParams.host;
-    const collectionName = pathParams.id;
+    const databaseName = req.params.host;
+    const collectionName = req.params.id;
 
     // add logic to normalize layer-level or service-level requests
-    const extractedEdits = normalizeRequestedEdits(body);
+    const extractedEdits = normalizeRequestedEdits(req.body);
 
     const database  = this.#client.db(databaseName);
     const collection = database.collection(collectionName);
@@ -132,10 +132,52 @@ class Model {
       }};
 
     } catch (error) {
-      console.log(error)
+      this.#logger.warning(error)
       return error
     }
     
+  }
+}
+
+async function fetchDocs(items) {
+  const results = await items.find({}).toArray();
+  return results
+}
+
+function convertDocsToGeoJSON(docs, geometryField) {
+  const features = docs.map((record) => {
+    const { [geometryField]: geometry, ...properties } = record;
+    return { geometry, properties };
+  });
+
+  return {
+    type: 'FeatureCollection',
+    features,
+  };
+}
+
+function normalizeRequestedEdits(body) {
+  let edits = {};
+  // if it service-level, just return the object
+  if(body.edits) { 
+  
+    return {
+      edits: body.edits[0],
+      editLevel : 'service',
+      layer: body.edits[0].id
+    }
+  // handle the layer level request
+  } else {
+    if(body.adds) edits.adds = body.adds;
+    if(body.updates) edits.updates = body.updates;
+    if(body.deletes) {
+      let deletesArray = [body.deletes];
+      edits.deletes = deletesArray;
+    }
+    return {
+      edits: edits,
+      editLevel: 'layer'
+    }
   }
 }
 
