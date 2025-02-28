@@ -4,7 +4,11 @@ const proj4 = require('proj4');
 const codes = require('@esri/proj-codes');
 const duckdb = require("duckdb");
 const localConfig = require("config");
-const { normalizeRequestedEdits } = require('./helpers');
+const { 
+  normalizeRequestedEdits,
+  insertRows
+
+} = require('./helpers');
 const {
 	translateToGeoJSON,
 	validateConfig,
@@ -28,7 +32,10 @@ class Model {
       throw error;
 		}
     this.parquetPath = path.join(this.DFSConfig.parquetPath);
+
+    // initilize database and create a new connection
 		this.db = new duckdb.Database(":memory:"); // Use in-memory DuckDB
+    this.conn = this.db.connect();
 		logger.info("DuckDB initialized in memory.");
 		// Load data from Parquet file into memory
 		this.loadParquetData();
@@ -46,48 +53,201 @@ class Model {
 		});
 	}
 
-	// Load Parquet file into DuckDB in-memory table
-	async loadParquetData() {
+  async loadParquetData() {
+    // const conn = await this.getDBConnection();
+    try {
+      await new Promise((resolve, reject) => {
+        const localParquetCreateClause = `CREATE TABLE ${this.DFSConfig.properties.name} AS 
+            SELECT * EXCLUDE ${this.DFSConfig.WKBColumn}, 
+            ST_GeomFromWKB(CAST(${this.DFSConfig.WKBColumn} AS BLOB)) AS ${this.DFSConfig.geomOutColumn}, 
+            CAST(row_number() OVER () AS INTEGER) AS ${this.DFSConfig.idField}
+            FROM read_parquet('${this.parquetPath}/*.parquet', hive_partitioning = true);`;
+
+        const initQuery = `INSTALL spatial; LOAD spatial; 
+            ${localParquetCreateClause}`;
+
+        this.conn.run(initQuery, (err) => {
+          if (err) {
+            this.logger.error("Error loading Parquet file into memory:", err);
+            reject(err);
+          } else {
+            this.logger.info("Parquet file successfully loaded into memory.");
+            resolve();
+          }
+        });
+      });
+    } catch (error) {
+      this.logger.error("Unexpected error loading Parquet data:", error);
+    }
+  }
+
+  async editData(req) {
+    this.logger.info("In editData method");
+    
+
 		const conn = await this.getDBConnection();
+
+		// add logic to normalize layer-level or service-level requests
+		const collection = normalizeRequestedEdits(req.body);
+
+		//Create an empty response object
+		let applyEditsResponse = {
+			addResults: [],
+			updateResults: [],
+			deleteResults: []
+		};
+
 		try {
-			await new Promise((resolve, reject) => {
-				const localParquetCreateClause = `CREATE TABLE ${this.DFSConfig.properties.name} AS 
-						SELECT * EXCLUDE ${this.DFSConfig.WKBColumn}, 
-						ST_GeomFromWKB(CAST(${this.DFSConfig.WKBColumn} AS BLOB)) AS ${this.DFSConfig.geomOutColumn}, 
-						CAST(row_number() OVER () AS INTEGER) AS ${this.DFSConfig.idField}
-						FROM read_parquet('${this.parquetPath}/*.parquet', hive_partitioning = true);`;
+      const objectidFieldName = `${this.DFSConfig.idField}`;
+      const geometryColumnName = `${this.DFSConfig.geomOutColumn}`;
+      const tableName = `${this.DFSConfig.properties.name}`;
+      
+      for (const layer of collection.edits) {
+        if (layer.id !== undefined && layer.id !== null) {
+          applyEditsResponse.id = layer.id
+        }
+        if (layer.adds) {
 
-				const initQuery = `INSTALL spatial; LOAD spatial; 
-						${localParquetCreateClause}`;
+          // call an insert function and add the results to the final response object
+          const insertRowResponse = await insertRows(layer.adds, this.conn);
+          applyEditsResponse.addResults = insertRowResponse;
+          
+        }
+        if (layer.updates) {
+          try {
+            for (const feature of layer.updates) {
+              const attributes = feature.attributes;
+              const geometry = feature.geometry;
 
-				conn.run(initQuery, (err) => {
-					if (err) {
-						this.logger.error("Error loading Parquet file into memory:", err);
-						reject(err);
-					} else {
-						this.logger.info("Parquet file successfully loaded into memory.");
-						resolve();
-					}
-				});
-			});
+              // Ensure "OBJECTID" and "geometry" are not duplicated
+              let columns = Object.keys(attributes).filter(col => col !== `${objectidFieldName}` && col !== `${geometryColumnName}`);
+              columns.push(`${objectidFieldName}`, `${geometryColumnName}`); // Ensure correct order
+  
+              // Validate and prepare geometry
+              let geomValue = null;
+              if (geometry && geometry.x !== undefined && geometry.y !== undefined) {
+                if (geometry.spatialReference && geometry.spatialReference.wkid !== '4326') {
+                  // look up the code
+                  const crs = codes.lookup(geometry.spatialReference.wkid);
+                  // convert coordinates from what is currently in client to our data source crs
+                  const convertedCoordinates = proj4(crs.wkt,'EPSG:4326', [geometry.x, geometry.y]);
+                  // push the converted coordinates into the array 
+                  geometry.x = convertedCoordinates[0];
+                  geometry.y = convertedCoordinates[1];
+                }
+                geomValue = `SRID=4326;POINT(${geometry.x} ${geometry.y})`;
+              } else {
+                this.logger.warn("Missing or invalid geometry data. Skipping geometry insert.");
+              }
+    
+              const objectId = attributes.OBJECTID
+
+              // Extract values in the correct order as columns
+              const values = columns.map(col => {
+                if (col === `${geometryColumnName}`) return `ST_GeomFromText('${geomValue}')`; // Correct syntax
+                return typeof attributes[col] === "string" ? `'${attributes[col].replace(/'/g, "''")}'` : attributes[col]; // Escaping quotes in strings
+              });
+
+              // Construct SET clause for UPDATE
+              let updateSet = columns
+                  .filter(col => col !== `${objectidFieldName}`) // Don't update OBJECTID itself
+                  .map(col => `${col} = ${values[columns.indexOf(col)]}`) // Match column with its value
+                  .join(", ");
+
+              // Prepare UPDATE SQL
+              const updateSql = `UPDATE ${tableName} SET ${updateSet} WHERE ${objectidFieldName} = ${objectId}`;
+
+              // Execute update operation with error handling
+              await new Promise((resolve, reject) => {
+                conn.run(updateSql, (err) => {
+                  if (err) {
+                    this.logger.error(`Failed to update record: ${err.message}`);
+                    const errorresponse = {
+                      "success": false,
+                      "error": {
+                        "code": 1019,
+                        "description": "Internal error during object update."
+                      }
+                    }
+                    applyEditsResponse.updateResults.push(errorresponse)
+                    reject(err);
+                  } else {
+                    resolve();
+                  }
+                });
+              });
+              const outputresponse = {
+                "success": true,
+                "OBJECTID": objectId
+              }
+              applyEditsResponse.updateResults.push(outputresponse)
+            }
+            this.logger.log("Records updated successfully and committed.");
+          } catch (error) {
+            this.logger.error(`Transaction failed: ${error.message}`);
+          }
+        }
+        if (layer.deletes) {
+          try {
+            for (const objectId of layer.deletes ) {
+              const deleteQuery = `DELETE FROM ${tableName} WHERE ${objectidFieldName} = ${objectId}`;
+              await new Promise((resolve, reject) => {
+                conn.run(deleteQuery, (err) => {
+                  if (err) {
+                    this.logger.error(`Failed to delete record ${objectidFieldName} ${objectId}:`, err);
+                    const errorresponse = {
+                      "success": false,
+                      "error": {
+                        "code": 1018,
+                        "description": "Internal error during object delete."
+                      }
+                    }
+                    applyEditsResponse.deleteResults.push(errorresponse)
+                    reject(err);
+                  } else {
+                    this.logger.log(`Record with OBJECTID ${objectId} deleted successfully.`);
+                    resolve();
+                  }
+                });
+              });
+              const outputresponse = {
+                "success": true,
+                "OBJECTID": objectId
+              }
+              applyEditsResponse.deleteResults.push(outputresponse)
+            }
+            this.logger.log("Records deleted successfully and committed.");
+          } catch (error) {
+            this.logger.error(`Transaction failed: ${error.message}`);
+          }
+        }
+      }
 		} catch (error) {
-			this.logger.error("Unexpected error loading Parquet data:", error);
+			this.logger.error(`Transaction failed: ${error.message}`);
 		} finally {
-			conn.close();
+			conn.close(); // Close the connection after transaction
 		}
+
+		if (collection.editLevel === 'service') {
+      return [applyEditsResponse];
+    }
+		return applyEditsResponse;
 	}
 
+
   async getData(req, callback) {
-		const conn = await this.getDBConnection();
+
+    this.logger.info("In getData method");
+
+		
 		try {
-      //Merge the latest changes in DB
+      // Sync the WAL with the DB if any commits are still outstanding with "CHECKPOINT"
 			await new Promise((resolve, reject) => {
-				conn.run("CHECKPOINT;", (err) => {
+				this.conn.run("CHECKPOINT;", (err) => {
 					if (err) {
-						logger.error("Error running CHECKPOINT before read:", err);
+						this.logger.error("Error running CHECKPOINT before read:", err);
 						reject(err);
 					} else {
-						
 						resolve();
 					}
 				});
@@ -122,26 +282,35 @@ class Model {
 			);
 
 			var dbExtent = null;
+      // logic for returning extent and database spatial reference
 			if (isMetadataRequest) {
 				const extentQuery = `SELECT ST_AsGeoJSON(ST_Envelope_Agg(${this.DFSConfig.geomOutColumn})) AS extent FROM ${this.DFSConfig.properties.name}`;
-				conn.all(extentQuery, (err, rows) => {
+				
+        this.conn.all(extentQuery, (err, rows) => {
 					if (err) {
-						console.error(err);
+						this.logger.error(err);
 						return;
 					}
 					dbExtent = getExtentFromGeoJson(JSON.parse(rows[0]["extent"]), this.DFSConfig.dbWKID);
 				});
 			}
 
-			conn.all(sqlQuery, (err, rows) => {
+      // "all" method invokes callback for the entire set of rows returned in the query
+			this.conn.all(sqlQuery, (err, rows) => {
+        this.logger.info('SQLQUERY' + sqlQuery);
 				let geojson = { type: "FeatureCollection", features: [] };
-				if (err) {
-					console.error(err);
+				// if error, return an empty set of features
+        if (err) {
+					this.logger.error(err);
 					callback(null, geojson);
 				}
+
+        // if no rows were found, return an empty set of features
 				if (rows.length == 0) {
 					return callback(null, geojson);
 				}
+
+        // if query contains 'returnCountOnly' only return the number of rows
 				if (returnCountOnly) {
 					geojson.count = Number(rows[0]["count(1)"]);
 				} else {
@@ -419,14 +588,10 @@ class Model {
 				callback(null, geojson);
 			});
 		} catch (error) {
-			console.error(error);
+			this.logger.error(error);
 			callback(null, { type: "FeatureCollection", features: [] });
-		} finally {
-			conn.close();
-		}
+		} 
 	}
 }
-
-
 
 module.exports = Model
