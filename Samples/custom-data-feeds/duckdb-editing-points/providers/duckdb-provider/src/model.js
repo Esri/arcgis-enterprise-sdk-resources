@@ -6,7 +6,8 @@ const duckdb = require("duckdb");
 const localConfig = require("config");
 const { 
   normalizeRequestedEdits,
-  insertRows
+  insertRows,
+  updateRows
 
 } = require('./helpers');
 const {
@@ -99,7 +100,7 @@ class Model {
 
 		try {
       const objectidFieldName = `${this.DFSConfig.idField}`;
-      const geometryColumnName = `${this.DFSConfig.geomOutColumn}`;
+      // const geometryColumnName = `${this.DFSConfig.geomOutColumn}`;
       const tableName = `${this.DFSConfig.properties.name}`;
       
       for (const layer of collection.edits) {
@@ -109,83 +110,16 @@ class Model {
         if (layer.adds) {
 
           // call an insert function and add the results to the final response object
-          const insertRowResponse = await insertRows(layer.adds, this.conn);
-          applyEditsResponse.addResults = insertRowResponse;
+          const insertRowsResponse = await insertRows(layer.adds, this.conn);
+          applyEditsResponse.addResults = insertRowsResponse;
           
         }
         if (layer.updates) {
-          try {
-            for (const feature of layer.updates) {
-              const attributes = feature.attributes;
-              const geometry = feature.geometry;
 
-              // Ensure "OBJECTID" and "geometry" are not duplicated
-              let columns = Object.keys(attributes).filter(col => col !== `${objectidFieldName}` && col !== `${geometryColumnName}`);
-              columns.push(`${objectidFieldName}`, `${geometryColumnName}`); // Ensure correct order
-  
-              // Validate and prepare geometry
-              let geomValue = null;
-              if (geometry && geometry.x !== undefined && geometry.y !== undefined) {
-                if (geometry.spatialReference && geometry.spatialReference.wkid !== '4326') {
-                  // look up the code
-                  const crs = codes.lookup(geometry.spatialReference.wkid);
-                  // convert coordinates from what is currently in client to our data source crs
-                  const convertedCoordinates = proj4(crs.wkt,'EPSG:4326', [geometry.x, geometry.y]);
-                  // push the converted coordinates into the array 
-                  geometry.x = convertedCoordinates[0];
-                  geometry.y = convertedCoordinates[1];
-                }
-                geomValue = `SRID=4326;POINT(${geometry.x} ${geometry.y})`;
-              } else {
-                this.logger.warn("Missing or invalid geometry data. Skipping geometry insert.");
-              }
-    
-              const objectId = attributes.OBJECTID
-
-              // Extract values in the correct order as columns
-              const values = columns.map(col => {
-                if (col === `${geometryColumnName}`) return `ST_GeomFromText('${geomValue}')`; // Correct syntax
-                return typeof attributes[col] === "string" ? `'${attributes[col].replace(/'/g, "''")}'` : attributes[col]; // Escaping quotes in strings
-              });
-
-              // Construct SET clause for UPDATE
-              let updateSet = columns
-                  .filter(col => col !== `${objectidFieldName}`) // Don't update OBJECTID itself
-                  .map(col => `${col} = ${values[columns.indexOf(col)]}`) // Match column with its value
-                  .join(", ");
-
-              // Prepare UPDATE SQL
-              const updateSql = `UPDATE ${tableName} SET ${updateSet} WHERE ${objectidFieldName} = ${objectId}`;
-
-              // Execute update operation with error handling
-              await new Promise((resolve, reject) => {
-                conn.run(updateSql, (err) => {
-                  if (err) {
-                    this.logger.error(`Failed to update record: ${err.message}`);
-                    const errorresponse = {
-                      "success": false,
-                      "error": {
-                        "code": 1019,
-                        "description": "Internal error during object update."
-                      }
-                    }
-                    applyEditsResponse.updateResults.push(errorresponse)
-                    reject(err);
-                  } else {
-                    resolve();
-                  }
-                });
-              });
-              const outputresponse = {
-                "success": true,
-                "OBJECTID": objectId
-              }
-              applyEditsResponse.updateResults.push(outputresponse)
-            }
-            this.logger.log("Records updated successfully and committed.");
-          } catch (error) {
-            this.logger.error(`Transaction failed: ${error.message}`);
-          }
+          // call the update function and add the results to the final response object
+          const updateRowsResponse = await updateRows(layer.updates, this.conn);
+          applyEditsResponse.updateResults = updateRowsResponse;
+          
         }
         if (layer.deletes) {
           try {
@@ -224,8 +158,6 @@ class Model {
       }
 		} catch (error) {
 			this.logger.error(`Transaction failed: ${error.message}`);
-		} finally {
-			conn.close(); // Close the connection after transaction
 		}
 
 		if (collection.editLevel === 'service') {
@@ -239,7 +171,40 @@ class Model {
 
     this.logger.info("In getData method");
 
-		
+    // Function to get column data types
+    // async function getColumnDataTypes(dbConn) {
+    //   return new Promise((resolve, reject) => {
+    //       // SQL query to describe the table
+    //       const sql = `DESCRIBE NY_Taxi;`;
+
+    //       // Execute the query
+    //       dbConn.all(sql, (err, rows) => {
+    //           if (err) {
+    //               console.error("Error executing query:", err);
+    //               reject(err);
+    //           } else {
+    //               // Process the results
+    //               const columnDataTypes = rows.map(row => ({
+    //                   columnName: row.name,
+    //                   dataType: row.type
+    //               }));
+    //               resolve(columnDataTypes);
+    //           }
+    //       });
+    //   });
+    // }
+
+    // // Example usage
+    // (async () => {
+    //   try {
+    //       // Assuming you have a table named 'my_table'
+    //       const columnTypes = await getColumnDataTypes(this.conn);
+    //       console.log("Column Data Types:", columnTypes);
+    //   } catch (error) {
+    //       console.error("Error:", error);
+    //   } 
+    // })();
+
 		try {
       // Sync the WAL with the DB if any commits are still outstanding with "CHECKPOINT"
 			await new Promise((resolve, reject) => {

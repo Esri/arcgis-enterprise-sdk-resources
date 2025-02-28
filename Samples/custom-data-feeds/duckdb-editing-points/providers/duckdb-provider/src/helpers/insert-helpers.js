@@ -33,19 +33,17 @@ async function insertRows(adds, dbConn) {
         // Validate and prepare geometry
         let geomValue = null;
         if (geometry && geometry.x !== undefined && geometry.y !== undefined) {
-        if (geometry.spatialReference && geometry.spatialReference.wkid !== '4326') {
-            // look up the code
-            const crs = codes.lookup(geometry.spatialReference.wkid);
-            // convert coordinates from what is currently in client to our data source crs
-            const convertedCoordinates = proj4(crs.wkt,'EPSG:4326', [geometry.x, geometry.y]);
-            // push the converted coordinates into the array 
-            geometry.x = convertedCoordinates[0];
-            geometry.y = convertedCoordinates[1];
-        }
-        geomValue = `SRID=4326;POINT(${geometry.x} ${geometry.y})`;
-        } else {
-            this.logger.warn("Missing or invalid geometry data. Skipping geometry insert.");
-        }
+            if (geometry.spatialReference && geometry.spatialReference.wkid !== '4326') {
+                // look up the code
+                const crs = codes.lookup(geometry.spatialReference.wkid);
+                // convert coordinates from what is currently in client to our data source crs
+                const convertedCoordinates = proj4(crs.wkt,'EPSG:4326', [geometry.x, geometry.y]);
+                // push the converted coordinates into the array 
+                geometry.x = convertedCoordinates[0];
+                geometry.y = convertedCoordinates[1];
+            }
+            geomValue = `SRID=4326;POINT(${geometry.x} ${geometry.y})`;
+        } 
 
         // Extract values in the correct order as columns
         const values = columns.map(col => {
@@ -69,7 +67,7 @@ async function insertRows(adds, dbConn) {
                     "description": "Internal error during object insert."
                     }
                 }
-                    applyEditsResponse.addResults.push(errorresponse)
+                    addResults.push(errorresponse)
                     reject(err);
                 } else {
                     resolve();
