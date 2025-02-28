@@ -56,24 +56,27 @@ async function insertRows(adds, dbConn) {
         const insertsql = `INSERT INTO ${tableName} (${columns.join(", ")}) VALUES (${values.join(", ")})`;
         
         // Execute insert operation with error handling
-        await new Promise((resolve, reject) => {
-            dbConn.run(insertsql, (err) => {
-                if (err) {
-                this.logger.error(`Failed to insert record: ${err.message}`);
-                const errorresponse = {
-                    "success": false,
-                    "error": {
-                    "code": 1017,
-                    "description": "Internal error during object insert."
+        try {
+            await new Promise((resolve, reject) => {
+                dbConn.run(insertsql, (err) => {
+                    if (err) {
+                    const errorresponse = {
+                        "success": false,
+                        "error": {
+                            "code": 1017,
+                            "description": "Internal error during object insert."
+                        }
                     }
-                }
-                    addResults.push(errorresponse)
-                    reject(err);
-                } else {
-                    resolve();
-                }
+                        addResults.push(errorresponse)
+                        reject(err);
+                    } else {
+                        resolve();
+                    }
+                });
             });
-        });
+        } catch (error) {
+            continue; // Continue to the next feature even if one fails
+        }
         const outputresponse = {
             "success": true,
             "OBJECTID": objectId

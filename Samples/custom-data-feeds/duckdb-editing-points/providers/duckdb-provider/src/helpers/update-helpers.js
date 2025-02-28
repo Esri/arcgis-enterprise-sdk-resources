@@ -53,6 +53,7 @@ async function updateRows(updates, dbConn) {
                     const errorresponse = {
                         "success": false,
                         "error": {
+                            "OBJECTID": objectId,
                             "code": 1019,
                             "description": "Internal error during object update."
                         }

@@ -1,13 +1,13 @@
 fs = require("fs");
 const path = require("path");
-const proj4 = require('proj4');
-const codes = require('@esri/proj-codes');
 const duckdb = require("duckdb");
 const localConfig = require("config");
 const { 
   normalizeRequestedEdits,
   insertRows,
-  updateRows
+  updateRows,
+  deleteRows,
+  syncWALandDB
 
 } = require('./helpers');
 const {
@@ -55,7 +55,7 @@ class Model {
 	}
 
   async loadParquetData() {
-    // const conn = await this.getDBConnection();
+    
     try {
       await new Promise((resolve, reject) => {
         const localParquetCreateClause = `CREATE TABLE ${this.DFSConfig.properties.name} AS 
@@ -83,10 +83,6 @@ class Model {
   }
 
   async editData(req) {
-    this.logger.info("In editData method");
-    
-
-		const conn = await this.getDBConnection();
 
 		// add logic to normalize layer-level or service-level requests
 		const collection = normalizeRequestedEdits(req.body);
@@ -99,9 +95,6 @@ class Model {
 		};
 
 		try {
-      const objectidFieldName = `${this.DFSConfig.idField}`;
-      // const geometryColumnName = `${this.DFSConfig.geomOutColumn}`;
-      const tableName = `${this.DFSConfig.properties.name}`;
       
       for (const layer of collection.edits) {
         if (layer.id !== undefined && layer.id !== null) {
@@ -110,55 +103,27 @@ class Model {
         if (layer.adds) {
 
           // call an insert function and add the results to the final response object
-          const insertRowsResponse = await insertRows(layer.adds, this.conn);
-          applyEditsResponse.addResults = insertRowsResponse;
+          applyEditsResponse.addResults = await insertRows(layer.adds, this.conn);
           
         }
         if (layer.updates) {
 
           // call the update function and add the results to the final response object
-          const updateRowsResponse = await updateRows(layer.updates, this.conn);
-          applyEditsResponse.updateResults = updateRowsResponse;
+          applyEditsResponse.updateResults = await updateRows(layer.updates, this.conn);
           
         }
         if (layer.deletes) {
-          try {
-            for (const objectId of layer.deletes ) {
-              const deleteQuery = `DELETE FROM ${tableName} WHERE ${objectidFieldName} = ${objectId}`;
-              await new Promise((resolve, reject) => {
-                conn.run(deleteQuery, (err) => {
-                  if (err) {
-                    this.logger.error(`Failed to delete record ${objectidFieldName} ${objectId}:`, err);
-                    const errorresponse = {
-                      "success": false,
-                      "error": {
-                        "code": 1018,
-                        "description": "Internal error during object delete."
-                      }
-                    }
-                    applyEditsResponse.deleteResults.push(errorresponse)
-                    reject(err);
-                  } else {
-                    this.logger.log(`Record with OBJECTID ${objectId} deleted successfully.`);
-                    resolve();
-                  }
-                });
-              });
-              const outputresponse = {
-                "success": true,
-                "OBJECTID": objectId
-              }
-              applyEditsResponse.deleteResults.push(outputresponse)
-            }
-            this.logger.log("Records deleted successfully and committed.");
-          } catch (error) {
-            this.logger.error(`Transaction failed: ${error.message}`);
-          }
+
+          // call the delete function and add teh results to the final response object
+          applyEditsResponse.deleteResults = await deleteRows(layer.deletes, this.conn);
+          
         }
       }
 		} catch (error) {
-			this.logger.error(`Transaction failed: ${error.message}`);
+			this.logger.debug(`Feature editing failure: ${error.message}`);
 		}
+
+    await syncWALandDB(this.conn);
 
 		if (collection.editLevel === 'service') {
       return [applyEditsResponse];
@@ -169,54 +134,9 @@ class Model {
 
   async getData(req, callback) {
 
-    this.logger.info("In getData method");
-
-    // Function to get column data types
-    // async function getColumnDataTypes(dbConn) {
-    //   return new Promise((resolve, reject) => {
-    //       // SQL query to describe the table
-    //       const sql = `DESCRIBE NY_Taxi;`;
-
-    //       // Execute the query
-    //       dbConn.all(sql, (err, rows) => {
-    //           if (err) {
-    //               console.error("Error executing query:", err);
-    //               reject(err);
-    //           } else {
-    //               // Process the results
-    //               const columnDataTypes = rows.map(row => ({
-    //                   columnName: row.name,
-    //                   dataType: row.type
-    //               }));
-    //               resolve(columnDataTypes);
-    //           }
-    //       });
-    //   });
-    // }
-
-    // // Example usage
-    // (async () => {
-    //   try {
-    //       // Assuming you have a table named 'my_table'
-    //       const columnTypes = await getColumnDataTypes(this.conn);
-    //       console.log("Column Data Types:", columnTypes);
-    //   } catch (error) {
-    //       console.error("Error:", error);
-    //   } 
-    // })();
-
 		try {
-      // Sync the WAL with the DB if any commits are still outstanding with "CHECKPOINT"
-			await new Promise((resolve, reject) => {
-				this.conn.run("CHECKPOINT;", (err) => {
-					if (err) {
-						this.logger.error("Error running CHECKPOINT before read:", err);
-						reject(err);
-					} else {
-						resolve();
-					}
-				});
-			});
+
+      await syncWALandDB(this.conn);
 
 			// convert bools from strings
 			Object.keys(req.query).forEach((key) => {
@@ -336,150 +256,136 @@ class Model {
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "1",
               "editable": true,
               "domain": null,
               "name": "VendorID",
               "length": 128,
-              "alias": "VendorID",
+              "alias": "Vendor ID",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "2/10/2025, 1:28 AM",
               "editable": true,
               "domain": null,
               "name": "tpep_pickup_datetime",
               "length": 128,
-              "alias": "Trip_Pickup_DateTime",
+              "alias": "Trip Pickup DateTime",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "2/10/2025, 1:39 AM",
               "editable": true,
               "domain": null,
               "name": "tpep_dropoff_datetime",
               "length": 128,
-              "alias": "Trip_Dropoff_DateTime",
+              "alias": "Trip Dropoff DateTime",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "2",
               "editable": true,
               "domain": null,
               "name": "passenger_count",
               "length": 128,
-              "alias": "Passenger_Count",
+              "alias": "Passenger Count",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "0.70",
               "editable": true,
               "domain": null,
               "name": "trip_distance",
               "length": 128,
-              "alias": "Trip_Distance",
+              "alias": "Trip Distance",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "-73.986862182617188",
               "editable": true,
               "domain": null,
               "name": "pickup_longitude",
               "length": 128,
-              "alias": "Pickup_Longitude",
+              "alias": "Pickup Longitude",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "40.721054077148438",
               "editable": true,
               "domain": null,
               "name": "pickup_latitude",
               "length": 128,
-              "alias": "Pickup_Latitude",
+              "alias": "Pickup Latitude",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "1",
               "editable": true,
               "domain": null,
               "name": "RatecodeID",
               "length": 128,
-              "alias": "RatecodeID",
+              "alias": "Ratecode ID",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "N",
               "editable": true,
               "domain": null,
               "name": "store_and_fwd_flag",
               "length": 128,
-              "alias": "Store_and_FWD_Flag",
+              "alias": "Store and FWD Flag",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "-73.99725341796875",
               "editable": true,
               "domain": null,
               "name": "dropoff_longitude",
               "length": 128,
-              "alias": "Dropoff_Longitude",
+              "alias": "Dropoff Longitude",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "40.725048065185547",
               "editable": true,
               "domain": null,
               "name": "dropoff_latitude",
               "length": 128,
-              "alias": "Dropoff_Latitude",
+              "alias": "Dropoff Latitude",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "1",
               "editable": true,
               "domain": null,
               "name": "payment_type",
               "length": 128,
-              "alias": "Payment_Type",
+              "alias": "Payment Type",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "7",
               "editable": true,
               "domain": null,
               "name": "fare_amount",
               "length": 128,
-              "alias": "Fare_Amount",
+              "alias": "Fare Amount",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "0.5",
               "editable": true,
               "domain": null,
               "name": "extra",
@@ -490,56 +396,51 @@ class Model {
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "0.5",
               "editable": true,
               "domain": null,
               "name": "mta_tax",
               "length": 128,
-              "alias": "MTA_Tax",
+              "alias": "MTA Tax",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "1.2",
               "editable": true,
               "domain": null,
               "name": "tip_amount",
               "length": 128,
-              "alias": "Tip_Amount",
+              "alias": "Tip Amount",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "0",
               "editable": true,
               "domain": null,
               "name": "tolls_amount",
               "length": 128,
-              "alias": "Tolls_Amount",
+              "alias": "Tolls Amount",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "0.3",
               "editable": true,
               "domain": null,
               "name": "improvement_surcharge",
               "length": 128,
-              "alias": "Improvement_Surcharge",
+              "alias": "Improvement Surcharge",
               "type": "esriFieldTypeString"
 					  },
 					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
-              "defaultValue": "9.5",
               "editable": true,
               "domain": null,
               "name": "total_amount",
               "length": 128,
-              "alias": "Total_Amount",
+              "alias": "Total Amount",
               "type": "esriFieldTypeString"
 					  }
           ]
