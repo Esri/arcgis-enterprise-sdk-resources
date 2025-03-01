@@ -123,6 +123,7 @@ class Model {
 			this.logger.debug(`Feature editing failure: ${error.message}`);
 		}
 
+    // function ensures that the write along log is synced with database
     await syncWALandDB(this.conn);
 
 		if (collection.editLevel === 'service') {
@@ -135,7 +136,8 @@ class Model {
   async getData(req, callback) {
 
 		try {
-
+    
+      // function ensures that the write along log is synced with database
       await syncWALandDB(this.conn);
 
 			// convert bools from strings
