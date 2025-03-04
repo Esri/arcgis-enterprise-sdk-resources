@@ -19,16 +19,23 @@ async function deleteRows(deletes, dbConn, config, rollbackOnFailure) {
                                 "description": "Internal error during object delete."
                             }
                         }
-                        deleteResults.push(errorresponse)
-                        reject(err); // If problem occurs, only reject the deletion of this single feature
+                        addResults.push(errorresponse);
+                        if (rollbackOnFailure) {
+                            reject(new Error("Delete operation failed. Rolling back.")); // Throw error to trigger rollback
+                        } else {
+                            console.warn("Delete operation failed, continuing without rollback.");
+                            resolve(); // Continue without throwing an error
+                        }
                     } else {
                         resolve();
                     }
                 });
             });
         } catch (error) {
-            continue; // Continue to next feature that should be deleted
+            throw error; // Rethrow the error to be caught in editData
         }
+
+
 
         const outputresponse = {
           "success": true,

@@ -144,163 +144,61 @@ class Model {
 		}
 	}
 
-	// Properly merge the database changes
-	async syncDB() {
-		if (!this.db) return;
-		try {
-			await new Promise((resolve, reject) => {
-				this.db.run("checkpoint;", (err) => {
-					if (err) {
-						console.error("Error running CHECKPOINT before read:", err);
-						reject(err);
-					} else {
-						//console.log("CHECKPOINT executed. Ensuring latest data is visible.");
-						resolve();
-					}
-				});
-			});
-		} catch (error) {
-			console.error("Error during running CHECKPOINT:", error);
-		}
-	}
-
-	// Properly start the database transaction
-	async startTransaction() {
-		if (!this.db) return;
-		try {
-			await new Promise((resolve, reject) => {
-				this.db.run("BEGIN TRANSACTION;", (err) => {
-					if (err) {
-						console.error("Failed to start transaction:", err);
-						reject(err);
-					} else {
-						resolve();
-					}
-				});
-			});
-		} catch (error) {
-			console.error("Error during starting DB transaction:", error);
-		}
-	}
-
-	// Properly start the DB transaction
-	async commitTransaction() {
-		if (!this.db) return;
-		try {
-			await new Promise((resolve, reject) => {
-				this.db.run("COMMIT;", (err) => {
-					if (err) {
-						console.error("Failed to commit transaction:", err);
-						reject(err);
-					} else {
-						resolve();
-					}
-				});
-			});
-		} catch (error) {
-			console.error("Error during starting DB transaction:", error);
-		}
-	}
-
-	// Properly rollback the DB transaction
-	async rollbackTransaction() {
-		if (!this.db) return;
-		try {
-			await new Promise((resolve, reject) => {
-				this.db.run("ROLLBACK;", (err) => {
-					if (err) {
-						console.error("Failed to start transaction:", err);
-						reject(err);
-					} else {
-						resolve();
-					}
-				});
-			});
-		} catch (error) {
-			console.error("Error during starting DB transaction:", error);
-		}
-	}
-
 	async editData(req) {
-
-		// quick way to enure they are bools and not undefined; defaults to false if they are 
 		const rollbackOnFailure = req.query.rollbackOnFailure !== undefined ? 
-    		(typeof req.query.rollbackOnFailure === 'string' ? JSON.parse(req.query.rollbackOnFailure) : req.query.rollbackOnFailure) : false;
-
-		const returnEditResults = req.query.returnEditResults !== undefined ? 
-    		(typeof req.query.returnEditResults === 'string' ? JSON.parse(req.query.returnEditResults) : req.query.returnEditResults) : false;
-
-
-		// add logic to normalize layer-level or service-level requests
+			(typeof req.query.rollbackOnFailure === 'string' ? JSON.parse(req.query.rollbackOnFailure) : req.query.rollbackOnFailure) : false;
+	
+		// const returnEditResults = req.query.returnEditResults !== undefined ? 
+		// 	(typeof req.query.returnEditResults === 'string' ? JSON.parse(req.query.returnEditResults) : req.query.returnEditResults) : false;
+	
 		const collection = normalizeRequestedEdits(req.body);
-
-    	//Create an empty response object
 		let applyEditsResponse = {
 			addResults: [],
 			updateResults: [],
 			deleteResults: []
 		};
-
-		if (rollbackOnFailure === true) {
-
-			try {
 	
-				  await this.startTransaction();
+		if (rollbackOnFailure === true) {
+			try {
+				await this.startTransaction(); // Start the transaction
 	
 				for (const layer of collection.edits) {
-					if (layer.id !== undefined && layer.id !== null) applyEditsResponse.id = layer.id
-					  
+					if (layer.id !== undefined && layer.id !== null) applyEditsResponse.id = layer.id;
+	
 					if (layer.adds) applyEditsResponse.addResults = await insertRows(layer.adds, this.db, this.localParquetConfig, true);
-	
 					if (layer.updates) applyEditsResponse.updateResults = await updateRows(layer.updates, this.db, this.localParquetConfig, true);
-	
 					if (layer.deletes) applyEditsResponse.deleteResults = await deleteRows(layer.deletes, this.db, this.localParquetConfig, true);
-				
-					if (layer.id) applyEditsResponse.id = layer.id
-					
 				}
 	
-				await this.commitTransaction();
+				await this.commitTransaction(); // Commit the transaction
 			} catch (error) {
-
 				this.logger.debug(`Transaction failed: ${error.message}`);
-				
-				await this.rollbackTransaction();
-
-				if (returnEditResults === false) return applyEditsResponse = {"success": false};
+				await this.rollbackTransaction(); // Rollback the transaction on error
+	
+				return applyEditsResponse = { "success": false };
 			}
-
-			if (returnEditResults === false) return applyEditsResponse = {"success": true};
-
+	
+			applyEditsResponse = { "success": true };
 		} else {
-
 			try {
-  
-			  for (const layer of collection.edits) {
-					if (layer.id !== undefined && layer.id !== null) applyEditsResponse.id = layer.id
-					
+				for (const layer of collection.edits) {
+					if (layer.id !== undefined && layer.id !== null) applyEditsResponse.id = layer.id;
+	
 					if (layer.adds) applyEditsResponse.addResults = await insertRows(layer.adds, this.db, this.localParquetConfig, false);
-	
 					if (layer.updates) applyEditsResponse.updateResults = await updateRows(layer.updates, this.db, this.localParquetConfig, false);
-	
 					if (layer.deletes) applyEditsResponse.deleteResults = await deleteRows(layer.deletes, this.db, this.localParquetConfig, false);
-				
-			  }
-  
-		  } catch (error) {
-
-			  this.logger.debug(`edits failed: ${error.message}`);
-
-		  }
-
+				}
+			} catch (error) {
+				this.logger.debug(`edits failed: ${error.message}`);
+			}
 		}
-		
-    	await this.syncDB();
-		
-		if (collection.editLevel === 'service') {
+	
+		await this.syncDB();
+	
+		if (collection.editLevel === 'service' && rollbackOnFailure === false) {
 			return [applyEditsResponse];
-		  }
-    
+		}
+	
 		return applyEditsResponse;
 	}
 

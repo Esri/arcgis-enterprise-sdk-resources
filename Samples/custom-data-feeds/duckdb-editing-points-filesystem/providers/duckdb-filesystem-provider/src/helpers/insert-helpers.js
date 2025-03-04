@@ -11,8 +11,6 @@ async function insertRows(adds, dbConn, config, rollbackOnFailure) {
     for (const feature of adds) {
         const attributes = feature.attributes;
         const geometry = feature.geometry;
-        console.log(attributes)
-        console.log(geometry)
 
         // Ensure "OBJECTID" and "geometry" are not duplicated
         let columns = Object.keys(attributes).filter(col => col !== `${objectidFieldName}` && col !== `${geometryColumnName}`);
@@ -35,11 +33,8 @@ async function insertRows(adds, dbConn, config, rollbackOnFailure) {
         let geomValue = null;
         if (geometry && geometry.x !== undefined && geometry.y !== undefined) {
             if (geometry.spatialReference && geometry.spatialReference.wkid !== '4326') {
-                // look up the code
                 const crs = codes.lookup(geometry.spatialReference.wkid);
-                // convert coordinates from what is currently in client to our data source crs
-                const convertedCoordinates = proj4(crs.wkt,'EPSG:4326', [geometry.x, geometry.y]);
-                // push the converted coordinates into the array 
+                const convertedCoordinates = proj4(crs.wkt, 'EPSG:4326', [geometry.x, geometry.y]);
                 geometry.x = convertedCoordinates[0];
                 geometry.y = convertedCoordinates[1];
             }
@@ -48,50 +43,51 @@ async function insertRows(adds, dbConn, config, rollbackOnFailure) {
 
         // Extract values in the correct order as columns
         const values = columns.map(col => {
-        if (col === `${objectidFieldName}`) return objectId;
-        if (col === `${geometryColumnName}`) return `ST_GeomFromText('${geomValue}')`; // Correct syntax
-        return typeof attributes[col] === "string" ? `'${attributes[col].replace(/'/g, "''")}'` : attributes[col]; // Escaping quotes in strings
+            if (col === `${objectidFieldName}`) return objectId;
+            if (col === `${geometryColumnName}`) return `ST_GeomFromText('${geomValue}')`;
+            return typeof attributes[col] === "string" ? `'${attributes[col].replace(/'/g, "''")}'` : attributes[col];
         });
-
-        // Debugging logs to verify correctness
-        console.log(`Columns: ${columns.length} -> ${columns}`);
-        console.log(`Values: ${values.length} -> ${values}`);
 
         // Prepare direct SQL query (NO placeholders)
         const insertsql = `INSERT INTO ${tableName} (${columns.join(", ")}) VALUES (${values.join(", ")})`;
-        console.log(insertsql);
+        // console.log(insertsql);
 
         // Execute insert operation with error handling
         try {
             await new Promise((resolve, reject) => {
                 dbConn.run(insertsql, (err) => {
                     if (err) {
-                    const errorresponse = {
-                        "success": false,
-                        "error": {
-                            "code": 1017,
-                            "description": "Internal error during object insert."
+                        const errorresponse = {
+                            "success": false,
+                            "error": {
+                                "code": 1017,
+                                "description": "Internal error during object insert."
+                            }
+                        };
+                        addResults.push(errorresponse);
+                        if (rollbackOnFailure) {
+                            reject(new Error("Insert operation failed")); // Throw error to trigger rollback
+                        } else {
+                            console.warn("Insert operation failed, continuing without rollback.");
+                            resolve(); // Continue without throwing an error
                         }
-                    }
-                        addResults.push(errorresponse)
-                        reject(err);
                     } else {
                         resolve();
                     }
                 });
             });
         } catch (error) {
-            continue; // Continue to the next feature even if one fails
+            throw error; // Rethrow the error to be caught in editData
         }
+
         const outputresponse = {
             "success": true,
             "OBJECTID": objectId
-        }
-        addResults.push(outputresponse)
+        };
+        addResults.push(outputresponse);
     }
 
-        return addResults;
-
+    return addResults;
 }
 
 module.exports = {
