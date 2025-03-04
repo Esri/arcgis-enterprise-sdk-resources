@@ -173,6 +173,9 @@ class Model {
 				this.logger.debug(`Transaction failed: ${error.message}`);
 				await this.rollbackTransaction(); // Rollback the transaction on error
 	
+				if (collection.editLevel === 'service') {
+					return applyEditsResponse = [{ "success": false }];
+				}
 				return applyEditsResponse = { "success": false };
 			}
 	
