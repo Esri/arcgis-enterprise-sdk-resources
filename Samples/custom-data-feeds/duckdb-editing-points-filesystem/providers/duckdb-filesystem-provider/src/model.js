@@ -145,12 +145,10 @@ class Model {
 	}
 
 	async editData(req) {
-		const rollbackOnFailure = req.query.rollbackOnFailure !== undefined ? 
-			(typeof req.query.rollbackOnFailure === 'string' ? JSON.parse(req.query.rollbackOnFailure) : req.query.rollbackOnFailure) : false;
-	
-		// const returnEditResults = req.query.returnEditResults !== undefined ? 
-		// 	(typeof req.query.returnEditResults === 'string' ? JSON.parse(req.query.returnEditResults) : req.query.returnEditResults) : false;
-	
+
+		const rollbackOnFailure = req.body.rollbackOnFailure !== undefined ? 
+		(typeof req.body.rollbackOnFailure === 'string' ? JSON.parse(req.body.rollbackOnFailure) : req.body.rollbackOnFailure) : false;
+		
 		const collection = normalizeRequestedEdits(req.body);
 		let applyEditsResponse = {
 			addResults: [],
@@ -195,7 +193,7 @@ class Model {
 	
 		await this.syncDB();
 	
-		if (collection.editLevel === 'service' && rollbackOnFailure === false) {
+		if (collection.editLevel === 'service') {
 			return [applyEditsResponse];
 		}
 	
