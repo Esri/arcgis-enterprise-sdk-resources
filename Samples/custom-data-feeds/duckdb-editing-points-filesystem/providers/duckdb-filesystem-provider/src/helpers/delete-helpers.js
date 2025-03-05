@@ -23,7 +23,6 @@ async function deleteRows(deletes, dbConn, config, rollbackOnFailure) {
                         if (rollbackOnFailure) {
                             reject(new Error("Delete operation failed. Rolling back.")); // Throw error to trigger rollback
                         } else {
-                            console.warn("Delete operation failed, continuing without rollback.");
                             resolve(); // Continue without throwing an error
                         }
                     } else {
@@ -34,8 +33,6 @@ async function deleteRows(deletes, dbConn, config, rollbackOnFailure) {
         } catch (error) {
             throw error; // Rethrow the error to be caught in editData
         }
-
-
 
         const outputresponse = {
           "success": true,

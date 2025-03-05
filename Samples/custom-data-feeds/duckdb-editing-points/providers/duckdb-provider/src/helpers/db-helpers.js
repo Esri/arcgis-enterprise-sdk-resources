@@ -4,7 +4,6 @@ async function syncWALandDB(dbConn) {
     await new Promise((resolve, reject) => {
         dbConn.run("CHECKPOINT;", (err) => {
             if (err) {
-                this.logger.error("Error running CHECKPOINT before read:", err);
                 reject(err);
             } else {
                 resolve();

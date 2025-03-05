@@ -21,7 +21,6 @@ async function insertRows(adds, dbConn, config, rollbackOnFailure) {
             const maxsql = `SELECT COALESCE(MAX(${objectidFieldName}), 0) + 1 AS next_id FROM ${tableName};`;
             dbConn.all(maxsql, (err, row) => {
                 if (err || !row || !row[0]["next_id"]) {
-                    console.error(`Failed to fetch ${objectidFieldName}, using default value 1`);
                     resolve(1);
                 } else {
                     resolve(row[0]["next_id"]);
@@ -50,7 +49,6 @@ async function insertRows(adds, dbConn, config, rollbackOnFailure) {
 
         // Prepare direct SQL query (NO placeholders)
         const insertsql = `INSERT INTO ${tableName} (${columns.join(", ")}) VALUES (${values.join(", ")})`;
-        // console.log(insertsql);
 
         // Execute insert operation with error handling
         try {
@@ -68,7 +66,6 @@ async function insertRows(adds, dbConn, config, rollbackOnFailure) {
                         if (rollbackOnFailure) {
                             reject(new Error("Insert operation failed")); // Throw error to trigger rollback
                         } else {
-                            console.warn("Insert operation failed, continuing without rollback.");
                             resolve(); // Continue without throwing an error
                         }
                     } else {

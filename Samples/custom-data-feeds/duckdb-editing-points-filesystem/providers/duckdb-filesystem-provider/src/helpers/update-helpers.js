@@ -48,7 +48,6 @@ async function updateRows(updates, dbConn, config, rollbackOnFailure) {
             await new Promise((resolve, reject) => {
                 dbConn.run(updateSql, (err) => {
                     if (err) {
-                        console.log(err);
                         const errorResponse = {
                             "success": false,
                             "error": {
@@ -61,7 +60,6 @@ async function updateRows(updates, dbConn, config, rollbackOnFailure) {
                         if (rollbackOnFailure) {
                             reject(new Error("Update operation failed. Rolling back.")); // Throw error to trigger rollback
                         } else {
-                            console.warn("Update operation failed, continuing without rollback.");
                             resolve(); // Continue without throwing an error
                         }
                     } else {
@@ -70,7 +68,6 @@ async function updateRows(updates, dbConn, config, rollbackOnFailure) {
                             "objectid": objectId
                         };
                         updateResults.push(outputResponse);
-
                         resolve();
                     }
                 });
