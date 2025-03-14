@@ -4,6 +4,11 @@ This provider is an exploratory effort into using ArcGIS Enterprise [custom data
 This provider allows the ability to connect to external data sources (S3, GCS, AWS, Azure) using [DuckDB](https://duckdb.org/) and SQL queries. 
 
 ## See it in action with NY city taxi dataset and H3 bins (10 million points): 
+- The following video shows two duckdb tables (within one duckdb database) exposed as feature services. CDFs allow you to expose multiple feature services in one provider by using the `default.json` file and url params.
+- The first feature service is 10 million taxi points from a parquet file exposed at `/duckdb/rest/services/taxiParquet/FeatureServer/0`. 
+- The second feature service is a delta table containing h3 bins to illustrate hot spots of taxi points exposed at `/duckdb/rest/services/deltaNYTaxiBins/FeatureServer/0`
+- We manually set zoom filters on the features. The points only show at smaller zoom levels since its a dense dataset and the h3 bins only show at larger zoom levels.
+
 https://github.com/user-attachments/assets/ddb26b4d-38f8-4958-8f86-78f03407621c
 
 ## Features
