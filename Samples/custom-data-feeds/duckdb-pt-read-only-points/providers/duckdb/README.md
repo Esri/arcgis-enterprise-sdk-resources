@@ -1,8 +1,6 @@
 # DuckDB 
 This is a CDF using duckdb as the spatially enabled database engine. It has a single dependency (duckDB) and uses its spatial extension. This cdf is considered a pass through data provider where subsets of data are fetched each request (not the entire dataset at once like a full fetch data provider). 
 
-Original repo here https://github.com/Esri/cdf-provider-duckdb
-
 ## Adding your own data source: 
 - To add another data source copy one of the examples in the `config/default.json` or `config/olderexamples.json` file
 - Then, write SQL query code in `src/model.js` to create a table with the format you desire, example: 
