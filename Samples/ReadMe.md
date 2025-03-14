@@ -74,6 +74,7 @@ The following three services are used in the samples:
 
 ### For Custom Data Feeds
 * [csv full fetch ready only points](custom-data-feeds/csv-full-fetch-ready-only-points)
+* [duckdb pass through read only points](custom-data-feeds/duckdb-pt-read-only-points)
 * [google sheets editing points](custom-data-feeds/google-sheets-editing-points)
 * [mongodb editing polygons](custom-data-feeds/mongodb-editing-polygons)
 * [mongodb pt read only points](custom-data-feeds/mongodb-pt-read-only-points)
