@@ -1,3 +1,6 @@
+const proj4 = require('proj4');
+const codes = require('@esri/proj-codes');
+
 async function updateRows(updates, dbConn, config, rollbackOnFailure) {
     const objectidFieldName = config.idField;
     const geometryColumnName = config.geomOutColumn;
@@ -51,7 +54,7 @@ async function updateRows(updates, dbConn, config, rollbackOnFailure) {
                         const errorResponse = {
                             "success": false,
                             "error": {
-                                "OBJECTID": objectId,
+                                "objectId": objectId,
                                 "code": 1019,
                                 "description": "Internal error during object update."
                             }
@@ -65,7 +68,7 @@ async function updateRows(updates, dbConn, config, rollbackOnFailure) {
                     } else {
                         outputResponse = {
                             "success": true,
-                            "objectid": objectId
+                            "objectId": objectId
                         };
                         updateResults.push(outputResponse);
                         resolve();

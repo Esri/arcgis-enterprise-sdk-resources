@@ -79,7 +79,7 @@ async function insertRows(adds, dbConn, config, rollbackOnFailure) {
 
         const outputresponse = {
             "success": true,
-            "OBJECTID": objectId
+            "objectId": objectId
         };
         addResults.push(outputresponse);
     }

@@ -14,7 +14,7 @@ async function deleteRows(deletes, dbConn, config, rollbackOnFailure) {
                         const errorresponse = {
                             "success": false,
                             "error": {
-                                "OBJECTID": objectId,
+                                "objectId": objectId,
                                 "code": 1018,
                                 "description": "Internal error during object delete."
                             }
@@ -36,7 +36,7 @@ async function deleteRows(deletes, dbConn, config, rollbackOnFailure) {
 
         const outputresponse = {
           "success": true,
-          "OBJECTID": objectId
+          "objectId": objectId
         };
         deleteResults.push(outputresponse)
     }
