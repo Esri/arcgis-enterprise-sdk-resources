@@ -64,18 +64,52 @@ class Model {
 	
 		if (rollbackOnFailure === true) {
 			try {
-				await startTransaction(); // Start the transaction
-	
+				
+				await startTransaction(this.db); // Start the transaction
+				// this.logger.info('Starting transaction.')
+
 				for (const layer of collection.edits) {
 					if (layer.id !== undefined && layer.id !== null) applyEditsResponse.id = layer.id;
 					if (layer.adds) applyEditsResponse.addResults = await insertRows(layer.adds, this.db, this.localParquetConfig, true);
 					if (layer.updates) applyEditsResponse.updateResults = await updateRows(layer.updates, this.db, this.localParquetConfig, true);
 					if (layer.deletes) applyEditsResponse.deleteResults = await deleteRows(layer.deletes, this.db, this.localParquetConfig, true);
 				}
-	
-				await commitTransaction(); // Commit the transaction
+
+				const hasFailedEdit = hasSuccessFalse([applyEditsResponse]);
+				console.log(hasFailedEdit)
+				if (hasFailedEdit) {
+					await rollbackTransaction(this.db); // Rollback the transaction on error
+					throw new Error("An error occurred: There is at least one operation that failed.");
+				}
+				else {
+					// an error above will not trigger the commit
+					
+					await commitTransaction(this.db); // Commit the transaction
+					this.logger.info('Committing transaction')
+
+				}
 			} catch (error) {
-				await rollbackTransaction(); // Rollback the transaction on error
+				// await rollbackTransaction(this.db); // Rollback the transaction on error
+
+				this.logger.info(`${error} Transaction rolled back.`)
+
+				let transformedResponse = {}
+				for (const category of ['addResults', 'updateResults', 'deleteResults']) {
+					
+					if (applyEditsResponse[category]) {
+						transformedResponse[category] = applyEditsResponse[category].map(item => ({
+							success: false,
+							objectId: item.objectId,
+							error: {
+								code: 1003,
+								description: "Operation rolled back."
+							}
+						}));
+					}
+				}
+
+				applyEditsResponse = transformedResponse;
+
 			}
 	
 		} else {
@@ -86,12 +120,12 @@ class Model {
 					if (layer.updates) applyEditsResponse.updateResults = await updateRows(layer.updates, this.db, this.localParquetConfig, false);
 					if (layer.deletes) applyEditsResponse.deleteResults = await deleteRows(layer.deletes, this.db, this.localParquetConfig, false);
 				}
+				await syncWALandDB(this.db);
 			} catch (error) {
-				
+				this.logger.debug('Failed to complete edits.')
 			}
 		}
 	
-		await syncWALandDB(this.db);
 	
 		if (collection.editLevel === 'service') {
 			return [applyEditsResponse];
@@ -431,11 +465,11 @@ class Model {
 }
 
 // Properly rollback the DB transaction
-async function rollbackTransaction() {
-	if (!this.db) return;
+async function rollbackTransaction(dbConn) {
+	if (!dbConn) return;
 	try {
 		await new Promise((resolve, reject) => {
-			this.db.run("ROLLBACK;", (err) => {
+			dbConn.run("ROLLBACK;", (err) => {
 				if (err) {
 					this.logger.info("Failed to start transaction:", err);
 					reject(err);
@@ -450,11 +484,17 @@ async function rollbackTransaction() {
 }
 
 // Properly start the database transaction
-async function startTransaction() {
-	if (!this.db) return;
+async function startTransaction(dbConn) {
+	console.log('trying to start transaction')
+	console.log(this.db);
+	if (!dbConn) {
+		console.error("Failed to start transaction");
+		return;
+	}
+	console.log('starting transaction')
 	try {
 		await new Promise((resolve, reject) => {
-			this.db.run("BEGIN TRANSACTION;", (err) => {
+			dbConn.run("BEGIN TRANSACTION;", (err) => {
 				if (err) {
 					console.error("Failed to start transaction:", err);
 					reject(err);
@@ -469,12 +509,12 @@ async function startTransaction() {
 }
 
 
-// Properly start the DB transaction
-async function commitTransaction() {
-	if (!this.db) return;
+// 
+async function commitTransaction(dbConn) {
+	if (!dbConn) return;
 	try {
 		await new Promise((resolve, reject) => {
-			this.db.run("COMMIT;", (err) => {
+			dbConn.run("COMMIT;", (err) => {
 				if (err) {
 					console.error("Failed to commit transaction:", err);
 					reject(err);
@@ -488,4 +528,17 @@ async function commitTransaction() {
 	}
 }
 
+
+function hasSuccessFalse(results) {
+    for (const result of results) {
+        for (const category of ['addResults', 'updateResults', 'deleteResults']) {
+            for (const item of result[category]) {
+                if (item.success === false) {
+                    return true; // Found a false success
+                }
+            }
+        }
+    }
+    return false; // No false success found
+}
 module.exports = Model;

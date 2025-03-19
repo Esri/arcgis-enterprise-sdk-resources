@@ -51,37 +51,32 @@ async function insertRows(adds, dbConn, config, rollbackOnFailure) {
         const insertsql = `INSERT INTO ${tableName} (${columns.join(", ")}) VALUES (${values.join(", ")})`;
 
         // Execute insert operation with error handling
-        try {
-            await new Promise((resolve, reject) => {
-                dbConn.run(insertsql, (err) => {
-                    if (err) {
-                        const errorresponse = {
-                            "success": false,
-                            "error": {
-                                "code": 1017,
-                                "description": "Internal error during object insert."
-                            }
-                        };
-                        addResults.push(errorresponse);
-                        if (rollbackOnFailure) {
-                            reject(new Error("Insert operation failed")); // Throw error to trigger rollback
-                        } else {
-                            resolve(); // Continue without throwing an error
+        await new Promise((resolve, reject) => {
+            dbConn.run(insertsql, (err) => {
+                if (err) {
+                    const errorresponse = {
+                        "success": false,
+                        "error": {
+                            "code": 1017,
+                            "description": "Internal error during object insert."
                         }
-                    } else {
-                        resolve();
-                    }
-                });
-            });
-        } catch (error) {
-            throw error; // Rethrow the error to be caught in editData
-        }
+                    };
+                    addResults.push(errorresponse);
+                    console.log("in error insert")
+                    resolve(err);
 
-        const outputresponse = {
-            "success": true,
-            "objectId": objectId
-        };
-        addResults.push(outputresponse);
+                } else {
+                    console.log("in success insert")
+
+                    const outputresponse = {
+                        "success": true,
+                        "objectId": objectId
+                    };
+                    addResults.push(outputresponse);
+                    resolve();
+                }
+            });
+        });
     }
 
     return addResults;

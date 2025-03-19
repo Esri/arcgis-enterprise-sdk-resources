@@ -46,41 +46,36 @@ async function updateRows(updates, dbConn, config, rollbackOnFailure) {
         const updateSql = `UPDATE ${tableName} SET ${updateSet} WHERE ${objectidFieldName} = ${objectId}`;
 
         // Execute insert operation with error handling
-        try {
-            let outputResponse;
-            await new Promise((resolve, reject) => {
-                dbConn.run(updateSql, (err) => {
-                    if (err) {
-                        const errorResponse = {
-                            "success": false,
-                            "error": {
-                                "objectId": objectId,
-                                "code": 1019,
-                                "description": "Internal error during object update."
-                            }
-                        };
-                        updateResults.push(errorResponse);
-                        if (rollbackOnFailure) {
-                            reject(new Error("Update operation failed. Rolling back.")); // Throw error to trigger rollback
-                        } else {
-                            resolve(); // Continue without throwing an error
-                        }
-                    } else {
-                        outputResponse = {
-                            "success": true,
-                            "objectId": objectId
-                        };
-                        updateResults.push(outputResponse);
-                        resolve();
-                    }
-                });
-            });
-        } catch (error) {
-            console.error("Caught error during update:", error);
-            // Rethrow the error to be caught in editData for rollback
-            throw error; 
-        }
 
+        let outputResponse;
+        await new Promise((resolve, reject) => {
+            dbConn.run(updateSql, (err) => {
+                if (err) {
+                    const errorResponse = {
+                        "success": false,
+                        "objectId": objectId,
+                        "error": {
+                            "code": 1019,
+                            "description": "Internal error during object update."
+                        }
+                    };
+                    console.log("in error update")
+
+                    updateResults.push(errorResponse);
+                    resolve(err); // Continue without throwing an error so we can see all the results; reject would stop process
+
+                } else {
+                    console.log("in success update")
+
+                    outputResponse = {
+                        "success": true,
+                        "objectId": objectId
+                    };
+                    updateResults.push(outputResponse);
+                    resolve();
+                }
+            });
+        });
     }
 
     return updateResults;
