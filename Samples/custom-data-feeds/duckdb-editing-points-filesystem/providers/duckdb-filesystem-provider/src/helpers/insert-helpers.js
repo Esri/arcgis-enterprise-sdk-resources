@@ -62,12 +62,9 @@ async function insertRows(adds, dbConn, config, rollbackOnFailure) {
                         }
                     };
                     addResults.push(errorresponse);
-                    console.log("in error insert")
-                    resolve(err);
+                    resolve(err); // allow the edits to proceed; rollback will happen later
 
                 } else {
-                    console.log("in success insert")
-
                     const outputresponse = {
                         "success": true,
                         "objectId": objectId

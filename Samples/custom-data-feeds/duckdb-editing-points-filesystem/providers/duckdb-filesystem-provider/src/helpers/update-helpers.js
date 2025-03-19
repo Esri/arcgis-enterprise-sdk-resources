@@ -59,14 +59,10 @@ async function updateRows(updates, dbConn, config, rollbackOnFailure) {
                             "description": "Internal error during object update."
                         }
                     };
-                    console.log("in error update")
-
                     updateResults.push(errorResponse);
                     resolve(err); // Continue without throwing an error so we can see all the results; reject would stop process
 
                 } else {
-                    console.log("in success update")
-
                     outputResponse = {
                         "success": true,
                         "objectId": objectId

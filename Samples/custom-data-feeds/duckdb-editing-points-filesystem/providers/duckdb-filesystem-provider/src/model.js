@@ -76,23 +76,20 @@ class Model {
 				}
 
 				const hasFailedEdit = hasSuccessFalse([applyEditsResponse]);
-				console.log(hasFailedEdit)
 				if (hasFailedEdit) {
 					await rollbackTransaction(this.db); // Rollback the transaction on error
 					throw new Error("An error occurred: There is at least one operation that failed.");
 				}
 				else {
 					// an error above will not trigger the commit
-					
 					await commitTransaction(this.db); // Commit the transaction
 					this.logger.info('Committing transaction')
 
 				}
 			} catch (error) {
-				// await rollbackTransaction(this.db); // Rollback the transaction on error
-
 				this.logger.info(`${error} Transaction rolled back.`)
 
+				// if rolling back, we will transform the appropriate response
 				let transformedResponse = {}
 				for (const category of ['addResults', 'updateResults', 'deleteResults']) {
 					
@@ -107,9 +104,7 @@ class Model {
 						}));
 					}
 				}
-
 				applyEditsResponse = transformedResponse;
-
 			}
 	
 		} else {
@@ -485,13 +480,9 @@ async function rollbackTransaction(dbConn) {
 
 // Properly start the database transaction
 async function startTransaction(dbConn) {
-	console.log('trying to start transaction')
-	console.log(this.db);
 	if (!dbConn) {
-		console.error("Failed to start transaction");
 		return;
 	}
-	console.log('starting transaction')
 	try {
 		await new Promise((resolve, reject) => {
 			dbConn.run("BEGIN TRANSACTION;", (err) => {

@@ -42,18 +42,6 @@ function validateConfig(config) {
 		return;
 	}
 
-	// if (config.duckdb.sources.localParquet) {
-	// 	var localParquetRequiredFields = ["dfsConfigPath"];
-	// 	const allKeysTruthy = localParquetRequiredFields.every(
-	// 		(key) => config.duckdb.sources.localParquet[key]
-	// 	);
-	// 	if (!allKeysTruthy) {
-	// 		throw new Error("Error with required key in default.json file");
-	// 	}
-	// 	return;
-	// }
-
-	//console.warn("Please set a datasource in the default.json file");
 	return;
 }
 
