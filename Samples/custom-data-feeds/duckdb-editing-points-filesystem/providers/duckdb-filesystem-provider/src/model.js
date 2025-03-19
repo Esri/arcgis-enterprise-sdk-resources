@@ -76,14 +76,8 @@ class Model {
 				await commitTransaction(); // Commit the transaction
 			} catch (error) {
 				await rollbackTransaction(); // Rollback the transaction on error
-	
-				if (collection.editLevel === 'service') {
-					return applyEditsResponse = [{ "success": false }];
-				}
-				return applyEditsResponse = { "success": false };
 			}
 	
-			applyEditsResponse = { "success": true };
 		} else {
 			try {
 				for (const layer of collection.edits) {
@@ -213,193 +207,212 @@ class Model {
 						{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "1",
 							"editable": true,
 							"domain": null,
 							"name": "VendorID",
 							"length": 128,
-							"alias": "Vendor ID",
+							"alias": "VendorID",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "2/10/2025, 1:28 AM",
 							"editable": true,
 							"domain": null,
 							"name": "tpep_pickup_datetime",
 							"length": 128,
-							"alias": "Trip Pickup DateTime",
+							"alias": "Trip_Pickup_DateTime",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "2/10/2025, 1:39 AM",
 							"editable": true,
 							"domain": null,
 							"name": "tpep_dropoff_datetime",
 							"length": 128,
-							"alias": "Trip Dropoff DateTime",
+							"alias": "Trip_Dropoff_DateTime",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "2",
 							"editable": true,
 							"domain": null,
 							"name": "passenger_count",
 							"length": 128,
-							"alias": "Passenger Count",
+							"alias": "Passenger_Count",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "0.70",
 							"editable": true,
 							"domain": null,
 							"name": "trip_distance",
 							"length": 128,
-							"alias": "Trip Distance",
+							"alias": "Trip_Distance",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "-73.986862182617188",
 							"editable": true,
 							"domain": null,
 							"name": "pickup_longitude",
 							"length": 128,
-							"alias": "Pickup Longitude",
+							"alias": "Pickup_Longitude",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "40.721054077148438",
 							"editable": true,
 							"domain": null,
 							"name": "pickup_latitude",
 							"length": 128,
-							"alias": "Pickup Latitude",
+							"alias": "Pickup_Latitude",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "1",
 							"editable": true,
 							"domain": null,
 							"name": "RatecodeID",
 							"length": 128,
-							"alias": "Ratecode ID",
+							"alias": "RatecodeID",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "N",
 							"editable": true,
 							"domain": null,
 							"name": "store_and_fwd_flag",
 							"length": 128,
-							"alias": "Store and FWD Flag",
+							"alias": "Store_and_FWD_Flag",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "-73.99725341796875",
 							"editable": true,
 							"domain": null,
 							"name": "dropoff_longitude",
 							"length": 128,
-							"alias": "Dropoff Longitude",
+							"alias": "Dropoff_Longitude",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "40.725048065185547",
 							"editable": true,
 							"domain": null,
 							"name": "dropoff_latitude",
 							"length": 128,
-							"alias": "Dropoff Latitude",
+							"alias": "Dropoff_Latitude",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "1",
 							"editable": true,
 							"domain": null,
 							"name": "payment_type",
 							"length": 128,
-							"alias": "Payment Type",
+							"alias": "Payment_Type",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "7",
 							"editable": true,
 							"domain": null,
 							"name": "fare_amount",
 							"length": 128,
-							"alias": "Fare Amount",
+							"alias": "Fare_Amount",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "0.5",
 							"editable": true,
 							"domain": null,
 							"name": "extra",
 							"length": 128,
 							"alias": "Extra",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "0.5",
 							"editable": true,
 							"domain": null,
 							"name": "mta_tax",
 							"length": 128,
-							"alias": "MTA Tax",
+							"alias": "MTA_Tax",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "1.2",
 							"editable": true,
 							"domain": null,
 							"name": "tip_amount",
 							"length": 128,
-							"alias": "Tip Amount",
+							"alias": "Tip_Amount",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "0",
 							"editable": true,
 							"domain": null,
 							"name": "tolls_amount",
 							"length": 128,
-							"alias": "Tolls Amount",
+							"alias": "Tolls_Amount",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "0.3",
 							"editable": true,
 							"domain": null,
 							"name": "improvement_surcharge",
 							"length": 128,
-							"alias": "Improvement Surcharge",
+							"alias": "Improvement_Surcharge",
 							"type": "esriFieldTypeString"
-						},
-						{
+									},
+									{
 							"sqlType": "sqlTypeNVarchar",
 							"nullable": true,
+							"defaultValue": "9.5",
 							"editable": true,
 							"domain": null,
 							"name": "total_amount",
 							"length": 128,
-							"alias": "Total Amount",
+							"alias": "Total_Amount",
 							"type": "esriFieldTypeString"
-						}
+									}
 					]
 				};
 				geojson.crs = {

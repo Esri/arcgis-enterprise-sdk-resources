@@ -246,16 +246,6 @@ class Model {
 					],
 					"fields": [
 					  {
-              "sqlType": "sqlTypeBigInt",
-              "nullable": true,
-              "defaultValue": null,
-              "editable": false,
-              "domain": null,
-              "name": "OBJECTID",
-              "alias": "OBJECTID",
-              "type": "esriFieldTypeOID"
-					  },
-					  {
               "sqlType": "sqlTypeNVarchar",
               "nullable": true,
               "editable": true,
