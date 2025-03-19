@@ -14,18 +14,25 @@ class Model {
   ) {
     this.#logger = logger;
     const databaseUri = connectString || config?.editable_mongodb_polygon_provider?.connectString;
-    this.#client = new MongoClient(databaseUri, {
-      serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-      },
-    });
-    this.#databaseLookup = databases || config?.editable_mongodb_polygon_provider?.databases || {};
-    this.#definedCollectionsOnly =
-      definedCollectionsOnly ||
-      config?.editable_mongodb_polygon_provider?.definedCollectionsOnly ||
-      false;
+  
+    try {
+      this.#client = new MongoClient(databaseUri, {
+        serverApi: {
+          version: ServerApiVersion.v1,
+          strict: true,
+          deprecationErrors: true,
+        },
+      });
+  
+      this.#databaseLookup = databases || config?.editable_mongodb_polygon_provider?.databases || {};
+      this.#definedCollectionsOnly =
+        definedCollectionsOnly ||
+        config?.editable_mongodb_polygon_provider?.definedCollectionsOnly ||
+        false;
+    } catch (error) {
+      // Throw an error and stop execution if MongoDB connection fails
+      throw new Error('Failed to connect to MongoDB. Please check your connection settings.');
+    }
   }
 
   async editData(pathParams, body) {

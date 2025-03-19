@@ -22,18 +22,25 @@ class Model {
   ) {
     this.#logger = logger;
     const databaseUri = connectString || config?.mongodb_provider?.connectString;
-    this.#client = new MongoClient(databaseUri, {
-      serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-      },
-    });
-    this.#databaseLookup = databases || config?.mongodb_provider?.databases || {};
-    this.#definedCollectionsOnly =
-      definedCollectionsOnly ||
-      config?.mongodb_provider?.definedCollectionsOnly ||
-      false;
+
+    try {
+      this.#client = new MongoClient(databaseUri, {
+        serverApi: {
+          version: ServerApiVersion.v1,
+          strict: true,
+          deprecationErrors: true,
+        },
+      });
+
+      this.#databaseLookup = databases || config?.mongodb_provider?.databases || {};
+      this.#definedCollectionsOnly =
+        definedCollectionsOnly ||
+        config?.mongodb_provider?.definedCollectionsOnly ||
+        false;
+    } catch (error) {
+      // Throw an error and stop execution if MongoDB connection fails
+      throw new Error('Failed to connect to MongoDB. Please check your connection settings.');
+    }
   }
 
   async getData(req) {

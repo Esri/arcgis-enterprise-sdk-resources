@@ -1,0 +1,18 @@
+{
+	"duckdbfs": {
+		"sources": {
+			"localParquet": {
+				"dbPath": "../data/ny.duckdb",
+				"WKBColumn": "WKB",
+				"geomOutColumn": "geometry",
+				"idField": "OBJECTID",
+				"maxRecordCountPerPage": 10000,
+				"dbWKID": 4326,
+				"properties": {
+					"name": "testTaxi",
+					"description": "Taxi location data for New York City."
+				}
+			}
+		}
+	}
+}
