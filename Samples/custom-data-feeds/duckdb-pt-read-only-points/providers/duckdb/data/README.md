@@ -1,0 +1,1 @@
+- SmallNYTaxi.parquet is a parquet file representing NY Taxi point data sourced from [here](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page) and [here](https://registry.opendata.aws/nyc-tlc-trip-records-pds/) filtered down to 1 million rows for testing 
