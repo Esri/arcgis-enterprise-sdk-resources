@@ -1,0 +1,22 @@
+{
+  "port": 8080,
+  "altFuelStations": {
+    "apiKey": "dKmXSVrrUUM5CJLhhXcR089hKWb7UnNoNnhz0gCx",
+    "afsURL": "https://developer.nrel.gov/api/alt-fuel-stations",
+    "states": [
+      "AL",
+      "AK",
+      "AZ",
+      "AR",
+      "CA",
+      "CO",
+      "CT",
+      "DE",
+      "FL",
+      "GA",
+      "HI",
+      "ID",
+      "IL"
+    ]
+  }
+}
