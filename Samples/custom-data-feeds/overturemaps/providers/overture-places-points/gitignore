@@ -1,0 +1,11 @@
+# Ignore node_modules
+/node_modules/
+
+# Ignore node_modules
+/test/
+
+# Ignore specific JSON files
+/package-lock.json
+
+# Ignore cdpks
+*.cdpk
