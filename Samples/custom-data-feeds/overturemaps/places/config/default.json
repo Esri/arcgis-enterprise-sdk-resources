@@ -1,0 +1,23 @@
+{
+  "places": {
+    "sources": {
+      "awss3": {
+        "s3Url": "s3://overturemaps-us-west-2/release/2025-02-19.0/theme=places/type=place/*",
+        "geomOutColumn": "geometry",
+        "idField": "OBJECTID",
+        "maxRecordCountPerPage": 20000,
+        "category": "restaurant",
+        "dbWKID": 4326,
+        "xmin": -125,
+        "ymin": 24.396308,
+        "xmax": -66.93457,
+        "ymax": 49.384358,
+        "properties": {
+          "name": "restaurant",
+          "description": "restaurant"
+        }
+      }
+    }
+  }
+}
+

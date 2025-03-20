@@ -1,0 +1,24 @@
+{
+    "addressess": {
+      "sources": {
+        "awss3": {
+          "s3Url": "s3://overturemaps-us-west-2/release/2025-02-19.0/theme=addresses/type=*/*",
+          "geomOutColumn": "geometry",
+          "idField": "OBJECTID",
+          "maxRecordCountPerPage": 20000,
+          "category": "addresses",
+          "dbWKID": 4326,
+          "xmin": -114.305,
+          "ymin": 50.854,
+          "xmax": -113.784,
+          "ymax": 51.219,
+          "properties": {
+            "name": "addresses",
+            "description": "addresses"
+          }
+        }
+      }
+    }
+  }
+  
+  

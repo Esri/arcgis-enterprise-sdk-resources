@@ -1,0 +1,12 @@
+{
+  "name": "places",
+  "arcgisVersion": "11.4.0",
+  "parentServiceType": "FeatureServer",
+  "customdataRuntimeVersion": "1",
+  "type": "provider",
+  "properties": {
+    "hosts": false,
+    "disableIdParam": true
+  },
+  "fileName": "places.cdpk"
+}
