@@ -97,7 +97,7 @@ class Model {
               CAST(socials AS JSON) as socials,   
               geometry
             FROM read_parquet('${s3Config.s3Url}', 
-              hive_partitioning = true)
+              filename=true, hive_partitioning=1)
             WHERE 
               categories.primary = '${s3Config.category}' AND
               bbox.xmin > ${s3Config.xmin} 
