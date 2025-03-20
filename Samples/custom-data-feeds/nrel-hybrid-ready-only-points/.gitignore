@@ -1,3 +1,6 @@
+# Ignore the top-level config folder
+/config/
+
 # Ignore the framework folder
 /framework/
 

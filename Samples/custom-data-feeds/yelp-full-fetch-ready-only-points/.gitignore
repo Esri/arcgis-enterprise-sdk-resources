@@ -19,9 +19,7 @@
 /package.json
 /package-lock.json
 /providers/yelp-data-provider/config/default.json
-/providers/yelp-data-provider/package.json
 /providers/yelp-data-provider/package-lock.json
-/providers/yelp-data-provider/cdconfig.json
 
 # Ignore cdpks
 *.cdpk
