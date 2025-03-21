@@ -1,7 +1,5 @@
 const localConfig = require("config");
 const duckdb = require("duckdb");
-const os = require("os");
-const fs = require("fs");
 
 const {
   translateToGeoJSON,
@@ -12,9 +10,11 @@ const {
 
 class Model {
   constructor(koop) {
+    // This uses in memory instance of a DuckDB
     this.db = new duckdb.Database(":memory:");
 
-    // const dbPath = `${os.tmpdir()}/addressess.duckdb`;
+    //Comment out abolve line and uncomment line of code below if you want to use file based instance of DuckDB
+    // const dbPath = `${os.tmpdir()}/places.duckdb`;
     // if (fs.existsSync(dbPath)) {
     // 	// Delete the file
     // 	try {
@@ -28,7 +28,7 @@ class Model {
     // }
     // this.db = new duckdb.Database(dbPath);
 
-    const s3Config = localConfig.addressess.sources.awss3;
+    const s3Config = localConfig.places.sources.awss3;
 
     //Only install if it's not already installed (prevents conflicts)
     const httpfsQuery = `
@@ -77,26 +77,31 @@ class Model {
         console.log("Spatial extension already installed.");
       }
     });
-    
+
     var s3CreateClause = ``;
     if (s3Config) {
       var secretClause = `LOAD spatial;`;
-        s3CreateClause =  `${secretClause}
-          DROP TABLE IF EXISTS ${s3Config.properties.name};
+      s3CreateClause = `${secretClause}
             CREATE TABLE ${s3Config.properties.name} AS 
             SELECT
               CAST(row_number() OVER () AS INTEGER) AS OBJECTID,
-              country,
-              postcode,
-              street,
-              number,
-              unit,
-              CAST(address_levels[1].value AS VARCHAR(256)) AS address_level,
-              postal_city,
+              CAST(categories.primary AS VARCHAR(256)) AS category_main,
+              names.primary as name,
+              ROUND(confidence, 4) AS confidence,
+              websites[1] AS website,
+              socials[1] AS social,
+              emails[1] AS email,
+              phones[1] AS phone,
+              brand.names.primary AS brand,
+              addresses[1].freeform AS address,
+              addresses[1].postcode AS postcode,
+              brand.wikidata AS wikidata, 
+              CAST(socials AS JSON) as socials,   
               geometry
             FROM read_parquet('${s3Config.s3Url}', 
               filename=true, hive_partitioning=1)
             WHERE 
+              categories.primary = '${s3Config.category}' AND
               bbox.xmin > ${s3Config.xmin} 
                 AND bbox.xmax < ${s3Config.xmax}
               AND bbox.ymin > ${s3Config.ymin} 
@@ -123,7 +128,7 @@ class Model {
 
       // Retrieve geoservices parameters
       const { resultRecordCount, returnCountOnly } = geoserviceParams;
-      const sourceConfig = localConfig.addressess.sources.awss3;
+      const sourceConfig = localConfig.places.sources.awss3;
 
       // only return back one row for metadata purposes
       const isMetadataRequest =
