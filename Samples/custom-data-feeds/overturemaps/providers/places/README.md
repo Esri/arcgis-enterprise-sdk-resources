@@ -63,7 +63,8 @@ WHERE
 
 This query retrieves **places data for USA with category as "restaurant"**, returning approximately **117,679 records**.
 
-![image](https://github.com/user-attachments/assets/54a1a204-6e5f-45aa-9ae6-30b75c2ba76c)
+![image](https://github.com/user-attachments/assets/e7438d6e-a10d-4453-a36a-82d8ea571e73)
+
 
 ## Instructions
 1. **Create a new custom data app**:
