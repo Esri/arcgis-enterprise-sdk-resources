@@ -1,6 +1,5 @@
 # Ignore the top-level config folder
 /config/
-/providers/editable-mongodb-points/config/default.json
 
 # Ignore the framework folder
 /framework/
@@ -19,10 +18,7 @@
 /cdconfig.json
 /package.json
 /package-lock.json
-/providers/editable-mongodb-points/config/default.json
-/providers/editable-mongodb-points/package.json
 /providers/editable-mongodb-points/package-lock.json
-/providers/editable-mongodb-points/cdconfig.json
 
 # Ignore cdpks
 *.cdpk
