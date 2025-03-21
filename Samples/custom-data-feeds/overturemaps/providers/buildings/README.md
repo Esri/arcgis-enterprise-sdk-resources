@@ -68,7 +68,8 @@ WHERE
 
 This query retrieves **buildings data for Calgary, Canada, and the surrounding area**, returning approximately **437,604 records**.
 
-![image](https://github.com/user-attachments/assets/54a1a204-6e5f-45aa-9ae6-30b75c2ba76c)
+![image](https://github.com/user-attachments/assets/ec2836fb-61a5-4cd6-92e0-54b65acd8010)
+
 
 ## Instructions
 1. **Create a new custom data app**:
