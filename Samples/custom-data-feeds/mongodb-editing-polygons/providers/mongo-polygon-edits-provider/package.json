@@ -1,0 +1,27 @@
+{
+  "name": "mongo-polygon-edits-provider",
+  "version": "11.4.0",
+  "description": "Template for customdata provider",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha 'test/**/*.test.js'",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@koopjs/geoservice-utils": "^3.0.1",
+    "@synatic/noql": "^2.1.18",
+    "config": "^3.3.10",
+    "mongodb": "^6.3.0",
+    "proj4": "^2.11.0",
+    "@esri/proj-codes": "^3.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.0.1"
+  },
+  "repository": "",
+  "keywords": [
+    "customdata",
+    "provider"
+  ]
+}

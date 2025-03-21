@@ -1,0 +1,25 @@
+{
+  "name": "duckdb-filesystem-provider",
+  "version": "11.4.0",
+  "description": "Template for customdata provider",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha 'test/**/*.test.js'",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@esri/proj-codes": "^3.4.0",
+    "config": "^3.2.5",
+    "duckdb": "^1.1.3",
+    "proj4": "^2.15.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.0.1"
+  },
+  "repository": "",
+  "keywords": [
+    "customdata",
+    "provider"
+  ]
+}

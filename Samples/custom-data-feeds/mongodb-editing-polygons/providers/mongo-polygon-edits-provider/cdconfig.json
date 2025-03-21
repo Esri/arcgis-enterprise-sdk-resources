@@ -1,0 +1,12 @@
+{
+  "name": "mongo-polygon-edits-provider",
+  "arcgisVersion": "11.4.0",
+  "parentServiceType": "FeatureServer",
+  "customdataRuntimeVersion": "1",
+  "type": "provider",
+  "properties": {
+    "hosts": true,
+    "disableIdParam": false
+  },
+  "fileName": "mongo-polygon-edits-provider.cdpk"
+}
