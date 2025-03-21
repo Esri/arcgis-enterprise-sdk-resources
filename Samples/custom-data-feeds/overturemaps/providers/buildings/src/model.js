@@ -1,5 +1,7 @@
 const localConfig = require("config");
 const duckdb = require("duckdb");
+const os = require("os");
+const fs = require("fs");
 
 const {
   translateToGeoJSON,
@@ -10,9 +12,13 @@ const {
 
 class Model {
   constructor(koop) {
+    // This uses in memory instance of a DuckDB
     this.db = new duckdb.Database(":memory:");
 
-    // const dbPath = `${os.tmpdir()}/places.duckdb`;
+    //Comment out abolve line and uncomment line of code below if you want to use file based instance of DuckDB
+    //console.log(os.tmpdir());
+    //console.log(process.env.HOME);
+    // const dbPath = `${os.tmpdir()}/buildings.duckdb`;
     // if (fs.existsSync(dbPath)) {
     // 	// Delete the file
     // 	try {
@@ -26,11 +32,11 @@ class Model {
     // }
     // this.db = new duckdb.Database(dbPath);
 
-    const s3Config = localConfig.places.sources.awss3;
+    const s3Config = localConfig.buildings.sources.awss3;
 
     //Only install if it's not already installed (prevents conflicts)
     const httpfsQuery = `
-      SELECT COUNT(*) FROM duckdb_extensions() WHERE extension_name='httpfs' and installed=true;
+      SELECT COUNT(*) FROM duckdb_extensions() WHERE extension_name='httpfs' and installed=true and loaded=true;
     `;
     this.db.all(httpfsQuery, (err, res) => {
       if (err) {
@@ -38,12 +44,12 @@ class Model {
         return;
       }
       if (res[0]["COUNT(*)"] === 0) {
-        console.log("Installing httpfs Extension...");
-        this.db.all(`INSTALL httpfs; LOAD httpfs`, function (err) {
+        console.log("Installing & Loading httpfs Extension...");
+        this.db.all(`INSTALL httpfs; LOAD httpfs;`, function (err) {
           if (err) {
-            console.error("Error installing httpfs extension:", err);
+            console.error("Error loading httpfs extension:", err);
           } else {
-            console.log("httpfs extension installed.");
+            console.log("httpfs extension loaded.");
           }
         });
       } else {
@@ -52,23 +58,22 @@ class Model {
     });
 
     //Only install if it's not already installed (prevents conflicts)
-    const initQuery = `
-      SELECT COUNT(*) FROM duckdb_extensions() WHERE extension_name='spatial' and installed=true;
+    const spatialQuery = `
+      SELECT COUNT(*) FROM duckdb_extensions() WHERE extension_name='spatial' and installed=true and loaded=true;
     `;
-
-    this.db.all(initQuery, (err, res) => {
+    this.db.all(spatialQuery, (err, res) => {
       if (err) {
         console.error("Error checking spatial extension:", err);
         return;
       }
 
       if (res[0]["COUNT(*)"] === 0) {
-        console.log("Installing Spatial Extension...");
-        this.db.all(`INSTALL spatial;`, function (err) {
+        console.log("Installing & Loading Spatial Extension...");
+        this.db.all(`INSTALL spatial; LOAD spatial;`, function (err) {
           if (err) {
-            console.error("Error installing spatial extension:", err);
+            console.error("Error loading spatial extension:", err);
           } else {
-            console.log("Spatial extension installed.");
+            console.log("Spatial extension loaded.");
           }
         });
       } else {
@@ -78,32 +83,37 @@ class Model {
 
     var s3CreateClause = ``;
     if (s3Config) {
-      var secretClause = `LOAD spatial;`;
-      s3CreateClause = `${secretClause}
-            CREATE TABLE ${s3Config.properties.name} AS 
+      var secretClause = `INSTALL spatial; LOAD spatial; INSTALL httpfs;
+                LOAD httpfs;`;
+          s3CreateClause = `LOAD spatial; DROP TABLE IF EXISTS ${s3Config.properties.name};CREATE TABLE ${s3Config.properties.name} AS 
             SELECT
               CAST(row_number() OVER () AS INTEGER) AS OBJECTID,
-              CAST(categories.primary AS VARCHAR(256)) AS category_main,
-              names.primary as name,
-              ROUND(confidence, 4) AS confidence,
-              websites[1] AS website,
-              socials[1] AS social,
-              emails[1] AS email,
-              phones[1] AS phone,
-              brand.names.primary AS brand,
-              addresses[1].freeform AS address,
-              addresses[1].postcode AS postcode,
-              brand.wikidata AS wikidata, 
-              CAST(socials AS JSON) as socials,   
+              sources[1].dataset as source,
+              subtype,
+              class,
+              level,
+              has_parts,
+              is_underground,
+              height,
+              num_floors,
+              num_floors_underground,
+              min_height,
+              min_floor,
+              facade_color,
+              facade_material,
+              roof_material,
+              roof_shape,
+              roof_direction,
+              roof_orientation,
+              roof_color,
               geometry
             FROM read_parquet('${s3Config.s3Url}', 
               filename=true, hive_partitioning=1)
             WHERE 
-              categories.primary = '${s3Config.category}' AND
               bbox.xmin > ${s3Config.xmin} 
-                AND bbox.xmax < ${s3Config.xmax}
+                      AND bbox.xmax < ${s3Config.xmax}
               AND bbox.ymin > ${s3Config.ymin} 
-                AND bbox.ymax < ${s3Config.ymax};`;
+                      AND bbox.ymax < ${s3Config.ymax};`;
     }
 
     this.db.all(s3CreateClause, function (err, res) {
@@ -126,7 +136,7 @@ class Model {
 
       // Retrieve geoservices parameters
       const { resultRecordCount, returnCountOnly } = geoserviceParams;
-      const sourceConfig = localConfig.places.sources.awss3;
+      const sourceConfig = localConfig.buildings.sources.awss3;
 
       // only return back one row for metadata purposes
       const isMetadataRequest =
@@ -146,7 +156,7 @@ class Model {
         fetchSize
       );
       
-    // Handle metadata requests
+      // Handle metadata requests
       var dbExtent = null;
       if (isMetadataRequest) {
         const extentQuery = `SELECT ST_AsGeoJSON(ST_Envelope_Agg(${sourceConfig.geomOutColumn})) AS extent FROM ${sourceConfig.properties.name}`;
@@ -159,7 +169,7 @@ class Model {
         });
       }
 
-    // Handle Query requests
+      // Handle Query requests
       this.db.all(sqlQuery, (err, rows) => {
         let geojson = { type: "FeatureCollection", features: [] };
         if (err) {
