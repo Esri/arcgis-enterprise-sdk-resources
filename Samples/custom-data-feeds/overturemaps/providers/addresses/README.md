@@ -22,7 +22,7 @@ Overture distributes its datasets in **GeoParquet**, a column-oriented spatial d
 
 If you are new to GeoParquet, we recommend consulting the [GeoParquet Guide](https://guide.cloudnativegeo.org/geoparquet/).
 
-The **addresses GeoParquet file** data columns can be found [here]https://docs.overturemaps.org/guides/addresses/#data-columns). 
+The **addresses GeoParquet file** data columns can be found [here](https://docs.overturemaps.org/guides/addresses/#data-columns). 
 
 This sample utilizes **DuckDB**, a powerful analytics tool that enables querying remote files while downloading only the necessary data. **DuckDB 1.1.0 and later** supports reading and writing GeoParquet files.
 
