@@ -1,0 +1,12 @@
+{
+  "name": "google-sheets-provider",
+  "arcgisVersion": "11.4.0",
+  "parentServiceType": "FeatureServer",
+  "customdataRuntimeVersion": "1",
+  "type": "provider",
+  "properties": {
+    "hosts": true,
+    "disableIdParam": false
+  },
+  "fileName": "google-sheets-provider.cdpk"
+}
