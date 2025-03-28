@@ -1,6 +1,6 @@
 {
     "altFuelStations": {
-        "apiKey": "dKmXSVrrUUM5CJLhhXcR089hKWb7UnNoNnhz0gCx",
+        "apiKey": "",
         "afsURL": "https://developer.nrel.gov/api/alt-fuel-stations",
         "states" : [
             "AL",
