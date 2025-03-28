@@ -18,10 +18,8 @@
 /cdconfig.json
 /package.json
 /package-lock.json
-/providers/nrel-alt-fuel-provider/config/default.json
-/providers/nrel-alt-fuel-provider/package.json
 /providers/nrel-alt-fuel-provider/package-lock.json
-/providers/nrel-alt-fuel-provider/cdconfig.json
+/providers/nrel-alt-fuel-provider/config/default.json
 
 # Ignore cdpks
 *.cdpk

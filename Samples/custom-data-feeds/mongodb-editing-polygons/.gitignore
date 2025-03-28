@@ -18,10 +18,7 @@
 /cdconfig.json
 /package.json
 /package-lock.json
-/providers/mongo-polygon-edits-provider/config/default.json
-/providers/mongo-polygon-edits-provider/package.json
 /providers/mongo-polygon-edits-provider/package-lock.json
-/providers/mongo-polygon-edits-provider/cdconfig.json
 
 # Ignore cdpks
 *.cdpk

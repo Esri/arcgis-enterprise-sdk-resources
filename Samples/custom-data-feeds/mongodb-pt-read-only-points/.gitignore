@@ -18,10 +18,7 @@
 /cdconfig.json
 /package.json
 /package-lock.json
-/providers/mongodb-provider/config/default.json
-/providers/mongodb-provider/package.json
 /providers/mongodb-provider/package-lock.json
-/providers/mongodb-provider/cdconfig.json
 
 # Ignore cdpks
 *.cdpk

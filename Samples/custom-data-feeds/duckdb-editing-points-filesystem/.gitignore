@@ -18,9 +18,7 @@
 /cdconfig.json
 /package.json
 /package-lock.json
-/providers/duckdb-filesystem-provider/package.json
 /providers/duckdb-filesystem-provider/package-lock.json
-/providers/duckdb-filesystem-provider/cdconfig.json
 
 # Ignore cdpks
 *.cdpk

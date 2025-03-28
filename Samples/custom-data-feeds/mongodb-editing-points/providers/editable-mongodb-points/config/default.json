@@ -1,0 +1,17 @@
+{
+    "editable_mongodb_points": {
+        "connectString": "mongodb://127.0.0.1:27017",
+        "definedCollectionsOnly": true,
+        "databases": {
+            "editable-sample-fires": {
+                "fires": {
+                    "geometryField": "location",
+                    "idField": "alternateID",
+                    "cacheTtl": 0,
+                    "crs": 4326,
+                    "maxRecordCount": 2000
+                }
+            }
+        }
+    }
+}

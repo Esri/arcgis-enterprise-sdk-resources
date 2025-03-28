@@ -18,10 +18,7 @@
 /cdconfig.json
 /package.json
 /package-lock.json
-/providers/socrata-provider/config/default.json
-/providers/socrata-provider/package.json
 /providers/socrata-provider/package-lock.json
-/providers/socrata-provider/cdconfig.json
 
 # Ignore cdpks
 *.cdpk

@@ -18,10 +18,8 @@
 /cdconfig.json
 /package.json
 /package-lock.json
-/providers/csv-provider/config/default.json
-/providers/csv-provider/package.json
 /providers/csv-provider/package-lock.json
-/providers/csv-provider/cdconfig.json
+
 
 # Ignore cdpks
 *.cdpk

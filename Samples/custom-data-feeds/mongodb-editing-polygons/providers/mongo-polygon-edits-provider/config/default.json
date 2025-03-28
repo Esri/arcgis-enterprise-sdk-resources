@@ -1,0 +1,18 @@
+{
+    "editable_mongodb_polygon_provider": {
+        "connectString": "mongodb://127.0.0.1:27017",
+        "definedCollectionsOnly": true,
+        "databases": {
+            "edit-polygon-db": {
+                "polygons": {
+                    "geometryField": "location",
+                    "idField": "alternateID",
+                    "cacheTtl": 0,
+                    "crs": 4326,
+                    "maxRecordCount": 2000
+                }
+            }
+        }
+    }
+}
+
