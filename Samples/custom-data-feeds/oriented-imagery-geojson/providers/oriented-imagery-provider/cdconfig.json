@@ -1,5 +1,5 @@
 {
-  "name": "csv-provider",
+  "name": "oriented-imagery-provider",
   "arcgisVersion": "11.4.0",
   "parentServiceType": "FeatureServer",
   "customdataRuntimeVersion": "1",
@@ -8,5 +8,5 @@
     "hosts": false,
     "disableIdParam": false
   },
-  "fileName": "csv-provider.cdpk"
+  "fileName": "oriented-imagery-provider.cdpk"
 }

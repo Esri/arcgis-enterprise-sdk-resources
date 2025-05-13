@@ -6,10 +6,10 @@
 
 # Ignore node_modules
 /node_modules/
-/providers/csv-provider/node_modules/
+/providers/oriented-imagery-provider/node_modules/
 
 # Ignore test
-/providers/csv-provider/test/
+/providers/oriented-imagery-provider/test/
 
 # Ignore app-level src
 /src
@@ -18,7 +18,7 @@
 /cdconfig.json
 /package.json
 /package-lock.json
-/providers/csv-provider/package-lock.json
+/providers/oriented-imagery-provider/package-lock.json
 
 
 # Ignore cdpks
