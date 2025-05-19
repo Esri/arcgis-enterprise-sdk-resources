@@ -1,6 +1,6 @@
 {
   "name": "oriented-imagery-provider",
-  "version": "11.4.0",
+  "version": "11.5.0",
   "description": "Template for customdata provider",
   "main": "src/index.js",
   "scripts": {
@@ -8,9 +8,7 @@
     "start": "node src/index.js"
   },
   "dependencies": {
-    "config": "^3.2.5",
-    "papaparse": "^5.4.1",
-    "valid-url": "^1.0.9"
+    "config": "^3.2.5"
   },
   "devDependencies": {
     "chai": "^4.2.0",

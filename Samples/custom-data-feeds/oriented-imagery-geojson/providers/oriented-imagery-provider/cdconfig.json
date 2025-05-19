@@ -1,6 +1,6 @@
 {
   "name": "oriented-imagery-provider",
-  "arcgisVersion": "11.4.0",
+  "arcgisVersion": "11.5.0",
   "parentServiceType": "FeatureServer",
   "customdataRuntimeVersion": "1",
   "type": "provider",
