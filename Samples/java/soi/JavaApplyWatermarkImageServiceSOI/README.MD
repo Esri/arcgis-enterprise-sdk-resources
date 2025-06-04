@@ -1,5 +1,5 @@
 ---
-order: 10
+order: 14
 ---
 
 # Java apply watermark Image Service SOI
