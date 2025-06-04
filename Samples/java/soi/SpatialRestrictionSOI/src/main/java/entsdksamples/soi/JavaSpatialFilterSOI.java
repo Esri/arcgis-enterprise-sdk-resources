@@ -57,7 +57,7 @@ import com.esri.arcgis.system.ServerUtilities;
         description = "This SOI draws or queries only features that meet the spatial filter criteria defined from the SOI.",
         interceptor = true,
         servicetype = "MapService",
-        supportsSharedInstances = false)
+        supportsSharedInstances = true)
 
 public class JavaSpatialFilterSOI
         implements IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler {
@@ -102,11 +102,11 @@ public class JavaSpatialFilterSOI
             throw new IOException("Could not get ArcGIS home directory. Check if environment variable " + ARCGISHOME_ENV
                     + " is set.");
         }
-        if (!arcgisHome.endsWith(File.separator))
+        if (arcgisHome != null && !arcgisHome.endsWith(File.separator))
             arcgisHome += File.separator;
         // Load the SOI helper.
-		    String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
-		    this.soiHelper = new SOIHelper(mapServiceWSDLPath);
+		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
+		this.soiHelper = new SOIHelper(mapServiceWSDLPath);
     }
 
     /**
@@ -338,6 +338,7 @@ public class JavaSpatialFilterSOI
          * The SOE should release its reference on the Server Object Helper.
          */
         this.serverLog.addMessage(3, 200, "Shutting down " + this.getClass().getName() + " SOI.");
+		this.soiHelper.cleanup();
         this.serverLog = null;
         this.so = null;
         this.soiHelper = null;

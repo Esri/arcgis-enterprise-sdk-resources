@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PxfRU7HgmLE=",
+  "dgSpecHash": "z3RDBul1r5U=",
   "success": true,
-  "projectFilePath": "C:\\Users\\fan11765\\Desktop\\DotNETImageServiceSOI\\DotNETImageServiceSOI\\ImageServiceSOI\\ImageServiceSOI\\DotNETImageServiceApplyWatermark.csproj",
+  "projectFilePath": "C:\\Users\\fan11765\\Documents\\GIthub\\arcgis-enterprise-sdk-resources\\Samples\\dot net\\SOI\\DotNETImageServiceApplyWatermarkSOI\\DotNETImageServiceApplyWatermark.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fan11765\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
     "C:\\Users\\fan11765\\.nuget\\packages\\system.drawing.common\\8.0.7\\system.drawing.common.8.0.7.nupkg.sha512"

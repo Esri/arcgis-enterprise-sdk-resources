@@ -38,6 +38,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.HashMap;
+import java.util.Map;
 
 @ArcGISExtension
 @ServerObjectExtProperties(displayName = "Java UN Tracing REST SOE",
@@ -45,8 +46,7 @@ import java.util.HashMap;
         properties = "",
         allSOAPCapabilities = "",
         defaultSOAPCapabilities = "",
-        servicetype =  "MapService" ,
-        supportsSharedInstances = false)
+        supportsSharedInstances = true)
 
 public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTRequestHandler {
 
@@ -174,7 +174,7 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
      * @return String JSON representation of specified resource.
      */
     private byte[] getResource(String capabilitiesList, String resourceName, String outputFormat,
-                               JSONObject requestPropertiesJSON, java.util.Map<String, String> responsePropertiesMap) throws Exception {
+                               JSONObject requestPropertiesJSON, Map<String, String> responsePropertiesMap) throws Exception {
         if (resourceName.equalsIgnoreCase("") || resourceName.length() == 0) {
             return getRootResource();
         }
@@ -234,13 +234,13 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
      * @param operationName
      * @param operationInput
      * @param outputFormat
-     * @param requestProperties
+     * @param requestPropertiesJSON
      * @param responsePropertiesMap
      * @return byte[]
      */
     private byte[] invokeRESTOperation(String capabilitiesList, String resourceName, String operationName,
                                        String operationInput, String outputFormat, JSONObject requestPropertiesJSON,
-                                       java.util.Map<String, String> responsePropertiesMap) throws Exception {
+                                       Map<String, String> responsePropertiesMap) throws Exception {
         byte[] operationOutput = null;
 
 		JSONObject operationInputAsJSON = new JSONObject(operationInput);
@@ -281,7 +281,7 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
         JSONObject requestPropertiesJSON = new JSONObject(requestProperties);
 
         // create a response properties map to hold properties of response
-        java.util.Map<String, String> responsePropertiesMap = new HashMap<String, String>();
+        Map<String, String> responsePropertiesMap = new HashMap<String, String>();
 
         try {
             // if no operationName is specified send description of specified
@@ -344,7 +344,7 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
      * Returns a list of transformer asset IDs
      */
     private byte[] getTransformers(JSONObject operationInput, String outputFormat, JSONObject requestPropertiesJSON,
-                                   java.util.Map<String, String> responseProperties) throws Exception {
+                                   Map<String, String> responseProperties) throws Exception {
 
         responseProperties.put("Content-Type", "application/json");
         JSONObject result = new JSONObject();
@@ -391,7 +391,7 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
      * Returns a list of customers serviced by the specified transformer
      */
     private byte[] getCustomers(JSONObject operationInput, String outputFormat, JSONObject requestPropertiesJSON,
-                                java.util.Map<String, String> responseProperties) throws Exception {
+                                Map<String, String> responseProperties) throws Exception {
 
         responseProperties.put("Content-Type", "application/json");
         JSONObject result = new JSONObject();
@@ -447,7 +447,7 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
             com.esri.arcgis.system.JSONObject xfrPointJsonTemp = new com.esri.arcgis.system.JSONObject();
             IGeometry xfrPoint = (IGeometry)xfrQryResults.getElement(0).getProperty("SHAPE");
             JSONConverterGeometry geoSerializer = new JSONConverterGeometry();
-            geoSerializer.queryJSONGeometry(xfrPoint, false, (com.esri.arcgis.system.IJSONObject)xfrPointJsonTemp);
+            geoSerializer.queryJSONGeometry(xfrPoint, false, (IJSONObject)xfrPointJsonTemp);
 
             String xfrPointJsonStr = xfrPointJsonTemp.toJSONString(null);
             JSONObject xfrPointJson = new JSONObject(xfrPointJsonStr);
@@ -493,7 +493,7 @@ public class JavaUNTracingRESTSOE implements IServerObjectExtension, IRESTReques
 
                         IGeometry lvsPoint = (IGeometry)lvs.getProperty("SHAPE");
                         com.esri.arcgis.system.JSONObject lvsPointJsonTemp = new com.esri.arcgis.system.JSONObject();
-                        geoSerializer.queryJSONGeometry(lvsPoint, false, (com.esri.arcgis.system.IJSONObject)lvsPointJsonTemp);
+                        geoSerializer.queryJSONGeometry(lvsPoint, false, (IJSONObject)lvsPointJsonTemp);
 
                         String lvsPointJsonStr = lvsPointJsonTemp.toJSONString(null);
                         JSONObject lvsPointJson = new JSONObject(lvsPointJsonStr);

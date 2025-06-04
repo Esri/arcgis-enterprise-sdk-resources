@@ -71,7 +71,14 @@ namespace NetSimpleLoggerSOI
             if (restRequestHandler == null)
                 throw new RestErrorException("Service handler not found");
 
-            return restRequestHandler.GetSchema();
+            try
+            {
+                return restRequestHandler.GetSchema();
+            }
+            finally
+            {
+                Marshal.ReleaseComObject(restRequestHandler);
+            }
         }
 
         public byte[] HandleRESTRequest(string Capabilities, string resourceName, string operationName,
@@ -93,9 +100,17 @@ namespace NetSimpleLoggerSOI
                 if (restRequestHandler == null)
                     throw new RestErrorException("Service handler not found");
 
-                return restRequestHandler.HandleRESTRequest(
-                        Capabilities, resourceName, operationName, operationInput,
-                        outputFormat, requestProperties, out responseProperties);
+                try
+                {
+                    return restRequestHandler.HandleRESTRequest(
+                            Capabilities, resourceName, operationName, operationInput,
+                            outputFormat, requestProperties, out responseProperties);
+                }
+                finally
+                {
+                    Marshal.ReleaseComObject(restRequestHandler);
+                }
+
             }
             catch (RestErrorException e)
             {
@@ -118,12 +133,19 @@ namespace NetSimpleLoggerSOI
             IWebRequestHandler webRequestHandler = _restSOIHelper.FindRequestHandlerDelegate<IWebRequestHandler>();
             if (webRequestHandler != null)
             {
-                return webRequestHandler.HandleStringWebRequest(
-                        httpMethod, requestURL, queryString, Capabilities, requestData, out responseContentType, out respDataType);
-            }
+                try
+                {
+                    return webRequestHandler.HandleStringWebRequest(
+                            httpMethod, requestURL, queryString, Capabilities, requestData, out responseContentType, out respDataType);
 
-            responseContentType = null;
+                }
+                finally
+                {
+                    Marshal.ReleaseComObject(webRequestHandler);
+                }
+            }
             respDataType = esriWebResponseDataType.esriWRDTPayload;
+            responseContentType = "text/plain";
             //Insert error response here.
             return null;
         }
@@ -140,7 +162,14 @@ namespace NetSimpleLoggerSOI
             IRequestHandler requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler>();
             if (requestHandler != null)
             {
-                return requestHandler.HandleBinaryRequest(request);
+                try
+                {
+                    return requestHandler.HandleBinaryRequest(request);
+                }
+                finally
+                {
+                    Marshal.ReleaseComObject(requestHandler);
+                }
             }
 
             //Insert error response here.
@@ -159,7 +188,14 @@ namespace NetSimpleLoggerSOI
             IRequestHandler2 requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler2>();
             if (requestHandler != null)
             {
-                return requestHandler.HandleBinaryRequest2(Capabilities, request);
+                try
+                {
+                    return requestHandler.HandleBinaryRequest2(Capabilities, request);
+                }
+                finally
+                {
+                    Marshal.ReleaseComObject(requestHandler);
+                }
             }
 
             //Insert error response here.
@@ -178,7 +214,14 @@ namespace NetSimpleLoggerSOI
             IRequestHandler requestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRequestHandler>();
             if (requestHandler != null)
             {
-                return requestHandler.HandleStringRequest(Capabilities, request);
+                try
+                {
+                    return requestHandler.HandleStringRequest(Capabilities, request);
+                }
+                finally
+                {
+                    Marshal.ReleaseComObject(requestHandler);
+                }
             }
 
             //Insert error response here.

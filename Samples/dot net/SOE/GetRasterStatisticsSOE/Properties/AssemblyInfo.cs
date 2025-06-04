@@ -37,7 +37,6 @@ using System.Runtime.InteropServices;
 
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("GetRasterStatistics", "df6efd2a-98d6-4301-8b38-49a140c5d4ba",
-    Author = "pank9616",
     Company = "ESRI",
     Date = "2/28/2024 8:22:11 PM",
     Description = "",

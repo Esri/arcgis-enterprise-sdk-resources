@@ -55,10 +55,10 @@ import com.esri.arcgis.system.ServerUtilities;
 @ArcGISExtension
 
 @ServerObjectExtProperties(
-		displayName = "Java Clipping SOI",
-		description = "This SOI masks out layers outside of a clip polygon to draw or query.",
-		interceptor = true,
-		servicetype =  "MapService" ,
+        displayName = "Java Clipping SOI",
+        description = "This SOI masks out layers outside of a clip polygon to draw or query.",
+        interceptor = true,
+        servicetype =  "MapService" ,
 		properties = "" ,
 		supportsSharedInstances = false)
 
@@ -107,13 +107,14 @@ public class JavaClippingSOI
 			throw new IOException("Could not get ArcGIS home directory. Check if environment variable " + ARCGISHOME_ENV
 					+ " is set.");
 		}
-		if (!arcgisHome.endsWith(File.separator))
+		if (arcgisHome != null && !arcgisHome.endsWith(File.separator))
 			arcgisHome += File.separator;
 
+		String xmlSchemaPath = "framework\\runtime\\ArcGIS\\Resources\\XmlSchema\\".replace("\\", File.separator);
 		// Load the SOI helper.
 		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
 		this.soiHelper = new SOIHelper(mapServiceWSDLPath);
-	}
+			}
 
     
 	/**
@@ -343,6 +344,7 @@ public class JavaClippingSOI
 		 * The SOE should release its reference on the Server Object Helper.
 		 */
 		this.serverLog.addMessage(3, 200, "Shutting down " + this.getClass().getName() + " SOI.");
+		this.soiHelper.cleanup();
 		this.serverLog = null;
 		this.so = null;
 		this.soiHelper = null;

@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Esri")]
 [assembly: AssemblyProduct("ArcGIS Enterprise SDK")]
-[assembly: AssemblyCopyright("Copyright ©  2023 Esri Inc. All Rights Reserved.")]
+[assembly: AssemblyCopyright("Copyright ©  2024 Esri Inc. All Rights Reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -37,10 +37,9 @@ using System.Runtime.InteropServices;
 
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("NetEditFeaturesRESTSOE", "898657aa-3124-4503-9d7d-c91b9db84a26",
-    Author = "cont_chau",
-    Company = "",
+    Company = "ESRI",
     Date = "4/5/2018 4:22:02 PM",
     Description = "",
     TargetProduct = "Server",
-    TargetVersion = "11.4",
+    TargetVersion = "11.5",
     Version = "1.0")]

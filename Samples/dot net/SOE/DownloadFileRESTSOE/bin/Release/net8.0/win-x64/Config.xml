@@ -9,7 +9,7 @@
   <Company />
   <Date>2019-08-21T16:45:58</Date>
   <Targets>
-    <Target name="Server" version="11.4" />
+    <Target name="Server" version="11.5" />
   </Targets>
   <AddIn language="CLR" library="DownloadFileRESTSOE.dll" namespace="DownloadFileRESTSOE">
     <ServerObjectType>

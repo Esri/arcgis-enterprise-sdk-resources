@@ -15,7 +15,7 @@ You need to build soe with Visual Studio and then deploying the SOI from the .so
 
 ## Sample data
 
-Any Image service published from ArcGIS Pro or Admin rest end and geoprocessing tool. This instruction uses a Image Service as the sample service to test with the SOI.
+Any Image service published from ArcGIS Pro or Admin rest end and Geo-processing tool. This instruction uses a Image Service as the sample service to test with the SOI.
 
 ## Instructions
 
@@ -27,7 +27,7 @@ Any Image service published from ArcGIS Pro or Admin rest end and geoprocessing 
 4. Click ***Choose File*** and choose the ***DotNetImageServiceApplyWatermarkSOI_ent.soe*** file (`..\bin\Debug\DotNetImageServiceApplyWatermarkSOI_ent.soe`).
 5. Click ***Add***.
 
-### Enable the SOI on a map service
+### Enable the SOI on a Image Service
 
 1. Make sure you have published the Image service using ArcGIS Pro or Admin rest end and geoprocessing tool. 
 2. Log in to ArcGIS portal home application and select the Image Servive.Click the ***Settings*** tab. Select Extensions and expand it and find the ***SOI*** and expand it.
@@ -37,7 +37,7 @@ Any Image service published from ArcGIS Pro or Admin rest end and geoprocessing 
 
 ### Test the SOI
 
-1. Open a browser and navigate to the REST services endpoint of the USA map service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/Name/ImageServer`).
+1. Open a browser and navigate to the REST services endpoint of the Image service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/Name/ImageServer`).
 2. Scroll to the bottom of the above page and click ***Export Map*** in ***Supported Extensions***.
 
    This leads you to the following URL:
@@ -47,6 +47,6 @@ Any Image service published from ArcGIS Pro or Admin rest end and geoprocessing 
    ```
 3. The watermark ***(c) ESRI Inc.*** will appear at the bottom left corner of the exported image.
 
-   ![](../../../../images/netsp/ImageServiceWaterMarkSOI2.png "Net Image Service Watermark SOI Sample")
+   ![](../../../../images/netsp/ImageServiceWaterMarkSOI2.png "Image Service Apply Watermark SOI")
 
 

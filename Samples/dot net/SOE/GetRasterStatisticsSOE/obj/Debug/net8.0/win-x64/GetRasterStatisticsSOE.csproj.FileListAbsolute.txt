@@ -20,3 +20,9 @@ C:\Users\fan11765\Desktop\DotNetRESTImageService\DotNetRESTImageService\RESTImag
 C:\Users\fan11765\Desktop\DotNetRESTImageService\DotNetRESTImageService\RESTImageServiceTest\GetRasterStatistics\obj\Debug\net8.0\win-x64\GetRasterStatisticsSOE.dll
 C:\Users\fan11765\Desktop\DotNetRESTImageService\DotNetRESTImageService\RESTImageServiceTest\GetRasterStatistics\obj\Debug\net8.0\win-x64\GetRasterStatisticsSOE.pdb
 C:\Users\fan11765\Desktop\DotNetRESTImageService\DotNetRESTImageService\RESTImageServiceTest\GetRasterStatistics\bin\Debug\net8.0\win-x64\GetRasterStatisticsSOE_ent.soe
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\GetRasterStatisticsSOE\obj\Debug\net8.0\win-x64\GetRasterStatisticsSOE.csproj.AssemblyReference.cache
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\GetRasterStatisticsSOE\obj\Debug\net8.0\win-x64\GetRasterStatisticsSOE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\GetRasterStatisticsSOE\obj\Debug\net8.0\win-x64\GetRasterStatisticsSOE.csproj.CoreCompileInputs.cache
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\GetRasterStatisticsSOE\obj\Debug\net8.0\win-x64\GetRasterStatisticsSOE.sourcelink.json
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\GetRasterStatisticsSOE\obj\Debug\net8.0\win-x64\GetRasterStatisticsSOE.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\GetRasterStatisticsSOE\obj\Debug\net8.0\win-x64\GetRasterStatisticsSOE.pdb

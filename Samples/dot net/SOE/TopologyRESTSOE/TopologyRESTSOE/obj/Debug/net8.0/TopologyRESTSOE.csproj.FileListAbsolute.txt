@@ -1,0 +1,45 @@
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\TopologyRESTSOE.deps.json
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\TopologyRESTSOE.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\TopologyRESTSOE.pdb
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.Carto.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.DatasourcesFile.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.DatasourcesGDB.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.DatasourcesRaster.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.Geodatabase.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.GeoDatabaseDistributed.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.GeoDatabaseExtensions.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.Geometry.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.GISClient.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.Server.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.SOESupport.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.System.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\TopologyRESTSOE.csproj.AssemblyReference.cache
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\TopologyRESTSOE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\TopologyRESTSOE.csproj.CoreCompileInputs.cache
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\Topology.C1F08A0F.Up2Date
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\TopologyRESTSOE.dll
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\TopologyRESTSOE.pdb
+C:\Users\fan11765\source\repos\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\TopologyRESTSOE_ent.soe
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\TopologyRESTSOE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\TopologyRESTSOE.csproj.CoreCompileInputs.cache
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\TopologyRESTSOE.sourcelink.json
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\TopologyRESTSOE.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\TopologyRESTSOE.pdb
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\TopologyRESTSOE.deps.json
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\TopologyRESTSOE.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\TopologyRESTSOE.pdb
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.Carto.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.DatasourcesFile.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.DatasourcesGDB.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.DatasourcesRaster.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.Geodatabase.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.GeoDatabaseDistributed.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.GeoDatabaseExtensions.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.Geometry.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.GISClient.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.Server.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.SOESupport.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\ESRI.Server.System.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\TopologyRESTSOE.csproj.AssemblyReference.cache
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\obj\Debug\net8.0\Topology.C1F08A0F.Up2Date
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\TopologyRESTSOE\TopologyRESTSOE\bin\Debug\net8.0\TopologyRESTSOE_ent.soe

@@ -36,10 +36,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("ImageServiceSOI", "b2d8a59d-6172-41fb-a734-97cff6f85747",
-    Author = "pank9616",
     Company = "ESRI",
     Date = "7/10/2024 10:19:17 AM",
     Description = "",
     TargetProduct = "Server",
-    TargetVersion = "11.3",
+    TargetVersion = "11.5",
     Version = "1.0")]
