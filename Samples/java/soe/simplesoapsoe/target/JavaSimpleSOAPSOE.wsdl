@@ -3,7 +3,7 @@
   xmlns="http://schemas.xmlsoap.org/wsdl/"
   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:arcgis="http://www.esri.com/schemas/ArcGIS/3.4.0"
+  xmlns:arcgis="http://www.esri.com/schemas/ArcGIS/3.5.0"
   xmlns:soe="http://www.soe.entsdksamples"
   targetNamespace="http://www.soe.entsdksamples">
   <documentation>Esri Server Object Extension</documentation>
@@ -17,7 +17,7 @@
         </jxb:schemaBindings>
       </xs:appinfo>
     </xs:annotation>
-    <xs:import namespace="http://www.esri.com/schemas/ArcGIS/3.4.0"/>
+    <xs:import namespace="http://www.esri.com/schemas/ArcGIS/3.5.0"/>
       <xs:element name="getLayerCountByType">
         <xs:complexType>
           <xs:sequence>
@@ -36,7 +36,7 @@
 
     </xs:schema>
 
-    <xs:schema targetNamespace="http://www.esri.com/schemas/ArcGIS/3.4.0" xmlns="http://www.esri.com/schemas/ArcGIS/3.4.0"
+    <xs:schema targetNamespace="http://www.esri.com/schemas/ArcGIS/3.5.0" xmlns="http://www.esri.com/schemas/ArcGIS/3.5.0"
       xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="1.0">
     <xs:annotation>
       <xs:appinfo>

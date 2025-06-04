@@ -81,7 +81,7 @@ import com.esri.arcgis.system.ServerUtilities;
 		description = "SOI to control access to different layers",
 		interceptor = true,
 		servicetype = "MapService",
-		supportsSharedInstances = false)
+		supportsSharedInstances = true)
 public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler,
 		IRequestHandler2, IRequestHandler {
 	private static final String ARCGISHOME_ENV = "AGSSERVER";
@@ -97,6 +97,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 	private Map<String, String> servicePermissionMap = null;
 
 	private String permissionfileURL = "https://esriresources.s3.amazonaws.com/sdkresources/permission.json";
+
 	public LayerAccessSOI() throws Exception {
 		super();
 	}
@@ -105,7 +106,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 	 * init() is called once, when the instance of the SOE/SOI is created.
 	 *
 	 * @param soh the IServerObjectHelper
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException         Signals that an I/O exception has occurred.
 	 * @throws AutomationException the automation exception
 	 */
 	public void init(IServerObjectHelper soh) throws IOException, AutomationException {
@@ -117,15 +118,15 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 		this.serverLog = ServerUtilities.getServerLogger();
 		String arcgisHome = getArcGISHomeDir();
 		/* Still null - throw exception */
-		if(arcgisHome == null) {
-			serverLog.addMessage(1, 200,"Could not get ArcGIS home directory. Check if environment variable " + ARCGISHOME_ENV + " is set.");
+		if (arcgisHome == null) {
+			serverLog.addMessage(1, 200, "Could not get ArcGIS home directory. Check if environment variable " + ARCGISHOME_ENV + " is set.");
 			throw new IOException("Could not get ArcGIS home directory. Check if environment variable " + ARCGISHOME_ENV + " is set.");
 		}
-		if(arcgisHome != null && !arcgisHome.endsWith(File.separator)) {
+		if (arcgisHome != null && !arcgisHome.endsWith(File.separator)) {
 			arcgisHome += File.separator;
 		}
 		// Set Log Level to 4 to log the detailed message
-		this.serverLog.addMessage(4, 200,"ArcGIS home directory: " + arcgisHome);
+		this.serverLog.addMessage(4, 200, "ArcGIS home directory: " + arcgisHome);
 		this.so = soh.getServerObject();
 		// Load the SOI helper.
 		String mapServiceWSDLPath = arcgisHome + "framework#runtime#ArcGIS#Resources#XmlSchema".replace("#", File.separator) + File.separator + "MapServer.wsdl";
@@ -136,28 +137,28 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 
 	/**
 	 * This method is called to handle REST requests.
-	 *
+	 * <p>
 	 * SOEs allow the user to extend base functionality for ArvGIS Map Services and Image Services.
 	 * For a <b>Map Service</b> the supported REST operations are: find, identify, export. For an
 	 * <b>Image Service</b> the supported REST operations are: identify, export, etc.
-	 *
+	 * <p>
 	 * In this example we demonstrate layer level access on REST operators for a Map Service.
 	 * Authorized layers for each user role is read from the permission.json file. When user queries a
 	 * particular operation, the request is manipulated to allow information retrieval only from
 	 * authorized layers.
-	 *
+	 * <p>
 	 * Note: This example only implements layer level access on Map Service operations. Image Service
 	 * operations need to be implemented.
 	 *
-	 * @param capabilities the capabilities
-	 * @param resourceName the resource name
-	 * @param operationName the operation name
-	 * @param operationInput the operation input
-	 * @param outputFormat the output format
-	 * @param requestProperties the request properties
+	 * @param capabilities       the capabilities
+	 * @param resourceName       the resource name
+	 * @param operationName      the operation name
+	 * @param operationInput     the operation input
+	 * @param outputFormat       the output format
+	 * @param requestProperties  the request properties
 	 * @param responseProperties the response properties
 	 * @return the response as byte[]
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException         Signals that an I/O exception has occurred.
 	 * @throws AutomationException the automation exception
 	 */
 	@Override
@@ -220,7 +221,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 				}
 				// remove blank layer form set
 				authorizedLayerSet.remove("");
-				authorizedLayers = authorizedLayerSet.toString().replaceAll("\\[|]|\\s+","");
+				authorizedLayers = authorizedLayerSet.toString().replaceAll("\\[|]|\\s+", "");
 			}
 
 			/*
@@ -241,7 +242,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 					 * Here we replace user requested layers with layers he has access to achieve layer level
 					 * security.
 					 */
-					if(authorizedLayers.isEmpty()) {
+					if (authorizedLayers.isEmpty()) {
 						return new JSONObject().put("error", new JSONObject().put("code", 404).put("message", "Not Found"))
 								.toString().getBytes();
 					}
@@ -358,7 +359,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 						 * Make sure resourceName always starts with '/' for consistency.
 						 */
 						String tempResourceName = "";
-						if(!resourceName.startsWith("/")) {
+						if (!resourceName.startsWith("/")) {
 							tempResourceName = "/" + resourceName;
 						} else {
 							tempResourceName = resourceName;
@@ -480,13 +481,13 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 
 	/**
 	 * This method is called to handle SOAP requests.
-	 *
+	 * <p>
 	 * Note: Layer level access on SOAP handler operation requests is not implemented.
 	 *
 	 * @param capabilities the capabilities
-	 * @param request the request
+	 * @param request      the request
 	 * @return the response as String
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException         Signals that an I/O exception has occurred.
 	 * @throws AutomationException the automation exception
 	 */
 	@Override
@@ -574,8 +575,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 			inRequest = filterLayerIds(inRequest, mode, authorizedLayerSet);
 		} else if ("GetServerInfoResponse".equalsIgnoreCase(name)) {
 			inRequest = filterGetServerInfoResponse(inRequest, mode, authorizedLayerSet);
-		}
-		else
+		} else
 			return request;
 
 		// Recreate modified request back to the original request format
@@ -634,8 +634,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 			inRequest = filterLayerIds(inRequest, mode, authorizedLayerSet);
 		} else if ("GetServerInfoResponse".equalsIgnoreCase(name)) {
 			inRequest = filterGetServerInfoResponse(inRequest, mode, authorizedLayerSet);
-		}
-		else
+		} else
 			return request;
 
 		// Recreate modified request back to the original request format
@@ -650,6 +649,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 
 		return filteredRequest;
 	}
+
 	/**
 	 * Filter to apply layer level security to MapDescription
 	 *
@@ -744,13 +744,13 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 		}
 
 		LongArray layerIdInLA = null;
-		if(idx >= 0) {
+		if (idx >= 0) {
 			// Get all the requested layers
 			layerIdInLA = (LongArray) inRequestData.getObject(idx, inRequest.getNamespaceURI(), "ArrayOfInt");
 
 			// Perform filtering based on access to different layers
 			for (int i = layerIdInLA.getCount() - 1; i >= 0; i--) {
-				if(!authorizedLayerSet.contains(Integer.toString(layerIdInLA.getElement(i)))) {
+				if (!authorizedLayerSet.contains(Integer.toString(layerIdInLA.getElement(i)))) {
 					layerIdInLA.remove(i);
 				}
 			}
@@ -823,7 +823,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 		// Perform filtering based on access to different layers
 		IMapLayerInfos layerInfos = mapServerInfo.getMapLayerInfos();
 		for (int i = layerInfos.getCount() - 1; i >= 0; i--) {
-			if(!authorizedLayerSet.contains(Integer.toString(layerInfos.getElement(i).getID()))) {
+			if (!authorizedLayerSet.contains(Integer.toString(layerInfos.getElement(i).getID()))) {
 				layerInfos.remove(i);
 			}
 		}
@@ -831,7 +831,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 		// Perform filtering based on access to different layers
 		ILayerDescriptions layerDescriptions = mapServerInfo.getDefaultMapDescription().getLayerDescriptions();
 		for (int i = layerDescriptions.getCount() - 1; i >= 0; i--) {
-			if(!authorizedLayerSet.contains(Integer.toString(layerDescriptions.getElement(i).getID()))) {
+			if (!authorizedLayerSet.contains(Integer.toString(layerDescriptions.getElement(i).getID()))) {
 				layerDescriptions.remove(i);
 			}
 		}
@@ -870,14 +870,14 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 	 * This method is called by SOAP handler to handle OGC requests.
 	 *
 	 * @param httpMethod
-	 * @param requestURL the request URL
-	 * @param queryString the query string
-	 * @param capabilities the capabilities
-	 * @param requestData the request data
+	 * @param requestURL          the request URL
+	 * @param queryString         the query string
+	 * @param capabilities        the capabilities
+	 * @param requestData         the request data
 	 * @param responseContentType the response content type
-	 * @param respDataType the response data type
+	 * @param respDataType        the response data type
 	 * @return the response as byte[]
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException         Signals that an I/O exception has occurred.
 	 * @throws AutomationException the automation exception
 	 */
 	@Override
@@ -900,12 +900,12 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 
 	/**
 	 * This method is called to handle schema requests for custom SOE's.
-	 *
+	 * <p>
 	 * To get schema (or Root resource) for a Map Service, REST handler calls
 	 * <code>handleRESTRequest</code> with all arguments as empty.
 	 *
 	 * @return the schema as String
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException         Signals that an I/O exception has occurred.
 	 * @throws AutomationException the automation exception
 	 */
 	@Override
@@ -930,7 +930,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 	 * @param capabilities the capabilities
 	 * @param request
 	 * @return the response as byte[]
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException         Signals that an I/O exception has occurred.
 	 * @throws AutomationException the automation exception
 	 */
 	@Override
@@ -956,7 +956,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 	 *
 	 * @param request
 	 * @return the response as the byte[]
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException         Signals that an I/O exception has occurred.
 	 * @throws AutomationException the automation exception
 	 */
 	@Override
@@ -994,7 +994,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 	 * shutdown() is called once when the Server Object's context is being shut down and is about to
 	 * go away.
 	 *
-	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws IOException         Signals that an I/O exception has occurred.
 	 * @throws AutomationException the automation exception
 	 */
 	public void shutdown() throws IOException, AutomationException {
@@ -1010,7 +1010,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 	/**
 	 * Remove unauthorized layers from request.
 	 *
-	 * @param requestedLayers layer user is requesting information from
+	 * @param requestedLayers  layer user is requesting information from
 	 * @param authorizedLayers layers user is authorized to fetch information from
 	 * @return
 	 */
@@ -1075,7 +1075,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 
 			// Read the permissions file
 			if (content.isEmpty()) {
-				serverLog.addMessage(1, 200,"Failed to read permission file from  " + fileurl);
+				serverLog.addMessage(1, 200, "Failed to read permission file from  " + fileurl);
 				throw new IOException("Failed to read permission file from  " + fileurl);
 			}
 
@@ -1121,7 +1121,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 	}
 
 	/**
-	 *  Filter REST GetLegend response.
+	 * Filter REST GetLegend response.
 	 *
 	 * @param originalJSONRes
 	 * @param authorizedLayers
@@ -1132,7 +1132,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 			final String originalJSONRes, final String authorizedLayers, final String operationFromResource) {
 		// Decide what tag to use, based on the operation
 		String layerIdJSONKey = null;
-		if(operationFromResource.equalsIgnoreCase("legend")) {
+		if (operationFromResource.equalsIgnoreCase("legend")) {
 			layerIdJSONKey = "layerId";
 		} else if (operationFromResource.equalsIgnoreCase("layers")) {
 			layerIdJSONKey = "id";
@@ -1253,7 +1253,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 			arcgisHome = System.getProperty(ARCGISHOME_ENV);
 		}
 
-		if(arcgisHome == null) {
+		if (arcgisHome == null) {
 			/* To make env lookup case insensitive */
 			Map<String, String> envs = System.getenv();
 			for (String envName : envs.keySet()) {
@@ -1262,7 +1262,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 				}
 			}
 		}
-		if(arcgisHome != null && !arcgisHome.endsWith(File.separator)) {
+		if (arcgisHome != null && !arcgisHome.endsWith(File.separator)) {
 			arcgisHome += File.separator;
 		}
 		return arcgisHome;
@@ -1293,6 +1293,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 
 		private String value;
 		private static final Map<String, RESTOperations> lookup = new HashMap<String, RESTOperations>();
+
 		static {
 			for (RESTOperations operation : RESTOperations.values())
 				lookup.put(operation.getValue(), operation);
@@ -1318,5 +1319,7 @@ public class LayerAccessSOI implements IServerObjectExtension, IRESTRequestHandl
 			else
 				return RESTOperations.DEFAULT;
 		}
-	};
+
+		;
+	}
 }

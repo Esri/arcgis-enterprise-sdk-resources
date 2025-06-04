@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fan11765\\Desktop\\DotNetRESTImageService\\DotNetRESTImageService\\RESTImageServiceTest\\GetRasterStatistics\\GetRasterStatistics.csproj": {}
+    "C:\\Users\\fan11765\\source\\repos\\GetRasterStatistics\\GetRasterStatistics\\GetRasterStatistics.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fan11765\\Desktop\\DotNetRESTImageService\\DotNetRESTImageService\\RESTImageServiceTest\\GetRasterStatistics\\GetRasterStatistics.csproj": {
+    "C:\\Users\\fan11765\\source\\repos\\GetRasterStatistics\\GetRasterStatistics\\GetRasterStatistics.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fan11765\\Desktop\\DotNetRESTImageService\\DotNetRESTImageService\\RESTImageServiceTest\\GetRasterStatistics\\GetRasterStatistics.csproj",
+        "projectUniqueName": "C:\\Users\\fan11765\\source\\repos\\GetRasterStatistics\\GetRasterStatistics\\GetRasterStatistics.csproj",
         "projectName": "GetRasterStatistics",
-        "projectPath": "C:\\Users\\fan11765\\Desktop\\DotNetRESTImageService\\DotNetRESTImageService\\RESTImageServiceTest\\GetRasterStatistics\\GetRasterStatistics.csproj",
+        "projectPath": "C:\\Users\\fan11765\\source\\repos\\GetRasterStatistics\\GetRasterStatistics\\GetRasterStatistics.csproj",
         "packagesPath": "C:\\Users\\fan11765\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fan11765\\Desktop\\DotNetRESTImageService\\DotNetRESTImageService\\RESTImageServiceTest\\GetRasterStatistics\\obj\\",
+        "outputPath": "C:\\Users\\fan11765\\source\\repos\\GetRasterStatistics\\GetRasterStatistics\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\fan11765\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -60,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

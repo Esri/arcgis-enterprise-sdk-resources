@@ -29,12 +29,7 @@ import com.esri.arcgis.server.IServerObjectExtension;
 import com.esri.arcgis.server.IServerObjectHelper;
 import com.esri.arcgis.server.SOIHelper;
 import com.esri.arcgis.server.json.JSONObject;
-import com.esri.arcgis.system.ILog;
-import com.esri.arcgis.system.IRESTRequestHandler;
-import com.esri.arcgis.system.IRequestHandler;
-import com.esri.arcgis.system.IRequestHandler2;
-import com.esri.arcgis.system.IWebRequestHandler;
-import com.esri.arcgis.system.ServerUtilities;
+import com.esri.arcgis.system.*;
 
 /*
  * For an SOE to act as in interceptor, it needs to implement all request handler interfaces
@@ -53,15 +48,15 @@ import com.esri.arcgis.system.ServerUtilities;
 @ArcGISExtension
 
 @ServerObjectExtProperties(
-		displayName = "Java Simple Map SOI",
-		description = "Intercepts and logs all calls to ArcObjects or custom SOEs",
-		interceptor = true,
-		servicetype =  "MapService" ,
-	 	properties = "" ,
+        displayName = "Java Simple Map SOI",
+        description = "Intercepts and logs all calls to ArcObjects or custom SOEs",
+        interceptor = true,
+        servicetype =  "MapService" ,
+		properties = "enableAudit=true" ,
 		supportsSharedInstances = false)
 
 public class JavaSimpleMapSOI
-		implements IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler
+		implements IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler, IRequestHandler2, IRequestHandler,IObjectConstruct
      {
 
 	private static final long serialVersionUID = 1L;
@@ -69,6 +64,7 @@ public class JavaSimpleMapSOI
 	private ILog serverLog;
 	private IServerObject so;
 	private SOIHelper soiHelper;
+	private boolean enableAudit;
 
 	/**
 	 * Default constructor.
@@ -98,6 +94,7 @@ public class JavaSimpleMapSOI
 		this.serverLog.addMessage(3, 200, "Initialized " + this.getClass().getName() + " SOI.");
 		this.so = soh.getServerObject();
 		String arcgisHome = getArcGISHomeDir();
+
 		/* If null, throw an exception */
 		if (arcgisHome == null) {
 			serverLog.addMessage(1, 200, "Could not get ArcGIS home directory. Check if environment variable "
@@ -146,8 +143,16 @@ public class JavaSimpleMapSOI
 		 * 
 		 * Note: You can also use the ILog interface to get more information on log message levels.
 		 */
-		serverLog.addMessage(3, 200, "Request logged in JavaSimpleMapSOI. User: " + getLoggedInUserName() + ", Operation: "
-				+ operationName + ", Operation Input: " + processOperationInput(operationInput));
+		if (enableAudit) {
+			serverLog.addMessage(3, 200,
+					"Audit Log - User: " + getLoggedInUserName() +
+							", Operation: " + operationName +
+							", Input: " + processOperationInput(operationInput));
+		} else {
+			serverLog.addMessage(3, 200,
+					"Audit is disabled. Set 'enableAudit' to true in SOI properties to enable auditing.");
+		}
+
 
 		/*
 		 * Add code to manipulate REST requests here
@@ -346,9 +351,36 @@ public class JavaSimpleMapSOI
 		 * The SOE should release its reference on the Server Object Helper.
 		 */
 		this.serverLog.addMessage(3, 200, "Shutting down " + this.getClass().getName() + " SOI.");
+		this.soiHelper.cleanup(); 
 		this.serverLog = null;
 		this.so = null;
 		this.soiHelper = null;
+	}
+/****************************************************************************************************************************
+ * IObjectConstruct: This is an optional interface for SOEs. If your SOE
+ * includes configuration properties or requires any additional
+ * initialization logic, you need to implement the IObjectConstruct
+ * interface.
+ *
+ * This interface includes a single method called construct().
+ ****************************************************************************************************************************/
+		 /**
+		  * construct() is called only once, when the SOE is created, after
+		  * IServerObjectExtension.init() is called. This method hands back the
+		  * configuration properties for the SOE as a property set. You should
+		  * include any expensive initialization logic for your SOE within your
+		  * implementation of construct().
+		  */
+	public void construct(IPropertySet propertySet) throws IOException {
+		String enableAuditStringValue = (String) propertySet
+				.getProperty("enableAudit");
+		if (enableAuditStringValue.equalsIgnoreCase("true")
+				|| enableAuditStringValue.equalsIgnoreCase("false")) {
+			this.enableAudit = Boolean.parseBoolean((String) propertySet
+					.getProperty("enableAudit"));
+		} else {
+			this.enableAudit = true;
+		}
 	}
 
 	/**

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: entsdksamples.soe.JavaSimpleRESTSOEWithCapabilitiesTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s - in entsdksamples.soe.JavaSimpleRESTSOEWithCapabilitiesTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s - in entsdksamples.soe.JavaSimpleRESTSOEWithCapabilitiesTest

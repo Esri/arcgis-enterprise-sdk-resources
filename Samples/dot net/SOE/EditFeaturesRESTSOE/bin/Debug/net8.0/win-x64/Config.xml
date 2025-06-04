@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ESRI.Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.esri.com/Desktop/AddIns">
+  <Name>NetEditFeaturesRESTSOE</Name>
+  <AddInID>898657aa-3124-4503-9d7d-c91b9db84a26</AddInID>
+  <Description />
+  <Version>1.0</Version>
+  <Author />
+  <Provider>ArcObjects11</Provider>
+  <Company>ESRI</Company>
+  <Date>2018-04-05T16:22:02</Date>
+  <Targets>
+    <Target name="Server" version="11.5" />
+  </Targets>
+  <AddIn language="CLR" library="NetEditFeaturesRESTSOE.dll" namespace="NetEditFeaturesRESTSOE">
+    <ServerObjectType>
+      <Name>MapServer</Name>
+      <ExtensionTypes>
+        <ExtensionType id="NetEditFeaturesRESTSOE.NetEditFeaturesRESTSOE" library="NetEditFeaturesRESTSOE.dll" class="NetEditFeaturesRESTSOE.NetEditFeaturesRESTSOE">
+          <Name>NetEditFeaturesRESTSOE</Name>
+          <DisplayName>.Net Edit Features REST SOE</DisplayName>
+          <Description>.Net Edit features SOE - allows feature validation and editing.</Description>
+          <Properties>
+            <layerId>0</layerId>
+          </Properties>
+          <Resources />
+          <Info>
+            <DefaultWebCapabilities />
+            <AllWebCapabilities />
+            <SupportsREST>true</SupportsREST>
+            <SupportsSOAP>false</SupportsSOAP>
+            <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
+            <SupportsInterceptor>false</SupportsInterceptor>
+            <SupportsSharedInstances>true</SupportsSharedInstances>
+          </Info>
+        </ExtensionType>
+      </ExtensionTypes>
+    </ServerObjectType>
+  </AddIn>
+</ESRI.Configuration>

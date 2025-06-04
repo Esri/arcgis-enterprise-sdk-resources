@@ -9,7 +9,7 @@
   <Company>Esri</Company>
   <Date>2022-01-05T13:42:00</Date>
   <Targets>
-    <Target name="Server" version="11.4" />
+    <Target name="Server" version="11.5" />
   </Targets>
   <AddIn language="CLR" library="NetSimpleRESTSOE.dll" namespace="NetSimpleRESTSOE">
     <ServerObjectType>

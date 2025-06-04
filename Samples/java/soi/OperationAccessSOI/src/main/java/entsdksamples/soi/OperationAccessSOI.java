@@ -68,7 +68,7 @@ import com.esri.arcgis.system.ServerUtilities;
 		description = "SOI to control access to different operations",
 		interceptor = true,
 		servicetype = "MapService",
-		supportsSharedInstances = false)
+		supportsSharedInstances = true)
 public class OperationAccessSOI implements IServerObjectExtension, IRESTRequestHandler, IWebRequestHandler,
 		IRequestHandler2, IRequestHandler {
 	private static final String ARCGISHOME_ENV = "AGSSERVER";
@@ -76,6 +76,10 @@ public class OperationAccessSOI implements IServerObjectExtension, IRESTRequestH
 	private ILog serverLog;
 	private IServerObject so;
 	private SOIHelper soiHelper;
+	/*
+	 * Load the SOI helper.
+	 */
+	//private SOIHelper soiHelper = new SOIHelper("C:/Program Files/ArcGIS/Server/XmlSchema/MapServer.wsdl");
 
 	/**
 	 * Default constructor.
@@ -431,6 +435,7 @@ public class OperationAccessSOI implements IServerObjectExtension, IRESTRequestH
 		 */
 		this.serverLog.addMessage(3, 200, "Shutting down "
 				+ this.getClass().getName() + " SOI.");
+		this.soiHelper.cleanup(); 
 		this.serverLog = null;
 		this.so = null;
 		this.soiHelper = null;

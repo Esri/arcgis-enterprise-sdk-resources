@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Esri")]
 [assembly: AssemblyProduct("ArcGIS Enterprise SDK")]
-[assembly: AssemblyCopyright("Copyright © 2023 Esri Inc. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2024 Esri Inc. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -42,5 +42,5 @@ using System.Runtime.InteropServices;
     Date = "01/05/2022 13:42",
     Description = "",
     TargetProduct = "Server",
-    TargetVersion = "11.4",
+    TargetVersion = "11.5",
     Version = "1.0")]
