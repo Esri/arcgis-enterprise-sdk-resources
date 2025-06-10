@@ -1,0 +1,3484 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197189832891, 34.0593908334032]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "Name": "DJI_0461.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0461.JPG",
+        "AcquisitionDate": 1579174817000,
+        "CameraHeading": 127.8,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.91677877452677,
+        "FarDistance": 91.9172093183452,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197190055673, 34.0593904999945]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "Name": "DJI_0462.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0462.JPG",
+        "AcquisitionDate": 1579174818000,
+        "CameraHeading": 128.9,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.91025080990256,
+        "FarDistance": 91.7640139694813,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 59.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197188416247, 34.059392000334]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "Name": "DJI_0463.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0463.JPG",
+        "AcquisitionDate": 1579174819000,
+        "CameraHeading": 129.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.91677877452677,
+        "FarDistance": 91.9172093183452,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197079027497, 34.0594326389838]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "Name": "DJI_0464.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0464.JPG",
+        "AcquisitionDate": 1579174823000,
+        "CameraHeading": 152.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.95594656227203,
+        "FarDistance": 92.8363814115286,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197025027969, 34.0594534167381]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "Name": "DJI_0465.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0465.JPG",
+        "AcquisitionDate": 1579174825000,
+        "CameraHeading": 168.3,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.19690408329, 34.0594574168962]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "Name": "DJI_0466.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0466.JPG",
+        "AcquisitionDate": 1579174830000,
+        "CameraHeading": 175.8,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196782555605, 34.0594612778858]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "Name": "DJI_0467.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0467.JPG",
+        "AcquisitionDate": 1579174834000,
+        "CameraHeading": 176.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196660666798, 34.0594642220019]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "Name": "DJI_0468.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0468.JPG",
+        "AcquisitionDate": 1579174838000,
+        "CameraHeading": 177,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196539027722, 34.0594675278066]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "Name": "DJI_0469.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0469.JPG",
+        "AcquisitionDate": 1579174842000,
+        "CameraHeading": 177.2,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196417416494, 34.0594714446118]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "Name": "DJI_0470.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0470.JPG",
+        "AcquisitionDate": 1579174846000,
+        "CameraHeading": 177.3,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196293694224, 34.059473971967]
+      },
+      "properties": {
+        "OBJECTID": 11,
+        "Name": "DJI_0471.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0471.JPG",
+        "AcquisitionDate": 1579174850000,
+        "CameraHeading": 177.4,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196171639228, 34.0594780554762]
+      },
+      "properties": {
+        "OBJECTID": 12,
+        "Name": "DJI_0472.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0472.JPG",
+        "AcquisitionDate": 1579174854000,
+        "CameraHeading": 177.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196111389222, 34.0594798609424]
+      },
+      "properties": {
+        "OBJECTID": 13,
+        "Name": "DJI_0473.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0473.JPG",
+        "AcquisitionDate": 1579174856000,
+        "CameraHeading": 177.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.96900249152046,
+        "FarDistance": 93.1427721092565,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195997721796, 34.059442028008]
+      },
+      "properties": {
+        "OBJECTID": 14,
+        "Name": "DJI_0474.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0474.JPG",
+        "AcquisitionDate": 1579174861000,
+        "CameraHeading": 197.7,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 15,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195941277952, 34.0594235833672]
+      },
+      "properties": {
+        "OBJECTID": 15,
+        "Name": "DJI_0475.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0475.JPG",
+        "AcquisitionDate": 1579174864000,
+        "CameraHeading": 213.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195899972517, 34.0593356386039]
+      },
+      "properties": {
+        "OBJECTID": 16,
+        "Name": "DJI_0476.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0476.JPG",
+        "AcquisitionDate": 1579174868000,
+        "CameraHeading": 242.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 17,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195871555211, 34.0592734719436]
+      },
+      "properties": {
+        "OBJECTID": 17,
+        "Name": "DJI_0477.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0477.JPG",
+        "AcquisitionDate": 1579174871000,
+        "CameraHeading": 265.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 18,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195878611478, 34.0591710274274]
+      },
+      "properties": {
+        "OBJECTID": 18,
+        "Name": "DJI_0478.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0478.JPG",
+        "AcquisitionDate": 1579174876000,
+        "CameraHeading": 270.7,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 19,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195884250203, 34.0590700555965]
+      },
+      "properties": {
+        "OBJECTID": 19,
+        "Name": "DJI_0479.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0479.JPG",
+        "AcquisitionDate": 1579174880000,
+        "CameraHeading": 271.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 20,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197189832891, 34.0593908334032]
+      },
+      "properties": {
+        "OBJECTID": 20,
+        "Name": "DJI_0461.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0461.JPG",
+        "AcquisitionDate": 1579174817000,
+        "CameraHeading": 127.8,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.91677877452677,
+        "FarDistance": 91.9172093183452,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 21,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197190055673, 34.0593904999945]
+      },
+      "properties": {
+        "OBJECTID": 21,
+        "Name": "DJI_0462.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0462.JPG",
+        "AcquisitionDate": 1579174818000,
+        "CameraHeading": 128.9,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.91025080990256,
+        "FarDistance": 91.7640139694813,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 59.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 22,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197188416247, 34.059392000334]
+      },
+      "properties": {
+        "OBJECTID": 22,
+        "Name": "DJI_0463.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0463.JPG",
+        "AcquisitionDate": 1579174819000,
+        "CameraHeading": 129.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.91677877452677,
+        "FarDistance": 91.9172093183452,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 23,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197079027497, 34.0594326389838]
+      },
+      "properties": {
+        "OBJECTID": 23,
+        "Name": "DJI_0464.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0464.JPG",
+        "AcquisitionDate": 1579174823000,
+        "CameraHeading": 152.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.95594656227203,
+        "FarDistance": 92.8363814115286,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 24,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197025027969, 34.0594534167381]
+      },
+      "properties": {
+        "OBJECTID": 24,
+        "Name": "DJI_0465.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0465.JPG",
+        "AcquisitionDate": 1579174825000,
+        "CameraHeading": 168.3,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 25,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.19690408329, 34.0594574168962]
+      },
+      "properties": {
+        "OBJECTID": 25,
+        "Name": "DJI_0466.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0466.JPG",
+        "AcquisitionDate": 1579174830000,
+        "CameraHeading": 175.8,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 26,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196782555605, 34.0594612778858]
+      },
+      "properties": {
+        "OBJECTID": 26,
+        "Name": "DJI_0467.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0467.JPG",
+        "AcquisitionDate": 1579174834000,
+        "CameraHeading": 176.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 27,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196660666798, 34.0594642220019]
+      },
+      "properties": {
+        "OBJECTID": 27,
+        "Name": "DJI_0468.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0468.JPG",
+        "AcquisitionDate": 1579174838000,
+        "CameraHeading": 177,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 28,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196539027722, 34.0594675278066]
+      },
+      "properties": {
+        "OBJECTID": 28,
+        "Name": "DJI_0469.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0469.JPG",
+        "AcquisitionDate": 1579174842000,
+        "CameraHeading": 177.2,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 29,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196417416494, 34.0594714446118]
+      },
+      "properties": {
+        "OBJECTID": 29,
+        "Name": "DJI_0470.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0470.JPG",
+        "AcquisitionDate": 1579174846000,
+        "CameraHeading": 177.3,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 30,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196293694224, 34.059473971967]
+      },
+      "properties": {
+        "OBJECTID": 30,
+        "Name": "DJI_0471.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0471.JPG",
+        "AcquisitionDate": 1579174850000,
+        "CameraHeading": 177.4,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 31,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196171639228, 34.0594780554762]
+      },
+      "properties": {
+        "OBJECTID": 31,
+        "Name": "DJI_0472.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0472.JPG",
+        "AcquisitionDate": 1579174854000,
+        "CameraHeading": 177.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 32,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196111389222, 34.0594798609424]
+      },
+      "properties": {
+        "OBJECTID": 32,
+        "Name": "DJI_0473.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0473.JPG",
+        "AcquisitionDate": 1579174856000,
+        "CameraHeading": 177.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.96900249152046,
+        "FarDistance": 93.1427721092565,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 33,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195997721796, 34.059442028008]
+      },
+      "properties": {
+        "OBJECTID": 33,
+        "Name": "DJI_0474.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0474.JPG",
+        "AcquisitionDate": 1579174861000,
+        "CameraHeading": 197.7,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 34,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195941277952, 34.0594235833672]
+      },
+      "properties": {
+        "OBJECTID": 34,
+        "Name": "DJI_0475.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0475.JPG",
+        "AcquisitionDate": 1579174864000,
+        "CameraHeading": 213.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 35,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195899972517, 34.0593356386039]
+      },
+      "properties": {
+        "OBJECTID": 35,
+        "Name": "DJI_0476.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0476.JPG",
+        "AcquisitionDate": 1579174868000,
+        "CameraHeading": 242.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 36,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195871555211, 34.0592734719436]
+      },
+      "properties": {
+        "OBJECTID": 36,
+        "Name": "DJI_0477.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0477.JPG",
+        "AcquisitionDate": 1579174871000,
+        "CameraHeading": 265.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 37,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195878611478, 34.0591710274274]
+      },
+      "properties": {
+        "OBJECTID": 37,
+        "Name": "DJI_0478.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0478.JPG",
+        "AcquisitionDate": 1579174876000,
+        "CameraHeading": 270.7,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 38,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195884250203, 34.0590700555965]
+      },
+      "properties": {
+        "OBJECTID": 38,
+        "Name": "DJI_0479.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0479.JPG",
+        "AcquisitionDate": 1579174880000,
+        "CameraHeading": 271.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 39,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195891416962, 34.0589692220701]
+      },
+      "properties": {
+        "OBJECTID": 39,
+        "Name": "DJI_0480.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0480.JPG",
+        "AcquisitionDate": 1579174884000,
+        "CameraHeading": 272,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.96900249152046,
+        "FarDistance": 93.1427721092565,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 40,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195895860928, 34.0588688610039]
+      },
+      "properties": {
+        "OBJECTID": 40,
+        "Name": "DJI_0481.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0481.JPG",
+        "AcquisitionDate": 1579174888000,
+        "CameraHeading": 272.2,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 41,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195901305617, 34.0587685280993]
+      },
+      "properties": {
+        "OBJECTID": 41,
+        "Name": "DJI_0482.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0482.JPG",
+        "AcquisitionDate": 1579174892000,
+        "CameraHeading": 272.4,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.96900249152046,
+        "FarDistance": 93.1427721092565,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 42,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195906750306, 34.0586685835599]
+      },
+      "properties": {
+        "OBJECTID": 42,
+        "Name": "DJI_0483.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0483.JPG",
+        "AcquisitionDate": 1579174896000,
+        "CameraHeading": 272.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 43,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195913027733, 34.0585675553137]
+      },
+      "properties": {
+        "OBJECTID": 43,
+        "Name": "DJI_0484.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0484.JPG",
+        "AcquisitionDate": 1579174900000,
+        "CameraHeading": 272.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 44,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195915110926, 34.0585253891022]
+      },
+      "properties": {
+        "OBJECTID": 44,
+        "Name": "DJI_0485.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0485.JPG",
+        "AcquisitionDate": 1579174902000,
+        "CameraHeading": 272.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.96900249152046,
+        "FarDistance": 93.1427721092565,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 45,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195950833332, 34.0584485278844]
+      },
+      "properties": {
+        "OBJECTID": 45,
+        "Name": "DJI_0486.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0486.JPG",
+        "AcquisitionDate": 1579174907000,
+        "CameraHeading": 287.3,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 46,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195959805705, 34.0584260552845]
+      },
+      "properties": {
+        "OBJECTID": 46,
+        "Name": "DJI_0487.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0487.JPG",
+        "AcquisitionDate": 1579174908000,
+        "CameraHeading": 295.3,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 47,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196050000152, 34.0583700836302]
+      },
+      "properties": {
+        "OBJECTID": 47,
+        "Name": "DJI_0488.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0488.JPG",
+        "AcquisitionDate": 1579174912000,
+        "CameraHeading": 322.8,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 48,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196065361344, 34.0583598892358]
+      },
+      "properties": {
+        "OBJECTID": 48,
+        "Name": "DJI_0489.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0489.JPG",
+        "AcquisitionDate": 1579174913000,
+        "CameraHeading": 330.7,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 49,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196183888656, 34.0583219166312]
+      },
+      "properties": {
+        "OBJECTID": 49,
+        "Name": "DJI_0490.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0490.JPG",
+        "AcquisitionDate": 1579174918000,
+        "CameraHeading": 336.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 50,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196296471815, 34.0582830554042]
+      },
+      "properties": {
+        "OBJECTID": 50,
+        "Name": "DJI_0491.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0491.JPG",
+        "AcquisitionDate": 1579174922000,
+        "CameraHeading": 337.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 51,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196409694575, 34.0582451110458]
+      },
+      "properties": {
+        "OBJECTID": 51,
+        "Name": "DJI_0492.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0492.JPG",
+        "AcquisitionDate": 1579174926000,
+        "CameraHeading": 338,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 52,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196497277621, 34.0582165275498]
+      },
+      "properties": {
+        "OBJECTID": 52,
+        "Name": "DJI_0493.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0493.JPG",
+        "AcquisitionDate": 1579174930000,
+        "CameraHeading": 338.2,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 53,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196612444335, 34.0581780555049]
+      },
+      "properties": {
+        "OBJECTID": 53,
+        "Name": "DJI_0494.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0494.JPG",
+        "AcquisitionDate": 1579174934000,
+        "CameraHeading": 338.3,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.96900249152046,
+        "FarDistance": 93.1427721092565,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 54,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196725472161, 34.0581401110996]
+      },
+      "properties": {
+        "OBJECTID": 54,
+        "Name": "DJI_0495.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0495.JPG",
+        "AcquisitionDate": 1579174938000,
+        "CameraHeading": 338.4,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.96900249152046,
+        "FarDistance": 93.1427721092565,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 55,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.19683766635, 34.0581034445156]
+      },
+      "properties": {
+        "OBJECTID": 55,
+        "Name": "DJI_0496.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0496.JPG",
+        "AcquisitionDate": 1579174942000,
+        "CameraHeading": 338.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.96900249152046,
+        "FarDistance": 93.1427721092565,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 56,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196880639058, 34.0580874168343]
+      },
+      "properties": {
+        "OBJECTID": 56,
+        "Name": "DJI_0497.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0497.JPG",
+        "AcquisitionDate": 1579174943000,
+        "CameraHeading": 338.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.96900249152046,
+        "FarDistance": 93.1427721092565,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 57,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196985944067, 34.058099694354]
+      },
+      "properties": {
+        "OBJECTID": 57,
+        "Name": "DJI_0498.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0498.JPG",
+        "AcquisitionDate": 1579174948000,
+        "CameraHeading": 351.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 58,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197091082888, 34.0581073331033]
+      },
+      "properties": {
+        "OBJECTID": 58,
+        "Name": "DJI_0499.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0499.JPG",
+        "AcquisitionDate": 1579174951000,
+        "CameraHeading": 22,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 59,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197136721796, 34.0581818890164]
+      },
+      "properties": {
+        "OBJECTID": 59,
+        "Name": "DJI_0500.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0500.JPG",
+        "AcquisitionDate": 1579174956000,
+        "CameraHeading": 50.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 60,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197194888609, 34.0582648054983]
+      },
+      "properties": {
+        "OBJECTID": 60,
+        "Name": "DJI_0501.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0501.JPG",
+        "AcquisitionDate": 1579174960000,
+        "CameraHeading": 74.2,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.96900249152046,
+        "FarDistance": 93.1427721092565,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 61,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197198277953, 34.0583665277232]
+      },
+      "properties": {
+        "OBJECTID": 61,
+        "Name": "DJI_0502.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0502.JPG",
+        "AcquisitionDate": 1579174965000,
+        "CameraHeading": 84.8,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 62,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197205000046, 34.0584666385807]
+      },
+      "properties": {
+        "OBJECTID": 62,
+        "Name": "DJI_0503.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0503.JPG",
+        "AcquisitionDate": 1579174969000,
+        "CameraHeading": 85.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 63,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197210389039, 34.0585697224918]
+      },
+      "properties": {
+        "OBJECTID": 63,
+        "Name": "DJI_0504.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0504.JPG",
+        "AcquisitionDate": 1579174972000,
+        "CameraHeading": 86,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 64,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197215333367, 34.0586698055731]
+      },
+      "properties": {
+        "OBJECTID": 64,
+        "Name": "DJI_0505.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0505.JPG",
+        "AcquisitionDate": 1579174977000,
+        "CameraHeading": 86.2,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 65,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197220472628, 34.0587708612336]
+      },
+      "properties": {
+        "OBJECTID": 65,
+        "Name": "DJI_0506.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0506.JPG",
+        "AcquisitionDate": 1579174980000,
+        "CameraHeading": 86.4,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 66,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.19722536126, 34.0588713608409]
+      },
+      "properties": {
+        "OBJECTID": 66,
+        "Name": "DJI_0507.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0507.JPG",
+        "AcquisitionDate": 1579174985000,
+        "CameraHeading": 86.5,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.96900249152046,
+        "FarDistance": 93.1427721092565,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 67,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197231694383, 34.0589714167741]
+      },
+      "properties": {
+        "OBJECTID": 67,
+        "Name": "DJI_0508.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0508.JPG",
+        "AcquisitionDate": 1579174989000,
+        "CameraHeading": 86.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197236888442, 34.0590747225927]
+      },
+      "properties": {
+        "OBJECTID": 68,
+        "Name": "DJI_0509.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0509.JPG",
+        "AcquisitionDate": 1579174993000,
+        "CameraHeading": 86.6,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.97553045614467,
+        "FarDistance": 93.2959674581204,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.9,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197240333481, 34.0591494443598]
+      },
+      "properties": {
+        "OBJECTID": 69,
+        "Name": "DJI_0510.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0510.JPG",
+        "AcquisitionDate": 1579174997000,
+        "CameraHeading": 86.7,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.96900249152046,
+        "FarDistance": 93.1427721092565,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 60.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197246166242, 34.059250333488]
+      },
+      "properties": {
+        "OBJECTID": 70,
+        "Name": "DJI_0511.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0511.JPG",
+        "AcquisitionDate": 1579175001000,
+        "CameraHeading": 86.7,
+        "CameraPitch": 30.3,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 3.98205842076888,
+        "FarDistance": 93.4491628069843,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 61,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 71,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.19721608346, 34.0593214999775]
+      },
+      "properties": {
+        "OBJECTID": 71,
+        "Name": "DJI_0512.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0512.JPG",
+        "AcquisitionDate": 1579175005000,
+        "CameraHeading": 99.6,
+        "CameraPitch": 33,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 6.05658999038597,
+        "FarDistance": 91.4016507775802,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 53.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 72,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197185805743, 34.0593899165291]
+      },
+      "properties": {
+        "OBJECTID": 72,
+        "Name": "DJI_0513.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0513.JPG",
+        "AcquisitionDate": 1579175010000,
+        "CameraHeading": 122.2,
+        "CameraPitch": 35.8,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.47917188716758,
+        "FarDistance": 87.859314310942,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 46,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 73,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197081389168, 34.0594289997691]
+      },
+      "properties": {
+        "OBJECTID": 73,
+        "Name": "DJI_0514.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0514.JPG",
+        "AcquisitionDate": 1579175014000,
+        "CameraHeading": 148.8,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 74,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197022111139, 34.0594521664561]
+      },
+      "properties": {
+        "OBJECTID": 74,
+        "Name": "DJI_0515.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0515.JPG",
+        "AcquisitionDate": 1579175017000,
+        "CameraHeading": 164.4,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 75,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196902027945, 34.0594556114295]
+      },
+      "properties": {
+        "OBJECTID": 75,
+        "Name": "DJI_0516.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0516.JPG",
+        "AcquisitionDate": 1579175021000,
+        "CameraHeading": 175.5,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 76,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196779944203, 34.0594599442518]
+      },
+      "properties": {
+        "OBJECTID": 76,
+        "Name": "DJI_0517.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0517.JPG",
+        "AcquisitionDate": 1579175025000,
+        "CameraHeading": 176.5,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.6108460998303,
+        "FarDistance": 88.2254005619153,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 77,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196655805115, 34.0594639168736]
+      },
+      "properties": {
+        "OBJECTID": 77,
+        "Name": "DJI_0518.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0518.JPG",
+        "AcquisitionDate": 1579175029000,
+        "CameraHeading": 176.9,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 78,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196528333278, 34.0594676669748]
+      },
+      "properties": {
+        "OBJECTID": 78,
+        "Name": "DJI_0519.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0519.JPG",
+        "AcquisitionDate": 1579175033000,
+        "CameraHeading": 177.1,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 79,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196407222412, 34.0594709444992]
+      },
+      "properties": {
+        "OBJECTID": 79,
+        "Name": "DJI_0520.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0520.JPG",
+        "AcquisitionDate": 1579175037000,
+        "CameraHeading": 177.3,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 80,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196285916611, 34.0594749446564]
+      },
+      "properties": {
+        "OBJECTID": 80,
+        "Name": "DJI_0521.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0521.JPG",
+        "AcquisitionDate": 1579175041000,
+        "CameraHeading": 177.4,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 81,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196164083499, 34.0594782779966]
+      },
+      "properties": {
+        "OBJECTID": 81,
+        "Name": "DJI_0522.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0522.JPG",
+        "AcquisitionDate": 1579175045000,
+        "CameraHeading": 177.5,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 82,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196107111445, 34.0594799725747]
+      },
+      "properties": {
+        "OBJECTID": 82,
+        "Name": "DJI_0523.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0523.JPG",
+        "AcquisitionDate": 1579175048000,
+        "CameraHeading": 177.5,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 83,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196020221899, 34.0594483054661]
+      },
+      "properties": {
+        "OBJECTID": 83,
+        "Name": "DJI_0524.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0524.JPG",
+        "AcquisitionDate": 1579175052000,
+        "CameraHeading": 195,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 84,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195935194561, 34.059421388675]
+      },
+      "properties": {
+        "OBJECTID": 84,
+        "Name": "DJI_0525.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0525.JPG",
+        "AcquisitionDate": 1579175055000,
+        "CameraHeading": 218.7,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 85,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195896028014, 34.059325222549]
+      },
+      "properties": {
+        "OBJECTID": 85,
+        "Name": "DJI_0526.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0526.JPG",
+        "AcquisitionDate": 1579175060000,
+        "CameraHeading": 239.9,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 86,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195871916334, 34.059275527471]
+      },
+      "properties": {
+        "OBJECTID": 86,
+        "Name": "DJI_0527.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0527.JPG",
+        "AcquisitionDate": 1579175063000,
+        "CameraHeading": 262.6,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 87,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195878749818, 34.0591785551917]
+      },
+      "properties": {
+        "OBJECTID": 87,
+        "Name": "DJI_0528.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0528.JPG",
+        "AcquisitionDate": 1579175067000,
+        "CameraHeading": 270.8,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 88,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.19588455563, 34.0590730555425]
+      },
+      "properties": {
+        "OBJECTID": 88,
+        "Name": "DJI_0529.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0529.JPG",
+        "AcquisitionDate": 1579175071000,
+        "CameraHeading": 271.8,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 89,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195889444262, 34.0589911944105]
+      },
+      "properties": {
+        "OBJECTID": 89,
+        "Name": "DJI_0530.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0530.JPG",
+        "AcquisitionDate": 1579175075000,
+        "CameraHeading": 272.1,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 90,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195894972494, 34.0588890829638]
+      },
+      "properties": {
+        "OBJECTID": 90,
+        "Name": "DJI_0531.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0531.JPG",
+        "AcquisitionDate": 1579175079000,
+        "CameraHeading": 272.3,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 91,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195900639067, 34.0587811113952]
+      },
+      "properties": {
+        "OBJECTID": 91,
+        "Name": "DJI_0532.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0532.JPG",
+        "AcquisitionDate": 1579175083000,
+        "CameraHeading": 272.4,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 92,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195906638915, 34.0586763331471]
+      },
+      "properties": {
+        "OBJECTID": 92,
+        "Name": "DJI_0533.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0533.JPG",
+        "AcquisitionDate": 1579175087000,
+        "CameraHeading": 272.5,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 93,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.19591227764, 34.0585755832496]
+      },
+      "properties": {
+        "OBJECTID": 93,
+        "Name": "DJI_0534.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0534.JPG",
+        "AcquisitionDate": 1579175091000,
+        "CameraHeading": 272.5,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 94,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195915499897, 34.0585274446479]
+      },
+      "properties": {
+        "OBJECTID": 94,
+        "Name": "DJI_0535.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0535.JPG",
+        "AcquisitionDate": 1579175093000,
+        "CameraHeading": 272.6,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 95,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195957444034, 34.0584309999119]
+      },
+      "properties": {
+        "OBJECTID": 95,
+        "Name": "DJI_0536.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0536.JPG",
+        "AcquisitionDate": 1579175098000,
+        "CameraHeading": 293,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 96,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.195958888525, 34.058425944395]
+      },
+      "properties": {
+        "OBJECTID": 96,
+        "Name": "DJI_0537.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0537.JPG",
+        "AcquisitionDate": 1579175099000,
+        "CameraHeading": 293,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 97,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196046944084, 34.0583711947581]
+      },
+      "properties": {
+        "OBJECTID": 97,
+        "Name": "DJI_0538.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0538.JPG",
+        "AcquisitionDate": 1579175104000,
+        "CameraHeading": 320.8,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 98,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196066166234, 34.0583587222908]
+      },
+      "properties": {
+        "OBJECTID": 98,
+        "Name": "DJI_0539.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0539.JPG",
+        "AcquisitionDate": 1579175105000,
+        "CameraHeading": 328.9,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 99,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196180528058, 34.0583223609338]
+      },
+      "properties": {
+        "OBJECTID": 99,
+        "Name": "DJI_0540.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0540.JPG",
+        "AcquisitionDate": 1579175109000,
+        "CameraHeading": 336.9,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 100,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196293222609, 34.058284416593]
+      },
+      "properties": {
+        "OBJECTID": 100,
+        "Name": "DJI_0541.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0541.JPG",
+        "AcquisitionDate": 1579175113000,
+        "CameraHeading": 337.7,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 101,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196405582986, 34.0582472774879]
+      },
+      "properties": {
+        "OBJECTID": 101,
+        "Name": "DJI_0542.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0542.JPG",
+        "AcquisitionDate": 1579175117000,
+        "CameraHeading": 338.1,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 102,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.19649397182, 34.0582173610833]
+      },
+      "properties": {
+        "OBJECTID": 102,
+        "Name": "DJI_0543.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0543.JPG",
+        "AcquisitionDate": 1579175121000,
+        "CameraHeading": 338.3,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 103,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196616833503, 34.0581752222339]
+      },
+      "properties": {
+        "OBJECTID": 103,
+        "Name": "DJI_0544.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0544.JPG",
+        "AcquisitionDate": 1579175125000,
+        "CameraHeading": 338.4,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 104,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196740777656, 34.0581343887379]
+      },
+      "properties": {
+        "OBJECTID": 104,
+        "Name": "DJI_0545.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0545.JPG",
+        "AcquisitionDate": 1579175129000,
+        "CameraHeading": 338.4,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 105,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.19683394463, 34.0581034169791]
+      },
+      "properties": {
+        "OBJECTID": 105,
+        "Name": "DJI_0546.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0546.JPG",
+        "AcquisitionDate": 1579175133000,
+        "CameraHeading": 338.5,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 106,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196881305608, 34.0580881670156]
+      },
+      "properties": {
+        "OBJECTID": 106,
+        "Name": "DJI_0547.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0547.JPG",
+        "AcquisitionDate": 1579175135000,
+        "CameraHeading": 338.5,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 107,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196985833574, 34.0580999719508]
+      },
+      "properties": {
+        "OBJECTID": 107,
+        "Name": "DJI_0548.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0548.JPG",
+        "AcquisitionDate": 1579175139000,
+        "CameraHeading": 356.7,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 108,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197082750115, 34.0581068887995]
+      },
+      "properties": {
+        "OBJECTID": 108,
+        "Name": "DJI_0549.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0549.JPG",
+        "AcquisitionDate": 1579175143000,
+        "CameraHeading": 19.3,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 109,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.19714116666, 34.0581871663274]
+      },
+      "properties": {
+        "OBJECTID": 109,
+        "Name": "DJI_0550.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0550.JPG",
+        "AcquisitionDate": 1579175147000,
+        "CameraHeading": 48.3,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.6108460998303,
+        "FarDistance": 88.2254005619153,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 110,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197194666725, 34.0582631942492]
+      },
+      "properties": {
+        "OBJECTID": 110,
+        "Name": "DJI_0551.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0551.JPG",
+        "AcquisitionDate": 1579175151000,
+        "CameraHeading": 79.5,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 111,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197197583555, 34.0583510552836]
+      },
+      "properties": {
+        "OBJECTID": 111,
+        "Name": "DJI_0552.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0552.JPG",
+        "AcquisitionDate": 1579175156000,
+        "CameraHeading": 84.6,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 112,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.19720361125, 34.0584524998093]
+      },
+      "properties": {
+        "OBJECTID": 112,
+        "Name": "DJI_0553.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0553.JPG",
+        "AcquisitionDate": 1579175160000,
+        "CameraHeading": 85.5,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 113,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197208250151, 34.0585520836551]
+      },
+      "properties": {
+        "OBJECTID": 113,
+        "Name": "DJI_0554.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0554.JPG",
+        "AcquisitionDate": 1579175164000,
+        "CameraHeading": 86,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 114,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197214778208, 34.0586526385943]
+      },
+      "properties": {
+        "OBJECTID": 114,
+        "Name": "DJI_0555.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0555.JPG",
+        "AcquisitionDate": 1579175168000,
+        "CameraHeading": 86.2,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 115,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197219694687, 34.0587535000334]
+      },
+      "properties": {
+        "OBJECTID": 115,
+        "Name": "DJI_0556.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0556.JPG",
+        "AcquisitionDate": 1579175172000,
+        "CameraHeading": 86.4,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 116,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197225194173, 34.0588535002892]
+      },
+      "properties": {
+        "OBJECTID": 116,
+        "Name": "DJI_0557.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0557.JPG",
+        "AcquisitionDate": 1579175176000,
+        "CameraHeading": 86.5,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 117,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197231361108, 34.0589595278635]
+      },
+      "properties": {
+        "OBJECTID": 117,
+        "Name": "DJI_0558.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0558.JPG",
+        "AcquisitionDate": 1579175180000,
+        "CameraHeading": 86.6,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 118,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197236472522, 34.0590595278761]
+      },
+      "properties": {
+        "OBJECTID": 118,
+        "Name": "DJI_0559.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0559.JPG",
+        "AcquisitionDate": 1579175184000,
+        "CameraHeading": 86.6,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 119,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197241361154, 34.0591598887165]
+      },
+      "properties": {
+        "OBJECTID": 119,
+        "Name": "DJI_0560.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0560.JPG",
+        "AcquisitionDate": 1579175188000,
+        "CameraHeading": 86.7,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.57761096402319,
+        "FarDistance": 87.840136804003,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.6,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 120,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197245888663, 34.059256750129]
+      },
+      "properties": {
+        "OBJECTID": 120,
+        "Name": "DJI_0561.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0561.JPG",
+        "AcquisitionDate": 1579175192000,
+        "CameraHeading": 86.7,
+        "CameraPitch": 36,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 7.59422853192675,
+        "FarDistance": 88.0327686829592,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 45.7,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 121,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197214471882, 34.0593284167266]
+      },
+      "properties": {
+        "OBJECTID": 121,
+        "Name": "DJI_0562.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200116_Matrice_Orb_Obl/DJI_0562.JPG",
+        "AcquisitionDate": 1579175196000,
+        "CameraHeading": 98.6,
+        "CameraPitch": 39.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 8.75110692862936,
+        "FarDistance": 85.5626833270624,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 37.8,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 122,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197699055486, 34.0593002503574]
+      },
+      "properties": {
+        "OBJECTID": 122,
+        "Name": "DJI_0028.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0028.JPG",
+        "AcquisitionDate": 1583421160000,
+        "CameraHeading": 134.7,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.44038881453387,
+        "FarDistance": 133.387799548326,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.5,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 123,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197465389307, 34.0593805833153]
+      },
+      "properties": {
+        "OBJECTID": 123,
+        "Name": "DJI_0029.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0029.JPG",
+        "AcquisitionDate": 1583421167000,
+        "CameraHeading": 172.8,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.40336768192786,
+        "FarDistance": 132.864710138332,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.2,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 124,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197435194236, 34.0593910559238]
+      },
+      "properties": {
+        "OBJECTID": 124,
+        "Name": "DJI_0030.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0030.JPG",
+        "AcquisitionDate": 1583421169000,
+        "CameraHeading": 179.6,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.40336768192786,
+        "FarDistance": 132.864710138332,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.2,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 125,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197255694672, 34.0593878885404]
+      },
+      "properties": {
+        "OBJECTID": 125,
+        "Name": "DJI_0031.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0031.JPG",
+        "AcquisitionDate": 1583421174000,
+        "CameraHeading": 180.9,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.40336768192786,
+        "FarDistance": 132.864710138332,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.2,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 126,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.197057999733, 34.0593893330637]
+      },
+      "properties": {
+        "OBJECTID": 126,
+        "Name": "DJI_0032.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0032.JPG",
+        "AcquisitionDate": 1583421178000,
+        "CameraHeading": 181.2,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.4157080594632,
+        "FarDistance": 133.039073274997,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.3,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 127,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196861472603, 34.0593891946395]
+      },
+      "properties": {
+        "OBJECTID": 127,
+        "Name": "DJI_0033.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0033.JPG",
+        "AcquisitionDate": 1583421182000,
+        "CameraHeading": 181.2,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.40336768192786,
+        "FarDistance": 132.864710138332,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.2,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 128,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196679444282, 34.0593898889931]
+      },
+      "properties": {
+        "OBJECTID": 128,
+        "Name": "DJI_0034.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0034.JPG",
+        "AcquisitionDate": 1583421186000,
+        "CameraHeading": 181.3,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.40336768192786,
+        "FarDistance": 132.864710138332,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.2,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 129,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196633250215, 34.0593897222887]
+      },
+      "properties": {
+        "OBJECTID": 129,
+        "Name": "DJI_0035.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0035.JPG",
+        "AcquisitionDate": 1583421191000,
+        "CameraHeading": 180.9,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.40336768192786,
+        "FarDistance": 132.864710138332,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.2,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 130,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196460916513, 34.0593303889005]
+      },
+      "properties": {
+        "OBJECTID": 130,
+        "Name": "DJI_0036.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0036.JPG",
+        "AcquisitionDate": 1583421196000,
+        "CameraHeading": 204.2,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.4157080594632,
+        "FarDistance": 133.039073274997,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.3,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 131,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196366861106, 34.0592994719065]
+      },
+      "properties": {
+        "OBJECTID": 131,
+        "Name": "DJI_0037.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0037.JPG",
+        "AcquisitionDate": 1583421200000,
+        "CameraHeading": 224.7,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.4157080594632,
+        "FarDistance": 133.039073274997,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.3,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 132,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196303249604, 34.0591655834729]
+      },
+      "properties": {
+        "OBJECTID": 132,
+        "Name": "DJI_0038.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0038.JPG",
+        "AcquisitionDate": 1583421205000,
+        "CameraHeading": 248.7,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.42804843699854,
+        "FarDistance": 133.213436411661,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.4,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 133,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196257333117, 34.0590792496755]
+      },
+      "properties": {
+        "OBJECTID": 133,
+        "Name": "DJI_0039.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0039.JPG",
+        "AcquisitionDate": 1583421209000,
+        "CameraHeading": 268.4,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.4157080594632,
+        "FarDistance": 133.039073274997,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.3,
+        "ImageRotation": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 134,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.196258111058, 34.0589330276803]
+      },
+      "properties": {
+        "OBJECTID": 134,
+        "Name": "DJI_0040.JPG",
+        "ImagePath": "http://orientedimagerysamples.s3.amazonaws.com/InspectionEsriBuildingE/20200305_Phantom_Orb_Obl/DJI_0040.JPG",
+        "AcquisitionDate": 1583421214000,
+        "CameraHeading": 269.9,
+        "CameraPitch": 33.6,
+        "CameraRoll": 0,
+        "HorizontalFieldOfView": 37.5,
+        "VerticalFieldOfView": 53.130102354156,
+        "NearDistance": 9.42804843699854,
+        "FarDistance": 133.213436411661,
+        "OrientedImageryType": "Inspection",
+        "CameraHeight": 76.4,
+        "ImageRotation": 0
+      }
+    }
+  ],
+  "metadata": {
+    "currentVersion": 11.4,
+    "id": 0,
+    "name": "EsriBuildingE",
+    "type": "Oriented Imagery Layer",
+    "displayField": "Name",
+    "orientedImageryInfo": {
+      "imageField": null,
+      "orientedImageryProperties": {
+        "cameraHeading": -999,
+        "cameraHeight": 1.8,
+        "cameraPitch": 90,
+        "cameraRoll": 0,
+        "coveragePercent": 0,
+        "demPathPrefix": "",
+        "demPathSuffix": "",
+        "depthImagePathPrefix": "",
+        "depthImagePathSuffix": "",
+        "elevationSource": null,
+        "farDistance": 5,
+        "horizontalFieldOfView": 60,
+        "horizontalMeasurementUnit": "Meter",
+        "imagePathPrefix": "",
+        "imagePathSuffix": "",
+        "imageRotation": 0,
+        "maximumDistance": 30,
+        "nearDistance": 0,
+        "orientationAccuracy": "",
+        "orientedImageryType": "360",
+        "timeIntervalUnit": "Days",
+        "verticalFieldOfView": 40,
+        "verticalMeasurementUnit": "Meter"
+      }
+    },
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": -13046388.181,
+      "ymin": 4036604.4164000009,
+      "xmax": -13046184.7446,
+      "ymax": 4036791.5322000016,
+      "spatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+      }
+    },
+    "spatialReference": {
+      "wkid": 102100,
+      "latestWkid": 3857
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriSMS",
+          "style": "esriSMSCircle",
+          "color": [0, 255, 0, 255],
+          "size": 7,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0,
+          "outline": { "color": [0, 255, 0, 255], "width": 0 }
+        }
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": null
+    },
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Name",
+        "type": "esriFieldTypeString",
+        "alias": "Name",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ImagePath",
+        "type": "esriFieldTypeString",
+        "alias": "Image Path",
+        "sqlType": "sqlTypeOther",
+        "length": 4096,
+        "nullable": false,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "required": true
+      },
+      {
+        "name": "AcquisitionDate",
+        "type": "esriFieldTypeDate",
+        "alias": "Acquisition Date",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "CameraHeading",
+        "type": "esriFieldTypeDouble",
+        "alias": "Camera Heading",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CameraPitch",
+        "type": "esriFieldTypeDouble",
+        "alias": "Camera Pitch",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CameraRoll",
+        "type": "esriFieldTypeDouble",
+        "alias": "Camera Roll",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "HorizontalFieldOfView",
+        "type": "esriFieldTypeDouble",
+        "alias": "HFOV",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "VerticalFieldOfView",
+        "type": "esriFieldTypeDouble",
+        "alias": "VFOV",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NearDistance",
+        "type": "esriFieldTypeDouble",
+        "alias": "Near Distance",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "FarDistance",
+        "type": "esriFieldTypeDouble",
+        "alias": "Far Distance",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "OrientedImageryType",
+        "type": "esriFieldTypeString",
+        "alias": "OI Type",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CameraHeight",
+        "type": "esriFieldTypeDouble",
+        "alias": "Camera Height",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ImageRotation",
+        "type": "esriFieldTypeDouble",
+        "alias": "Image Rotation",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "templates": [
+      {
+        "name": "EsriBuildingE",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {
+            "CameraHeight": null,
+            "ImageRotation": null,
+            "Name": null,
+            "ImagePath": " ",
+            "AcquisitionDate": null,
+            "CameraHeading": null,
+            "CameraPitch": null,
+            "CameraRoll": null,
+            "HorizontalFieldOfView": null,
+            "VerticalFieldOfView": null,
+            "NearDistance": null,
+            "FarDistance": null,
+            "OrientedImageryType": null
+          }
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "capabilities": "Query"
+  }
+}
