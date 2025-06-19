@@ -9,17 +9,16 @@ class Model {
   #ttl;
   #logger;
 
-  constructor(koop = {}) {
-    // constructor (koop = {}, options = {}) {
+  constructor(cdfSample = {}) {
 
-    this.#logger = koop.logger;
-    // this.#dataDir = options.dataDir || koop.dataDir || process.env.DATA_DIR || './data';
+    this.#logger = cdfSample.logger;
+    
     this.#dataDir = config.dataDirectory;
-    // this.#dataDirPath = path.join(process.cwd(), this.#dataDir);
+    
     this.#dataDirPath = path.join(__dirname, this.#dataDir);
 
     console.log('dataDirPath ' + this.#dataDirPath);
-    // this.#ttl = options.ttl || 0;
+    
     this.#verifyDataDirectoryExists(this.#dataDirPath);
   }
 
@@ -33,7 +32,7 @@ class Model {
       const geojson = normalizeAsFeatureCollection(geojsonFromFile);
       geojson.ttl = this.#ttl;
       metadata.geometryType = geojson?.features[0]?.geometry?.type;
-      metadata.title = metadata.title || 'Koop File GeoJSON';
+      metadata.title = metadata.title || 'Oriented Imagery File GeoJSON';
       metadata.name = metadata.name || filename;
       metadata.description = metadata.description || `GeoJSON from ${filename}`;
       geojson.metadata = metadata;
@@ -86,7 +85,7 @@ function parseGeoJson(dataString, filename) {
 }
 
 function normalizeAsFeatureCollection(input) {
-  // If input type is Feature, wrap in Feature Collection
+  
   if (input.type === 'Feature') {
     return {
       type: 'FeatureCollection',
@@ -97,7 +96,7 @@ function normalizeAsFeatureCollection(input) {
     };
   }
 
-  // If it's neither a Feature or a FeatureCollection its a geometry.  Wrap in a Feature Collection
+  
   if (input.type !== 'FeatureCollection') {
     return {
       type: 'FeatureCollection',
