@@ -193,11 +193,11 @@ namespace NetLayerAccessSOI
         /// <returns></returns>
         public string GetSchema()
         {
+            IRESTRequestHandler restRequestHandler = _restServiceSOI.FindRequestHandlerDelegate<IRESTRequestHandler>();
+            if (restRequestHandler == null)
+                return null;
             try
             {
-                IRESTRequestHandler restRequestHandler = _restServiceSOI.FindRequestHandlerDelegate<IRESTRequestHandler>();
-                if (restRequestHandler == null)
-                    return null;
 
                 return restRequestHandler.GetSchema();
             }
@@ -205,6 +205,10 @@ namespace NetLayerAccessSOI
             {
                 _serverLog.LogMessage(ServerLogger.msgType.error, _soiName + ".GetSchema()", 500, "Exception: " + e.Message + " in " + e.StackTrace);
                 return null;
+            }
+            finally
+            {
+                Marshal.ReleaseComObject(restRequestHandler);
             }
         }
 
@@ -228,23 +232,30 @@ namespace NetLayerAccessSOI
                 if (restRequestHandler == null)
                     throw new RestErrorException("Service handler not found");
 
-                RestFilter restFilterOp = _restServiceSOI.GetFilter(opCode);
+                try
+                {
+                    RestFilter restFilterOp = _restServiceSOI.GetFilter(opCode);
 
-                if (null != restFilterOp && null != restFilterOp.PreFilter)
-                    restInput = restFilterOp.PreFilter(restInput);
+                    if (null != restFilterOp && null != restFilterOp.PreFilter)
+                        restInput = restFilterOp.PreFilter(restInput);
 
-                byte[] response =
-                    restRequestHandler.HandleRESTRequest(restInput.Capabilities, restInput.ResourceName, restInput.OperationName, restInput.OperationInput,
-                        restInput.OutputFormat, restInput.RequestProperties, out responseProperties);
+                    byte[] response =
+                        restRequestHandler.HandleRESTRequest(restInput.Capabilities, restInput.ResourceName, restInput.OperationName, restInput.OperationInput,
+                            restInput.OutputFormat, restInput.RequestProperties, out responseProperties);
 
-                if (null == restFilterOp || null == restFilterOp.PostFilter)
-                    return response;
+                    if (null == restFilterOp || null == restFilterOp.PostFilter)
+                        return response;
 
-                string newResponseProperties;
-                var newResponse = restFilterOp.PostFilter(restInput, response, responseProperties, out newResponseProperties);
-                responseProperties = newResponseProperties;
+                    string newResponseProperties;
+                    var newResponse = restFilterOp.PostFilter(restInput, response, responseProperties, out newResponseProperties);
+                    responseProperties = newResponseProperties;
 
-                return newResponse;
+                    return newResponse;
+                }
+                finally
+                {
+                    Marshal.ReleaseComObject(restRequestHandler);
+                }
             }
             catch (RestErrorException restException)
             {
@@ -397,7 +408,7 @@ namespace NetLayerAccessSOI
             var operationInputJDOM = JsonNode.Parse(restInput.OperationInput).AsObject();
 
             var removeSpacesRegEx = new Regex("\\s+");
-            String requestedLayers = operationInputJDOM.ContainsKey("layers") 
+            String requestedLayers = operationInputJDOM.ContainsKey("layers")
                 ? operationInputJDOM["layers"].ToString() : "";
             requestedLayers = removeSpacesRegEx.Replace(requestedLayers, "");
             operationInputJDOM["layers"] = RemoveUnauthorizedLayersFromRequestedLayers(requestedLayers, _authorizedLayerSet);
@@ -416,7 +427,7 @@ namespace NetLayerAccessSOI
         {
             var operationInputJDOM = JsonNode.Parse(restInput.OperationInput).AsObject();
 
-            String requestedLayers = operationInputJDOM.ContainsKey("layers") 
+            String requestedLayers = operationInputJDOM.ContainsKey("layers")
                 ? operationInputJDOM["layers"].ToString() : "";
             if (string.IsNullOrEmpty(requestedLayers) || requestedLayers.StartsWith("top") || requestedLayers.StartsWith("all"))
             {
@@ -521,7 +532,9 @@ namespace NetLayerAccessSOI
                     var id = layerJO["id"].ToString();
                     if (_authorizedLayerSet.Contains(id))
                     {
-                        updatedLayers.Add(layerJO);
+                        // Serialize and deserialize the object to create a deep copy
+                        var newLayerJO = JsonNode.Parse(layerJO.ToJsonString()).AsObject();
+                        updatedLayers.Add(newLayerJO);
                     }
                 }
 
@@ -568,7 +581,9 @@ namespace NetLayerAccessSOI
                         var lrJODict = lrJO.AsObject();
                         if (_authorizedLayerSet.Contains(lrJODict["name"].ToString()))
                         {
-                            filteredLayerResourceJA.Add(lrJO);
+                            // Serialize and deserialize the object to create a deep copy
+                            var newLrJODict = JsonNode.Parse(lrJODict.ToJsonString()).AsObject();
+                            filteredLayerResourceJA.Add(newLrJODict);
                         }
                     }
                 }
@@ -585,7 +600,9 @@ namespace NetLayerAccessSOI
                         var tbJODict = tbJO.AsObject();
                         if (_authorizedLayerSet.Contains(tbJODict["name"].ToString()))
                         {
-                            filteredTableResourceJA.Add(tbJO);
+                            // Serialize and deserialize the object to create a deep copy
+                            var newtbJO = JsonNode.Parse(tbJODict.ToJsonString()).AsObject();
+                            filteredTableResourceJA.Add(newtbJO);
                         }
                     }
                 }
@@ -603,7 +620,9 @@ namespace NetLayerAccessSOI
                         var lgJODict = lgJO.AsObject();
                         if (_authorizedLayerSet.Contains(lgJODict["layerId"].ToString()))
                         {
-                            filteredLegendLayersRJA.Add(lgJO);
+                            // Serialize and deserialize the object to create a deep copy
+                            var newlgJODict = JsonNode.Parse(lgJODict.ToJsonString()).AsObject();
+                            filteredLegendLayersRJA.Add(newlgJODict);
                         }
                     }
                     legendContentsJO["layers"] = filteredLegendLayersRJA;
@@ -659,7 +678,8 @@ namespace NetLayerAccessSOI
                     var id = layerJO["id"].ToString();
                     if (_authorizedLayerSet.Contains(id))
                     {
-                        updatedLayers.Add(layerJO);
+                        var newlayerJOLayer = JsonNode.Parse(layerJO.ToJsonString()).AsObject();
+                        updatedLayers.Add(newlayerJOLayer);
                     }
                 }
                 jsonResObj["layers"] = updatedLayers;
@@ -711,7 +731,8 @@ namespace NetLayerAccessSOI
                     var id = layerJO["layerId"].ToString();
                     if (_authorizedLayerSet.Contains(id))
                     {
-                        updatedLayers.Add(layerJO);
+                        var newlayerJOLegend = JsonNode.Parse(layerJO.ToJsonString()).AsObject();
+                        updatedLayers.Add(newlayerJOLegend);
                     }
                 }
                 jsonResObj["layers"] = updatedLayers;
@@ -753,11 +774,17 @@ namespace NetLayerAccessSOI
             IWebRequestHandler webRequestHandler = _restServiceSOI.FindRequestHandlerDelegate<IWebRequestHandler>();
             if (webRequestHandler != null)
             {
-                var response = webRequestHandler.HandleStringWebRequest(
+                try
+                {
+                    var response = webRequestHandler.HandleStringWebRequest(
                         httpMethod, requestURL, queryString, Capabilities, requestData, out responseContentType, out respDataType);
 
-
-                return response;
+                    return response;
+                }
+                finally
+                {
+                    Marshal.ReleaseComObject(webRequestHandler);
+                }
             }
 
             responseContentType = null;
@@ -794,23 +821,30 @@ namespace NetLayerAccessSOI
             IRequestHandler requestHandler = _restServiceSOI.FindRequestHandlerDelegate<IRequestHandler>();
             if (requestHandler != null)
             {
-                var response = requestHandler.HandleBinaryRequest(filteredRequest.Body);
-
-                // Perform filtering for GetServerInfoResponse
-                // Convert the XML request into a generic IMessage
-                IMessage responseMessage = SoapSOIHelper.ConvertBinaryRequestToMessage(response);
-                // Get operation name
-                String name = responseMessage.Name;
-                if ("GetServerInfoResponse".Equals(name, StringComparison.CurrentCultureIgnoreCase))
+                try
                 {
-                    // Intercept the response and perform filtering
-                    var filteredResponse = FilterSoapRequest(responseMessage, SoapRequestType.Binary, authorizedLayerSet) as SoapBinaryRequest;
-                    if (filteredResponse != null)
+                    var response = requestHandler.HandleBinaryRequest(filteredRequest.Body);
+
+                    // Perform filtering for GetServerInfoResponse
+                    // Convert the XML request into a generic IMessage
+                    IMessage responseMessage = SoapSOIHelper.ConvertBinaryRequestToMessage(response);
+                    // Get operation name
+                    String name = responseMessage.Name;
+                    if ("GetServerInfoResponse".Equals(name, StringComparison.CurrentCultureIgnoreCase))
                     {
-                        response = filteredResponse.Body;
+                        // Intercept the response and perform filtering
+                        var filteredResponse = FilterSoapRequest(responseMessage, SoapRequestType.Binary, authorizedLayerSet) as SoapBinaryRequest;
+                        if (filteredResponse != null)
+                        {
+                            response = filteredResponse.Body;
+                        }
                     }
+                    return response;
                 }
-                return response;
+                finally
+                {
+                    Marshal.ReleaseComObject(requestHandler);
+                }
             }
 
             //Insert error response here.
@@ -841,23 +875,30 @@ namespace NetLayerAccessSOI
             IRequestHandler2 requestHandler = _restServiceSOI.FindRequestHandlerDelegate<IRequestHandler2>();
             if (requestHandler != null)
             {
-                var response = requestHandler.HandleBinaryRequest2(Capabilities, filteredRequest.Body);
-
-                // Perform filtering for GetServerInfoResponse
-                // Convert the XML request into a generic IMessage
-                IMessage responseMessage = SoapSOIHelper.ConvertBinaryRequestToMessage(response);
-                // Get operation name
-                String name = responseMessage.Name;
-                if ("GetServerInfoResponse".Equals(name, StringComparison.CurrentCultureIgnoreCase))
+                try
                 {
-                    // Intercept the response and perform filtering
-                    var filteredResponse = FilterSoapRequest(responseMessage, SoapRequestType.Binary, authorizedLayerSet) as SoapBinaryRequest;
-                    if (filteredResponse != null)
+                    var response = requestHandler.HandleBinaryRequest2(Capabilities, filteredRequest.Body);
+
+                    // Perform filtering for GetServerInfoResponse
+                    // Convert the XML request into a generic IMessage
+                    IMessage responseMessage = SoapSOIHelper.ConvertBinaryRequestToMessage(response);
+                    // Get operation name
+                    String name = responseMessage.Name;
+                    if ("GetServerInfoResponse".Equals(name, StringComparison.CurrentCultureIgnoreCase))
                     {
-                        response = filteredResponse.Body;
+                        // Intercept the response and perform filtering
+                        var filteredResponse = FilterSoapRequest(responseMessage, SoapRequestType.Binary, authorizedLayerSet) as SoapBinaryRequest;
+                        if (filteredResponse != null)
+                        {
+                            response = filteredResponse.Body;
+                        }
                     }
+                    return response;
                 }
-                return response;
+                finally
+                {
+                    Marshal.ReleaseComObject(requestHandler);
+                }
             }
 
             //Insert error response here.
@@ -891,23 +932,30 @@ namespace NetLayerAccessSOI
             IRequestHandler requestHandler = _restServiceSOI.FindRequestHandlerDelegate<IRequestHandler>();
             if (requestHandler != null)
             {
-                var response = requestHandler.HandleStringRequest(Capabilities, filteredRequest.Body);
-
-                // Perform filtering for GetServerInfoResponse
-                // Convert the XML request into a generic IMessage
-                IMessage responseMessage = SoapSOIHelper.ConvertStringRequestToMessage(response);
-                // Get operation name
-                String name = responseMessage.Name;
-                if ("GetServerInfoResponse".Equals(name, StringComparison.CurrentCultureIgnoreCase))
+                try
                 {
-                    // Intercept the response and perform filtering
-                    var filteredResponse = FilterSoapRequest(responseMessage, SoapRequestType.Xml, authorizedLayerSet) as SoapStringRequest;
-                    if (filteredResponse != null)
+                    var response = requestHandler.HandleStringRequest(Capabilities, filteredRequest.Body);
+
+                    // Perform filtering for GetServerInfoResponse
+                    // Convert the XML request into a generic IMessage
+                    IMessage responseMessage = SoapSOIHelper.ConvertStringRequestToMessage(response);
+                    // Get operation name
+                    String name = responseMessage.Name;
+                    if ("GetServerInfoResponse".Equals(name, StringComparison.CurrentCultureIgnoreCase))
                     {
-                        response = filteredResponse.Body;
+                        // Intercept the response and perform filtering
+                        var filteredResponse = FilterSoapRequest(responseMessage, SoapRequestType.Xml, authorizedLayerSet) as SoapStringRequest;
+                        if (filteredResponse != null)
+                        {
+                            response = filteredResponse.Body;
+                        }
                     }
+                    return response;
                 }
-                return response;
+                finally
+                {
+                    Marshal.ReleaseComObject(requestHandler);
+                }
             }
 
             //Insert error response here.
@@ -1250,7 +1298,7 @@ namespace NetLayerAccessSOI
 
                     // get the fqsn or service name
                     String fqsn = string.Empty;
-                    if(permsJO.TryGetPropertyValue("fqsn", out jsonNode))
+                    if (permsJO.TryGetPropertyValue("fqsn", out jsonNode))
                     {
                         fqsn = jsonNode.ToString();
                     }

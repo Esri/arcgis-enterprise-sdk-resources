@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WefrvV7GtoM=",
+  "dgSpecHash": "2d1/d3TOtKs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\fan11765\\Desktop\\DotNetRESTImageService\\DotNetRESTImageService\\RESTImageServiceTest\\GetRasterStatistics\\GetRasterStatisticsSOE.csproj",
+  "projectFilePath": "C:\\Users\\fan11765\\Documents\\GIthub\\arcgis-enterprise-sdk-resources\\Samples\\dot net\\SOE\\GetRasterStatisticsSOE\\GetRasterStatisticsSOE.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Esri")]
 [assembly: AssemblyProduct("ArcGIS Enterprise SDK")]
-[assembly: AssemblyCopyright("Copyright © 2023 ESRI")]
+[assembly: AssemblyCopyright("Copyright © 2024 ESRI")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -37,10 +37,9 @@ using System.Runtime.InteropServices;
 
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("NetFindNearFeaturesRESTSOE", "e2dcaefa-2d03-4c03-ad9b-c3f2a8ed70d8",
-    Author = "cont_chau",
-    Company = "",
+    Company = "ESRI",
     Date = "4/5/2018 4:19:48 PM",
     Description = "",
     TargetProduct = "Server",
-    TargetVersion = "11.4",
+    TargetVersion = "11.5",
     Version = "1.0")]

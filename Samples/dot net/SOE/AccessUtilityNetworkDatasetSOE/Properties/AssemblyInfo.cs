@@ -37,10 +37,9 @@ using System.Runtime.InteropServices;
 
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("AccessUtilityNetworkDataset", "4793c5dc-69c7-4a20-8e71-ef369aabe08f",
-    Author = "aas11333",
     Company = "ESRI",
     Date = "4/29/2022 11:39:55 AM",
     Description = "",
     TargetProduct = "Server",
-    TargetVersion = "11.0",
+    TargetVersion = "11.5",
     Version = "1.0")]

@@ -9,7 +9,7 @@
   <Company />
   <Date>2018-04-05T16:19:48</Date>
   <Targets>
-    <Target name="Server" version="11.4" />
+    <Target name="Server" version="11.5" />
   </Targets>
   <AddIn language="CLR" library="NetFindNearFeaturesRESTSOE.dll" namespace="NetFindNearFeaturesRESTSOE">
     <ServerObjectType>

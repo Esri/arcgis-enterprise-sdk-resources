@@ -1,0 +1,113 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\fan11765\\Documents\\GIthub\\arcgis-enterprise-sdk-resources\\Samples\\dot net\\SOE\\TopologyRESTSOE\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{678B96E7-B617-442D-9FD3-0EDD99952EDE}|TopologyRESTSOE\\TopologyRESTSOE.csproj|c:\\users\\fan11765\\documents\\github\\arcgis-enterprise-sdk-resources\\samples\\dot net\\soe\\topologyrestsoe\\topologyrestsoe\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{678B96E7-B617-442D-9FD3-0EDD99952EDE}|TopologyRESTSOE\\TopologyRESTSOE.csproj|solutionrelative:topologyrestsoe\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{678B96E7-B617-442D-9FD3-0EDD99952EDE}|TopologyRESTSOE\\TopologyRESTSOE.csproj|c:\\users\\fan11765\\documents\\github\\arcgis-enterprise-sdk-resources\\samples\\dot net\\soe\\topologyrestsoe\\topologyrestsoe\\topologyrestsoe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{678B96E7-B617-442D-9FD3-0EDD99952EDE}|TopologyRESTSOE\\TopologyRESTSOE.csproj|solutionrelative:topologyrestsoe\\topologyrestsoe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{678B96E7-B617-442D-9FD3-0EDD99952EDE}|TopologyRESTSOE\\TopologyRESTSOE.csproj|c:\\users\\fan11765\\documents\\github\\arcgis-enterprise-sdk-resources\\samples\\dot net\\soe\\topologyrestsoe\\topologyrestsoe\\geodatabasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{678B96E7-B617-442D-9FD3-0EDD99952EDE}|TopologyRESTSOE\\TopologyRESTSOE.csproj|solutionrelative:topologyrestsoe\\geodatabasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{678B96E7-B617-442D-9FD3-0EDD99952EDE}|TopologyRESTSOE\\TopologyRESTSOE.csproj|c:\\users\\fan11765\\documents\\github\\arcgis-enterprise-sdk-resources\\samples\\dot net\\soe\\topologyrestsoe\\topologyrestsoe\\topologyoperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{678B96E7-B617-442D-9FD3-0EDD99952EDE}|TopologyRESTSOE\\TopologyRESTSOE.csproj|solutionrelative:topologyrestsoe\\topologyoperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GeodatabaseHelper.cs",
+              "DocumentMoniker": "C:\\Users\\fan11765\\Documents\\GIthub\\arcgis-enterprise-sdk-resources\\Samples\\dot net\\SOE\\TopologyRESTSOE\\TopologyRESTSOE\\GeodatabaseHelper.cs",
+              "RelativeDocumentMoniker": "TopologyRESTSOE\\GeodatabaseHelper.cs",
+              "ToolTip": "C:\\Users\\fan11765\\Documents\\GIthub\\arcgis-enterprise-sdk-resources\\Samples\\dot net\\SOE\\TopologyRESTSOE\\TopologyRESTSOE\\GeodatabaseHelper.cs",
+              "RelativeToolTip": "TopologyRESTSOE\\GeodatabaseHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T20:49:32.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\fan11765\\Documents\\GIthub\\arcgis-enterprise-sdk-resources\\Samples\\dot net\\SOE\\TopologyRESTSOE\\TopologyRESTSOE\\Properties\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "TopologyRESTSOE\\Properties\\AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\fan11765\\Documents\\GIthub\\arcgis-enterprise-sdk-resources\\Samples\\dot net\\SOE\\TopologyRESTSOE\\TopologyRESTSOE\\Properties\\AssemblyInfo.cs",
+              "RelativeToolTip": "TopologyRESTSOE\\Properties\\AssemblyInfo.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T20:49:12.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TopologyRESTSOE.cs",
+              "DocumentMoniker": "C:\\Users\\fan11765\\Documents\\GIthub\\arcgis-enterprise-sdk-resources\\Samples\\dot net\\SOE\\TopologyRESTSOE\\TopologyRESTSOE\\TopologyRESTSOE.cs",
+              "RelativeDocumentMoniker": "TopologyRESTSOE\\TopologyRESTSOE.cs",
+              "ToolTip": "C:\\Users\\fan11765\\Documents\\GIthub\\arcgis-enterprise-sdk-resources\\Samples\\dot net\\SOE\\TopologyRESTSOE\\TopologyRESTSOE\\TopologyRESTSOE.cs",
+              "RelativeToolTip": "TopologyRESTSOE\\TopologyRESTSOE.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T19:53:25.503Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TopologyOperation.cs",
+              "DocumentMoniker": "C:\\Users\\fan11765\\Documents\\GIthub\\arcgis-enterprise-sdk-resources\\Samples\\dot net\\SOE\\TopologyRESTSOE\\TopologyRESTSOE\\TopologyOperation.cs",
+              "RelativeDocumentMoniker": "TopologyRESTSOE\\TopologyOperation.cs",
+              "ToolTip": "C:\\Users\\fan11765\\Documents\\GIthub\\arcgis-enterprise-sdk-resources\\Samples\\dot net\\SOE\\TopologyRESTSOE\\TopologyRESTSOE\\TopologyOperation.cs",
+              "RelativeToolTip": "TopologyRESTSOE\\TopologyOperation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T19:53:22.66Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 328,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

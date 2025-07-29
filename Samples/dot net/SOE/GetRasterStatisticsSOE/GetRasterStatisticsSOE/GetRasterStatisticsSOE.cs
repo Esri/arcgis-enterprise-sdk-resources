@@ -10,30 +10,33 @@
 // See the use restrictions at <your Enterprise SDK install location>/userestrictions.txt.
 // 
 
-using ESRI.ArcGIS.Carto;
-using ESRI.ArcGIS.DatasourcesRaster;
-using ESRI.ArcGIS.esriSystem;
-using ESRI.ArcGIS.Geodatabase;
-using ESRI.ArcGIS.Geometry;
-using ESRI.ArcGIS.Server;
-using ESRI.Server.SOESupport;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
+
+using System.Collections.Specialized;
+using System.Runtime.InteropServices;
+
+using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Server;
+using ESRI.ArcGIS.Geometry;
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Carto;
+using ESRI.Server.SOESupport;
 using System.Text.Json;
+using ESRI.ArcGIS.DatasourcesRaster;
 
 //This is REST SOE template of Enterprise SDK
 
 //TODO: sign the project (project properties > signing tab > sign the assembly)
 //      this is strongly suggested if the dll will be registered using regasm.exe <your>.dll /codebase
 
-namespace GetRasterStatistics
+
+namespace GetRasterStatisticsSOE
 {
     [ComVisible(true)]
-    [Guid("0C1F9104-404F-4307-8728-48BE3B3D5795")]
+    [Guid("00900e1f-7349-44a0-a5a1-985cbc1d506c")]    
     [ClassInterface(ClassInterfaceType.None)]
     [ServerObjectExtension("ImageServer",
         AllCapabilities = "",
@@ -116,7 +119,7 @@ namespace GetRasterStatistics
         {
             RestResource rootRes = new RestResource(_soename, false, RootResHandler);
 
-            RestOperation getRasterStaticticsOper = new RestOperation("GetRasterStatistics",
+            RestOperation getRasterStaticticsOper = new RestOperation("GetRasterStatisticsSOE",
                                                       new string[] { "ObjectID" },
                                                       new string[] { "json" },
                                                       GetRasterStatisticsOperHandler);
@@ -143,7 +146,7 @@ namespace GetRasterStatistics
                                                       string requestProperties,
                                                   out string responseProperties)
         {
-            _logger.LogMessage(ServerLogger.msgType.infoDetailed, _soename + ".GetRasterStatistics", 8000, "request received");
+            _logger.LogMessage(ServerLogger.msgType.infoDetailed, _soename + ".GetRasterStatisticsSOE", 8000, "request received");
             if (!_supportRasterItemAccess)
                 throw new ArgumentException("The image service does not have a catalog and does not support this operation");
             responseProperties = null;
@@ -161,13 +164,13 @@ namespace GetRasterStatistics
                 rasterCatlogItem = _mosaicCatalog.GetFeature((int)objectID) as IRasterCatalogItem;
                 if (rasterCatlogItem == null)
                 {
-                    _logger.LogMessage(ServerLogger.msgType.infoDetailed, _soename + ".GetRasterStatistics", 8000, "request finished with exception");
+                    _logger.LogMessage(ServerLogger.msgType.infoDetailed, _soename + ".GetRasterStatisticsSOE", 8000, "request finished with exception");
                     throw new ArgumentException("The input ObjectID does not exist");
                 }
             }
             catch
             {
-                _logger.LogMessage(ServerLogger.msgType.infoDetailed, _soename + ".GetRasterStatistics", 8000, "request finished with exception");
+                _logger.LogMessage(ServerLogger.msgType.infoDetailed, _soename + ".GetRasterStatisticsSOE", 8000, "request finished with exception");
                 throw new ArgumentException("The input ObjectID does not exist");
             }
             JsonObject result = new JsonObject();
@@ -195,7 +198,7 @@ namespace GetRasterStatistics
             }
             catch
             {
-                _logger.LogMessage(ServerLogger.msgType.infoDetailed, "GetRasterStatistics", 8000, "request completed. statistics does not exist");
+                _logger.LogMessage(ServerLogger.msgType.infoDetailed, "GetRasterStatisticsSOE", 8000, "request completed. statistics does not exist");
             }
             finally
             {
@@ -204,7 +207,7 @@ namespace GetRasterStatistics
                 if (rasterCatlogItem != null)
                     Marshal.ReleaseComObject(rasterCatlogItem);
             }
-            _logger.LogMessage(ServerLogger.msgType.infoDetailed, _soename + ".GetRasterStatistics", 8000, "request completed successfully");
+            _logger.LogMessage(ServerLogger.msgType.infoDetailed, _soename + ".GetRasterStatisticsSOE", 8000, "request completed successfully");
             return Encoding.UTF8.GetBytes(result.ToJson());
         }
     }

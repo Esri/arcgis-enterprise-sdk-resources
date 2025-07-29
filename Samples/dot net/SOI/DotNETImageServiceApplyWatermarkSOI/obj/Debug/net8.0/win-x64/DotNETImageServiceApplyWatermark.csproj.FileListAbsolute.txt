@@ -46,3 +46,27 @@ C:\Users\fan11765\Desktop\DotNETImageServiceSOI\DotNETImageServiceSOI\ImageServi
 C:\Users\fan11765\Desktop\DotNETImageServiceSOI\DotNETImageServiceSOI\ImageServiceSOI\ImageServiceSOI\obj\Debug\net8.0\win-x64\DotNETImageServiceApplyWatermark.dll
 C:\Users\fan11765\Desktop\DotNETImageServiceSOI\DotNETImageServiceSOI\ImageServiceSOI\ImageServiceSOI\obj\Debug\net8.0\win-x64\DotNETImageServiceApplyWatermark.pdb
 C:\Users\fan11765\Desktop\DotNETImageServiceSOI\DotNETImageServiceSOI\ImageServiceSOI\ImageServiceSOI\bin\Debug\net8.0\win-x64\DotNETImageServiceApplyWatermark_ent.soe
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\DotNETImageServiceApplyWatermark.deps.json
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\DotNETImageServiceApplyWatermark.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\DotNETImageServiceApplyWatermark.pdb
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\Microsoft.Win32.SystemEvents.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\System.Drawing.Common.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\ESRI.Server.Carto.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\ESRI.Server.DatasourcesFile.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\ESRI.Server.DatasourcesGDB.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\ESRI.Server.DatasourcesRaster.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\ESRI.Server.Geodatabase.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\ESRI.Server.GeoDatabaseDistributed.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\ESRI.Server.GeoDatabaseExtensions.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\ESRI.Server.Geometry.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\ESRI.Server.GISClient.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\ESRI.Server.Server.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\ESRI.Server.SOESupport.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\bin\Debug\net8.0\win-x64\ESRI.Server.System.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\obj\Debug\net8.0\win-x64\DotNETImageServiceApplyWatermark.csproj.AssemblyReference.cache
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\obj\Debug\net8.0\win-x64\DotNETImageServiceApplyWatermark.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\obj\Debug\net8.0\win-x64\DotNETImageServiceApplyWatermark.csproj.CoreCompileInputs.cache
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\obj\Debug\net8.0\win-x64\DotNETImageServiceApplyWatermark.sourcelink.json
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\obj\Debug\net8.0\win-x64\DotNETIm.5CEEA8A2.Up2Date
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\obj\Debug\net8.0\win-x64\DotNETImageServiceApplyWatermark.dll
+C:\Users\fan11765\Documents\GIthub\arcgis-enterprise-sdk-resources\Samples\dot net\SOI\DotNETImageServiceApplyWatermarkSOI\obj\Debug\net8.0\win-x64\DotNETImageServiceApplyWatermark.pdb

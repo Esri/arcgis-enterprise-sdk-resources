@@ -1,8 +1,8 @@
 # arcgis-enterprise-sdk-resources
 
-This repository provides samples and code snippets for server object extensions (SOEs), server object interceptors (SOIs) and custom data feeds (CDF) built with **11.4** ArcGIS Enterprise SDK. Learn more about [ArcGIS Enterprise SDK](https://developers.arcgis.com/enterprise-sdk/).
+This repository provides samples and code snippets for server object extensions (SOEs), server object interceptors (SOIs) and custom data feeds (CDF) built with **11.5** ArcGIS Enterprise SDK. Learn more about [ArcGIS Enterprise SDK](https://developers.arcgis.com/enterprise-sdk/).
 
-> Note: If you want to download the SOE and SOI samples built with 11.4 or previous versions of ArcGIS Enterprise SDK, refer to [Releases](https://github.com/Esri/arcgis-enterprise-sdk-resources/releases).
+> Note: If you want to download the SOE and SOI samples built with 11.5 or previous versions of ArcGIS Enterprise SDK, refer to [Releases](https://github.com/Esri/arcgis-enterprise-sdk-resources/releases).
 
 An SOI is capable of intercepting REST, SOAP, and OGC requests and responses of a map service in the following way:
 <p align="center">

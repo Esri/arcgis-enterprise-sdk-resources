@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GetRasterStatistics")]
+[assembly: AssemblyTitle("GetRasterStatisticsSOE")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ESRI")]
-[assembly: AssemblyProduct("GetRasterStatistics")]
-[assembly: AssemblyCopyright("Copyright © ESRI 2024")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("GetRasterStatisticsSOE")]
+[assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("041edd44-4a33-4fb8-909d-1bc6ffb7b163")]
+[assembly: Guid("e90cd00c-111d-4c56-976b-d72d2f5103bb")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -36,11 +36,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 
-[assembly: ESRI.Server.SOESupport.AddInPackage("GetRasterStatistics", "df6efd2a-98d6-4301-8b38-49a140c5d4ba",
-    Author = "pank9616",
-    Company = "ESRI",
-    Date = "2/28/2024 8:22:11 PM",
+[assembly: ESRI.Server.SOESupport.AddInPackage("GetRasterStatisticsSOE", "59a828a5-7b5a-4f3d-91a1-20e597127be0",
+    Author = "fan11765",
+    Company = "",
+    Date = "6/3/2025 12:02:42 PM",
     Description = "",
     TargetProduct = "Server",
-    TargetVersion = "11.3",
+    TargetVersion = "11.5",
     Version = "1.0")]

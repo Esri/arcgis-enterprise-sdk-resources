@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.1.32319.34
+VisualStudioVersion = 17.13.35828.75 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetUNEditAreasSOI", "NetUNEditAreasSOI.csproj", "{4F3EA530-3044-406C-89FC-8709FC8DD4CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetUNEditAreasSOI", "NetUNEditAreasSOI\NetUNEditAreasSOI.csproj", "{94E53EE2-984D-47B9-8024-C6D4AC8A7EAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4F3EA530-3044-406C-89FC-8709FC8DD4CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F3EA530-3044-406C-89FC-8709FC8DD4CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F3EA530-3044-406C-89FC-8709FC8DD4CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F3EA530-3044-406C-89FC-8709FC8DD4CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E53EE2-984D-47B9-8024-C6D4AC8A7EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E53EE2-984D-47B9-8024-C6D4AC8A7EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E53EE2-984D-47B9-8024-C6D4AC8A7EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E53EE2-984D-47B9-8024-C6D4AC8A7EAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {20BFAD23-DF22-419E-9316-6BD4F579C3D6}
+		SolutionGuid = {3BCB0AB7-38DB-45F7-951D-E5946A8755E5}
 	EndGlobalSection
 EndGlobal

@@ -38,11 +38,10 @@ import com.esri.arcgis.system.IPropertySet;
 @ArcGISExtension
 @ServerObjectExtProperties(displayName = "Java Find Nearby Features SOAP SOE",
 		description = "Java Find Nearby Features SOAP SOE",
-	 	properties = "" ,
-	 	allSOAPCapabilities = "" ,
-	 	defaultSOAPCapabilities = "" ,
-		servicetype = "MapService",
-		supportsSharedInstances = false)
+		 properties = "" ,
+		 allSOAPCapabilities = "" ,
+		 defaultSOAPCapabilities = "" ,
+		supportsSharedInstances = true)
 
 public class JavaFindNearbyFeaturesSOAPSOE extends SOAPRequestHandler
 		implements IServerObjectExtension, IJavaFindNearbyFeaturesSOAPSOE

@@ -51,11 +51,10 @@ import java.util.HashMap;
 @ArcGISExtension
 @ServerObjectExtProperties(displayName = "Java Find Nearby Features REST SOE",
 			description = "Java Find Nearby Features REST SOE",
-		 	properties = "" ,
-		 	allSOAPCapabilities = "" ,
-		 	defaultSOAPCapabilities = "" ,
-			servicetype = "MapService",
-			supportsSharedInstances = false)
+			 properties = "" ,
+			 allSOAPCapabilities = "" ,
+			 defaultSOAPCapabilities = "" ,
+			supportsSharedInstances = true)
 
 public class JavaFindNearbyFeaturesRESTSOE implements IServerObjectExtension, IRESTRequestHandler
 	 {

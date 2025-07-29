@@ -140,8 +140,14 @@ namespace NetOperationAccessSOI
             IRESTRequestHandler restRequestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRESTRequestHandler>();
             if (restRequestHandler == null)
                 throw new RestErrorException("Service handler not found");
-
-            return restRequestHandler.GetSchema();
+            try
+            {
+                return restRequestHandler.GetSchema();
+            }
+            finally
+            {
+                Marshal.ReleaseComObject(restRequestHandler);
+            }
         }
 
         public byte[] HandleRESTRequest(string Capabilities, string resourceName, string operationName,
@@ -155,26 +161,35 @@ namespace NetOperationAccessSOI
                     200, "Request received in Operation Access SOI for handleRESTRequest");
 
                 // Find the correct delegate to forward the request too
-                IRESTRequestHandler restRequestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRESTRequestHandler>();
-                if (restRequestHandler == null || !CheckAuthorization(operationName))
+                IRESTRequestHandler restRequestHandler = null;
+                try
                 {
-                    var errorReturn = new
+                    restRequestHandler = _restSOIHelper.FindRequestHandlerDelegate<IRESTRequestHandler>();
+                    if (restRequestHandler == null || !CheckAuthorization(operationName))
                     {
-                        error = new
+                        var errorReturn = new
                         {
-                            code = 404,
-                            message = "Not Found"
-                        }
-                    };
-                                    
+                            error = new
+                            {
+                                code = 404,
+                                message = "Not Found"
+                            }
+                        };
 
-                    throw new RestErrorException(JsonSerializer.Serialize(errorReturn));
 
+                        throw new RestErrorException(JsonSerializer.Serialize(errorReturn));
+
+                    }
+
+                    return restRequestHandler.HandleRESTRequest(
+                            Capabilities, resourceName, operationName, operationInput,
+                            outputFormat, requestProperties, out responseProperties);
                 }
-
-                return restRequestHandler.HandleRESTRequest(
-                        Capabilities, resourceName, operationName, operationInput,
-                        outputFormat, requestProperties, out responseProperties);
+                finally
+                {
+                    if(null != restRequestHandler)
+                        Marshal.ReleaseComObject(restRequestHandler);
+                }
             }
             catch (RestErrorException restError)
             {
@@ -203,9 +218,15 @@ namespace NetOperationAccessSOI
                  * Add code to manipulate requests here
                  * Note: Intercepting and authorizing SOAP handler operation requests is not implemented.
                  */
-
-                return webRequestHandler.HandleStringWebRequest(
-                        httpMethod, requestURL, queryString, Capabilities, requestData, out responseContentType, out respDataType);
+                try
+                {
+                    return webRequestHandler.HandleStringWebRequest(
+                            httpMethod, requestURL, queryString, Capabilities, requestData, out responseContentType, out respDataType);
+                }
+                finally
+                {
+                    Marshal.ReleaseComObject(webRequestHandler);
+                }
             }
 
             responseContentType = null;
@@ -227,8 +248,14 @@ namespace NetOperationAccessSOI
                  * Add code to manipulate requests here
                  * Note: Intercepting and authorizing SOAP handler operation requests is not implemented.
                  */
-
-                return requestHandler.HandleBinaryRequest(request);
+                try
+                {
+                    return requestHandler.HandleBinaryRequest(request);
+                }
+                finally
+                {
+                    Marshal.ReleaseComObject(requestHandler);
+                }
             }
 
             //Insert error response here.
@@ -247,8 +274,14 @@ namespace NetOperationAccessSOI
                  * Add code to manipulate requests here
                  * Note: Intercepting and authorizing SOAP handler operation requests is not implemented.
                  */
-
-                return requestHandler.HandleBinaryRequest2(Capabilities, request);
+                try
+                {
+                    return requestHandler.HandleBinaryRequest2(Capabilities, request);
+                }
+                finally
+                {
+                    Marshal.ReleaseComObject(requestHandler);
+                }
             }
 
             //Insert error response here.
@@ -267,8 +300,14 @@ namespace NetOperationAccessSOI
                  * Add code to manipulate requests here
                  * Note: Intercepting and authorizing SOAP handler operation requests is not implemented.
                  */
-
-                return requestHandler.HandleStringRequest(Capabilities, request);
+                try
+                {
+                    return requestHandler.HandleStringRequest(Capabilities, request);
+                }
+                finally
+                {
+                    Marshal.ReleaseComObject(requestHandler);
+                }
             }
 
             //Insert error response here.

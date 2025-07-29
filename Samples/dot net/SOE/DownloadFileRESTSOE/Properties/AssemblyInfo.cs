@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DownloadFileSOE")]
-[assembly: AssemblyCopyright("Copyright © 2023 ESRI")]
+[assembly: AssemblyCopyright("Copyright © 2024 ESRI")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -42,5 +42,5 @@ using System.Runtime.InteropServices;
     Date = "8/21/2019 4:45:58 PM",
     Description = "",
     TargetProduct = "Server",
-    TargetVersion = "11.4",
+    TargetVersion = "11.5",
     Version = "1.0")]

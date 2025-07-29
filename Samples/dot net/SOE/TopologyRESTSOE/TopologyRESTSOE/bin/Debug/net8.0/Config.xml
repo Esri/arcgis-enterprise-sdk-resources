@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ESRI.Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.esri.com/Desktop/AddIns">
+  <Name>TopologyRESTSOE</Name>
+  <AddInID>edaf9be6-d548-4573-92a9-ca51703ee007</AddInID>
+  <Description />
+  <Version>1.0</Version>
+  <Author />
+  <Provider>ArcObjects11</Provider>
+  <Company>ESRI</Company>
+  <Date>2025-06-03T12:49:36</Date>
+  <Targets>
+    <Target name="Server" version="11.5" />
+  </Targets>
+  <AddIn language="CLR" library="TopologyRESTSOE.dll" namespace="TopologyRESTSOE">
+    <ServerObjectType>
+      <Name>MapServer</Name>
+      <ExtensionTypes>
+        <ExtensionType id="TopologyRESTSOE.TopologyRESTSOE" library="TopologyRESTSOE.dll" class="TopologyRESTSOE.TopologyRESTSOE">
+          <Name>TopologyRESTSOE</Name>
+          <DisplayName>Topology REST SOE</DisplayName>
+          <Description />
+          <Properties />
+          <Resources />
+          <Info>
+            <DefaultWebCapabilities />
+            <AllWebCapabilities />
+            <SupportsREST>true</SupportsREST>
+            <SupportsSOAP>false</SupportsSOAP>
+            <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
+            <SupportsInterceptor>false</SupportsInterceptor>
+            <SupportsSharedInstances>false</SupportsSharedInstances>
+          </Info>
+        </ExtensionType>
+      </ExtensionTypes>
+    </ServerObjectType>
+  </AddIn>
+</ESRI.Configuration>
