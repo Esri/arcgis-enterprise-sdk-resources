@@ -32,8 +32,8 @@ integrates the data with ArcGIS Enterprise.
           "my-data": {
             "url": "../data/RunningShoeStores.csv",
             "geometryColumns": {
-              "Longitude": "Longitude",
-              "Latitude": "Latitude"
+              "Longitude": "longitude",
+              "Latitude": "latitude"
             },
             "delimiter": ",",
             "metadata": {
