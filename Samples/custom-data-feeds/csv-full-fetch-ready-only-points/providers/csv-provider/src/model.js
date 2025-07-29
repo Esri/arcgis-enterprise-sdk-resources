@@ -1,53 +1,50 @@
-const koopConfig = require("config");
-const fs = require("fs");
-const Papa = require("papaparse");
-const path = require("path");
-const validUrl = require('valid-url');
+const CSVconfig = require("config");
+const fs        = require("fs").promises; 
+const Papa      = require("papaparse");
+const path      = require("path");
+const validUrl  = require("valid-url");
 const translate = require("./utils/translate-csv");
 
-function Model(koop) {}
-
-// Public function to return data from the
-// Return: GeoJSON FeatureCollection
+function Model() {}
 Model.prototype.getData = async function (req) {
-  const config = koopConfig["csv-provider"];
-  const sourceId = req.params.id;
-  const sourceConfig = config.sources[sourceId];
-  const csvFilePath = path.join(__dirname, sourceConfig.url);
+ const config     = CSVconfig["csv-provider"];
+ const sourceId   = req.params.id;
+ const sourceCfg  = config.sources[sourceId];
+ const sourcePath = sourceCfg.url;
 
-  let readStream;
+ let csvText;
 
-  if (validUrl.isUri(sourceConfig.url)) {
-    // this is a network URL
-    const res = await fetch(sourceConfig.url);
-    readStream = res.body;
-  } else if (csvFilePath.toLowerCase().endsWith(".csv")) {
-    // this is a file path
-    readStream = fs.createReadStream(csvFilePath, "utf8");
-    console.log("CSV File Path:", csvFilePath);
-  } else {
-    throw new Error(`Unrecognized CSV source ${sourceConfig.url}`);
-  }
+ if (validUrl.isUri(sourcePath)) {
+   // Network URL: fetch it and get the text
+   const res = await fetch(sourcePath);
+   if (!res.ok) {
+     throw new Error(`Failed to fetch CSV: ${res.status} ${res.statusText}`);
+   }
 
-  return new Promise((resolve, reject) => {
-    Papa.parse(readStream, {
-      header: true,
-      dynamicTyping: true,
-      complete: (result) => {
-        if (result.errors.length > 0) {
-          return reject(new Error(result.errors[0].message));
-        }
-        try {
-          const geojson = translate(result.data, sourceConfig);
-          geojson.metadata = { name: 'points_csv', idField: 'Id' };
-          resolve(geojson);
-        } catch (e) {
-          reject(e);
-        }
-      },
-      error: reject,
-    });
-  });
+   csvText = await res.text();
+
+ } else if (sourcePath.toLowerCase().endsWith(".csv")) {
+   // Local file path: read it from disk
+   const fullPath = path.join(__dirname, sourcePath);
+   csvText = await fs.readFile(fullPath, "utf8");
+ } else {
+   throw new Error(`Unrecognized CSV source ${sourcePath}`);
+ }
+ // Now parse the entire CSV string
+ const result = Papa.parse(csvText, {
+   header: true,
+   dynamicTyping: true,
+   skipEmptyLines: true
+ });
+
+ if (result.errors && result.errors.length) {
+   throw new Error(result.errors[0].message);
+ }
+ // Translate to GeoJSON
+ const geojson = translate(result.data, sourceCfg);
+ geojson.metadata = { name: 'points_csv', idField: 'Id' };
+ return geojson;
+
 };
 
 module.exports = Model;
