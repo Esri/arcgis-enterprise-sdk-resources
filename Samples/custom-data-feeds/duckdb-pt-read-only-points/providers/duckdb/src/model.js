@@ -9,8 +9,6 @@ const {
 	getExtentFromGeoJson,
 } = require("./modules");
 
-let numberOfRequests = 0;
-
 class Model {
 	constructor(koop) {
 
@@ -56,7 +54,6 @@ class Model {
 	}
 
 	getData(req, callback) {
-		numberOfRequests++;
 		try {
 			// convert bools from strings
 			Object.keys(req.query).forEach((key) => {
@@ -119,6 +116,12 @@ class Model {
 
 				if (returnCountOnly) {
 					geojson.count = Number(rows[0]["count(1)"]);
+					geojson.extent = {
+						"xmin": -74.05,
+						"ymin": 40.67,
+						"xmax": -73.84,
+						"ymax": 40.82
+					};
 				} else {
 					geojson = translateToGeoJSON(rows, sourceConfig);
 				}
