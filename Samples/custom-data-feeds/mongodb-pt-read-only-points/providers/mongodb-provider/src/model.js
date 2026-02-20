@@ -17,7 +17,7 @@ class Model {
 
   constructor(
     { logger },
-    { connectString, databases, definedCollectionsOnly } = {},
+    { connectString, databases } = {},
   ) {
     this.#logger = logger;
     const databaseUri = connectString || config?.mongodb_provider?.connectString;

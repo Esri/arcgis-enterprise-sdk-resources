@@ -4,7 +4,7 @@
         "definedCollectionsOnly": true,
         "databases": {
             "sample-data": {
-                "fires": {
+                "fires-420k": {
                     "geometryField": "location",
                     "idField": "alternateID",
                     "cacheTtl": 0,
