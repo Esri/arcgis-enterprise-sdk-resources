@@ -27,7 +27,7 @@ Enterprise.
 1.  Navigate to the **socrata-app** directory in a command prompt and
     run the `npm start` command to start the custom data app
 2.  In a web browser, navigate to
-    http://localhost:8080/socrata-provider/rest/services/data.lacity.org/fdwe-pgcu/FeatureServer/0/query
+    http://localhost:8080/socrata-provider/rest/services/data.lacity.org/rygd-gm77/FeatureServer/0/query
     and verify that the Socrata provider is returning data points.
 
 ## Build and Deploy the Custom Data Provider Package File
@@ -90,7 +90,7 @@ Enterprise.
         "customDataProviderInfo": {
           "dataProviderName": "socrata-provider",
           "dataProviderHost": "data.lacity.org",
-          "dataProviderId": "fdwe-pgcu"
+          "dataProviderId": "rygd-gm77"
         }
       },
       "extensions": [],
