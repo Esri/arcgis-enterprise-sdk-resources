@@ -26,7 +26,7 @@ Looking for 11.x versions of this sample?
 ## Configure Provider
 
 1.  In the **providers/socrata-provider/cdconfig.json** file, add the following
-    to the `serviceParameters` array.
+    to the `serviceParameters` array. If it doesnt exist add it. 
 
     ```json
       {
