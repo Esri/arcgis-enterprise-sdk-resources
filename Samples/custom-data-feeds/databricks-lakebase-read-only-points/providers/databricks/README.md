@@ -2,6 +2,10 @@
 
 ArcGIS Custom Data Feed (CDF) provider that connects to [Databricks Lakebase](https://www.databricks.com/product/lakebase) (serverless PostgreSQL + PostGIS) and serves data as an ArcGIS Feature Service.
 
+## See it in action
+
+https://github.com/user-attachments/assets/3fb3d4ad-ade9-4c37-9dce-0a938063eb58
+
 ## Prerequisites
 
 - **ArcGIS Enterprise SDK** with Custom Data Feeds
