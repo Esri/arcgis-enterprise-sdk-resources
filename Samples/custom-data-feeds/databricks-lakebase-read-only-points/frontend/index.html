@@ -1,0 +1,53 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Data Testing</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css" />
+    <script src="https://js.arcgis.com/4.32/"></script>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+    <script>
+      require(["esri/Map", "esri/views/MapView", "esri/layers/FeatureLayer"], (Map, MapView, FeatureLayer) => {
+        const map = new Map({
+          basemap: "streets-night-vector"
+        });
+
+        const view = new MapView({
+          container: "viewDiv",
+          map: map,
+
+          extent: {
+            xmin: -74.351349,
+            ymin: 40.393608,
+            xmax: -72.880554,
+            ymax: 41.331241,
+            spatialReference: 4326
+          }
+        });
+
+        const featureLayer = new FeatureLayer({
+          url: "http://127.0.0.1:8080/databricks/rest/services/lakebase/FeatureServer/0" 
+        });
+
+        map.add(featureLayer);
+       
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>
