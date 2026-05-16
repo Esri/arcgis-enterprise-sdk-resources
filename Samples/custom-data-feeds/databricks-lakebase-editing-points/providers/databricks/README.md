@@ -158,6 +158,8 @@ No manual token management is needed after initial configuration.
 
     ```
 
+> **Tip:** A simple frontend test page is included at **frontend/index.html**. It uses the ArcGIS Maps SDK for JavaScript to render a web map pointed at your local CDF FeatureServer URL. This is useful for visually verifying queries and edits during development. You can also use ArcGIS Pro by adding the `127.0.0.1` FeatureServer URL as a data path, though you won't have access to browser dev tools for inspecting requests.
+
 ## Build and Deploy the Custom Data Provider Package File
 
 1.  Stop the custom data app if it is running.
