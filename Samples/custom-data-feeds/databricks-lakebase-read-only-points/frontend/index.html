@@ -1,53 +1,175 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Data Testing</title>
 
-    <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/dark/main.css" />
-    <script src="https://js.arcgis.com/4.32/"></script>
-
+    <!-- Load the ArcGIS Maps SDK for JavaScript from CDN -->
+    <script type="module" src="https://js.arcgis.com/5.0/"></script>
     <style>
       html,
-      body,
-      #viewDiv {
-        padding: 0;
+      body {
         margin: 0;
         height: 100%;
+      }
+      #table-container {
+        position: absolute;
+        bottom: 0;
         width: 100%;
+        height: 40%;
+        z-index: 1;
+      }
+      #edit-panel {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        background: #1e1e1e;
+        color: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        font-family: sans-serif;
+        font-size: 13px;
+        max-width: 360px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      }
+      #edit-panel h3 { margin: 0 0 10px; }
+      #edit-panel label { display: block; margin: 6px 0 2px; }
+      #edit-panel input, #edit-panel select {
+        width: 100%; padding: 4px 6px; box-sizing: border-box;
+        background: #2d2d2d; color: #fff; border: 1px solid #555; border-radius: 4px;
+      }
+      #edit-panel button {
+        margin-top: 10px; padding: 6px 14px; cursor: pointer;
+        background: #0079c1; color: #fff; border: none; border-radius: 4px;
+      }
+      #edit-panel button:hover { background: #005a8e; }
+      #edit-panel .result { margin-top: 8px; font-size: 12px; white-space: pre-wrap; max-height: 120px; overflow-y: auto; }
+      #table-container arcgis-feature-table::part(header-cell),
+      #table-container .esri-feature-table .esri-feature-table__header button,
+      #table-container .esri-feature-table .esri-feature-table__header span,
+      #table-container .esri-feature-table thead th {
+        color: #fff !important;
+        font-weight: 600 !important;
+      }
+      /* Shrink the top info bar so column headers are visible */
+      #table-container .esri-feature-table__loader-container,
+      #table-container .esri-feature-table__menu,
+      #table-container .esri-feature-table__title {
+        max-height: 30px !important;
+        line-height: 30px !important;
+        font-size: 12px !important;
+        padding: 0 8px !important;
       }
     </style>
-
-    <script>
-      require(["esri/Map", "esri/views/MapView", "esri/layers/FeatureLayer"], (Map, MapView, FeatureLayer) => {
-        const map = new Map({
-          basemap: "streets-night-vector"
-        });
-
-        const view = new MapView({
-          container: "viewDiv",
-          map: map,
-
-          extent: {
-            xmin: -74.351349,
-            ymin: 40.393608,
-            xmax: -72.880554,
-            ymax: 41.331241,
-            spatialReference: 4326
-          }
-        });
-
-        const featureLayer = new FeatureLayer({
-          url: "http://127.0.0.1:8080/databricks/rest/services/lakebase/FeatureServer/0" 
-        });
-
-        map.add(featureLayer);
-       
-      });
-    </script>
   </head>
-
   <body>
-    <div id="viewDiv"></div>
+    <arcgis-map basemap="streets-night-vector" center="-73.975, 40.7" zoom="10" theme="dark">
+      <arcgis-zoom slot="top-left"></arcgis-zoom>
+    </arcgis-map>
+    <div id="edit-panel">
+      <h3>Edit Testing</h3>
+      <label>Operation:
+        <select id="edit-op">
+          <option value="add">Add</option>
+          <option value="update">Update</option>
+          <option value="delete">Delete</option>
+        </select>
+      </label>
+      <div id="fields-add">
+        <label>Longitude: <input id="add-lon" type="number" step="any" value="-73.98" /></label>
+        <label>Latitude: <input id="add-lat" type="number" step="any" value="40.72" /></label>
+        <label>Attributes (JSON): <input id="add-attrs" value='{"VendorID":"1","passenger_count":"2"}' /></label>
+      </div>
+      <div id="fields-update" style="display:none">
+        <label>ObjectID: <input id="upd-oid" type="number" /></label>
+        <label>Attributes (JSON): <input id="upd-attrs" value='{"passenger_count":"5"}' /></label>
+        <label>New Longitude (optional): <input id="upd-lon" type="number" step="any" /></label>
+        <label>New Latitude (optional): <input id="upd-lat" type="number" step="any" /></label>
+      </div>
+      <div id="fields-delete" style="display:none">
+        <label>ObjectID(s) comma-separated: <input id="del-oids" value="" /></label>
+      </div>
+      <button id="btn-submit">Submit Edit</button>
+      <div id="edit-result" class="result"></div>
+    </div>
+    <div id="table-container" class="calcite-mode-dark"></div>
   </body>
+  <script type="module">
+    const FeatureLayer = await $arcgis.import("@arcgis/core/layers/FeatureLayer.js");
+    const FeatureTable = await $arcgis.import("@arcgis/core/widgets/FeatureTable.js");
+    const viewElement = document.querySelector("arcgis-map");
+    await viewElement.viewOnReady();
+
+    const serviceUrl = "http://127.0.0.1:8080/databricks/rest/services/FeatureServer/0";
+
+    const featureLayer = new FeatureLayer({ url: serviceUrl });
+    viewElement.map.add(featureLayer);
+
+    const featureTable = new FeatureTable({
+      layer: featureLayer,
+      container: document.getElementById("table-container"),
+    });
+
+    // Edit panel logic
+    const opSelect = document.getElementById("edit-op");
+    const fieldsAdd = document.getElementById("fields-add");
+    const fieldsUpdate = document.getElementById("fields-update");
+    const fieldsDelete = document.getElementById("fields-delete");
+    const resultDiv = document.getElementById("edit-result");
+
+    opSelect.addEventListener("change", () => {
+      fieldsAdd.style.display = opSelect.value === "add" ? "" : "none";
+      fieldsUpdate.style.display = opSelect.value === "update" ? "" : "none";
+      fieldsDelete.style.display = opSelect.value === "delete" ? "" : "none";
+    });
+
+    document.getElementById("btn-submit").addEventListener("click", async () => {
+      resultDiv.textContent = "Submitting...";
+      const op = opSelect.value;
+      let body = {};
+
+      try {
+        if (op === "add") {
+          const lon = parseFloat(document.getElementById("add-lon").value);
+          const lat = parseFloat(document.getElementById("add-lat").value);
+          const attrs = JSON.parse(document.getElementById("add-attrs").value);
+          body.adds = JSON.stringify([{ attributes: attrs, geometry: { x: lon, y: lat } }]);
+        } else if (op === "update") {
+          const oid = parseInt(document.getElementById("upd-oid").value);
+          const attrs = JSON.parse(document.getElementById("upd-attrs").value);
+          const idField = "objectid"; // match your config
+          attrs[idField] = oid;
+          const feature = { attributes: attrs };
+          const lon = document.getElementById("upd-lon").value;
+          const lat = document.getElementById("upd-lat").value;
+          if (lon && lat) {
+            feature.geometry = { x: parseFloat(lon), y: parseFloat(lat) };
+          }
+          body.updates = JSON.stringify([feature]);
+        } else if (op === "delete") {
+          body.deletes = document.getElementById("del-oids").value;
+        }
+
+        body.f = "json";
+
+        const formBody = Object.entries(body)
+          .map(([k, v]) => encodeURIComponent(k) + "=" + encodeURIComponent(v))
+          .join("&");
+
+        const response = await fetch(`${serviceUrl}/applyEdits`, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: formBody,
+        });
+        const json = await response.json();
+        resultDiv.textContent = JSON.stringify(json, null, 2);
+
+        // Refresh the layer to see changes
+        featureLayer.refresh();
+      } catch (err) {
+        resultDiv.textContent = "Error: " + err.message;
+      }
+    });
+  </script>
 </html>

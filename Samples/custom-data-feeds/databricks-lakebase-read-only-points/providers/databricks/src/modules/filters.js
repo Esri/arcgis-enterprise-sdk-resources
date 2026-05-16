@@ -25,7 +25,7 @@ function generateFiltersApplied(geoParams, idField, geometryField) {
 	}
 
 	if (resultOffset) {
-		filtersApplied.offset = true;
+		filtersApplied.resultOffset = true;
 	}
 
 	if (orderByFields) {
@@ -37,7 +37,7 @@ function generateFiltersApplied(geoParams, idField, geometryField) {
 	}
 
 	if (resultRecordCount) {
-		filtersApplied.limit = true;
+		filtersApplied.resultRecordCount = true;
 	}
 
 	return filtersApplied;

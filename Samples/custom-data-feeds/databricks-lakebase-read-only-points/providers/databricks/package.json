@@ -1,23 +1,22 @@
 {
   "name": "databricks",
-  "version": "11.3.0",
+  "version": "12.0.0",
   "description": "Template for customdata provider",
   "main": "src/index.js",
   "scripts": {
     "test": "mocha 'test/**/*.test.js'",
     "start": "node src/index.js"
   },
-  "dependencies": {
-    "pg": "^8.18.0",
-    "config": "^3.2.5"
-  },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^11.7.1"
+    "mocha": "^7.0.1"
   },
   "repository": "",
   "keywords": [
     "customdata",
     "provider"
-  ]
+  ],
+  "dependencies": {
+    "pg": "^8.18.0"
+  }
 }

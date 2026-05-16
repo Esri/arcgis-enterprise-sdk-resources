@@ -1,29 +1,50 @@
-# Ignore the top-level config folder
-/config/
+# Node.js
+node_modules/
 
-# Ignore the framework folder
-/framework/
+# Logs
+logs
+*.log
+npm-debug.log*
 
-# Ignore node_modules
-/node_modules/
-/providers/duckdb/node_modules/
+# Dependency directories
+pids
+logs
+*.pid
+*.seed
+*.pid.lock
 
-# Ignore test
-/providers/duckdb/test/
+# Optional npm cache directory
+.npm
 
-# Ignore app-level src
+# Optional eslint cache
+.eslintcache
+
+# Environment variables
+.env*
+
+.vscode
+
+# ignore cdpk files for deployment 
+*.cdpk
+
+# ignore large tmp duckdb files
+.tmp
+
+# ignore provider config with secrets
+providers/*/src/config/default.json
+
+# ignore boiler plate from koop 
+/config 
+/data
 /src
-
-# Ignore specific JSON files
+/framework
 /cdconfig.json
 /package.json
 /package-lock.json
-/providers/duckdb/config/default.json
-/providers/duckdb/package.json
-/providers/duckdb/package-lock.json
-/providers/duckdb/cdconfig.json
-/providers/duckdb/src/duckdb-config.json
 
+# ignore elastic demo data
+wildfires.json
 
-# Ignore cdpks
-*.cdpk
+*.duckdb
+
+backup.json

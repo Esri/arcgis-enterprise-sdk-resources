@@ -1,5 +1,6 @@
 const { Pool } = require("pg");
 const https = require("https");
+const pkg = require("../../package.json");
 
 // Single pool instance (one Lakebase source per provider)
 let pool = null;
@@ -142,6 +143,7 @@ async function refreshPool(sourceConfig) {
 		user: sourceConfig.LAKEBASE_USER || "databricks",
 		password,
 		ssl: { rejectUnauthorized: false },
+		application_name: `esri_databricks-lakebase-customdatafeed/${pkg.version}`,
 		min: 2,
 		max: 10,
 		idleTimeoutMillis: 60000,
