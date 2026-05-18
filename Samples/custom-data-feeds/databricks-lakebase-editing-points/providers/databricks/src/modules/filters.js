@@ -11,9 +11,8 @@ function generateFiltersApplied(geoParams, idField, geometryField) {
 
 	const filtersApplied = {};
 
-	// don't apply filters if asking for unique values of a column for symbology
 	if (returnDistinctValues) {
-		return filtersApplied;
+		filtersApplied.returnDistinctValues = true;
 	}
 
 	if (where) {

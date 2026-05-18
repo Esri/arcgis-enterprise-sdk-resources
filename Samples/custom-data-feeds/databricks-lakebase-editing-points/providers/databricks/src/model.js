@@ -44,7 +44,7 @@ class Model {
 		});
 
 		const { query: geoserviceParams } = req;
-		const { resultRecordCount, returnCountOnly } = geoserviceParams;
+		const { resultRecordCount, returnCountOnly, returnDistinctValues } = geoserviceParams;
 		const config = koopConfig["databricks"];
 		const sourceId = req.params.id || "lakebase";
 		const sourceConfig = config.sources[sourceId];
@@ -105,6 +105,16 @@ class Model {
 			geojson.count = Number(rows[0].count);
 		} else {
 			geojson = translateToGeoJSON(rows, sourceConfig);
+
+			// DISTINCT queries don't include the idField, but the framework's
+			// winnow hashes properties[idField] via fnv-plus which crashes on
+			// undefined. Add a synthetic id so the hash gets a valid value.
+			if (returnDistinctValues) {
+				const idField = sourceConfig.idField;
+				geojson.features.forEach((f, i) => {
+					f.properties[idField] = i + 1;
+				});
+			}
 		}
 
 		geojson.filtersApplied = generateFiltersApplied(
