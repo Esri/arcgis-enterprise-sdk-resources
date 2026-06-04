@@ -23,7 +23,7 @@ Looking for 11.x versions of this sample?
 
 ## Configure the Provider
 
-1.  Create a file called **oriented-imagery-provider** in the directory **providers/oriented-imagery-provider/src/** and set the `dataDirectory` path where
+1.  Create a file called **oriented-imagery-provider.json** in the directory **providers/oriented-imagery-provider/src/** if it is not already there and set the `dataDirectory` path where
     the **esriBuildingE.geojson** file is located.
 
     ```json
@@ -38,7 +38,7 @@ Looking for 11.x versions of this sample?
       {
         "key": "fileName",
         "label": "File Name",
-        "description": "Name of the GeoJSON file."
+        "description": "Name of the GeoJSON file without file extension."
       }
     ```
 
@@ -47,8 +47,8 @@ Looking for 11.x versions of this sample?
 1.  Navigate to the **oriented-imagery-app** directory in a command prompt, and run
     the `npm start` command to start the custom data app.
 2.  In a client, send a request to
-    \>http://localhost:8080/oriented-imagery-provider/rest/services/my-data/FeatureServer/0/query,
-    with a header called `x-esri-cdf-service-params` with a value of `{"fileName": "esriBuildingE"}`and verify that the provider is returning data points.
+    \>http://localhost:8080/oriented-imagery-provider/rest/services/FeatureServer/0/query,
+    with a header called `x-esri-cdf-service-params` with a value of `{"fileName": "esriBuildingE"}`and verify that the provider is returning data points. This header is required when testing locally. You do not need to set this yourself when you deploy the provider and service.
 
 ## Build and Deploy the Custom Data Provider Package File
 
