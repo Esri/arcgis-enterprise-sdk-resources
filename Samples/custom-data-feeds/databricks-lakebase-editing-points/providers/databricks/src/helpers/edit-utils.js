@@ -14,9 +14,25 @@ function validateIdentifier(name) {
 }
 
 /**
+ * Validate that geometry coordinates are valid numbers (not NaN or Infinity).
+ */
+function isValidGeometry(geom) {
+	if (!geom || !geom.coordinates) return false;
+	const checkCoord = (coord) => {
+		if (typeof coord === "number") {
+			return Number.isFinite(coord);
+		}
+		if (Array.isArray(coord)) {
+			return coord.every(checkCoord);
+		}
+		return false;
+	};
+	return checkCoord(geom.coordinates);
+}
+
+/**
  * Convert Esri JSON or GeoJSON geometry to GeoJSON for PostGIS ST_GeomFromGeoJSON.
  * Handles: GeoJSON (passthrough), Esri Point, Polygon, Polyline, MultiPoint.
- * Note: does NOT reproject — assumes coordinates match the target SRID.
  */
 function toGeoJSON(geom) {
 	if (!geom) return null;
@@ -43,4 +59,4 @@ function toGeoJSON(geom) {
 	return null;
 }
 
-module.exports = { validateIdentifier, toGeoJSON };
+module.exports = { validateIdentifier, toGeoJSON, isValidGeometry };

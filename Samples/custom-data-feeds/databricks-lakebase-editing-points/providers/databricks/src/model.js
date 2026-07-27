@@ -1,4 +1,4 @@
-const koopConfig = require("./config/default.json");
+const cdfConfig = require("./config/default.json");
 const { getLakebasePool, shutdownPool } = require("./modules/lakebase-pool");
 const {
 	translateToGeoJSON,
@@ -9,8 +9,8 @@ const {
 const { insertRows, updateRows, deleteRows } = require("./helpers");
 
 class Model {
-	constructor(koop) {
-		const sourceConfig = koopConfig.databricks.sources.lakebase;
+	constructor() {
+		const sourceConfig = cdfConfig.databricks.sources.lakebase;
 		if (
 			!sourceConfig.DATABRICKS_TOKEN ||
 			!sourceConfig.DATABRICKS_SERVER_HOSTNAME ||
@@ -34,6 +34,21 @@ class Model {
 		});
 	}
 
+	async getMetadata(req) {
+		const config = cdfConfig["databricks"];
+		const sourceId = req?.params?.id || "lakebase";
+		const sourceConfig = config.sources[sourceId];
+
+		if (!sourceConfig) {
+			throw new Error(`No source config found for id: "${sourceId}"`);
+		}
+
+		return {
+			idField: sourceConfig.idField,
+			inputCrs: sourceConfig.dbWKID
+		};
+	}
+
 	async getData(req) {
 		try {
 		// Convert boolean strings to actual booleans
@@ -45,7 +60,7 @@ class Model {
 
 		const { query: geoserviceParams } = req;
 		const { resultRecordCount, returnCountOnly, returnDistinctValues } = geoserviceParams;
-		const config = koopConfig["databricks"];
+		const config = cdfConfig["databricks"];
 		const sourceId = req.params.id || "lakebase";
 		const sourceConfig = config.sources[sourceId];
 
@@ -143,8 +158,10 @@ class Model {
 		}
 	}
 
-	async editData(req) {
-		const config = koopConfig["databricks"];
+	
+
+	async editData(req, editData) {
+		const config = cdfConfig["databricks"];
 		const sourceId = req.params.id || "lakebase";
 		const sourceConfig = config.sources[sourceId];
 
@@ -154,63 +171,32 @@ class Model {
 
 		const pool = await getLakebasePool(sourceConfig);
 
-		// Normalize the request body
-		const { edits, editLevel } = this.#normalizeRequestedEdits(req.body);
+		// `editData` is provided by the CDF framework already normalized to GeoJSON
+		// and reprojected into the layer's native CRS (see getMetadata `inputCrs`).
+		const { adds, updates, deletes } = editData;
 
-		const editCounts = edits.map(e => `adds=${e.adds?.length || 0}, updates=${e.updates?.length || 0}, deletes=${e.deletes?.length || 0}`);
-		console.log(`[${new Date().toISOString()}] editData request (${editLevel}-level): ${editCounts.join(" | ")}`);
+		console.log(
+			`[${new Date().toISOString()}] editData request: adds=${adds?.length || 0}, updates=${updates?.length || 0}, deletes=${deletes?.length || 0}`
+		);
 
-		let allResults = [];
+		const applyEditsResponse = {
+			addResults: [],
+			updateResults: [],
+			deleteResults: [],
+		};
 
-		for (const editSet of edits) {
-			let applyEditsResponse = {
-				addResults: [],
-				updateResults: [],
-				deleteResults: [],
-			};
-
-			if (editSet.adds) {
-				applyEditsResponse.addResults = await insertRows(editSet.adds, pool, sourceConfig);
-			}
-			if (editSet.updates) {
-				applyEditsResponse.updateResults = await updateRows(editSet.updates, pool, sourceConfig);
-			}
-			if (editSet.deletes) {
-				applyEditsResponse.deleteResults = await deleteRows(editSet.deletes, pool, sourceConfig);
-			}
-
-			if (editLevel === "service") {
-				allResults.push({ id: editSet.id, ...applyEditsResponse });
-			} else {
-				allResults.push(applyEditsResponse);
-			}
+		if (adds) {
+			applyEditsResponse.addResults = await insertRows(adds, pool, sourceConfig);
+		}
+		if (updates) {
+			applyEditsResponse.updateResults = await updateRows(updates, pool, sourceConfig);
+		}
+		if (deletes) {
+			applyEditsResponse.deleteResults = await deleteRows(deletes, pool, sourceConfig);
 		}
 
-		const response = editLevel === "service" ? allResults : allResults[0];
 		console.log(`[${new Date().toISOString()}] editData complete`);
-		return response;
-	}
-
-	#normalizeRequestedEdits(body) {
-		if (body.edits) {
-			const edits = typeof body.edits === "string" ? JSON.parse(body.edits) : body.edits;
-			return { edits, editLevel: "service" };
-		}
-
-		const editSet = {};
-		if (body.adds) {
-			editSet.adds = typeof body.adds === "string" ? JSON.parse(body.adds) : body.adds;
-		}
-		if (body.updates) {
-			editSet.updates = typeof body.updates === "string" ? JSON.parse(body.updates) : body.updates;
-		}
-		if (body.deletes) {
-			const deletes = typeof body.deletes === "string" ? body.deletes : String(body.deletes);
-			editSet.deletes = Array.isArray(body.deletes)
-				? body.deletes
-				: deletes.split(",").map((item) => Number(item.trim()));
-		}
-		return { edits: [editSet], editLevel: "layer" };
+		return applyEditsResponse;
 	}
 }
 

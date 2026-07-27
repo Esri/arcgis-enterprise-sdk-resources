@@ -40,9 +40,7 @@ async function updateRows(updates, pool, config) {
 
 			// Only include geometry in SET if geometry is present 
 			if (geometry && geometry.coordinates) {
-				setClauses.push(
-					`${safeGeomCol} = ST_SetSRID(ST_GeomFromGeoJSON($${paramIndex}), ${Number(srid)})`
-				);
+				setClauses.push(`${safeGeomCol} = ST_SetSRID(ST_GeomFromGeoJSON($${paramIndex}), ${Number(srid)})`);
 				params.push(JSON.stringify(geometry));
 				paramIndex++;
 			}

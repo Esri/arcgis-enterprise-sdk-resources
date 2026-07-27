@@ -42,7 +42,6 @@ function formatFeature(values, columns, idField, geometryField, geojsonColumn, e
 }
 
 // Max ID value supported by feature server:
-// https://koopjs.github.io/docs/usage/provider#setting-provider-metadata-in-getdata
 function isValidId(value) {
 	const parsedValue = parseInt(value);
 	return 0 <= parsedValue && parsedValue <= 2147483647;

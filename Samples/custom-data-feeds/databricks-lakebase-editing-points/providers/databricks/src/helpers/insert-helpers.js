@@ -1,4 +1,4 @@
-const { validateIdentifier, toGeoJSON } = require("./edit-utils");
+const { validateIdentifier, toGeoJSON, isValidGeometry } = require("./edit-utils");
 
 async function insertRows(adds, pool, config) {
 	const idField = config.idField;
@@ -19,6 +19,16 @@ async function insertRows(adds, pool, config) {
 		try {
 			const attributes = feature.attributes || feature.properties || {};
 			const geometry = toGeoJSON(feature.geometry);
+
+			// Skip features with invalid or missing geometry
+			if (!geometry || !isValidGeometry(geometry)) {
+				console.warn(`[${new Date().toISOString()}] Skipping feature with invalid geometry`);
+				addResults.push({
+					success: false,
+					error: { code: 1024, description: "Invalid or missing geometry." },
+				});
+				continue;
+			}
 
 			// Filter out idField and geometry column from attributes
 			const attrColumns = Object.keys(attributes).filter(
@@ -46,15 +56,11 @@ async function insertRows(adds, pool, config) {
 				paramIndex++;
 			}
 
-			// Add geometry if present and valid
-			if (geometry && geometry.coordinates) {
-				columns.push(safeGeomCol);
-				placeholders.push(
-					`ST_SetSRID(ST_GeomFromGeoJSON($${paramIndex}), ${Number(srid)})`
-				);
-				params.push(JSON.stringify(geometry));
-				paramIndex++;
-			}
+			// Add geometry
+			columns.push(safeGeomCol);
+			placeholders.push(`ST_SetSRID(ST_GeomFromGeoJSON($${paramIndex}), ${Number(srid)})`);
+			params.push(JSON.stringify(geometry));
+			paramIndex++;
 
 			const sql = `INSERT INTO ${safeSchema}.${safeTable} (${columns.join(", ")}) VALUES (${placeholders.join(", ")})`;
 			await pool.query(sql, params);
