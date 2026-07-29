@@ -1,2 +1,0 @@
-C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\QueryNetworkDatasetRESTSOE\obj\Debug\QueryNetworkDatasetRESTSOE.csproj.AssemblyReference.cache
-C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\dot net\SOE\QueryNetworkDatasetRESTSOE\obj\Debug\QueryNetworkDatasetRESTSOE.csproj.CoreCompileInputs.cache

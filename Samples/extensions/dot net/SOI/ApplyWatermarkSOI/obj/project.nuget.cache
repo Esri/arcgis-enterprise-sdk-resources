@@ -1,16 +1,26 @@
 {
   "version": 2,
-  "dgSpecHash": "WTGeJHtlIvg=",
+  "dgSpecHash": "aAvnbW2Y/Dk=",
   "success": true,
   "projectFilePath": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOI\\ApplyWatermarkSOI\\NetApplyWatermarkSOI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fan11765\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\fan11765\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
-    "C:\\Users\\fan11765\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\fan11765\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\fan11765\\.nuget\\packages\\system.text.json\\6.0.1\\system.text.json.6.0.1.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "NU1510",
+      "level": "Warning",
+      "message": "PackageReference System.Text.Json will not be pruned. This package is automatically available and does not need to be referenced explicitly. Remove the PackageReference item.",
+      "projectPath": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOI\\ApplyWatermarkSOI\\NetApplyWatermarkSOI.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOI\\ApplyWatermarkSOI\\NetApplyWatermarkSOI.csproj",
+      "libraryId": "System.Text.Json",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
     {
       "code": "NU1903",
       "level": "Warning",
@@ -20,8 +30,8 @@
       "filePath": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOI\\ApplyWatermarkSOI\\NetApplyWatermarkSOI.csproj",
       "libraryId": "System.Text.Json",
       "targetGraphs": [
-        "net8.0",
-        "net8.0/win-x64"
+        "net10.0",
+        "net10.0/win-x64"
       ]
     }
   ]

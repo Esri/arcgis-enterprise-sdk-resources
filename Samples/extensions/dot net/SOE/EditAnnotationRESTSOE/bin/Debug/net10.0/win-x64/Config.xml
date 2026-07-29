@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ESRI.Configuration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.esri.com/Desktop/AddIns">
+  <Name>EditAnnotationRESTSOE</Name>
+  <AddInID>eba72303-50e2-487e-833d-0e494722968b</AddInID>
+  <Description />
+  <Version>1.0</Version>
+  <Author />
+  <Provider>ArcObjects11</Provider>
+  <Company>Esri</Company>
+  <Date>2025-08-24T13:38:46</Date>
+  <Targets>
+    <Target name="Server" version="12.1" />
+  </Targets>
+  <AddIn language="CLR" library="EditAnnotationRESTSOE.dll" namespace="EditAnnotationRESTSOE">
+    <ServerObjectType>
+      <Name>MapServer</Name>
+      <ExtensionTypes>
+        <ExtensionType id="EditAnnotationRESTSOE.EditAnnotationRESTSOE" library="EditAnnotationRESTSOE.dll" class="EditAnnotationRESTSOE.EditAnnotationRESTSOE">
+          <Name>EditAnnotationRESTSOE</Name>
+          <DisplayName>.Net Edit Annotation Features REST SOE</DisplayName>
+          <Description>.Net Edit Annotation features SOE - allows feature addition and editing.</Description>
+          <Properties>
+            <layerId>0</layerId>
+          </Properties>
+          <Resources />
+          <Info>
+            <DefaultWebCapabilities />
+            <AllWebCapabilities />
+            <SupportsREST>true</SupportsREST>
+            <SupportsSOAP>false</SupportsSOAP>
+            <hasManagerPropertiesConfigurationPane>false</hasManagerPropertiesConfigurationPane>
+            <SupportsInterceptor>false</SupportsInterceptor>
+            <SupportsSharedInstances>true</SupportsSharedInstances>
+          </Info>
+        </ExtensionType>
+      </ExtensionTypes>
+    </ServerObjectType>
+  </AddIn>
+</ESRI.Configuration>

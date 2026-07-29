@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("QueryNetworkDatasetRESTSOE")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ead55f64-d06e-473c-9822-a1b810cd692b")]
+[assembly: Guid("3f699c00-0044-4d78-ba01-5ee2fd32717d")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -36,10 +36,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 
-[assembly: ESRI.Server.SOESupport.AddInPackage("QueryNetworkDatasetRESTSOE", "498703d5-d304-4388-a741-e117712a49fe",
-    Author = "ESRI",
+[assembly: ESRI.Server.SOESupport.AddInPackage("QueryNetworkDatasetRESTSOE", "e2a67128-b79f-451a-80ad-93599ac16196",
     Company = "ESRI",
-    Date = "11/11/2021 9:27:33 PM",
+    Date = "6/3/2025 1:56:54 PM",
     Description = "",
     TargetProduct = "Server",
     TargetVersion = "12.1",

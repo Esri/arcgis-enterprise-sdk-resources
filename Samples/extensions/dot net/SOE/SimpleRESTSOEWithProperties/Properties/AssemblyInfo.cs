@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("NetRESTSOEProperties", "9a7d0d2f-ee5e-4f9a-a22d-f2d16af7d20e",
-    Author = "cont_chau",
+    Author = "EntSdkTeam",
     Company = "",
     Date = "5/23/2018 11:33:51 AM",
     Description = "",

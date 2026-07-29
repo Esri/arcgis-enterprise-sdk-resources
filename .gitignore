@@ -1,1 +1,17 @@
+# Visual Studio Code
 /.vscode
+
+
+# Visual Studio
+.vs/
+**/.vs/
+
+# .NET build output
+bin/
+obj/
+**/bin/
+**/obj/
+
+# User-specific files
+*.user
+*.suo

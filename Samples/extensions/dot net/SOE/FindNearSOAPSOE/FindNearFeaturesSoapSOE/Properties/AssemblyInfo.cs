@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("NetFindNearFeaturesSoapSOE", "cc34b931-e685-4b37-9a67-b7c0e34e65a1",
-    Author = "cont_chau",
+    Author = "EntSdkTeam",
     Company = "",
     Date = "5/22/2018 5:41:42 PM",
     Description = "",

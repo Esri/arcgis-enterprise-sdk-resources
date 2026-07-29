@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("NetSimpleSoapSOE", "6825f9cd-9b33-4719-a7f9-6ac94d09a0d5",
-    Author = "cont_chau",
+    Author = "EntSdkTeam",
     Company = "",
     Date = "5/21/2018 5:06:49 PM",
     Description = "",

@@ -8,8 +8,7 @@ import java.nio.charset.StandardCharsets;
 
 public class ReverseGeocodeAPI {
   private static final String ACCESS_TOKEN = "";
-  private static final String API_URL = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode" +
-      "?f=pjson&";
+  private static final String API_URL = "";
 
   public static String retrieveDetails(String location) throws IOException {
     String apiUrl = API_URL + "location=" + location + "&token=" + ACCESS_TOKEN;

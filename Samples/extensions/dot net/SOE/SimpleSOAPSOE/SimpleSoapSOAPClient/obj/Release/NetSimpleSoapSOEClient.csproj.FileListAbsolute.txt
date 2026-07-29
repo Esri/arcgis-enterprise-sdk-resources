@@ -1,0 +1,14 @@
+C:\Program Files\ArcGIS\EnterpriseSDK\Samples\DotNet\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOEClient.csproj.AssemblyReference.cache
+C:\Program Files\ArcGIS\EnterpriseSDK\Samples\DotNet\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOAPClient.Form1.resources
+C:\Program Files\ArcGIS\EnterpriseSDK\Samples\DotNet\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOAPClient.Properties.Resources.resources
+C:\Program Files\ArcGIS\EnterpriseSDK\Samples\DotNet\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOEClient.csproj.GenerateResource.cache
+C:\Program Files\ArcGIS\EnterpriseSDK\Samples\DotNet\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOEClient.csproj.CoreCompileInputs.cache
+C:\Program Files\ArcGIS\EnterpriseSDK\Samples\DotNet\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOAPClient.exe
+C:\Program Files\ArcGIS\EnterpriseSDK\Samples\DotNet\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOAPClient.pdb
+C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOEClient.csproj.AssemblyReference.cache
+C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOAPClient.Form1.resources
+C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOAPClient.Properties.Resources.resources
+C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOEClient.csproj.GenerateResource.cache
+C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOEClient.csproj.CoreCompileInputs.cache
+C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOAPClient.exe
+C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\SimpleSOAPSOE\SimpleSoapSOAPClient\obj\Release\NetSimpleSoapSOAPClient.pdb

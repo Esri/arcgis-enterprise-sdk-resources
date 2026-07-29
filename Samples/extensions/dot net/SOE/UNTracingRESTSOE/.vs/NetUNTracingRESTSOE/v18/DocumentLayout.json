@@ -1,0 +1,79 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOE\\UNTracingRESTSOE\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8B174F02-6DC2-47E1-AF74-5BA4F8B3858A}|NetUNTracingRESTSOE\\NetUNTracingRESTSOE.csproj|c:\\github_repo\\arcgis-enterprise-sdk-resources\\samples\\extensions\\dot net\\soe\\untracingrestsoe\\netuntracingrestsoe\\netuntracingrestsoe.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{8B174F02-6DC2-47E1-AF74-5BA4F8B3858A}|NetUNTracingRESTSOE\\NetUNTracingRESTSOE.csproj|solutionrelative:netuntracingrestsoe\\netuntracingrestsoe.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B174F02-6DC2-47E1-AF74-5BA4F8B3858A}|NetUNTracingRESTSOE\\NetUNTracingRESTSOE.csproj|c:\\github_repo\\arcgis-enterprise-sdk-resources\\samples\\extensions\\dot net\\soe\\untracingrestsoe\\netuntracingrestsoe\\netuntracingrestsoe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B174F02-6DC2-47E1-AF74-5BA4F8B3858A}|NetUNTracingRESTSOE\\NetUNTracingRESTSOE.csproj|solutionrelative:netuntracingrestsoe\\netuntracingrestsoe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NetUNTracingRESTSOE",
+              "DocumentMoniker": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOE\\UNTracingRESTSOE\\NetUNTracingRESTSOE\\NetUNTracingRESTSOE.csproj",
+              "RelativeDocumentMoniker": "NetUNTracingRESTSOE\\NetUNTracingRESTSOE.csproj",
+              "ToolTip": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOE\\UNTracingRESTSOE\\NetUNTracingRESTSOE\\NetUNTracingRESTSOE.csproj",
+              "RelativeToolTip": "NetUNTracingRESTSOE\\NetUNTracingRESTSOE.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-29T20:02:25.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NetUNTracingRESTSOE.cs",
+              "DocumentMoniker": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOE\\UNTracingRESTSOE\\NetUNTracingRESTSOE\\NetUNTracingRESTSOE.cs",
+              "RelativeDocumentMoniker": "NetUNTracingRESTSOE\\NetUNTracingRESTSOE.cs",
+              "ToolTip": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOE\\UNTracingRESTSOE\\NetUNTracingRESTSOE\\NetUNTracingRESTSOE.cs",
+              "RelativeToolTip": "NetUNTracingRESTSOE\\NetUNTracingRESTSOE.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T20:01:58.308Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 328,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
