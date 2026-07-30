@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 
@@ -55,6 +55,12 @@
     <Reference Include="ESRI.Server.System">
       <HintPath>$(ENTDEVKITJAVA)\DotNet\ESRI.Server.System.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="NetApplyWatermarkSOI.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
 

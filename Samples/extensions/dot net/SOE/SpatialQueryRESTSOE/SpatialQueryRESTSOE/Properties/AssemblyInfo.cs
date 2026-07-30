@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("SpatialQueryREST", "98ee86a5-2495-415d-98a4-6e1c96cdde78",
-    Author = "cont_chau",
+    Author = "EntSdkTeam",
     Company = "",
     Date = "4/5/2018 4:16:07 PM",
     Description = "",

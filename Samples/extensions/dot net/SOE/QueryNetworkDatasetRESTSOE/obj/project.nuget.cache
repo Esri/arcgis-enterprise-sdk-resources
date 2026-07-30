@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zftp70X/nSo=",
+  "dgSpecHash": "A8fEkF+TS5o=",
   "success": true,
-  "projectFilePath": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\dot net\\SOE\\QueryNetworkDatasetRESTSOE\\QueryNetworkDatasetRESTSOE.csproj",
+  "projectFilePath": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOE\\QueryNetworkDatasetRESTSOE\\QueryNetworkDatasetRESTSOE.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("NetSimpleRESTSOEWithCapabilities", "7f6ce5a0-c061-4b17-b049-7bed7a9cf412",
-    Author = "cont_chau",
+    Author = "EntSdkTeam",
     Company = "",
     Date = "4/5/2018 4:00:22 PM",
     Description = "",

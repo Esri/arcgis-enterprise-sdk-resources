@@ -1,8 +1,5 @@
 ---
 order: 7
-tags:
-  - Samples
-  - net
 ---
 
 # .NET download file REST SOE
@@ -20,7 +17,7 @@ Deploying the SOE from the .soe file (`..\bin\Release\DownloadFileRESTSOE_ent.so
 
 ## Sample data
 
-Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](../../../../../ReadMe.md#1-usa-service) as the sample service to test with the SOE.
+Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as the sample service to test with the SOE.
 
 
 ## Instructions
@@ -35,7 +32,7 @@ Any dynamic map service published from ArcGIS Pro. This instruction uses the [US
 
 ### Enable the SOE on a map service
 
-1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](../../../../../ReadMe.md#1-usa-service).
+1. Make sure you have published the USA map service using ArcGIS Pro. If not, refer to [USA map service](../../../ReadMe.md#1-usa-service).
 2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select USA map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***.NET Download File REST SOE*** and check the box to enable it.
 4. Click the ***Save and Restart*** button to restart the service.
@@ -52,20 +49,20 @@ Any dynamic map service published from ArcGIS Pro. This instruction uses the [US
 
    This SOE root resource page displays the SOE's description, the ***Files*** child resource, and two operations, ***DownloadFile*** and ***DeleteFile***.
 
-   ![](../../../../../images/netsp/NetDownload1.png "NetDownloadFileSOE Sample")
+   ![](../../../../images/netsp/NetDownload1.png "NetDownloadFileSOE Sample")
 4. Click the ***DownloadFile*** operation.
 5. Type in some contents in the ***inputText*** box. Choose ***file*** as the ***Format(f)*** parameter. Click the ***DownloadFile(GET)*** button. A text file named "testFile_xxxxxx.txt" is generated and downloaded to your local drive now.
 
-   ![](../../../../../images/netsp/NetDownload2.png "NetDownloadFileSOE Sample")
+   ![](../../../../images/netsp/NetDownload2.png "NetDownloadFileSOE Sample")
 6. Navigate back to the ***DownloadFile*** operation page.
 7. Type in some contents in the ***inputText*** box. Choose ***html*** as the ***Format(f)*** parameter. Click the ***DownloadFile(GET)*** button. A text file named "testFile_xxxxxx.txt" is generated and can be accessed via the url provided in the response.
 
-   ![](../../../../../images/netsp/NetDownload3.png "NetDownloadFileSOE Sample")
+   ![](../../../../images/netsp/NetDownload3.png "NetDownloadFileSOE Sample")
 8. Navigate back to the root resource page again. Click the ***Files*** resource. You will see the two files generated in step 5 and step 7 are listed. Take a note of a filename.
 
-   ![](../../../../../images/netsp/NetDownload4.png "NetDownloadFileSOE Sample")
+   ![](../../../../images/netsp/NetDownload4.png "NetDownloadFileSOE Sample")
 
 9. Navigate back to the root resource page again. Click the ***DeleteFile*** operation.
 10.Type in the filename from step 8 and click the ***DeleteFile(GET)*** button. The response ***success: true*** indicates that the file is successfully deleted from server. You can also repeate step 8 to confirm it.
 
-   ![](../../../../../images/netsp/NetDownload5.png "NetDownloadFileSOE Sample")
+   ![](../../../../images/netsp/NetDownload5.png "NetDownloadFileSOE Sample")

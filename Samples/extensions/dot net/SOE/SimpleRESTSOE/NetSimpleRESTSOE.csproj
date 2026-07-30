@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 
@@ -57,7 +57,7 @@
   <PropertyGroup>
     <ZipFileExtension>soe</ZipFileExtension>
     <AddInTargetProduct>Server</AddInTargetProduct>
-    <AddInTargetVersion>11.5</AddInTargetVersion>
+    <AddInTargetVersion>12.1</AddInTargetVersion>
     <ServerProvider>ArcObjects11</ServerProvider>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\ESRI\ESRI.ArcGIS.Enterprise.SDK.targets" Condition="Exists('$(MSBuildExtensionsPath)\ESRI\ESRI.ArcGIS.Enterprise.SDK.targets')" />
