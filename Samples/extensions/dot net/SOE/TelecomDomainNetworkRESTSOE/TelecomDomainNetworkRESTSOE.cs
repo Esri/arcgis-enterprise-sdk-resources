@@ -161,15 +161,9 @@ namespace TelecomDomainNetworkRESTSOE
             if (!found || string.IsNullOrEmpty(geodatabasePath))
             {
                 geodatabasePath = gdbPath; // Use default path if not provided
-            }          
+            }
 
-            var result = new
-            {
-                MobileGeodatabasePath = geodatabasePath,
-            };
-            var json = JsonSerializer.Serialize(result);
-
-            System.Diagnostics.Debugger.Launch();
+            // System.Diagnostics.Debugger.Launch();
 
             OpenTelecomDataset(geodatabasePath);
 
@@ -180,26 +174,39 @@ namespace TelecomDomainNetworkRESTSOE
                 GetTelecomDomainNetworkProperties(telecomDomainNetwork);
                 
                 // Perform circuit management operations
-                CircuitManagementOperations(unDataset, telecomDomainNetwork);
+                object circuits = CircuitManagementOperations(unDataset, telecomDomainNetwork);
                 
                 // Perform telecom equipment management operations
-                TelecomEquipmentOperations(unDataset, telecomDomainNetwork);
+                object equipment = TelecomEquipmentOperations(unDataset, telecomDomainNetwork);
                 
                 // Get color scheme information
                 GetColorSchemeInfo(unDataset, telecomDomainNetwork);
+
+                var result = new
+                {
+                    MobileGeodatabasePath = geodatabasePath,
+                    DatasetName = unDataset.Name,
+                    SchemaVersion = unVersion,
+                    DomainNetworkName = telecomDomainNetwork.DomainNetworkName,
+                    CircuitsInfo = circuits,
+                    EquipmentInfo = equipment
+                };
+                return Encoding.UTF8.GetBytes(JsonSerializer.Serialize(result));
             }
             else
             {
-                LogInfo("Telecom domain network not found or UN version is less than 8.0.");
+                throw new InvalidOperationException("Telecom domain network not found or UN version is less than 8.0.");
             }
-
-            return Encoding.UTF8.GetBytes(json);
         }
 
 
         #region Open Telecom Dataset
         private static void OpenTelecomDataset(string gdbPath)
         {
+            unVersion = -1;
+            unDataset = null;
+            telecomDomainNetwork = null;
+
             IWorkspaceFactory2 workspaceFactory = new SqliteWorkspaceFactoryClass();
             IWorkspace workspace = workspaceFactory.OpenFromFile(gdbPath, 0);
             var workspaceType = workspace.WorkspaceFactory.WorkspaceType;
@@ -238,7 +245,7 @@ namespace TelecomDomainNetworkRESTSOE
         #endregion
 
         #region Circuit Management
-        private static void CircuitManagementOperations(IDataset unDataset, ITelecomDomainNetwork telecomDomainNetwork)
+        private static object CircuitManagementOperations(IDataset unDataset, ITelecomDomainNetwork telecomDomainNetwork)
         {
             IUtilityNetworkCircuit utilityNetworkCircuit = unDataset as IUtilityNetworkCircuit;
             IUNCircuitManager circuitManager = utilityNetworkCircuit.CreateCircuitManager(telecomDomainNetwork.DomainNetworkName);
@@ -321,6 +328,7 @@ namespace TelecomDomainNetworkRESTSOE
             {
                 LogError($"Error creating circuit: {ex.Message}");
                 saveEdits = false;
+                throw;
             }
             finally
             {
@@ -339,12 +347,14 @@ namespace TelecomDomainNetworkRESTSOE
             circuitManager.GetCircuits(circuitNames, null, null, esriCircuitQueryLocationType.esriCQLTNotApplicable,
                 esriCircuitHierarchy.esriCHConsumersAndProviders, esriCircuitStatusFilter.esriCSFAll, out circuitArray);
 
+            var circuits = new List<object>();
             for (int i = 0; i < circuitArray.Count; i++)
             {
                 ICircuit circuit = circuitArray.Element[i] as ICircuit;
                 if (circuit != null)
                 {
                     LogInfo($"Circuit Name: {circuit.Name}, Circuit Type: {circuit.CircuitType}, Is Sectioned: {circuit.IsSectioned}");
+                    circuits.Add(new { Name = circuit.Name, CircuitType = circuit.CircuitType.ToString(), IsSectioned = circuit.IsSectioned });
                 }
             }
             #endregion Query circuits
@@ -352,6 +362,7 @@ namespace TelecomDomainNetworkRESTSOE
             #region Verify circuits
             workspaceEdit.StartEditing(false);
             workspaceEdit.StartEditOperation();
+            var verificationResults = new List<object>();
             try
             {
                 IArray circuitResultsInfo = new ArrayClass();
@@ -362,6 +373,7 @@ namespace TelecomDomainNetworkRESTSOE
                     if (circuitResultInfo != null)
                     {
                         LogInfo($"Circuit Name: {circuitResultInfo.Name}, Status: {circuitResultInfo.Status} ,  Message: {circuitResultInfo.Message}, Error Code: {circuitResultInfo.ErrorCode}");
+                        verificationResults.Add(new { Name = circuitResultInfo.Name, Status = circuitResultInfo.Status.ToString(), Message = circuitResultInfo.Message, ErrorCode = circuitResultInfo.ErrorCode });
                     }
                 }
             }
@@ -369,6 +381,7 @@ namespace TelecomDomainNetworkRESTSOE
             {
                 LogError($"Error verifying circuit: {ex.Message}");
                 saveEdits = false;
+                throw;
             }
             finally
             {
@@ -377,12 +390,13 @@ namespace TelecomDomainNetworkRESTSOE
             }
             #endregion Verify circuits
 
+            return new { Queried = circuits, VerificationResults = verificationResults };
         }
         #endregion Circuit Management
 
 
         #region Equipment Management
-        private static void TelecomEquipmentOperations(IDataset unDataset, ITelecomDomainNetwork telecomDomainNetwork)
+        private static object TelecomEquipmentOperations(IDataset unDataset, ITelecomDomainNetwork telecomDomainNetwork)
         {
             IUtilityNetworkEquipmentIdentifiers utilityNetworkEquipmentIdentifiers = (IUtilityNetworkEquipmentIdentifiers)unDataset;
 
@@ -394,6 +408,24 @@ namespace TelecomDomainNetworkRESTSOE
             utilityNetworkEquipmentIdentifiers.QueryUnitIdentifiable(containerNetworkSource.ID, portContainerGlobalId, out gapStartUnitIds, out gapEndUnitIds, out unitIdentifierContentNetworkSourceId, out unitIdentifierContentGlobalIds, out firstUnits, out lastUnits);
 
             LogInfo($" Container Source ID:{containerNetworkSource.ID},Container GUID:{portContainerGlobalId} Content Source ID: {unitIdentifierContentNetworkSourceId.Element[0].ToString()} Content GUID:{unitIdentifierContentGlobalIds.Element[0].ToString()}");
+
+            var gaps = new List<object>();
+            for (int i = 0; i < gapStartUnitIds.Count; i++)
+            {
+                gaps.Add(new { FirstUnit = gapStartUnitIds.Element[i], LastUnit = gapEndUnitIds.Element[i] });
+            }
+
+            var contents = new List<object>();
+            for (int i = 0; i < unitIdentifierContentNetworkSourceId.Count; i++)
+            {
+                contents.Add(new
+                {
+                    NetworkSourceId = unitIdentifierContentNetworkSourceId.Element[i],
+                    GlobalId = unitIdentifierContentGlobalIds.Element[i].ToString(),
+                    FirstUnit = firstUnits.Element[i],
+                    LastUnit = lastUnits.Element[i]
+                });
+            }
 
             IWorkspaceEdit workspaceEdit = unDataset.Workspace as IWorkspaceEdit;
             bool saveEdits = true;
@@ -415,12 +447,14 @@ namespace TelecomDomainNetworkRESTSOE
             {
                 LogError($"Error handling equipment: {ex.Message}");
                 saveEdits = false;
+                throw;
             }
             finally
             {
                 workspaceEdit.StopEditOperation();
                 workspaceEdit.StopEditing(saveEdits);
             }
+            return new { ContainerSourceId = containerNetworkSource.ID, ContainerGlobalId = portContainerGlobalId, Gaps = gaps, Contents = contents };
         }
         #endregion Equipment Management
 
