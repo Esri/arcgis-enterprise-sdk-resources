@@ -37,8 +37,8 @@ using System.Runtime.InteropServices;
 
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("TelecomDomainNetworkRESTSOE", "7c892ee7-c39a-45de-aa48-754125b86dad",
-    Author = "aas11333",
-    Company = "ESRI",
+    Author = "EntSdkTeam",
+    Company = "",
     Date = "10/19/2026 2:12:38 PM",
     Description = "",
     TargetProduct = "Server",
