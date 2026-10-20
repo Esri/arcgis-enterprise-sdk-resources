@@ -36,7 +36,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("ClipAndSpatialFilterSOI", "cf479c85-ca82-4ff5-b546-809549c82a93",
-    Author = "moha5225",
+    Author = "EntSdkTeam",
     Company = "",
     Date = "10/5/2019 1:38:08 PM",
     Description = "",

@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("SoapProSOE1", "ba8ab070-9d87-4934-80b6-5e2405f8edee",
-    Author = "hanh7700",
+    Author = "EntSdkTeam",
     Company = "",
     Date = "9/23/2020 12:57:30 PM",
     Description = "",
