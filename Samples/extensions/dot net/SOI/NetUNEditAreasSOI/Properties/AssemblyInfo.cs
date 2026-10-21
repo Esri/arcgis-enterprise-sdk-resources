@@ -36,7 +36,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("NetUNEditAreasSOI", "cf5e9ad7-2733-4e80-b462-0425e6e26a19",
-    Author = "ESRI",
+    Author = "EntSdkTeam",
     Company = "ESRI",
     Date = "4/29/2022 7:28:10 AM",
     Description = "",

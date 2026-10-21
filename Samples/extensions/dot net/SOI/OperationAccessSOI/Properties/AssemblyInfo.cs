@@ -36,7 +36,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("NetOperationAccessSOI", "2288ebf0-5710-486c-843b-e19b2214783a",
-    Author = "cont_chau",
+    Author = "EntSdkTeam",
     Company = "",
     Date = "4/5/2018 4:52:46 PM",
     Description = "",

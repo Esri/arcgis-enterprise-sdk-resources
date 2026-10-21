@@ -36,7 +36,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: ESRI.Server.SOESupport.AddInPackage("NetSimpleLoggerSOI", "1f8fd387-d6d1-43bd-93d0-805a9837ce4c",
-    Author = "cont_chau",
+    Author = "EntSdkTeam",
     Company = "",
     Date = "4/5/2018 4:50:05 PM",
     Description = "",
