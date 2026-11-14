@@ -9,7 +9,7 @@
   <Company>Esri</Company>
   <Date>2025-08-24T13:38:46</Date>
   <Targets>
-    <Target name="Server" version="12.1" />
+    <Target name="Server" version="12.2" />
   </Targets>
   <AddIn language="CLR" library="EditAnnotationRESTSOE.dll" namespace="EditAnnotationRESTSOE">
     <ServerObjectType>

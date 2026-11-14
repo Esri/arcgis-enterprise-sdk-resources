@@ -9,7 +9,7 @@
   <Company>ESRI</Company>
   <Date>2024-02-28T20:22:11</Date>
   <Targets>
-    <Target name="Server" version="12.1" />
+    <Target name="Server" version="12.2" />
   </Targets>
   <AddIn language="CLR" library="GetRasterStatisticsSOE.dll" namespace="GetRasterStatistics">
     <ServerObjectType>

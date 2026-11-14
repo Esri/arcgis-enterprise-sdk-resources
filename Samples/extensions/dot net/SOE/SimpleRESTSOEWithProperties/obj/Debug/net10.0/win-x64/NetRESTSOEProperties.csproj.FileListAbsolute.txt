@@ -42,3 +42,4 @@ C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\Si
 C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\SimpleRESTSOEWithProperties\obj\Debug\net10.0\win-x64\NetRESTS.FB747B21.Up2Date
 C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\SimpleRESTSOEWithProperties\obj\Debug\net10.0\win-x64\NetRESTSOEProperties.dll
 C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\SimpleRESTSOEWithProperties\obj\Debug\net10.0\win-x64\NetRESTSOEProperties.pdb
+C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\SimpleRESTSOEWithProperties\bin\Debug\net10.0\win-x64\NetRESTSOEProperties_ent.soe

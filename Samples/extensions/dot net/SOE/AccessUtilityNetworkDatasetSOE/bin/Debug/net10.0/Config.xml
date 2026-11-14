@@ -9,7 +9,7 @@
   <Company>ESRI</Company>
   <Date>2022-04-29T11:39:55</Date>
   <Targets>
-    <Target name="Server" version="12.1" />
+    <Target name="Server" version="12.2" />
   </Targets>
   <AddIn language="CLR" library="AccessUtilityNetworkDatasetProperties.dll" namespace="AccessUtilityNetworkDataset">
     <ServerObjectType>

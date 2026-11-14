@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOE\\AccessUtilityNetworkDatasetSOE\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9544E4EE-4B18-4C51-A1F1-1E5825EDBF13}|AccessUtilityNetworkDatasetProperties.csproj|c:\\github_repo\\arcgis-enterprise-sdk-resources\\samples\\extensions\\dot net\\soe\\accessutilitynetworkdatasetsoe\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9544E4EE-4B18-4C51-A1F1-1E5825EDBF13}|AccessUtilityNetworkDatasetProperties.csproj|solutionrelative:properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9544E4EE-4B18-4C51-A1F1-1E5825EDBF13}|AccessUtilityNetworkDatasetProperties.csproj|c:\\github_repo\\arcgis-enterprise-sdk-resources\\samples\\extensions\\dot net\\soe\\accessutilitynetworkdatasetsoe\\accessutilitynetworkdatasetproperties.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{9544E4EE-4B18-4C51-A1F1-1E5825EDBF13}|AccessUtilityNetworkDatasetProperties.csproj|solutionrelative:accessutilitynetworkdatasetproperties.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9544E4EE-4B18-4C51-A1F1-1E5825EDBF13}|AccessUtilityNetworkDatasetProperties.csproj|c:\\github_repo\\arcgis-enterprise-sdk-resources\\samples\\extensions\\dot net\\soe\\accessutilitynetworkdatasetsoe\\accessutilitynetworkdatasetproperties.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9544E4EE-4B18-4C51-A1F1-1E5825EDBF13}|AccessUtilityNetworkDatasetProperties.csproj|solutionrelative:accessutilitynetworkdatasetproperties.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9544E4EE-4B18-4C51-A1F1-1E5825EDBF13}|AccessUtilityNetworkDatasetProperties.csproj|c:\\github_repo\\arcgis-enterprise-sdk-resources\\samples\\extensions\\dot net\\soe\\accessutilitynetworkdatasetsoe\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9544E4EE-4B18-4C51-A1F1-1E5825EDBF13}|AccessUtilityNetworkDatasetProperties.csproj|solutionrelative:properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOE\\DownloadFileRESTSOE\\DownloadFileRESTSOE.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -28,15 +28,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AccessUtilityNetworkDatasetProperties",
               "DocumentMoniker": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOE\\AccessUtilityNetworkDatasetSOE\\AccessUtilityNetworkDatasetProperties.csproj",
               "RelativeDocumentMoniker": "AccessUtilityNetworkDatasetProperties.csproj",
@@ -48,7 +52,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AccessUtilityNetworkDatasetProperties.cs",
               "DocumentMoniker": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOE\\AccessUtilityNetworkDatasetSOE\\AccessUtilityNetworkDatasetProperties.cs",
               "RelativeDocumentMoniker": "AccessUtilityNetworkDatasetProperties.cs",
@@ -56,8 +60,7 @@
               "RelativeToolTip": "AccessUtilityNetworkDatasetProperties.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-29T18:34:47.358Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-29T18:34:47.358Z"
             },
             {
               "$type": "Document",
@@ -85,23 +88,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOE\\AccessUtilityNetworkDatasetSOE\\Properties\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "Properties\\AssemblyInfo.cs",
               "ToolTip": "C:\\GitHub_repo\\arcgis-enterprise-sdk-resources\\Samples\\extensions\\dot net\\SOE\\AccessUtilityNetworkDatasetSOE\\Properties\\AssemblyInfo.cs",
               "RelativeToolTip": "Properties\\AssemblyInfo.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACcAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-29T18:34:47.412Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "WhenOpened": "2026-07-29T18:34:47.412Z",
+              "EditorCaption": ""
             }
           ]
         },

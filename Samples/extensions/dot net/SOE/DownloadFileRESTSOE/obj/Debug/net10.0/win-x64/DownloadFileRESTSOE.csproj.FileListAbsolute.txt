@@ -42,3 +42,4 @@ C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\Do
 C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\DownloadFileRESTSOE\obj\Debug\net10.0\win-x64\Download.B1CEE481.Up2Date
 C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\DownloadFileRESTSOE\obj\Debug\net10.0\win-x64\DownloadFileRESTSOE.dll
 C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\DownloadFileRESTSOE\obj\Debug\net10.0\win-x64\DownloadFileRESTSOE.pdb
+C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\extensions\dot net\SOE\DownloadFileRESTSOE\bin\Debug\net10.0\win-x64\DownloadFileRESTSOE_ent.soe
