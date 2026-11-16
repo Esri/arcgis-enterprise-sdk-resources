@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.esri.interceptor.samples.GeocodingTest" time="0.043" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.esri.interceptor.samples.GeocodingTest" time="0.031" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-21.0.12.8-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\fan11765\AppData\Local\Temp\surefire2487503134891339677\surefirebooter-20261113170658655_3.jar C:\Users\fan11765\AppData\Local\Temp\surefire2487503134891339677 2026-11-13T17-06-58_444-jvmRun1 surefire-20261113170658655_1tmp surefire_0-20261113170658655_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\fan11765\AppData\Local\Temp\surefire9346876164731395297\surefirebooter-20261116150148964_3.jar C:\Users\fan11765\AppData\Local\Temp\surefire9346876164731395297 2026-11-16T15-01-48_864-jvmRun1 surefire-20261116150148964_1tmp surefire_0-20261116150148964_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\service-interceptors\Chaining\Geocoding\target\test-classes;C:\GitHub_repo\arcgis-enterprise-sdk-resources\Samples\service-interceptors\Chaining\Geocoding\target\classes;C:\Users\fan11765\.m2\repository\com\esri\arcgis\enterprise\sdk\enterprise-interceptor-api\12.2.0\enterprise-interceptor-api-12.2.0.jar;C:\Users\fan11765\.m2\repository\jakarta\servlet\jakarta.servlet-api\6.1.0\jakarta.servlet-api-6.1.0.jar;C:\Users\fan11765\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\fan11765\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\fan11765\.m2\repository\org\json\json\20231013\json-20231013.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\fan11765\AppData\Local\Temp\surefire2487503134891339677\surefirebooter-20261113170658655_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\fan11765\AppData\Local\Temp\surefire9346876164731395297\surefirebooter-20261116150148964_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.12+8-LTS"/>
@@ -59,5 +59,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testSomething" classname="com.esri.interceptor.samples.GeocodingTest" time="0.003"/>
+  <testcase name="testSomething" classname="com.esri.interceptor.samples.GeocodingTest" time="0.002"/>
 </testsuite>

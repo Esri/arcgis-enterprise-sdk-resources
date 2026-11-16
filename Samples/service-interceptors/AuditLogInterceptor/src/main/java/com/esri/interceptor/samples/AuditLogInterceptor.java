@@ -63,11 +63,10 @@ public class AuditLogInterceptor implements IServerServicesInterceptor {
 		}
 
 		//To intercept the request, write your code here
-		logUserAction(request, response);
 		filterChain.intercept(request, response);
 
 		//To intercept the response, write your code here
-
+		logUserAction(request, response);
 	}
 
 	/*
