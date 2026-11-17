@@ -21,7 +21,7 @@ Deploying the SOE from the .soe file (`..\EditFeaturesRESTSOE\bin\Release\NetEdi
 
 
 ## Sample data
-This instruction uses the [USA map service](../../../../../ReadMe.md#1-usa-service) as the sample service to test with the SOE. Make sure its data source is from an Enterprise Geodatabase and registered with ArcGIS Enterprise.
+This instruction uses the [USA map service](../../../../../ReadMe.md#1-usa-map-service) as the sample service to test with the SOE. Make sure its data source is from an Enterprise Geodatabase and registered with ArcGIS Enterprise.
 
 
 ## Instructions

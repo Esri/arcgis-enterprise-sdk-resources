@@ -20,7 +20,7 @@ Deploying the SOE from the .soe file (`..\FindNearFeaturesRESTSOE\bin\Release\Ne
 
 
 ## Sample data
-This sample uses the [Veg map service](../../../../../ReadMe.md#2-veg-service) as the sample service to test with the SOE.
+This sample uses the [Veg map service](../../../../../ReadMe.md#2-vegetation-map-service) as the sample service to test with the SOE.
 
 
 ## Instructions

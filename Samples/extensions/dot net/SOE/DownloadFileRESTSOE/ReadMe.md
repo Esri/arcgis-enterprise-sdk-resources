@@ -17,7 +17,7 @@ Deploying the SOE from the .soe file (`..\bin\Release\DownloadFileRESTSOE_ent.so
 
 ## Sample data
 
-Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](../../../ReadMe.md#1-usa-service) as the sample service to test with the SOE.
+Any dynamic map service published from ArcGIS Pro. This instruction uses the [USA map service](../../../../../ReadMe.md#1-usa-map-service) as the sample service to test with the SOE.
 
 
 ## Instructions

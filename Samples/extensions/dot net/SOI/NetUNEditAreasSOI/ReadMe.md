@@ -4,37 +4,38 @@ order: 19
 
 # .NET utility network edit areas collaboration REST SOI
 
-This sample demonstrates how to communicate the network areas being edited by levereging the utility network's dirty areas table. The SOI intercepts the call to the [Validate Network Topology](https://developers.arcgis.com/rest/services-reference/validatenetworktopology-utiility-network-server-.htm) REST operation and processes the dirty areas to create a new polygon in a common non-versioned feature class. This feature class is shared, as a feature layer, in the same ArcGIS Pro project as the utility network layers.
+This sample demonstrates how to track network areas being edited by leveraging the utility network's dirty areas table. The SOI intercepts the [Validate Network Topology](https://developers.arcgis.com/rest/services-reference/validatenetworktopology-utiility-network-server-.htm) REST operation and processes the dirty areas to create a polygon feature in a shared, non-versioned feature class. This feature class is published as a feature layer and added to the same ArcGIS Pro project as the utility network layers.
 
-In order to use this SOI, the administrator must first create a new non-versioned feature class with the following properties in the same Enterprise Geodatabase as the Utility Network dataset and under the same owning user.
+To use this SOI, the administrator must first create a non-versioned feature class in the same enterprise geodatabase as the utility network dataset. The feature class must be owned by the same user who owns the utility network dataset and must contain the required fields described in the Sample data section.
 
-This sample was demonstrated in the [2021 Esri Developer Summit plenary](https://www.esri.com/arcgis-blog/products/arcgis/administration/dev-summit-2021-extend-and-automate-your-intelligent-enterprise/). Watch the video demo at [Extending and Automating Your Enterprise](https://www.youtube.com/watch?v=hHFLSLXczGY).
+This sample was demonstrated at the [Esri Developer Summit plenary](https://www.esri.com/arcgis-blog/products/arcgis/administration/dev-summit-2021-extend-and-automate-your-intelligent-enterprise/). Watch the demonstration in[Extending and Automating Your Enterprise](https://www.youtube.com/watch?v=hHFLSLXczGY).
 
-The administrator that deploys this SOI must enable it on the map service that also has the Utility Network capability enabled.
+The administrator must enable the SOI on a map service that has the Utility Network capability enabled. The utility network owner must also ensure that the network topology is enabled.
 
-Deploying the SOI from the .soe file (`..\NetUNEditAreasSOI\bin\Release\NetUNEditAreasSOI_ent.soe`) does not require you to open Visual Studio. However, you can load the project (`..\NetUNEditAreasSOI\NetUNEditAreasSOI.csproj`) in Visual Studio to debug, modify, and recompile the SOI's code. Constants' values may need to change. 
-
-
-The Utility Network owner must make sure that the network topology has been enabled.
+You can deploy the SOI using the precompiled .soe file (..\NetUNEditAreasSOI\bin\Release\NetUNEditAreasSOI_ent.soe) without opening Visual Studio. To debug, modify, or rebuild the SOI, open the project (..\NetUNEditAreasSOI\NetUNEditAreasSOI.csproj) in Visual Studio. You may need to update the constant values to match your environment.
 
 ## Features
   * Opening a Utility Network dataset (`IFeatureDataset`, `IDataset`)
   * Getting network properties and dirty areas table (`IBaseNetwork`, `IDEBaseNetwork`)
   
 
-## Sample data
-This sample does not require a specific utility network dataset. For example, you can load the [Electric Utility Network Foundation](https://solutions.arcgis.com/electric/help/electric-utility-network-foundation/) Naperville demo data in an Enterprise Geodatabase and publish it as a service on ArcGIS Enterprise. Please follow the instructions provided in the above link to download, configure and publish the data.
+This sample does not require a specific utility network dataset. You can use a utility network published from an enterprise geodatabase.
 
-- Feature class name: EDITAREAS
+For example, refer to the [Electric Utility Network Foundation](https://doc.arcgis.com/en/arcgis-solutions/latest/reference/introduction-to-electric-utility-network-foundation.htm) solution for sample data and configuration guidance.
 
-- Fields (Types):
-  - OBJECTID (Object Id)
-  - CREATIONDATE (Date)
-  - LASTUPDATE (Date)
-  - EDITCOUNT (Long)
-  - VERSIONNAME (Text)
-  - CREATOR (Text)
-  - SHAPE (Shape)
+### Create the edit areas feature class
+
+Create a non-versioned polygon feature class named `EditAreas` in the same enterprise geodatabase as the utility network, under the same owning user.
+
+The feature class must contain the following fields:
+
+- OBJECTID (Object ID)
+- CREATIONDATE (Date)
+- LASTUPDATE (Date)
+- EDITCOUNT (Long)
+- VERSIONNAME (Text)
+- CREATOR (Text)
+- SHAPE (Geometry)
 
 ## Instructions
 
@@ -66,14 +67,16 @@ This sample does not require a specific utility network dataset. For example, yo
 
 ### Test the SOI in ArcGIS Pro
 
-1. In ArcGIS Pro, open the project created in the previous step.
-2. On the Utility Network layer, create a branch version and change to it.
-3. Edit one or more features that participate in the network, such as devices. Make sure to edit an attribute that will generate a dirty area (e.g. asset type, asset group, lifecycle status). 
-4. Save the edits made to the version.
-5. Execute the Validate Network Topology tool. This should remove the dirty areas and create a new edit area in the edit areas layer. 
+1. Open the ArcGIS Pro project created in the previous step.
+2. Create a named branch version of the utility network and switch to it.
+3. Edit one or more network features. Modify an attribute that generates a dirty area, such as the asset group or asset type.
+4. Save the edits to the named branch version.
+5. On the Utility Network tab, use the Validate command to validate the network topology for the current extent.
+6. Verify that the dirty areas are cleared and that an edit area polygon is created in the EditAreas feature layer.
+7. Delete the named branch version and verify that the corresponding edit area is removed.
 
   ![](../../../../../images/netsp/NetUNEditAreasSOI1.png)
 
-6. Delete the branch version. This should remove the edit area from the edit areas layer.
+
      
    
