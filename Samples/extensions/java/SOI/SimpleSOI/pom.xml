@@ -18,7 +18,7 @@
     <dependency>
       <groupId>com.esri.arcgis.enterprise.sdk</groupId>
       <artifactId>arcgis-enterprise-sdk</artifactId>
-      <version>12.1.0</version>
+      <version>12.2.0</version>
       <scope>provided</scope>
     </dependency>
       <dependency>
@@ -64,7 +64,7 @@
       <plugin>
         <groupId>com.esri.arcgis.enterprise.sdk</groupId>
         <artifactId>sdk-plugin</artifactId>
-        <version>12.1.0</version>
+        <version>12.2.0</version>
         <dependencies>
           <!-- Include any additional plugin dependencies here if needed -->
         </dependencies>
@@ -73,7 +73,7 @@
             <Version>1.0</Version>
             <Author>EnterpriseSDKTeam</Author>
             <Company>Esri</Company>
-           <TARGETS>12.1</TARGETS> <!-- Required -->
+           <TARGETS>12.2</TARGETS> <!-- Required -->
           </configProp>
         </configuration>
         <executions>

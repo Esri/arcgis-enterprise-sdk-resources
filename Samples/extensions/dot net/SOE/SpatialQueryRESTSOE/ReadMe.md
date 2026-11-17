@@ -21,7 +21,7 @@ This sample illustrates how to develop a REST server object extension (SOE) with
 
 ## Sample data
 
-This sample uses the [Veg map service](../../../ReadMe.md#2-veg-service) as the sample service to test with the SOE.
+This sample uses the [Veg map service](.../../../../../ReadMe.md#2-vegetation-map-service) as the sample service to test with the SOE.
 
 
 ## Instructions
@@ -36,7 +36,7 @@ This sample uses the [Veg map service](../../../ReadMe.md#2-veg-service) as the 
 
 ### Enable the SOE on a map service
 
-1. Make sure you have published the Veg map service using ArcGIS Pro. If not, refer to [veg map service](../../../ReadMe.md#2-veg-service).
+1. Make sure you have published the Veg map service using ArcGIS Pro. If not, refer to [veg map service](../../../../../ReadMe.md#2-vegetation-map-service).
 2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select the Veg map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***.Net Spatial Query REST SOE*** and check the box to enable it.
 4. Keep the SOE selected to check the SOE's properties. Leave them as their default values.

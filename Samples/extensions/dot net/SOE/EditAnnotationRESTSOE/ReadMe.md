@@ -22,7 +22,7 @@ Deploying the SOE from the .soe file (`..\EditAnnotationRESTSOE\bin\Debug\EditAn
 
 
 ## Sample data
-This instruction uses the [Annotation Map Service](../../../../../ReadMe.md) as the sample service to test with the SOE. Make sure its data source is from an Enterprise GeoDatabase and registered with ArcGIS Enterprise.
+This instruction uses the [Annotation Map Service](../../../../../ReadMe.md#4-annotation-map-service) as the sample service to test with the SOE. Make sure its data source is from an Enterprise GeoDatabase and registered with ArcGIS Enterprise.
 
 
 ## Instructions

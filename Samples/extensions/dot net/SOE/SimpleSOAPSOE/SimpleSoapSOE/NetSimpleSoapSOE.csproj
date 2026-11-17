@@ -65,7 +65,7 @@
   <PropertyGroup>
     <ZipFileExtension>soe</ZipFileExtension>
     <AddInTargetProduct>Server</AddInTargetProduct>
-    <AddInTargetVersion>12.1</AddInTargetVersion>
+    <AddInTargetVersion>12.2</AddInTargetVersion>
     <ServerProvider>ArcObjects11</ServerProvider>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\ESRI\ESRI.ArcGIS.Enterprise.SDK.targets" Condition="Exists('$(MSBuildExtensionsPath)\ESRI\ESRI.ArcGIS.Enterprise.SDK.targets')" />

@@ -4,13 +4,18 @@ order: 8
 
 # Java utility network tracing REST SOE
 
-This sample demonstrates how to use the utility network tracing capabilities to get the list of customers serviced by a single medium-voltage transformer. The UNTracing REST SOE has two operations called ***getMVTransformerAssetIds*** and ***getCustomers***. The first operation queries the Electric Device layer to return a list of medium-voltage transformer asset IDs that can then be used in the second operation to retrieve the list of service points and customers connected to that transformer. Also, the root resource of this SOE returns information about the utility network.
+This sample demonstrates how to use utility network tracing capabilities to identify customers served by a medium-voltage transformer.
 
-The administrator that deploys this SOE must enable it on the map service that also has the Utility Network capability enabled.
+The SOE provides two REST operations:
 
-Deploying the SOE from the .soe file (`..\untracingrestsoe\target\JavaUNTracingRESTSOE.soe`) does not require you to open a Java IDE. However, you can open the project (`..\untracingrestsoe`) in a Java IDE, such as Eclipse or IntelliJ, to debug, modify, and recompile the SOE code.
+- `getMVTransformerAssetIds`: Queries the Electric Device layer and returns a list of medium-voltage transformer asset IDs.
+- `getCustomers`: Uses a selected transformer asset ID to trace the utility network and retrieve connected service points and mock customer information.
 
-The Utility Network owner must make sure that the network topology has been enabled.
+The root resource of the SOE also returns information about the utility network.
+
+To use this SOE, the administrator must enable it on a map service that has the Utility Network capability enabled. The utility network owner must ensure that the network topology is enabled.
+
+You can deploy the SOE using the compiled .soe file (..\untracingrestsoe\target\JavaUNTracingRESTSOE.soe) without opening a Java IDE. To debug, modify, or rebuild the SOE, open the project (..\untracingrestsoe) in a Java IDE, such as Eclipse or IntelliJ IDEA.
 
 ## Features
   * Opening a Utility Network dataset (`IFeatureDataset`, `IDataset`)
@@ -21,7 +26,14 @@ The Utility Network owner must make sure that the network topology has been enab
 
 
 ## Sample data
-This sample requires the [Electric Utility Network Foundation](https://solutions.arcgis.com/electric/help/electric-utility-network-foundation/) Naperville demo data to be loaded in an Enterprise Geodatabase and published as a service on ArcGIS Enterprise. Please follow the instructions provided in the above link to download, configure and publish the data.
+
+This sample uses the Naperville electric utility network demo dataset, published as a utility network service on ArcGIS Enterprise.
+
+The dataset must contain the electric device and service point information required by the sample operations.
+
+For more information about configuring and publishing an electric utility network, see [Electric Utility Network Foundation](https://doc.arcgis.com/en/arcgis-solutions/latest/reference/introduction-to-electric-utility-network-foundation.htm).
+
+Before testing, verify that the published dataset contains the required asset groups, asset types, and attributes expected by this sample.
 
 
 ## Instructions
@@ -43,7 +55,7 @@ This sample requires the [Electric Utility Network Foundation](https://solutions
 
 ### Test the SOE in the ArcGIS Server Services Directory
 
-1. Open a browser and navigate to the REST services endpoint of the Veg map service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/<Naperville>/MapServer`).
+1.  Open a browser and navigate to the REST endpoint of the published Naperville electric utility network map service (URL: `http://<serverdomain>/<webadaptorname>/rest/services/<Naperville>/MapServer`).
 2. Scroll to the bottom of the above page and click ***JavaUNTracingRESTSOE*** in ***Supported Extensions***. 
    
    This leads to the SOE's root page, at the following URL:

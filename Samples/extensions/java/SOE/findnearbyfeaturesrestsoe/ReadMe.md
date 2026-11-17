@@ -16,7 +16,7 @@ Deploying the SOE from the .soe file (`../findnearbyfeaturesrestsoe/target/findn
 
 
 ## Sample data
-This sample uses the [Veg map service](../../../../../ReadMe.md#2-veg-service) as the sample service to test with the SOE.
+This sample uses the [Veg map service](../../../../../ReadMe.md#2-Vegetation-map-service) as the sample service to test with the SOE.
 
 
 ## Instructions
@@ -31,7 +31,7 @@ This sample uses the [Veg map service](../../../../../ReadMe.md#2-veg-service) a
 
 ### Enable the SOE on a map service
 
-1. Make sure you have published the Veg map service using ArcGIS Pro. If not, refer to [Veg map service](../../../../../ReadMe.md#2-veg-service)
+1. Make sure you have published the Veg map service using ArcGIS Pro. If not, refer to [Veg map service](../../../../../ReadMe.md#2-Vegetation-map-service)
 2. Log in to ArcGIS Server Manager and click the ***Services*** tab. Select Veg map service and select ***Capabilities***.
 3. In the list of available capabilities, find ***Java Find Nearby Features REST SOE*** and check the box to enable it.
 4. Click the ***Save and Restart*** button to restart the service.

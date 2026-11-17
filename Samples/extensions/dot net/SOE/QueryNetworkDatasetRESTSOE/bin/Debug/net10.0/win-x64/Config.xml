@@ -9,7 +9,7 @@
   <Company>ESRI</Company>
   <Date>2025-06-03T13:56:54</Date>
   <Targets>
-    <Target name="Server" version="12.1" />
+    <Target name="Server" version="12.2" />
   </Targets>
   <AddIn language="CLR" library="QueryNetworkDatasetRESTSOE.dll" namespace="QueryNetworkDatasetRESTSOE">
     <ServerObjectType>

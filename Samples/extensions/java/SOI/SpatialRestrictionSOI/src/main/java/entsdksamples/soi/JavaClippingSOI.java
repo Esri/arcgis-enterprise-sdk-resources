@@ -1,7 +1,7 @@
 package entsdksamples.soi;
 
 /*
-COPYRIGHT 1995-2020 ESRI
+COPYRIGHT 1995-2026 ESRI
 TRADE SECRETS: ESRI PROPRIETARY AND CONFIDENTIAL
 Unpublished material - all rights reserved under the 
 Copyright Laws of the United States and applicable international

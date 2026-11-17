@@ -2,7 +2,7 @@ package org.example;
 
 
 /*
-COPYRIGHT 1995-2012 ESRI
+COPYRIGHT 1995-2026 ESRI
 TRADE SECRETS: ESRI PROPRIETARY AND CONFIDENTIAL
 Unpublished material - all rights reserved under the
 Copyright Laws of the United States and applicable international
