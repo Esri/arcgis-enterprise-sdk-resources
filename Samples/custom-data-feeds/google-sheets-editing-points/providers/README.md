@@ -4,12 +4,14 @@ This sample demonstrates how to create an [editing-enabled custom data provider]
 _Before you begin, you will need to setup your Google Sheet and obtain Google developer credentials if you don't already have them._
 
 ## Supported ArcGIS Enterprise SDK Versions
-**12.1**
+**12.2**
 
 Looking for prior versions of this sample?
 [11.4](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v11.4.0/Samples/custom-data-feeds/google-sheets-editing-points),
 [11.5](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v11.5.0/Samples/custom-data-feeds/google-sheets-editing-points),
-[12.0](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.0.0/Samples/custom-data-feeds/google-sheets-editing-points)
+[12.0](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.0.0/Samples/custom-data-feeds/google-sheets-editing-points),
+[12.1](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.1.0/Samples/custom-data-feeds/google-sheets-editing-points)
+
 
 ## How the Provider Works
 
@@ -171,6 +173,7 @@ Follow these basic steps for setting up a Google Sheet and obtaining developer c
                 }
             },
             "customDataServiceInfo": {
+                "dedicated": false,
                 "cache": {
                     "expiration": 0,
                     "enabled": false

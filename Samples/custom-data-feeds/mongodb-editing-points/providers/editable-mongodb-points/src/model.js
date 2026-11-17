@@ -37,7 +37,7 @@ class Model {
 
   async getMetadata() {
     return {
-        idField: 'alternateID',
+        idField: '_id',
         inputCrs: 4326
     }
   }
@@ -88,7 +88,7 @@ class Model {
       geojson.metadata
 
       return {...geojson, metadata: { 
-        idField: 'alternateID', 
+        idField: '_id', 
         inputCrs: 4326,
         name: 'Fires',
         templates: [
@@ -147,8 +147,7 @@ class Model {
       }};
 
     } catch (error) {
-      this.#logger.warning(error)
-      return error
+      throw error;
     }
     
   }
@@ -169,31 +168,6 @@ function convertDocsToGeoJSON(docs, geometryField) {
     type: 'FeatureCollection',
     features,
   };
-}
-
-function normalizeRequestedEdits(body) {
-  let edits = {};
-  // if it service-level, just return the object
-  if(body.edits) { 
-  
-    return {
-      edits: body.edits[0],
-      editLevel : 'service',
-      layer: body.edits[0].id
-    }
-  // handle the layer level request
-  } else {
-    if(body.adds) edits.adds = body.adds;
-    if(body.updates) edits.updates = body.updates;
-    if(body.deletes) {
-      let deletesArray = [body.deletes];
-      edits.deletes = deletesArray;
-    }
-    return {
-      edits: edits,
-      editLevel: 'layer'
-    }
-  }
 }
 
 module.exports = Model;
