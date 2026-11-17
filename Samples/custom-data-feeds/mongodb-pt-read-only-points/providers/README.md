@@ -8,12 +8,14 @@ _Before you begin, you will need to setup your own MongoDB instance and populate
 with the provided dataset_. The data are found in **data/fires.json**.
 
 ## Supported ArcGIS Enterprise SDK Versions
-**12.1**
+**12.2**
 
 Looking for prior versions of this sample?
 [11.4](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v11.4.0/Samples/custom-data-feeds/mongodb-pt-read-only-points),
 [11.5](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v11.5.0/Samples/custom-data-feeds/mongodb-pt-read-only-points),
-[12.0](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.0.0/Samples/custom-data-feeds/mongodb-pt-read-only-points)
+[12.0](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.0.0/Samples/custom-data-feeds/mongodb-pt-read-only-points),
+[12.1](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.1.0/Samples/custom-data-feeds/mongodb-pt-read-only-points)
+
 
 
 ## How the Provider Works

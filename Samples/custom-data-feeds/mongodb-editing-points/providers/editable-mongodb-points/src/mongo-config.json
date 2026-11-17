@@ -6,7 +6,7 @@
             "editable-sample-fires": {
                 "fires": {
                     "geometryField": "location",
-                    "idField": "alternateID",
+                    "idField": "_id",
                     "cacheTtl": 0,
                     "crs": 4326,
                     "maxRecordCount": 2000

@@ -5,12 +5,14 @@ data websites such as data.lacity.org and integrates it with ArcGIS
 Enterprise.
 
 ## Supported ArcGIS Enterprise SDK Versions
-**12.1**
+**12.2**
 
 Looking for prior versions of this sample?
 [11.4](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v11.4.0/Samples/custom-data-feeds/socrata-full-fetch-read-only-points),
 [11.5](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v11.5.0/Samples/custom-data-feeds/socrata-full-fetch-read-only-points),
-[12.0](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.0.0/Samples/custom-data-feeds/socrata-full-fetch-read-only-points)
+[12.0](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.0.0/Samples/custom-data-feeds/socrata-full-fetch-read-only-points),
+[12.1](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.1.0/Samples/custom-data-feeds/socrata-full-fetch-read-only-points)
+
 
 ## Set up the Provider
 

@@ -12,11 +12,8 @@ async function performEdits(collection, editsBody) {
     if (editsBody.adds) {
         const insertResult = await insertMongoDocs(collection, editsBody.adds);
 
-        // add our own idField (altnerateId) and verify the documents
-        const verifiedDocuments = await updateIdFieldAndVerify(collection, insertResult, editsBody.adds);
-
         // append the 'addResults' array to the final response object
-        applyEditsResponse.addResults = verifiedDocuments;
+        applyEditsResponse.addResults = insertResult;
         
       } 
       
@@ -47,7 +44,12 @@ async function insertMongoDocs(collection, adds) {
 
   const result = await collection.insertMany(addsArray);
 
-  return result;
+  return addsArray.map((record, index) => {
+    if (result.acknowledged && result.insertedIds[index] === record._id) {
+      return new DatabaseSuccess([record._id]);
+    }
+    return new DatabaseFailure([record._id], 1017, "Internal error during object insert.");
+  });
 }
 
 function transformToDatasourceJson(record) {
@@ -65,103 +67,19 @@ function transformToDatasourceJson(record) {
 
 }
 
-async function updateIdFieldAndVerify(collection, insertResults, adds) {
-
-  // Extract and convert each ObjectId to its string representation
-  const ids = Object.keys(insertResults.insertedIds).map(key => insertResults.insertedIds[key].toString());
-
-  // create alternateIDs from the Mongo OIDs
-  const hashedIDs = hashMongoOID(ids);
-  
-  // do an update of the new documents with the new alternateIDs
-  // iterate over the new hashed IDs and match them to the Mongo equivalents so we can update
-  let updatesArray = [];
-  let updateObj;
-
-  for (let index = 0; index < hashedIDs.length; index++) {
-      
-      const originalOID = ids[index];
-      // create the update queries and load into an array
-      updateObj = { _id: originalOID, update: { $set: { alternateID: hashedIDs[index]}}}
-      updatesArray.push(updateObj);
-  }
-
-  // perform the update of the new docs
-  updatesArray.forEach(async update => {
-    const result = await collection.updateOne({ _id: new ObjectId(update._id)}, update.update);
-      
-  })
-
-  let verifiedDocs;
-  const maxRetries = 3;
-  let attempts = 0;
-
-  while (attempts < maxRetries) {
-    verifiedDocs = await returnDocsByAlternateId(collection, hashedIDs);
-    if (verifiedDocs.length === adds.length) {
-      break;
-    }
-    attempts++;
-  }
-
-  // add the alternateIDs (ie OBJECTID) to the final response object
-  // loop for the number of objects user intended to insertedIds
-  // compare the intended insertions to the number that actually got inserted
-  let verifiedAddsArray = [];
-  for (let index = 0; index < adds.length; index++) {
-
-      if(typeof verifiedDocs[index] !== 'undefined') {
-      const addedElement = new DatabaseSuccess(verifiedDocs[index].alternateID);
-      verifiedAddsArray.push(addedElement);
-      } else {
-      const failedElement = new DatabaseFailure(1017, "Internal error during object insert.");
-      verifiedAddsArray.push(failedElement)
-      }
-  }
-
-  return verifiedAddsArray;
-}
-
-async function returnDocsByAlternateId(collection, ids) {
-
-  const verifiedDocs = await collection.find(
-    { alternateID: { $in: ids } },
-    { alternateID: 1 }
-  ).toArray()
-
-  return verifiedDocs;
-}
-
-function hashMongoOID(oids) {
-  const hashedOIds = oids.map(oid => {
-    // Create a SHA-256 hash of the input string
-    const hash = crypto.createHash('sha256').update(oid).digest('hex');
-    
-    // Take the first 8 characters (32 bits) of the hash
-    const hash32Bit = hash.substring(0, 8);
-    
-    // Convert the 32-bit hex string to a regular number
-    const integer32Bit = parseInt(hash32Bit, 16);
-    
-    // Ensure the number is within a desired range to keep it under 9 digits
-    // Using 999,999,999 as the base for modulo operation to ensure the result is always fewer than 9 digits
-    const safeInteger = integer32Bit % 999999999;
-    
-    return safeInteger;
-    
-  });
-  return hashedOIds;
-}
-
 async function updateMongoDocs(collection, updates) {
   // Use map to create an array of promises for each update operation
   const updatePromises = updates.map(async record => {
-      let filter = { alternateID: record.properties.alternateID };
+      const id = record.properties._id;
+      if (typeof id !== 'string' || id.length === 0) {
+          return new DatabaseFailure([], 1019, "A string _id is required for updates.");
+      }
+      let filter = { _id: ObjectId.isValid(id) ? new ObjectId(id) : id };
       let updateDoc = { $set: {} };
 
-      // Tack on any non OBJECTID updated properties
+      // MongoDB's _id is immutable; alternateID is no longer an identifier.
       for (let key in record.properties) {
-          if (key !== '_id') {
+          if (key !== '_id' && key !== 'alternateID') {
               updateDoc.$set[key] = record.properties[key];
           }
       }
@@ -188,9 +106,9 @@ async function updateMongoDocs(collection, updates) {
 
       // Add the success or failure object to updates array based on the result
       if (result.modifiedCount === 1 || (result.matchedCount === 1 && result.modifiedCount === 0)) {
-          return new DatabaseSuccess(record.properties.alternateID);
+          return new DatabaseSuccess([id]);
       } else {
-          return new DatabaseFailure(1019, "Internal error during object update.");
+          return new DatabaseFailure([id], 1019, "Internal error during object update.");
       }
   });
 
@@ -202,13 +120,16 @@ async function updateMongoDocs(collection, updates) {
 
 async function deleteMongoDocs(collection, deletes) {
   let verifiedDeletesArray = await Promise.all(deletes.map(async element => {
-      const query = { alternateID: element };
+      if (typeof element !== 'string' || element.length === 0) {
+          return new DatabaseFailure([], 1018, "A string _id is required for deletes.");
+      }
+      const query = { _id: ObjectId.isValid(element) ? new ObjectId(element) : element };
       const result = await collection.deleteOne(query);
 
       if (result.deletedCount === 1) {
-          return new DatabaseSuccess(element);
+          return new DatabaseSuccess([element]);
       } else {
-          return new DatabaseFailure(1018, "Internal error during object delete.");
+          return new DatabaseFailure([element], 1018, "Internal error during object delete.");
       }
   }));
 
@@ -224,25 +145,26 @@ class DataBaseObject {
       this.location = {
           type: "Point",
           coordinates: [x,y]
-      },
-      this.alternateID = null
+      }
   }
 }
 
 class DatabaseSuccess {
-  constructor(objectId) {
-      this.objectId = objectId;
+  constructor(uniqueIds) {
+      this.uniqueIds = uniqueIds;
       this.success = true
   }
 }
 
 class DatabaseFailure {
-  constructor(objectId, code, description) {
-      this.objectId = objectId
+  constructor(uniqueIds, code, description) {
+      if (uniqueIds.length > 0) {
+          this.uniqueIds = uniqueIds;
+      }
       this.success = false,
       this.error = {
           code: code,
-          desicription: description
+          description: description
       }
   }
 }
