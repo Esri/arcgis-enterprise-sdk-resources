@@ -199,6 +199,7 @@ with documents in the format below.
                     }
             },
             "customDataServiceInfo": {
+                "dedicated": "false",
                 "cache": {
                     "expiration": 0,
                     "enabled": false

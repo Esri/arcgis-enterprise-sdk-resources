@@ -116,6 +116,7 @@ Looking for prior versions of this sample?
           "serviceParameters": {"fileName": "esriBuildingE"}
         },
         "customDataServiceInfo": {
+            "dedicated": "false",
             "cache": {
                 "expiration": 0,
                 "enabled": false

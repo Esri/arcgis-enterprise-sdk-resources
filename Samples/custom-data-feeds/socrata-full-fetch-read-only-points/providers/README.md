@@ -123,6 +123,7 @@ Looking for prior versions of this sample?
           }
         },
         "customDataServiceInfo": {
+            "dedicated": "false",
             "cache": {
                 "expiration": 0,
                 "enabled": false
