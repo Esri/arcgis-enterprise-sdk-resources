@@ -5,11 +5,13 @@ integrates the Oriented Imagery feature data with ArcGIS Enterprise.
 
 ## Supported ArcGIS Enterprise SDK Versions
 
-**12.1**
+**12.2**
 
 Looking for prior versions of this sample?
 [11.5](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v11.5.0/Samples/custom-data-feeds/oriented-imagery-geojson),
-[12.0](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.0.0/Samples/custom-data-feeds/oriented-imagery-geojson)
+[12.0](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.0.0/Samples/custom-data-feeds/oriented-imagery-geojson),
+[12.1](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.1.0/Samples/custom-data-feeds/oriented-imagery-geojson)
+
 
 
 ## Set up the Provider
@@ -114,6 +116,7 @@ Looking for prior versions of this sample?
           "serviceParameters": {"fileName": "esriBuildingE"}
         },
         "customDataServiceInfo": {
+            "dedicated": "false",
             "cache": {
                 "expiration": 0,
                 "enabled": false
