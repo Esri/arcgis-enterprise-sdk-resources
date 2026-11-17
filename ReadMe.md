@@ -1,8 +1,8 @@
 # arcgis-enterprise-sdk-resources
 
-This repository provides samples and code snippets for **server object extensions (SOEs)**, **server object interceptors (SOIs)**, **custom data feeds (CDFs)**, and **service interceptors** developed with **ArcGIS Enterprise SDK 12.2**. To learn more, visit the [ArcGIS Enterprise SDK documentation](https://developers.arcgis.com/enterprise-sdk/).
+This repository provides samples and code snippets for **server object extensions (SOEs)**, **server object interceptors (SOIs)**, **custom data feeds (CDFs)**, and **service interceptors** developed with **ArcGIS Enterprise SDK**. To learn more, visit the [ArcGIS Enterprise SDK documentation](https://developers.arcgis.com/enterprise-sdk/).
 
-> Note: If you want to download the SOE, SOI or Custom data feeds (CDF) samples built with 12.1 or previous versions of ArcGIS Enterprise SDK, refer to [Releases branch](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v11.5.0?tab=readme-ov-file).
+> Note: If you want to download the SOE, SOI or Custom data feeds (CDF) samples built with previous versions of ArcGIS Enterprise SDK, refer to [12.1](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.1.0?tab=readme-ov-file),[12.0](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v12.0.0?tab=readme-ov-file),[11.5](https://github.com/Esri/arcgis-enterprise-sdk-resources/tree/release-v11.5.0?tab=readme-ov-file),
 
 ## Extension types
 
@@ -32,9 +32,9 @@ Service interceptors inspect and modify HTTP requests and responses for **REST-b
 ## Features
 
 - [Samples and sample data](Samples/ReadMe.md)
-- .NET and Java SOE and SOI samples
-- Custom data feed samples
-- Service interceptor samples, including audit logging, access control, chaining, and incident management
+- [.NET and Java SOE and SOI samples](Samples/extensions/)
+- [Custom data feed samples](Samples/custom-data-feeds/)
+- [Service interceptor samples](Samples/service-interceptors/)
 
 
 ## Instructions
@@ -66,8 +66,8 @@ Refer to the [ArcGIS Enterprise SDK documentation](https://developers.arcgis.com
 - [ArcGIS Enterprise SDK Developer Guide](https://developers.arcgis.com/enterprise-sdk/)
 - [ArcGIS Server – Introduction to extending services](https://doc.esri.com/en/arcgis-enterprise/latest/administer/about-extending-services.html)
 - [ArcGIS Server – Custom data feeds](https://doc.esri.com/en/arcgis-enterprise/latest/administer/custom-data-feeds.html)
-- [Service interceptor guide](https://developers.arcgis.com/enterprise-sdk/guide/service-interceptors/what-are-service-interceptors/)
 - [Custom data feeds guide](https://developers.arcgis.com/enterprise-sdk/guide/custom-data-feeds/)
+- [Service interceptor guide](https://developers.arcgis.com/enterprise-sdk/guide/service-interceptors/what-are-service-interceptors/)
 
 ## Issues
 Find a bug or want to request a new feature?  Please let us know by submitting an issue or [contact Technical Support](https://support.esri.com/en/contact-tech-support).
